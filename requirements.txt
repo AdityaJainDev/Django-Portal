@@ -1,0 +1,8 @@
+Django
+django-admin-sortable
+django-markdownfield
+django-phonenumber-field
+djangorestframework
+mysqlclient
+phonenumbers
+gunicorn
