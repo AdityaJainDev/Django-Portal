@@ -1,0 +1,88 @@
+.subscription
+    margin: 3rem auto
+    width: $page-width
+
+    h1
+        color: $color-text
+        font-family: "Roboto Condensed", sans-serif
+        font-size: 1.5rem
+        font-weight: 500
+        text-transform: uppercase
+
+    .message
+        background: $color-grey
+        color: $color-white
+        margin: 1rem -2rem -1rem -2rem
+        padding: 1rem 2rem
+
+        &.message-success
+            background: $color-green
+
+        &.message-error
+            background: $color-red
+
+    .errorlist
+        margin: 1rem 0 2rem 0
+        padding: 0
+        list-style: none
+        color: $color-red
+
+    form
+        background: $color-white
+        color: $color-text
+        font-weight: 400
+        padding: 1rem 2rem
+
+        .horizontal-group
+            overflow: hidden
+            margin: 1rem 0 0 0
+
+            input,
+            input[type="email"]
+                float: left
+                width: 50%
+                margin: 0
+                padding: 0.75rem
+
+            button,
+            button[type="submit"]
+                float: right
+                width: 40%
+                margin: 0
+                padding: 0.75rem
+
+        p
+            padding: 1rem 0
+            margin: 0
+            border-bottom: 2px solid lighten($color-grey, 25%)
+
+        label
+            display: inline-block
+            line-height: 2rem
+            width: 33%
+
+        input
+            background: lighten($color-grey, 25%)
+            border-radius: 2px
+            border: none
+            padding: 0.75rem
+            text-align: left
+
+            &[type="text"], &[type="email"]
+                width: 33%
+
+        button[type="submit"]
+            background: darken($color-grey, 5%)
+            border-radius: 2px
+            border: none
+            color: $color-white
+            cursor: pointer
+            font-family: "Roboto Condensed", sans-serif
+            font-size: 0.9rem
+            margin: 1rem 0 1rem 33%
+            padding: 0.75rem
+            text-transform: uppercase
+            width: 33%
+
+            &:hover
+                background: darken($color-grey, 15%)

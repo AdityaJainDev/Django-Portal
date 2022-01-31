@@ -1,0 +1,240 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-04 12:41+0200\n"
+"PO-Revision-Date: 2018-12-09 19:38+0000\n"
+"Last-Translator: Anton Dollmaier <antondollmaier@aditsystems.de>\n"
+"Language-Team: German <http://example.com/projects/statuspage/statuspage/de/"
+">\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.3\n"
+
+#: component/models.py:14
+msgid "Always extended"
+msgstr "Immer ausgeklappt"
+
+#: component/models.py:15
+msgid "Never extended"
+msgstr "Niemals ausgeklappt"
+
+#: component/models.py:16
+msgid "Only extend on errors"
+msgstr "Nur bei Fehlern ausklappen"
+
+#: component/models.py:51
+msgid "Komponente"
+msgstr "Komponente"
+
+#: component/models.py:52
+msgid "Komponenten"
+msgstr "Komponenten"
+
+#: event/models.py:18
+msgid "MAINTENANCE_STATUS_PLANNED"
+msgstr "Geplant"
+
+#: event/models.py:19
+msgid "MAINTENANCE_STATUS_STARTED"
+msgstr "Begonnen"
+
+#: event/models.py:20
+msgid "MAINTENANCE_STATUS_FINISHED"
+msgstr "Beendet"
+
+#: event/models.py:21
+msgid "MAINTENANCE_STATUS_CANCELLED"
+msgstr "Abgebrochen"
+
+#: event/models.py:29
+msgid "INCIDENT_STATUS_INVESTIGATE"
+msgstr "Untersuchungen laufen"
+
+#: event/models.py:30
+msgid "INCIDENT_STATUS_IDENTIFYING"
+msgstr "Ursache identifiziert"
+
+#: event/models.py:31
+msgid "INCIDENT_STATUS_WATCHING"
+msgstr "Unter Beobachtung"
+
+#: event/models.py:32
+msgid "INCIDENT_STATUS_FINISHED"
+msgstr "Abgeschlossen"
+
+#: event/models.py:40
+msgid "SEVERITY_OK"
+msgstr "Funktionsfaehig"
+
+#: event/models.py:41
+msgid "SEVERITY_ISSUES"
+msgstr "Leistungsprobleme"
+
+#: event/models.py:42
+msgid "SEVERITY_OUTAGE"
+msgstr "teilweiser Ausfall"
+
+#: event/models.py:43
+msgid "SEVERITY_MAJOROUTAGE"
+msgstr "schwerwiegender Ausfall"
+
+#: event/models.py:69
+msgid "Beschreibung"
+msgstr "Beschreibung"
+
+#: event/models.py:80 event/models.py:126
+msgid "Startzeitpunkt"
+msgstr "Startzeitpunkt"
+
+#: event/models.py:82 event/models.py:130
+msgid "Endzeitpunkt"
+msgstr "Endzeitpunkt"
+
+#: event/models.py:84
+msgid "Schweregrad"
+msgstr "Schwergrad"
+
+#: event/models.py:124
+msgid "Eventstatus"
+msgstr "Event-Status"
+
+#: event/models.py:128
+msgid "Tatsächlicher Startzeitpunkt"
+msgstr "Tatsächlicher Startzeitpunkt"
+
+#: event/models.py:134
+msgid "Als Vorlage speichern"
+msgstr "Als Vorlage speichern"
+
+#: event/models.py:137
+msgid "Wiederholung (Cron)"
+msgstr "Wiederholung (Cron)"
+
+#: event/models.py:140
+msgid "Zuletzt kopiert"
+msgstr "Zuletzt kopiert"
+
+#: event/utils.py:19
+msgid "GLOBAL_STATUS_NOISSUES_HEADLINE"
+msgstr "Aktuell gibt es keine bekannten Vorfälle"
+
+#: event/utils.py:20
+msgid "GLOBAL_STATUS_NOISSUES_MESSAGE"
+msgstr ""
+"Alle Systeme arbeiten wie erwartet. Es liegen aktuell keine Meldungen vor"
+
+#: event/utils.py:24
+msgid "GLOBAL_STATUS_MAINTENANCE_HEADLINE"
+msgstr "Wartungsarbeiten"
+
+#: event/utils.py:25
+msgid "GLOBAL_STATUS_MAINTENANCE_MESSAGE"
+msgstr ""
+"Einige Komponenten sind aktuell durch geplante Wartungsarbeiten nicht in "
+"vollständigem Umfang verfügbar"
+
+#: event/utils.py:29
+msgid "GLOBAL_STATUS_INCIDENT_HEADLINE"
+msgstr "Ausfall"
+
+#: event/utils.py:30
+msgid "GLOBAL_STATUS_INCIDENT_MESSAGE"
+msgstr "Aktuell besteht eine Störung, an deren Beseitigung wir arbeiten"
+
+#: statuspage/utils.py:8
+msgid "DAY_MONDAY"
+msgstr "Montag"
+
+#: statuspage/utils.py:9
+msgid "DAY_TUESDAY"
+msgstr "Dienstag"
+
+#: statuspage/utils.py:10
+msgid "DAY_WEDNESDAY"
+msgstr "Mittwoch"
+
+#: statuspage/utils.py:11
+msgid "DAY_THURSDAY"
+msgstr "Donnerstag"
+
+#: statuspage/utils.py:12
+msgid "DAY_FRIDAY"
+msgstr "Freitag"
+
+#: statuspage/utils.py:13
+msgid "DAY_SATURDAY"
+msgstr "Samstag"
+
+#: statuspage/utils.py:14
+msgid "DAY_SUNDAY"
+msgstr "Sonntag"
+
+#: subscriptions/models.py:16
+msgid "Benachrichtigungen über Vorfälle"
+msgstr "Benachrichtigungen über Vorfälle"
+
+#: subscriptions/models.py:18
+msgid "Geben Sie an, ob Sie bei Vorfällen benachrichtigt werden möchten"
+msgstr "Geben Sie an, ob Sie bei Vorfällen benachrichtigt werden möchten"
+
+#: subscriptions/models.py:21
+msgid "Benachrichtigungen über Wartungsarbeiten"
+msgstr "Benachrichtigungen über Wartungsarbeiten"
+
+#: subscriptions/models.py:24
+msgid "Geben Sie an, ob Sie bei Wartungsarbeiten benachrichtigt werden möchten"
+msgstr ""
+"Geben Sie an, ob Sie bei Wartungsarbeiten benachrichtigt werden möchten"
+
+#: templates/statuspage/base.html:8
+msgid "ADITSYSTEMS Status"
+msgstr "AD IT Systems Status"
+
+#: templates/statuspage/base.html:22
+msgid "HEADLINE_STATUS"
+msgstr "AD IT Systems Status"
+
+#: templates/statuspage/base.html:28
+msgid "RSS_ALL"
+msgstr "Alle Events"
+
+#: templates/statuspage/base.html:33
+msgid "RSS_MAINTENANCE"
+msgstr "Wartungen"
+
+#: templates/statuspage/base.html:38
+msgid "RSS_INCIDENT"
+msgstr "Vorfälle"
+
+#: templates/statuspage/base.html:48
+msgid "ACCOUNT_REGISTER"
+msgstr "Registrieren Sie sich mir Ihrer E-Mail Adresse oder melden Sie sich an"
+
+#: templates/statuspage/base.html:55
+msgid "ACCOUNT_BUTTON"
+msgstr "Anmelde-Link senden"
+
+#: templates/statuspage/base.html:57
+msgid "ACCOUNT_LOGIN_SUCCESS"
+msgstr "Die E-Mail wurde verschickt. Bitte prüfen Sie Ihren Posteingang"
+
+#: templates/statuspage/base.html:58
+msgid "ACCOUNT_LOGIN_ERROR"
+msgstr ""
+"Die E-Mail konnte nicht verschickt werden. Bitte prüfen Sie Ihre Daten und "
+"versuchen Sie es erneut"
+
+#: templates/statuspage/base.html:83
+msgid "HEADLINE_EVENTS"
+msgstr "Events"
+
+#: templates/statuspage/base.html:89 templates/statuspage/base.html:90
+msgid "No incidents are currently known"
+msgstr "Aktuell sind keine Vorfälle bekannt"
+
+#~ msgid "HTML_TITLE"
+#~ msgstr "AD IT Systems Status"
