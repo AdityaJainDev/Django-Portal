@@ -1,5 +1,7 @@
 Django==3.2.8
 django-admin-sortable==2.2.4
+django-crispy-forms==1.14.0
+django-localflavor==3.1
 django-markdownfield==0.10.0
 django-phonenumber-field==5.2.0
 mysqlclient==2.0.3

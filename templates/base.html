@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 {% load static %}
 {% load i18n %}
-{% load humanize %}
-{% load status_extras %}
+{% load crispy_forms_tags %}
 <html lang="en">
     <head>
         {% block title %}
-        <title>{{_("Sepa Payments)}}</title>
+        <title>Sepa Payments</title>
         {% endblock %}
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,44 +27,15 @@
                                 <h5>elektronisches Lastschriftverfahren</h5>
                             </div>
                             <div class="card-body">
-            
-            
-            
-            
-            
-                               <div id="elv_form">
-                <div class="form-row">
-                    <div class="col-4 mm_label">Kontoinhaber
-                    </div>
-                    <div class="col-8"><input id="owner" name="owner" type="text" class="check_data form-control " value="" required=""> </div>
-            
-                </div><div class="form-row">
-                    <div class="col-4 mm_label">Kontonummer
-                    </div>
-                    <div class="col-8"><input id="account" name="account" type="text" class="check_data form-control " required="" value=""> </div>
-            
-                </div><div class="form-row">
-                    <div class="col-4 mm_label">Bankleitzahl
-                    </div>
-                    <div class="col-8"><input id="blz" name="blz" type="text" class="check_data form-control " required="" value=""> </div>
-            
-                </div><div class="form-row">
-                    <div class="col-4 mm_label">IBAN
-                    </div>
-                    <div class="col-8"><input id="iban" name="iban" type="text" class="check_data form-control " value=""> </div>
-            
-                </div><div class="form-row">
-                    <div class="col-4 mm_label">BIC
-                    </div>
-                    <div class="col-8"><input id="bic" name="bic" type="text" class="check_data form-control" value="" required=""> </div>
-                </div>
-                <div class="form-row">
-                    <div class="col-4 mm_label">Bank
-                    </div>
-                    <div class="col-8"><input id="bank" name="bank" type="text" class="check_data form-control" value="" required=""> </div>
-            
-                </div>
-            </div>
+
+
+                                <form action = "" method = "post" class="bootstrap4" >
+                                    {% csrf_token %}
+                                    {% crispy form %}
+                                    <input type="submit" value="Submit">
+                                </form>
+
+
                                 <br>
                                 <h5>Einzugsermächtigung</h5>
                                 <div class="text-conditions" style="height:400px;font-size:14px;">Firma publicompserver, Inh.: Ingo Klein, Weimarer Straße 22, D-92245 Kümmersbruck
