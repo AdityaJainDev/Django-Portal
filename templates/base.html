@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
 {% load i18n %}
-{% load crispy_forms_tags %}
 <html lang="en">
     <head>
         {% block title %}
@@ -9,7 +8,7 @@
         {% endblock %}
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/status.css' %}" type="text/css" media="screen" />
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -17,62 +16,11 @@
     </head>
 
     <body>
-        <header>
-            <div class="container">
-                <br>
-                <form action="#" method="post" id="">
-                    <div class="card-deck mb-12">
-                        <div class="card mb-12 box-shadow">
-                            <div class="card-header" style="background-color:#ccc;">
-                                <h5>elektronisches Lastschriftverfahren</h5>
-                            </div>
-                            <div class="card-body">
-
-
-                                <form action = "" method = "post" class="bootstrap4" >
-                                    {% csrf_token %}
-                                    {% crispy form %}
-                                    <input type="submit" value="Submit">
-                                </form>
-
-
-                                <br>
-                                <h5>Einzugsermächtigung</h5>
-                                <div class="text-conditions" style="height:400px;font-size:14px;">Firma publicompserver, Inh.: Ingo Klein, Weimarer Straße 22, D-92245 Kümmersbruck
-                                    <br>
-                                    <br>
-                                    widerruflich, die von mir/uns zu entrichtenden Zahlungen und fälligen Rechnungen im Rahmen des Kunden-/Providerverhältnisses zu Lasten meines/unseres u.g. Girokontos einzuziehen. Wenn mein/unser Konto die erforderliche Deckung nicht aufweist, besteht seitens des kontoführenden Instituts keine Verpflichtung zur Einlösung. Teileinlösungen werden im Lastschriftverfahren/SEPA - Basis - Lastschriftverfahren nicht vorgenommen.
-                                    <br>
-                                    <br>
-                                    Pro Rücklastschrift berechnen wir Ihnen eine Pauschale von 15 € (inkl. Rücklastschriftgebühren der Banken). Bei Erteilung des Lastschriftmandats erklären Sie sich mit dieser Pauschale einverstanden. Ihnen bleibt vorbehalten, nachzuweisen, dass ein Schaden überhaupt nicht entstanden oder dass er wesentlich niedriger ist, als die Pauschale.
-                                    <br>
-                                    <br>
-                                    Dieses Lastschriftmandat wird durch
-                                    <br>
-                                    <br>
-                                    - Ihre Mandatsreferenznummer: 12379/#<br>
-                                    und<br>
-                                    - unsere Gläubiger - Identifikationsnummer: DE12ZZZ00001131937
-                                    <br>
-                                    gekennzeichnet, die von uns bei allen Lastschrifteinzügen angegeben werden. 
-                                </div>
-                                <br>
-                                <ul class="list-group mb-3">
-                                    <li class="list-group-item d-flex justify-content-between lh-condensed mm_conditions" style="padding-right:0px;">
-                                        <div><input type="checkbox" name="conditions" class="check_conditions" value="1" required=""> Ich akzeptiere die Einzugsermächtigung</div>
-                                        <input type="hidden" name="knr" value="12379">
-                                        <input type="hidden" name="rnr" value="254882">
-                                        <span class="text-muted"></span>
-                                    </li>
-                                </ul>
-            
-                            </div>
-                            <input name="action" value="send_data" type="hidden">
-                            <button type="submit" class="btn btn-primary">Daten übermitteln</button>
-            
-                        </div>
-                    </div>
-                </form>
-            </div>
+        <div class="container">
+            <br>
+            {% block payment %}
+            {% endblock %}
+            <br>
+        </div>
     </body>
 </html>

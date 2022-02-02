@@ -1,13 +1,11 @@
 from django import forms
+from .models import SepaModel
 from localflavor.generic.forms import BICFormField, IBANFormField 
 
-
-
-class PaymentForm(forms.Form):
- 
-    owner = forms.CharField(max_length = 100)
-    account_number = forms.CharField(max_length = 100)
-    sort_code = forms.CharField(max_length = 100)
+class PaymentForm(forms.ModelForm):
     iban = IBANFormField()
     bic = BICFormField()
-    bank = forms.CharField(max_length=100)
+    class Meta:
+        model = SepaModel
+        fields =('owner','account_number','sort_code', 'bank',)
+        
