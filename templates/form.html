@@ -11,25 +11,6 @@
                 {% csrf_token %}
                 {{form|crispy}}
                 <br>
-                <h5>Einzugsermächtigung</h5>
-                <div class="text-conditions" style="height:400px;font-size:14px;">Firma publicompserver, Inh.: Ingo Klein, Weimarer Straße 22, D-92245 Kümmersbruck
-                    <br>
-                    <br>
-                    widerruflich, die von mir/uns zu entrichtenden Zahlungen und fälligen Rechnungen im Rahmen des Kunden-/Providerverhältnisses zu Lasten meines/unseres u.g. Girokontos einzuziehen. Wenn mein/unser Konto die erforderliche Deckung nicht aufweist, besteht seitens des kontoführenden Instituts keine Verpflichtung zur Einlösung. Teileinlösungen werden im Lastschriftverfahren/SEPA - Basis - Lastschriftverfahren nicht vorgenommen.
-                    <br>
-                    <br>
-                    Pro Rücklastschrift berechnen wir Ihnen eine Pauschale von 15 € (inkl. Rücklastschriftgebühren der Banken). Bei Erteilung des Lastschriftmandats erklären Sie sich mit dieser Pauschale einverstanden. Ihnen bleibt vorbehalten, nachzuweisen, dass ein Schaden überhaupt nicht entstanden oder dass er wesentlich niedriger ist, als die Pauschale.
-                    <br>
-                    <br>
-                    Dieses Lastschriftmandat wird durch
-                    <br>
-                    <br>
-                    - Ihre Mandatsreferenznummer: 12379/#<br>
-                    und<br>
-                    - unsere Gläubiger - Identifikationsnummer: DE12ZZZ00001131937
-                    <br>
-                    gekennzeichnet, die von uns bei allen Lastschrifteinzügen angegeben werden. 
-                </div>
                 <ul class="list-group mb-3">
                     <li class="list-group-item d-flex justify-content-between lh-condensed mm_conditions" style="padding-right:0px;">
                         <div><input type="checkbox" name="conditions" class="check_conditions" value="1" required=""> Ich akzeptiere die Einzugsermächtigung</div>
@@ -38,7 +19,6 @@
                         <span class="text-muted"></span>
                     </li>
                 </ul>
-
             </div>
             <input name="action" value="send_data" type="hidden">
             <button type="submit" class="btn btn-primary">Daten übermitteln</button>
