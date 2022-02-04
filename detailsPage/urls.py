@@ -6,5 +6,5 @@ app_name = 'detailsPage'
 
 urlpatterns = [
     path('', views.index, name='home'),
-    re_path(r'^payment/$', views.sepa_payment, name='payment')
+    re_path(r'^payment/(?:knr=(?P<knr>\d+)&:token(?P<token>\d+))?$', views.sepa_payment, name='payment')
 ]
