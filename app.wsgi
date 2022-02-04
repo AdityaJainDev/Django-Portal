@@ -2,11 +2,11 @@
 import sys
 import os
 
-sys.path.insert(0, '/var/www/sepaPaymentdev/priv/sepaPayment')
-sys.path.insert(0, '/var/www/sepaPaymentdev/priv/venv/lib/python3.5/site-packages/')
+sys.path.insert(0, '/var/www/Portaldev/priv/Portal')
+sys.path.insert(0, '/var/www/Portaldev/priv/venv/lib/python3.5/site-packages/')
 
 """
-WSGI config for sepaPayment project.
+WSGI config for Portal project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -18,6 +18,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "sepaPayment.settings_prod")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Portal.settings_prod")
 
 application = get_wsgi_application()

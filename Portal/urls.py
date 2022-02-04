@@ -1,4 +1,4 @@
-"""sepaPayment URL Configuration
+"""Portal URL Configuration
 """
 
 from django.contrib import admin

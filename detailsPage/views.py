@@ -11,38 +11,30 @@ def index(request):
 
 def sepa_payment(request):
 
-    url = "https://ascrm.aditsystems.de/api/Kunden/SEPA/?knr=12072&token=Ncj7H6xDeyJm"
-
-    knr=parse.parse_qs(parse.urlparse(url).query)['knr'][0]
-    token=parse.parse_qs(parse.urlparse(url).query)['token'][0]
-
-    info = requests.get(url)
-
     if request.method == 'GET':
         form = PaymentForm()
-        form.initial['account_number'] = "K" + knr
-        form.initial['options'] = '2'
+        form.initial['account_number'] = request.GET.get('knr', None)
+
 
     elif request.method == 'POST':
         form = PaymentForm(request.POST)
         if form.is_valid():
-            form.cleaned_data['account_number'] = knr
+            form.cleaned_data['account_number'] = request.GET.get('knr', None)
             owner = form.cleaned_data['owner']
             iban = form.cleaned_data['iban']
             bic = form.cleaned_data['bic']
             options = form.cleaned_data['options']
-
-            print(options)
             
-            data = {"inhaber": owner, "iban": iban, "bic":bic, 'knr':knr, 'token':token, 'zahlungsart':options }
+            data = {"inhaber": owner, "iban": iban, "bic":bic, 'knr':request.GET.get('knr', None), 'token':request.GET.get('token', None), 'zahlungsart':options }
 
-            x = requests.post(url, data)
+            #Still need to configure this part
+            knr = request.POST['knr']
 
             if x.json()['status'] == -1:
                 return HttpResponse(x.json()['msg'])
             else:
                 return HttpResponse('Details updated succesfully.')
 
-    context = {'form':form,}
+    context = {'form':form}
 
     return render(request, "form.html", context)
