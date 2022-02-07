@@ -150,13 +150,6 @@ REST_FRAMEWORK = {
     ]
 }
 
-SOCIAL_AUTH_ADMIN_USER_FIELDS = ['username', 'first_name', 'email']
-
-SOCIAL_AUTH_GITLAB_SCOPE = ['api']
-SOCIAL_AUTH_GITLAB_API_URL = 'https://git.aditsystems.de'
-
-LOGIN_REDIRECT_URL = 'admin/login/'
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
@@ -164,7 +157,7 @@ LANGUAGES = (
     ("de", "Deutsch"),
     ("en", "English"),
 )
-LANGUAGE_CODE = "en"
+LANGUAGE_CODE = "de"
 
 LOCALE_PATHS = (os.path.join(BASE_DIR, "locale"),)
 

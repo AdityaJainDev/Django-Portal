@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .forms import PaymentForm
 from django.http import HttpResponse, HttpResponseRedirect
 import requests
-from urllib import parse
+from django.utils.translation import gettext as _
 from django.contrib import messages
 
 # Create your views here.
@@ -34,10 +34,10 @@ def sepa_payment(request):
             save_data = requests.post(crm_endpoint, data)
             
             if save_data.json()['status'] == -1:
-                messages.success(request, save_data.json()['msg'])
+                messages.error(request, _('Error Message'))
                 return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
             else:
-                messages.success(request, 'Data updated successfully')
+                messages.success(request, _('Success Message'))
                 return HttpResponseRedirect("/")
 
     context = {'form':form}
