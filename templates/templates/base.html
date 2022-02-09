@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load static %}
+{% load i18n %}
+<head>
+    <title>{% trans 'Heading' %}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{% static 'css_new/app.f6b24f84.css' %}">
+    <link rel="stylesheet" href="{% static 'css_new/983.d3a65e4b.css' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images_new/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images_new/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images_new/favicon-16x16.png' %}">
+
+</head>
+<body>
+    <header>
+        {% block header %}
+        {% endblock %}
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    {% block footer %}
+        
+    {% endblock %}
+
+    {% block javascripts %}
+    {% endblock %}
+</body>
+</html>

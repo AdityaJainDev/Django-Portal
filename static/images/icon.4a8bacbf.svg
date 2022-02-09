@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>circle-check</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Homepage----iPhone-12-Pro" transform="translate(-114.000000, -2728.000000)">
+            <g id="Group-22-Copy-2" transform="translate(41.100000, 1880.000000)">
+                <g id="Group-21-Copy-2" transform="translate(1.100000, 732.000000)">
+                    <g id="Group-20" transform="translate(72.000000, 115.000000)">
+                        <g id="circle-check" transform="translate(0.000000, 1.540000)">
+                            <polygon id="Path" points="0 0 18.48 0 18.48 18.48 0 18.48"></polygon>
+                            <circle id="Oval" stroke="#2041C7" stroke-width="1.232" stroke-linecap="round" stroke-linejoin="round" cx="9.24" cy="9.24" r="6.93"></circle>
+                            <polyline id="Path" stroke="#2041C7" stroke-width="1.232" stroke-linecap="round" stroke-linejoin="round" points="6.93 9.24 8.47 10.78 11.55 7.7"></polyline>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -7,7 +7,7 @@ from django.contrib import messages
 
 # Create your views here.
 def index(request):
-    return render(request, "base.html")
+    return render(request, "templates/base2.html")
 
 
 def sepa_payment(request):
