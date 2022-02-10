@@ -1,0 +1,223 @@
+.square-cards {
+  font-weight: 500;
+  width: 100%;
+  overflow-x: hidden;
+  @include standardComponentMargin;
+  @include tabletPortrait {
+    width: 90%;
+    padding: 0 5%;
+    margin: 1vw 0 3vw;
+
+  }
+  @include tabletLandscape {
+    width: 80%;
+    padding: 0 10%;
+    @include standardComponentMargin;
+
+  }
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  &__title {
+    @include tabletPortrait {
+      margin-left: 1.5vw;
+      margin-bottom: -1vw;
+      margin-top: 2vw;
+      font-size: 2.736vw;
+      letter-spacing: 0.1em;
+      color: #b2000c;
+      font-weight: 700;
+    }
+  }
+  &__container {
+    padding: 0 5vw;
+    @include tabletPortrait {
+      display: flex;
+      width: 100%;
+      top: 1.1vw;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  &__fourImages {
+    justify-content: space-between;
+    align-items: center;
+    // height: 85vw;
+    display: flex;
+    flex-wrap: wrap;
+    @include tabletPortrait {
+      justify-content: flex-start;
+      // height: unset;
+      // flex-wrap: nowrap;
+      width: 100%;
+    }
+    @include tabletLandscape {
+      // height: unset;
+    }
+  }
+
+
+  &__images {
+    min-height: 38vw;
+    width: 40.5vw;
+    margin: 1.5vw;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0px 0px 8px .2px rgba(196,196,196,0.5);
+    cursor: pointer;
+    background-color: white;
+    @include tabletPortrait {
+      min-height: 18vw;
+      width: 23.5%;
+      margin: 1%;
+      position: relative;
+      box-shadow: 0px 0px 15px .5px rgba(196,196,196,0.5);
+      &:nth-of-type(1) {
+        margin-left: 0;
+      }
+      &:nth-of-type(5n) {
+        margin-left: 0;
+      }
+      &:nth-of-type(4n) {
+        margin-right: 0;
+      }
+    }
+    @include tabletLandscape {
+      min-height: 15vw;
+    }
+    &--active {
+      border-bottom: 2px solid blue;
+      transform: scale(1.01);
+      box-shadow: 0px 0px 8px .2px rgba(144,145,150,0.5);
+      @include tabletPortrait {
+        box-shadow: 0px 0px 15px .5px rgba(144,145,150,0.5);
+      }
+    }
+    img {
+      width: 100%;
+    }
+  }
+
+  &__svg-image {
+    z-index: 1;
+    width: 40%;
+    transform: translateX(-50%);
+    left: 50%;
+    position: absolute;
+    bottom: 41%;
+    @include tabletPortrait {
+      bottom: 38%;
+      width: 35%;
+    }
+    img {
+      width: 100%;
+    }
+  }
+
+  &__title-img {
+    color: black;
+    bottom: 30.5vw;
+    width: 100%;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 4vw;
+    letter-spacing: 0.05em;
+    @include tabletPortrait {
+      font-size: 1.5vw;
+      letter-spacing: 0.1em;
+      bottom: 9.2vw;
+    }
+  }
+
+  &__texts {
+    position: absolute;
+    bottom: 1vw;
+    text-align: left;
+    padding: 0;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    @include tabletPortrait {
+      padding: 0;
+      margin-top: 0;
+      position: absolute;
+      bottom: 1vw;
+    }
+  }
+
+  &__text {
+    position: absolute;
+    bottom: 5vw;
+    color: black;
+    width: 100%;
+    text-align: center;
+    text-transform: none;
+    font-weight: normal;
+    letter-spacing: 0.015em;
+    @include font-size(44px, 35px);
+    line-height: 1.2;
+    margin-bottom: 0.3vw;
+    @include tabletPortrait {
+      font-size: 1.7vw;
+      bottom: 1.5vw;
+      width: 100%;
+    }
+    @include tabletLandscape {
+      @include font-size(44px, 35px);
+      bottom: 1.5vw;
+      width: 100%;
+    }
+  }
+  &__subtext {
+    @include tabletPortrait {
+      @include vw-value(font-size, 45px, 2880px);
+      margin-bottom: 1vw;
+      letter-spacing: 0.025em;
+    }
+  }
+/*
+  &__ctas {
+    position: absolute;
+    bottom: 6.75vw;
+    display: flex;
+    justify-content: center;
+    left: -1.9vw;
+    width: 100%;
+    flex-direction: row;
+    @include tabletLandscape {
+      position: absolute;
+      bottom: 2.3vw;
+      display: flex;
+      justify-content: center;
+      left: -4.8vw;
+    }
+  }
+
+  &__cta {
+    margin: 0 .5vw;
+    @include tabletLandscape {
+      margin: 0 .5vw;
+      width: 8.5vw;
+
+      .hce-btn.cta {
+        font-weight: bold;
+        width: 55vw;
+        padding: 2.4vw;
+        font-family: $fontNunito;
+        font-size: 3.2vw;
+        @include tabletLandscape {
+          font-size: 1vw;
+          font-weight: bold;
+          width: 18vw;
+          padding: 0.6vw;
+        }
+      }
+    }
+  }*/
+}
+

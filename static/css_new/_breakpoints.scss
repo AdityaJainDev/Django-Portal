@@ -1,0 +1,130 @@
+// import breakpoints here from main projects
+@import 'breakpoint-sass/stylesheets/_breakpoint.scss';
+
+// Breakpoints
+
+$smartphone: max-width 481px; // Smartphone
+$smallPhone: max-width 374px; // Small
+$tabletPortrait: min-width 481px; // More than smartphone
+$bootstrapLarge: min-width 960px; // Bootstrap large
+$tabletLandscape: min-width 1024px; // Tablet landscape
+$smallDesktop: min-width 1280px; // small Desktop
+$mediumDesktop: min-width 1440px; // medium Desktop
+$bigDesktop: min-width 1600px; // big Desktop
+$fullHD: min-width 1920px; // FullHD
+
+// desktop-first breakpoints
+$desktopSmallHeight: max-height 650px; // Desktop height small
+$df-tabletPortrait: max-width 1023px; // Up to tablet portrait
+
+$tabletPortraitOnly: 481px 1023px;
+$bigTablet: 768px 1023px;
+
+@mixin tabletPortraitOnly {
+  @include breakpoint($tabletPortraitOnly) {
+    @content;
+  }
+}
+
+@mixin bigTablet {
+  @include breakpoint($bigTablet) {
+    @content;
+  }
+}
+
+@mixin df-tabletPortrait {
+  @include breakpoint($df-tabletPortrait) {
+    @content;
+  }
+}
+
+@mixin smartphone() {
+  @include breakpoint($smartphone) {
+    @content;
+  }
+}
+@mixin smallphone() {
+  @include breakpoint($smallPhone) {
+    @content;
+  }
+}
+
+@mixin tabletPortrait() {
+  @include breakpoint($tabletPortrait) {
+    @content;
+  }
+}
+
+@mixin bootstrapLarge() {
+  @include breakpoint($bootstrapLarge) {
+    @content;
+  }
+}
+
+@mixin tabletLandscape() {
+  @include breakpoint($tabletLandscape) {
+    @content;
+  }
+}
+
+@mixin smallDesktop() {
+  @include breakpoint($smallDesktop) {
+    @content;
+  }
+}
+@mixin mediumDesktop() {
+  @include breakpoint($mediumDesktop) {
+    @content;
+  }
+}
+@mixin bigDesktop() {
+  @include breakpoint($bigDesktop) {
+    @content;
+  }
+}
+@mixin wideScreen() { // for screens which are close to 16/9
+  @media screen and ("min-aspect-ratio: 14 / 9") {
+    @content
+  }
+}
+
+@mixin fullHD() {
+  @include breakpoint($fullHD) {
+    @content;
+  }
+}
+
+
+@mixin desktopSmallHeight() {
+  @media screen
+  and (min-width: $tabletPortrait +1 )
+  and (max-height:$desktopSmallHeight) {
+    @content;
+  }
+}
+
+
+/* ONLY USE FOR SPECIFIC REQUIREMENTS OF THE SMARTPHONE LANDSCAPE VERSION */
+@mixin smartphone-landscape {
+  @media screen and (orientation: landscape) and (max-width: 1204px - 1) { @content }
+}
+
+
+/* special variables and classes relating to breakpoints */
+
+@mixin desktop-only {
+  display: none;
+  @include tabletLandscape() {
+    display: block;
+  }
+}
+
+.desktop-only {
+  @include desktop-only;
+}
+.smartphone-only {
+  @include tabletLandscape() {
+    display: none;
+  }
+}
+

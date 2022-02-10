@@ -1,0 +1,37 @@
+
+
+@mixin Text-Style {
+
+  font-size: 13px;
+  line-height: 1.46;
+  color: $white;
+}
+
+@mixin mainTitle {
+
+  @include vw-value('font-size', 140px, 1125px);
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+  font-weight: 300;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 9.3333333333vw 0;
+
+  @include tabletLandscape {
+    @include vw-value('font-size', 110px, 2880px);
+    margin: 2vw 0 2vw;
+  }
+
+}
+
+
+@mixin footerText () {
+  font-size: 4.1vw;
+  @include tabletPortrait {
+    font-size: 2.2vw;
+
+  }
+  @include tabletLandscape {
+    font-size: 1.2vw;
+  }
+}

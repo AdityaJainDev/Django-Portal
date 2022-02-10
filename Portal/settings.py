@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     "adminsortable",
     "detailsPage",
     'localflavor',
+    "compressor",
     'crispy_forms',
     "markdownfield",
     "rest_framework",
@@ -171,6 +172,17 @@ STATIC_URL = "/static/"
 
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+]
+
+COMPRESS_PRECOMPILERS = (
+    ('text/x-scss', 'django_libsass.SassCompiler'),
+)
+
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'kunden.aditsystems.de'

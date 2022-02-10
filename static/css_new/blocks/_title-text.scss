@@ -1,0 +1,233 @@
+.title-text {
+  font-weight: 500;
+  margin-bottom: 4vw;
+  @include tabletPortrait {
+    margin-bottom: 2vw;
+    padding: 0 5%;
+    width: 90%;
+  }
+  @include tabletLandscape {
+    padding: 0 10%;
+    width: 80%;
+
+  }
+  .table {
+    margin: 7vw;
+    @include tabletPortrait {
+      margin: 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 1vw 0;
+      @include font-size(35px, 30px);
+      letter-spacing: 0.03em;
+    }
+    td:first-of-type {
+      // background-color: red;
+      width: 40%;
+      text-align: left;
+      padding-left: 10px;
+      font-weight: 700;
+    }
+    tr:nth-child(even){
+      background-color: #ffffff;
+    }
+    tr:nth-child(odd){
+      background-color: $background;
+    }
+    tr:first-child {
+      background-color: $blueAditB;
+      color: white;
+      font-weight: 700;
+    }
+    tr:hover {
+      background-color: $hoverTable;
+    }
+    tr:first-child:hover {
+      background-color: $blueAditB;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    @include tabletPortrait {
+      flex-direction: row;
+    }
+  }
+
+  &__text {
+    font-weight: 700;
+    text-align: center;
+    margin-top: 6vw;
+    line-height: 1.3;
+    @include font-size(50px, 60px);
+    width: 70%;
+    padding: 0 15%;
+    @include tabletPortrait {
+      text-align: left;
+      margin-top: 4vw;
+      margin-bottom: 1vw;
+      padding: 0;
+      width: 100%;
+    }
+    @include tabletLandscape {
+      // margin-top: 4vw;
+    }
+  }
+  &__body {
+    text-align: center;
+    width: 100%;
+  }
+  &__contacts {
+    position: relative;
+    @include tabletPortrait {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: left;
+      padding-left: 5vw;
+    }
+  }
+  ul {
+    margin-top: 6vw;
+    @include tabletPortrait {
+      margin-top: 3vw;
+      padding: 0;
+    }
+    @include tabletLandscape {
+      margin-top: 2vw;
+      padding: 0;
+    }
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding-left: 12vw;
+    margin-top: 4vw;
+    @include font-size(45px, 35px);
+    @include tabletPortrait {
+      font-size: 1.7vw;
+      padding-left: 0;
+      margin-top: 0vw;
+      padding-bottom: 2.5vw;
+    }
+    @include tabletLandscape {
+      padding-left: 0;
+      margin-top: 0vw;
+      padding-bottom: 1vw;
+      @include font-size(40px, 35px);
+    }
+  }
+
+  li::before {
+    content: '•';
+    margin-right: 1vw;
+    @include tabletPortrait {
+      margin-right: 1.2vw;
+    }
+  }
+}
+
+.title-text {
+  &.title-text-text-left {
+    margin-bottom: 4vw;
+    padding-top: 3vw;
+    @include tabletPortrait {
+      margin-bottom: 2vw;
+      padding: 1% 5% 0;
+      width: 90%;
+    }
+    @include tabletLandscape {
+      padding: 2% 10% 0;
+      width: 80%;
+    }
+/*
+    .title-text__body {
+      text-align: center;
+      @include tabletLandscape {
+        text-align: left;
+      }
+    }*/
+    .title-text__contacts {
+      @include tabletPortrait {
+        padding-left: 0;
+      }
+    }
+  }
+}
+.title-text {
+  &.title-text__text-center {
+    margin-bottom: 4vw;
+    padding-top: 3vw;
+    @include tabletPortrait {
+      margin-bottom: 2vw;
+      padding: 1% 5% 0;
+      width: 90%;
+    }
+    @include tabletLandscape {
+      padding: 2% 10% 0;
+      width: 80%;
+    }
+/*
+    .title-text__body {
+      text-align: center;
+      width: 100%;
+      @include tabletLandscape {
+        text-align: center;
+      }
+    }*/
+    .title-text__contacts {
+      @include tabletPortrait {
+        padding-left: 0;
+      }
+    }
+    .title-text__text {
+      text-align: center;
+    }
+    .title-text__body {
+      text-align: center;
+    }
+  }
+}
+.title-text {
+  &.title-text__text-right {
+    margin-bottom: 4vw;
+    padding-top: 3vw;
+    @include tabletPortrait {
+      margin-bottom: 2vw;
+      padding: 1% 5% 0;
+      width: 90%;
+    }
+    @include tabletLandscape {
+      padding: 2% 10% 0;
+      width: 80%;
+    }
+    .title-text__text {
+      text-align: right;
+    }/*
+    .title-text__body {
+      width: 100%;
+      text-align: right;
+    }*/
+/*
+    .title-text__body {
+      text-align: right;
+      @include tabletLandscape {
+        text-align: right;
+      }
+    }*/
+    .title-text__contacts {
+      @include tabletPortrait {
+        padding-left: 0;
+      }
+    }
+  }
+}

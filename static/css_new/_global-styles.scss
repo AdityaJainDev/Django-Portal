@@ -1,0 +1,64 @@
+// GLOBAL STYLES HERE
+
+body {
+  margin: 0;
+  background-color: #f9f9ff;
+  padding-top: $headerHeightMobile;
+  font-family: "Gilroy", sans-serif;
+  font-weight: 200;
+  @include tabletPortrait {
+    padding-top: $headerHeightPortrait;
+  }
+  @include tabletLandscape {
+    padding-top: $headerHeightDesktopFull;
+  }
+}
+
+.lockScroll {
+  overflow: hidden;
+}
+
+
+@media all and (max-width: 1023px) {
+  .hidden-mobile {
+    display: none !important;
+  }
+}
+
+.hidden-desktop {
+  @media all and (min-width: 1024px) {
+    display: none !important;
+  }
+}
+
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  picture {
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
+}
+
+a {
+  text-underline-offset: 0.2em;
+  &:hover {
+    text-decoration: underline !important;
+  }
+}
+
+.GilroySemiBold {
+  font-weight: 600;
+}
+.GilroyMedium {
+  font-weight: 500;
+}
+.GilroyLight {
+  font-family: "Gilroy-Light", sans-serif;
+}
+.GilroyExtraBold {
+  font-family: "Gilroy-ExtraBold", sans-serif;
+}
+.GilroyBold {
+  font-weight: 700;
+}

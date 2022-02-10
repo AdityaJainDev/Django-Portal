@@ -1,30 +1,28 @@
-{% extends 'base.html' %}
+{% extends 'templates/base.html' %}
 {% load i18n %}
-{% load crispy_forms_tags %}
 {% block payment %}
-<form action="#" method="post" id="">
-    <div class="card-deck mb-12">
-        <div class="card mb-12 box-shadow">
-            <div class="card-header" style="background-color:#ccc;">
-                <h5>{% trans 'FormHeading' %}</h5>
-            </div>
-            <div class="card-body">
-                {% csrf_token %}
-                {{form|crispy}}
-                <br>
-                <ul class="list-group mb-3">
-                    <li class="list-group-item d-flex justify-content-between lh-condensed mm_conditions" style="padding-right:0px;">
-                        <div><input type="checkbox" name="conditions" class="check_conditions" value="1" required="" style="margin-right: 10px">{% trans 'Accept' %}</div>
-                        <input type="hidden" name="knr" value="12379">
-                        <input type="hidden" name="rnr" value="254882">
-                        <span class="text-muted"></span>
-                    </li>
-                </ul>
-            </div>
-            <input name="action" value="send_data" type="hidden">
-            <button type="submit" class="btn btn-primary">{% trans 'SendData' %}</button>
-
+<div class="form">  
+    <form action="#" method="post" id="">
+        <div data-aos="fade"  class="caption-title-paragraph servers-text">
+            <div class="caption-title-paragraph__title GilroySemiBold">{% trans 'FormHeading' %}</div>
         </div>
-    </div>
-</form>
+        <h5></h5>
+            {% csrf_token %}
+            {{form}}
+            <br>
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between lh-condensed mm_conditions" style="padding-right:0px;">
+                    <div><input type="checkbox" name="conditions" class="check_conditions" value="1" required="" style="margin-right: 10px">{% trans 'Accept' %}</div>
+                    <span class="text-muted"></span>
+                </li>
+            </ul>
+        </div>
+        <input name="action" value="send_data" type="hidden">
+        <div class="cta">
+            <button type="submit" class="cta-btn"><span class="cta-btn-inner">
+                {% trans 'SendData' %}
+            </span></button>
+        </div>
+    </form>
+</div>  
 {% endblock %}
