@@ -8,6 +8,65 @@
     padding: 3vw 9vw;
   }
 
+  label, input, textarea, select, button {
+    font-weight: 600;
+    width: 100%;
+    resize: none;
+  }
+
+  label {
+    text-transform: uppercase;
+  }
+
+  input, textarea, select {
+    &:not([type=radio]):not([type=checkbox]) {
+      border: none;
+      -webkit-appearance: none;
+      -ms-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+
+      background: white;
+      border: 1px solid $grey;
+      border-radius: 3px;
+      padding: 1em;
+    }
+  }
+
+  textarea {
+    min-height: 120px;
+  }
+
+  .choice {
+    display: flex;
+    align-items: center;
+
+    input {
+      margin: 0;
+      padding: 0;
+      flex: 0 0 1em;
+    }
+
+    label {
+      flex: 1 0 auto;
+      margin-left: 1em;
+    }
+  }
+
+  .cta-btn {
+    color: white;
+    background-color: $blueAdit;
+    border: .3px solid $blueAdit;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+
+    &:hover {
+      background: rgba($blueAdit, 0.8);
+    }
+  }
+
+  
   form {
     & > div {
       $cols: 12;
@@ -21,6 +80,10 @@
           color: red;
 
         }
+      }
+
+      input{
+        background-color: red;
       }
 
 
@@ -133,3 +196,4 @@
   text-transform: uppercase;
   padding-bottom: .7em;
 }
+

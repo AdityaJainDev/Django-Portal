@@ -1,28 +1,28 @@
 {% extends 'templates/base.html' %}
 {% load i18n %}
 {% block payment %}
-<div class="form">  
-    <form action="#" method="post" id="">
-        <div data-aos="fade"  class="caption-title-paragraph servers-text">
-            <div class="caption-title-paragraph__title GilroySemiBold">{% trans 'FormHeading' %}</div>
-        </div>
-        <h5></h5>
+<div class="form">
+    <div class="form__container">
+        <div class="caption-title-paragraph__title GilroySemiBold">{% trans 'FormHeading' %}</div>
+        <form action="#" method="post" id="">
             {% csrf_token %}
             {{form}}
             <br>
             <ul class="list-group mb-3">
-                <li class="list-group-item d-flex justify-content-between lh-condensed mm_conditions" style="padding-right:0px;">
-                    <div><input type="checkbox" name="conditions" class="check_conditions" value="1" required="" style="margin-right: 10px">{% trans 'Accept' %}</div>
+                <li class="list-group-item d-flex justify-content-between lh-condensed mm_conditions"
+                    style="padding-right:0px;">
+                    <div><input type="checkbox" name="conditions" class="check_conditions" value="1" required=""
+                            style="margin-right: 10px">{% trans 'Accept' %}</div>
                     <span class="text-muted"></span>
                 </li>
             </ul>
-        </div>
-        <input name="action" value="send_data" type="hidden">
-        <div class="cta">
-            <button type="submit" class="cta-btn"><span class="cta-btn-inner">
-                {% trans 'SendData' %}
-            </span></button>
-        </div>
-    </form>
-</div>  
+            <input name="action" value="send_data" type="hidden">
+            <div class="cta">
+                <button type="submit" class="cta-btn"><span class="cta-btn-inner">
+                        {% trans 'SendData' %}
+                    </span></button>
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock %}
