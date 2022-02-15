@@ -2779,24 +2779,25 @@ a {
     background: white;
     border: 1px solid #dadada;
     border-radius: 3px;
-    padding: 1em; }
-  /* line 36, static/css_new/blocks/_form.scss */
+    padding: 1em;
+    margin-bottom: 2em; }
+  /* line 37, static/css_new/blocks/_form.scss */
   .form textarea {
     min-height: 120px; }
-  /* line 40, static/css_new/blocks/_form.scss */
+  /* line 41, static/css_new/blocks/_form.scss */
   .form .choice {
     display: flex;
     align-items: center; }
-    /* line 44, static/css_new/blocks/_form.scss */
+    /* line 45, static/css_new/blocks/_form.scss */
     .form .choice input {
       margin: 0;
       padding: 0;
       flex: 0 0 1em; }
-    /* line 50, static/css_new/blocks/_form.scss */
+    /* line 51, static/css_new/blocks/_form.scss */
     .form .choice label {
       flex: 1 0 auto;
       margin-left: 1em; }
-  /* line 56, static/css_new/blocks/_form.scss */
+  /* line 57, static/css_new/blocks/_form.scss */
   .form .cta-btn {
     color: white;
     background-color: #342df3;
@@ -2804,62 +2805,62 @@ a {
     text-transform: uppercase;
     letter-spacing: 0.05em;
     cursor: pointer; }
-    /* line 64, static/css_new/blocks/_form.scss */
+    /* line 65, static/css_new/blocks/_form.scss */
     .form .cta-btn:hover {
       background: rgba(52, 45, 243, 0.8); }
-  /* line 71, static/css_new/blocks/_form.scss */
+  /* line 72, static/css_new/blocks/_form.scss */
   .form form > div {
     display: block; }
     @media (min-width: 481px) {
-      /* line 71, static/css_new/blocks/_form.scss */
+      /* line 72, static/css_new/blocks/_form.scss */
       .form form > div {
-        display: grid;
+        display: block;
         grid-template-columns: repeat(12, 1fr); }
-        /* line 78, static/css_new/blocks/_form.scss */
+        /* line 79, static/css_new/blocks/_form.scss */
         .form form > div ul {
           grid-column: span 12;
           color: red; } }
-    /* line 85, static/css_new/blocks/_form.scss */
+    /* line 86, static/css_new/blocks/_form.scss */
     .form form > div input {
       background-color: red; }
-    /* line 90, static/css_new/blocks/_form.scss */
+    /* line 91, static/css_new/blocks/_form.scss */
     .form form > div > div {
       display: flex;
       flex-wrap: wrap;
       padding: 1em; }
-      /* line 95, static/css_new/blocks/_form.scss */
+      /* line 96, static/css_new/blocks/_form.scss */
       .form form > div > div.width-one-quarter {
         grid-column: span 3; }
-      /* line 99, static/css_new/blocks/_form.scss */
+      /* line 100, static/css_new/blocks/_form.scss */
       .form form > div > div.width-three-quarters {
         grid-column: span 9; }
-      /* line 103, static/css_new/blocks/_form.scss */
+      /* line 104, static/css_new/blocks/_form.scss */
       .form form > div > div.width-one-third {
         grid-column: span 4; }
-      /* line 107, static/css_new/blocks/_form.scss */
+      /* line 108, static/css_new/blocks/_form.scss */
       .form form > div > div.width-two-thirds {
         grid-column: span 8; }
-      /* line 111, static/css_new/blocks/_form.scss */
+      /* line 112, static/css_new/blocks/_form.scss */
       .form form > div > div.width-one-sixth {
         grid-column: span 2; }
-      /* line 115, static/css_new/blocks/_form.scss */
+      /* line 116, static/css_new/blocks/_form.scss */
       .form form > div > div.width-five-sixths {
         grid-column: span 10; }
-      /* line 119, static/css_new/blocks/_form.scss */
+      /* line 120, static/css_new/blocks/_form.scss */
       .form form > div > div.width-half {
         grid-column: span 6; }
-      /* line 123, static/css_new/blocks/_form.scss */
+      /* line 124, static/css_new/blocks/_form.scss */
       .form form > div > div.width-full {
         grid-column: span 12; }
-      /* line 127, static/css_new/blocks/_form.scss */
+      /* line 128, static/css_new/blocks/_form.scss */
       .form form > div > div label, .form form > div > div input, .form form > div > div textarea, .form form > div > div select, .form form > div > div button {
         font-weight: 600;
         width: 100%;
         resize: none; }
-      /* line 133, static/css_new/blocks/_form.scss */
+      /* line 134, static/css_new/blocks/_form.scss */
       .form form > div > div label {
         text-transform: uppercase; }
-      /* line 138, static/css_new/blocks/_form.scss */
+      /* line 139, static/css_new/blocks/_form.scss */
       .form form > div > div input:not([type=radio]):not([type=checkbox]), .form form > div > div textarea:not([type=radio]):not([type=checkbox]), .form form > div > div select:not([type=radio]):not([type=checkbox]) {
         border: none;
         -webkit-appearance: none;
@@ -2870,23 +2871,23 @@ a {
         border: 1px solid #dadada;
         border-radius: 3px;
         padding: 1em; }
-      /* line 152, static/css_new/blocks/_form.scss */
+      /* line 153, static/css_new/blocks/_form.scss */
       .form form > div > div textarea {
         min-height: 120px; }
-      /* line 156, static/css_new/blocks/_form.scss */
+      /* line 157, static/css_new/blocks/_form.scss */
       .form form > div > div .choice {
         display: flex;
         align-items: center; }
-        /* line 160, static/css_new/blocks/_form.scss */
+        /* line 161, static/css_new/blocks/_form.scss */
         .form form > div > div .choice input {
           margin: 0;
           padding: 0;
           flex: 0 0 1em; }
-        /* line 166, static/css_new/blocks/_form.scss */
+        /* line 167, static/css_new/blocks/_form.scss */
         .form form > div > div .choice label {
           flex: 1 0 auto;
           margin-left: 1em; }
-      /* line 172, static/css_new/blocks/_form.scss */
+      /* line 173, static/css_new/blocks/_form.scss */
       .form form > div > div .cta-btn {
         color: white;
         background-color: #342df3;
@@ -2894,21 +2895,21 @@ a {
         text-transform: uppercase;
         letter-spacing: 0.05em;
         cursor: pointer; }
-        /* line 180, static/css_new/blocks/_form.scss */
+        /* line 181, static/css_new/blocks/_form.scss */
         .form form > div > div .cta-btn:hover {
           background: rgba(52, 45, 243, 0.8); }
         @media (min-width: 481px) {
-          /* line 172, static/css_new/blocks/_form.scss */
+          /* line 173, static/css_new/blocks/_form.scss */
           .form form > div > div .cta-btn {
             width: auto;
             min-width: 150px; } }
-/* line 194, static/css_new/blocks/_form.scss */
+/* line 195, static/css_new/blocks/_form.scss */
 .form form > div > div label {
   font-size: 3.2vw;
   text-transform: uppercase;
   padding-bottom: .7em; }
   @media (min-width: 481px) {
-    /* line 194, static/css_new/blocks/_form.scss */
+    /* line 195, static/css_new/blocks/_form.scss */
     .form form > div > div label {
       font-size: 1.38889vw; } }
 /* line 1, static/css_new/blocks/_faq.scss */

@@ -35,7 +35,8 @@ def sepa_payment(request):
             
             if save_data.json()['status'] == -1:
                 messages.error(request, _('Error Message'))
-                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+                form = PaymentForm()
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'), {'form':form})
             else:
                 messages.success(request, _('Success Message'))
                 return HttpResponseRedirect("/")

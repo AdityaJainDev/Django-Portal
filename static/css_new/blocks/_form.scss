@@ -30,6 +30,7 @@
       border: 1px solid $grey;
       border-radius: 3px;
       padding: 1em;
+      margin-bottom: 2em
     }
   }
 
@@ -73,7 +74,7 @@
       display: block;
 
       @include breakpoint($tabletPortrait) {
-        display: grid;
+        display: block;
         grid-template-columns: repeat($cols, 1fr);
         ul {
           grid-column: span $cols;
@@ -196,4 +197,5 @@
   text-transform: uppercase;
   padding-bottom: .7em;
 }
+
 

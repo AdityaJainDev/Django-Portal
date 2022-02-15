@@ -4,18 +4,14 @@
 <div class="form">
     <div class="form__container">
         <div class="caption-title-paragraph__title GilroySemiBold">{% trans 'FormHeading' %}</div>
+        <br>
         <form action="#" method="post" id="">
             {% csrf_token %}
             {{form}}
             <br>
-            <ul class="list-group mb-3">
-                <li class="list-group-item d-flex justify-content-between lh-condensed mm_conditions"
-                    style="padding-right:0px;">
-                    <div><input type="checkbox" name="conditions" class="check_conditions" value="1" required=""
-                            style="margin-right: 10px">{% trans 'Accept' %}</div>
-                    <span class="text-muted"></span>
-                </li>
-            </ul>
+            <div><input type="checkbox" name="conditions" class="check_conditions" value="1" required="" style="width: auto;">{% trans 'Accept' %}</div>
+            <br>
+            <span class="text-muted"></span>
             <input name="action" value="send_data" type="hidden">
             <div class="cta">
                 <button type="submit" class="cta-btn"><span class="cta-btn-inner">
