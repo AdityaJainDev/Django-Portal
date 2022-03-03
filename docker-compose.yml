@@ -13,3 +13,12 @@ services:
         environment:
             - DJANGO_SETTINGS_MODULE=Portal.docker
             - PYTHONUNBUFFERED=1
+
+    prometheus:
+        image: prom/prometheus:v2.14.0
+        volumes:
+            - ../prometheus/:/prometheus/
+        command:
+            - config.file=/prometheus/prometheus.yml
+        ports:
+            - 9090:9090

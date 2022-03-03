@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "elasticapm.contrib.django",
     "adminsortable",
     "detailsPage",
     'localflavor',
@@ -40,9 +41,12 @@ INSTALLED_APPS = [
     'crispy_forms',
     "markdownfield",
     "rest_framework",
+    "django_prometheus",
 ]
 
 MIDDLEWARE = [
+    "django_prometheus.middleware.PrometheusBeforeMiddleware",
+    
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.locale.LocaleMiddleware",
@@ -52,6 +56,9 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "elasticapm.contrib.django.middleware.TracingMiddleware",
+
+    "django_prometheus.middleware.PrometheusAfterMiddleware"
 ]
 
 TITLE = "AD IT Systems Portal"
@@ -169,8 +176,7 @@ USE_I18N = True
 USE_L10N = True
 
 STATIC_URL = "/static/"
-
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 STATICFILES_FINDERS = [
@@ -192,6 +198,13 @@ EMAIL_HOST_USER = None
 EMAIL_HOST_PASSWORD = None
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+ELASTIC_APM = {
+    'SERVICE_NAME': 'portal',
+    'DISABLE_METRICS': '*',
+    'CENTRAL_CONFIG': False,
+    'DEBUG': True,
+}
 
 try:
     from .local_settings import *

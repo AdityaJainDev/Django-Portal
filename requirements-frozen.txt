@@ -4,6 +4,8 @@ django-crispy-forms==1.14.0
 django-localflavor==3.1
 django-markdownfield==0.10.0
 django-phonenumber-field==5.2.0
+django-libsass==0.9
+django-prometheus==2.2.0
 mysqlclient==2.0.3
 qrcode==7.3.1
 social-auth-app-django==5.0.0
@@ -21,6 +23,7 @@ croniter==1.0.15
 cryptography==35.0.0
 defusedxml==0.7.1
 djangorestframework==3.12.4
+elastic-apm==6.8.0
 idna==3.2
 importlib-metadata==4.8.1
 Markdown==3.3.4

@@ -8,3 +8,7 @@ django-localflavor
 mysqlclient
 phonenumbers
 gunicorn
+django-compressor
+django-libsass
+elastic-apm
+django-prometheus
