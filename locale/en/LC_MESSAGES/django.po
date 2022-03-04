@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-07 13:11+0100\n"
+"POT-Creation-Date: 2022-03-04 15:57+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,46 +18,54 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: detailsPage/forms.py:6
+#: detailsPage/forms.py:7
 msgid "Bank Transfer"
 msgstr "Payment by Bank Transfer"
 
-#: detailsPage/forms.py:7
+#: detailsPage/forms.py:8
 msgid "Direct Debit"
 msgstr "Payment by Direct Debit"
 
-#: detailsPage/forms.py:11
+#: detailsPage/forms.py:12
 msgid "AccountNumber"
 msgstr "Accout Number"
 
-#: detailsPage/forms.py:12
-msgid "options"
-msgstr "Transfer Method"
-
 #: detailsPage/forms.py:13
+msgid "options"
+msgstr "Payment Method"
+
+#: detailsPage/forms.py:14
 msgid "owner"
 msgstr "Owner"
 
-#: detailsPage/views.py:37
+#: detailsPage/forms.py:17
+msgid "Accept"
+msgstr "I accept the direct debit authorization."
+
+#: detailsPage/views.py:23
+msgid "Token Message"
+msgstr "There is an error with the token, please try again."
+
+#: detailsPage/views.py:40
+msgid "Option Message"
+msgstr "Please select only one Payment Method."
+
+#: detailsPage/views.py:51 detailsPage/views.py:59
 msgid "Error Message"
 msgstr "There was an error, please try again."
 
-#: detailsPage/views.py:40
+#: detailsPage/views.py:57
 msgid "Success Message"
 msgstr "Details updated successfully."
 
-#: templates/base.html:7
+#: templates/base.html:6
 msgid "Heading"
 msgstr "Sepa Payments"
 
-#: templates/form.html:9
+#: templates/form.html:6
 msgid "FormHeading"
 msgstr "Electronic Checks"
 
 #: templates/form.html:17
-msgid "Accept"
-msgstr "I accept the direct debit authorization."
-
-#: templates/form.html:25
 msgid "SendData"
 msgstr "Submit Data"

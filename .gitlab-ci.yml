@@ -1,0 +1,71 @@
+image: registry.aditsystems.de/as-crm/portal:latest
+variables:
+  SONAR_URL: https://sonarqube.aditsystems.de
+  SONAR_USER_HOME: ${CI_PROJECT_DIR}/${CACHE_DIR}/sonar
+  CI_BUILD_REF: ${CI_COMMIT_SHA}
+  CI_BUILD_REF_NAME: ${CI_COMMIT_REF_NAME}
+  SONAR_GITLAB_PROJECT_ID: ${CI_PROJECT_URL}
+  VERBOSITY: 2
+
+stages:
+  - test
+
+cache:
+  paths:
+  - ~/.cache/pip/
+
+test:pylint:
+  stage: test
+  before_script:
+    - pip install -r requirements-frozen.txt
+  script:
+    - ./bin/pylint.sh
+  only:
+    changes:
+      - '**/*.py'
+    refs:
+      - merge_requests
+      - master
+      - develop
+  artifacts:
+    paths:
+    - pylint.txt
+
+
+test:django:
+  stage: test
+  only:
+    - merge_requests
+    - main
+  before_script:
+    - python -V
+    - pip install -r requirements-frozen.txt
+  script:
+    - touch Portal.local_settings.py
+    - django-admin compilemessages
+    - coverage run --branch manage.py test --settings Portal.settings_ci -v $VERBOSITY
+    - coverage xml
+  artifacts:
+    paths:
+    - coverage.xml
+  only:
+    - merge_requests
+    - master
+    - develop
+
+test:sonarqube:
+  stage: test
+  image:
+    name: sonarsource/sonar-scanner-cli:latest
+    entrypoint: [""]
+  variables:
+    GIT_DEPTH: 0
+  script:
+    - sonar-scanner -Dsonar.qualitygate.wait=true
+  only:
+    - merge_requests
+    - main
+  cache:
+    policy: pull
+
+

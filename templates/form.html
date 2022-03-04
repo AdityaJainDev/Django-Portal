@@ -9,14 +9,13 @@
             {% csrf_token %}
             {{form}}
             <br>
-            <div><input type="checkbox" name="conditions" class="check_conditions" value="1" required="" style="width: auto;">{% trans 'Accept' %}</div>
             <br>
             <span class="text-muted"></span>
             <input name="action" value="send_data" type="hidden">
             <div class="cta">
                 <button type="submit" class="cta-btn"><span class="cta-btn-inner">
                         {% trans 'SendData' %}
-                    </span></button>
+                </span></button>
             </div>
         </form>
     </div>

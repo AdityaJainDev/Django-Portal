@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-07 13:42+0100\n"
+"POT-Creation-Date: 2022-03-04 16:01+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,31 +18,43 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: detailsPage/forms.py:6
+#: detailsPage/forms.py:7
 msgid "Bank Transfer"
 msgstr "Zahlung per Überweisung"
 
-#: detailsPage/forms.py:7
+#: detailsPage/forms.py:8
 msgid "Direct Debit"
 msgstr "Zahlung per Lastschrift"
 
-#: detailsPage/forms.py:11
+#: detailsPage/forms.py:12
 msgid "AccountNumber"
 msgstr "Kundennummer"
 
-#: detailsPage/forms.py:12
+#: detailsPage/forms.py:13
 msgid "options"
 msgstr "Übertragungsmethoden"
 
-#: detailsPage/forms.py:13
+#: detailsPage/forms.py:14
 msgid "owner"
 msgstr "Kontoinhaber"
 
-#: detailsPage/views.py:37
+#: detailsPage/forms.py:17
+msgid "Accept"
+msgstr "Ich akzeptiere die Einzugsermächtigung."
+
+#: detailsPage/views.py:23
+msgid "Token Message"
+msgstr "Es ist ein Fehler mit dem Token aufgetreten, bitte versuchen Sie es erneut."
+
+#: detailsPage/views.py:40
+msgid "Option Message"
+msgstr "Bitte wählen Sie eine Zahlungsmethode aus."
+
+#: detailsPage/views.py:51 detailsPage/views.py:59
 msgid "Error Message"
 msgstr "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
 
-#: detailsPage/views.py:40
+#: detailsPage/views.py:57
 msgid "Success Message"
 msgstr "Details erfolgreich aktualisiert."
 
@@ -50,14 +62,10 @@ msgstr "Details erfolgreich aktualisiert."
 msgid "Heading"
 msgstr "Sepa Zahlung"
 
-#: templates/form.html:9
+#: templates/form.html:6
 msgid "FormHeading"
 msgstr "Elektronisches Lastschriftverfahren"
 
 #: templates/form.html:17
-msgid "Accept"
-msgstr "Ich akzeptiere die Einzugsermächtigung."
-
-#: templates/form.html:25
 msgid "SendData"
 msgstr "Daten übermitteln"
