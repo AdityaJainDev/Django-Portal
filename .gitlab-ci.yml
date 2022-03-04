@@ -1,3 +1,4 @@
+image: registry.aditsystems.de/as-crm/portal:latest
 variables:
   SONAR_URL: https://sonarqube.aditsystems.de
   SONAR_USER_HOME: ${CI_PROJECT_DIR}/${CACHE_DIR}/sonar
@@ -51,20 +52,4 @@ test:django:
     - merge_requests
     - master
     - develop
-
-test:sonarqube:
-  stage: test
-  image:
-    name: sonarsource/sonar-scanner-cli:latest
-    entrypoint: [""]
-  variables:
-    GIT_DEPTH: 0
-  script:
-    - sonar-scanner -Dsonar.qualitygate.wait=true
-  only:
-    - merge_requests
-    - main
-  cache:
-    policy: pull
-
 
