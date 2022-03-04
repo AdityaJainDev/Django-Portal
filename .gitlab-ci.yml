@@ -18,6 +18,8 @@ test:pylint:
   stage: test
   before_script:
     - pip install -r requirements-frozen.txt
+  script:
+    - ./bin/pylint.sh
   only:
     changes:
       - '**/*.py'
@@ -25,6 +27,9 @@ test:pylint:
       - merge_requests
       - master
       - develop
+  artifacts:
+    paths:
+    - pylint.txt
 
 
 test:django:
