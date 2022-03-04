@@ -1,0 +1,5 @@
+#!/bin/bash
+set -euo pipefail
+pip3 install pylint pylint-django pylint-exit astroid
+FILES=$(find . -type d -path "./venv" -prune -exec test -e '{}/__init__.py' \; -print -prune -o -name '*.py' -print)
+pylint -j 2 --rcfile .pylintrc ${FILES} -r n --msg-template="{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}" > pylint.txt || pylint-exit $?
