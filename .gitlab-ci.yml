@@ -19,7 +19,7 @@ test:pylint:
   before_script:
     - pip install -r requirements-frozen.txt
   script:
-    - ./bin/pylint.sh
+    - bash ./bin/pylint.sh
   only:
     changes:
       - '**/*.py'
