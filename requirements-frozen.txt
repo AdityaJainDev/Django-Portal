@@ -1,4 +1,4 @@
-Django==4.0.1
+Django==3.2.12
 django-admin-sortable==2.2.4
 django-crispy-forms==1.14.0
 django-localflavor==3.1
