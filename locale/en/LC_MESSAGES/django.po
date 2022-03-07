@@ -38,6 +38,14 @@ msgstr "Payment Method"
 msgid "owner"
 msgstr "Owner"
 
+#: detailsPage/forms.py:15
+msgid "iban"
+msgstr "IBAN"
+
+#: detailsPage/forms.py:16
+msgid "bic"
+msgstr "BIC"
+
 #: detailsPage/forms.py:17
 msgid "Accept"
 msgstr "I accept the direct debit authorization."

@@ -199,6 +199,8 @@ EMAIL_HOST_PASSWORD = None
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+CRM_ENDPOINT = "https://ascrm.aditsystems.de/api/Kunden/SEPA/"
+
 ELASTIC_APM = {
     'SERVICE_NAME': 'portal',
     'DISABLE_METRICS': '*',

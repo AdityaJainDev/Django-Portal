@@ -38,6 +38,14 @@ msgstr "Übertragungsmethoden"
 msgid "owner"
 msgstr "Kontoinhaber"
 
+#: detailsPage/forms.py:15
+msgid "iban"
+msgstr "IBAN"
+
+#: detailsPage/forms.py:16
+msgid "bic"
+msgstr "BIC"
+
 #: detailsPage/forms.py:17
 msgid "Accept"
 msgstr "Ich akzeptiere die Einzugsermächtigung."

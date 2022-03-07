@@ -31,7 +31,7 @@ def favicon(request):
 urlpatterns = [
     path("i18n/", include("django.conf.urls.i18n")),
     path("admin/", admin.site.urls),
-    path("", include('detailsPage.urls')),
+    path("payment/", include('detailsPage.urls')),
     path("", include('django_prometheus.urls')),
 
     # favicon

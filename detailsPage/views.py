@@ -4,20 +4,19 @@ from django.http import HttpResponse, HttpResponseRedirect
 import requests
 from django.utils.translation import gettext as _
 from django.contrib import messages
+from django.conf import settings
 
 # Create your views here.
 def index(request):
-    return render(request, "templates/base.html")
+    return render(request, "base.html")
 
 def sepa_payment(request):
-
-    crm_endpoint = "https://ascrm.aditsystems.de/api/Kunden/SEPA/"
 
     if request.method == 'GET':
         account_number = request.GET.get('knr', None)
         token = request.GET.get('token', None)
         data = {'knr':account_number, 'token':token}
-        save_data = requests.get(crm_endpoint, params=data).json()
+        save_data = requests.get(settings.CRM_ENDPOINT, params=data).json()
 
         if save_data['status'] == -1:
             return HttpResponse(_('Token Message'))
@@ -44,9 +43,8 @@ def sepa_payment(request):
 
             else:
                 data = {"inhaber": owner, "iban": iban, "bic": bic, 'knr':account_number, 'token':token, 'zahlungsart':options}
-
-                save_data = requests.post(crm_endpoint, data)
-                
+                save_data = requests.post(settings.CRM_ENDPOINT, data)
+        
                 if save_data.json()['status'] == -1:
                     messages.error(request, _('Error Message'))
                     form = PaymentForm()
