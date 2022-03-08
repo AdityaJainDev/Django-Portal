@@ -53,7 +53,7 @@ test:django:
     - master
     - develop
   
-  test:sonarqube:
+test:sonarqube:
   stage: test
   image:
     name: sonarsource/sonar-scanner-cli:latest
