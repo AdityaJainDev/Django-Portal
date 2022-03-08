@@ -108,50 +108,54 @@ body {
   border-color: #f5c6cb; }
 
 /* line 30, static/css/_global-styles.scss */
+.languages {
+  text-transform: uppercase; }
+
+/* line 34, static/css/_global-styles.scss */
 .lockScroll {
   overflow: hidden; }
 
 @media all and (max-width: 1023px) {
-  /* line 36, static/css/_global-styles.scss */
+  /* line 40, static/css/_global-styles.scss */
   .hidden-mobile {
     display: none !important; } }
 
 @media all and (min-width: 1024px) {
-  /* line 41, static/css/_global-styles.scss */
+  /* line 45, static/css/_global-styles.scss */
   .hidden-desktop {
     display: none !important; } }
 
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-  /* line 49, static/css/_global-styles.scss */
+  /* line 53, static/css/_global-styles.scss */
   picture {
     width: 100%;
     height: 100%;
     display: flex; } }
 
-/* line 56, static/css/_global-styles.scss */
+/* line 60, static/css/_global-styles.scss */
 a {
   text-underline-offset: 0.2em; }
-  /* line 58, static/css/_global-styles.scss */
+  /* line 62, static/css/_global-styles.scss */
   a:hover {
     text-decoration: underline !important; }
 
-/* line 63, static/css/_global-styles.scss */
+/* line 67, static/css/_global-styles.scss */
 .GilroySemiBold {
   font-weight: 600; }
 
-/* line 66, static/css/_global-styles.scss */
+/* line 70, static/css/_global-styles.scss */
 .GilroyMedium {
   font-weight: 500; }
 
-/* line 69, static/css/_global-styles.scss */
+/* line 73, static/css/_global-styles.scss */
 .GilroyLight {
   font-family: "Gilroy-Light", sans-serif; }
 
-/* line 72, static/css/_global-styles.scss */
+/* line 76, static/css/_global-styles.scss */
 .GilroyExtraBold {
   font-family: "Gilroy-ExtraBold", sans-serif; }
 
-/* line 75, static/css/_global-styles.scss */
+/* line 79, static/css/_global-styles.scss */
 .GilroyBold {
   font-weight: 700; }
 

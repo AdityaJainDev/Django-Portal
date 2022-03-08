@@ -60,16 +60,21 @@
                         <li class="login-button"><a href="#" class="diff-link">Login</a></li>
                         <li class="language-switcher">
                             <ul class="language-switcher__mobile">
-                                <li class="current">
-                                    <a href="">
-                                        EN
-                                    </a>
-                                </li>
-                                <li class="">
-                                    <a href="de">
-                                        DE
-                                    </a>
-                                </li>
+                                {% get_current_language as CURRENT_LANGUAGE %}
+                                {% get_available_languages as AVAILABLE_LANGUAGES %}
+                                {% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
+                                <div class="languages" style="text-transform: uppercase;">
+                                    <ul class="languages">
+                                    {% for language in languages %}
+                                        <li>
+                                        <a href="/{{ language.code }}{{ request.get_full_path|slice:'3:' }}"
+                                            {% if language.code == CURRENT_LANGUAGE %} class="current"{% endif %}>
+                                            {{ language.code }}
+                                        </a>
+                                        </li>
+                                    {% endfor %}
+                                    </ul>
+                                </div>
                             </ul>
                         </li>
                     </ul>
@@ -96,16 +101,21 @@
                         <li class="login-button"><a href="#" class="diff-link">Login</a></li>
                         <li class="language-switcher">
                             <ul class="language-switcher__desktop">
-                                <li class="current">
-                                    <a href="">
-                                        EN
-                                    </a>
-                                </li>
-                                <li class="">
-                                    <a href="">
-                                        DE
-                                    </a>
-                                </li>
+                                {% get_current_language as CURRENT_LANGUAGE %}
+                                {% get_available_languages as AVAILABLE_LANGUAGES %}
+                                {% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
+                                <div class="languages">
+                                    <ul class="languages">
+                                    {% for language in languages %}
+                                        <li>
+                                        <a href="/{{ language.code }}{{ request.get_full_path|slice:'3:' }}"
+                                            {% if language.code == CURRENT_LANGUAGE %} class="current"{% endif %}>
+                                            {{ language.code }}
+                                        </a>
+                                        </li>
+                                    {% endfor %}
+                                    </ul>
+                                </div>
                             </ul>
                         </li>
                     </ul>

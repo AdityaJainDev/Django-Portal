@@ -52,7 +52,7 @@ msgstr "Ich akzeptiere die Einzugsermächtigung."
 
 #: detailsPage/views.py:23
 msgid "Token Message"
-msgstr "Es ist ein Fehler mit dem Token aufgetreten, bitte versuchen Sie es erneut."
+msgstr "Falscher oder fehlender Token, bitte überprüfen oder kontaktieren Sie uns."
 
 #: detailsPage/views.py:40
 msgid "Option Message"

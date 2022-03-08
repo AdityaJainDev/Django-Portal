@@ -38,6 +38,13 @@ urlpatterns = [
     path("favicon.ico", favicon, name="favicon"),
 ]
 
+
+# i18n urls for language change
+urlpatterns = i18n_patterns(
+    path("admin/", admin.site.urls),
+    path("payment/", include('detailsPage.urls')),
+)
+
 # add static folder for css and js
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

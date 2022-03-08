@@ -52,7 +52,7 @@ msgstr "I accept the direct debit authorization."
 
 #: detailsPage/views.py:23
 msgid "Token Message"
-msgstr "There is an error with the token, please try again."
+msgstr "Incorrect or missing token, please check or contact us."
 
 #: detailsPage/views.py:40
 msgid "Option Message"
