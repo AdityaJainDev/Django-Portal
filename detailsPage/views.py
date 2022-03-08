@@ -35,24 +35,17 @@ def sepa_payment(request):
             options = form.cleaned_data['options']
             token = request.GET.get('token', None)
 
-            if len(options) > 1:
-                messages.error(request, _('Option Message'))
+            data = {"inhaber": owner, "iban": iban, "bic": bic, 'knr':account_number, 'token':token, 'zahlungsart':options}
+            save_data = requests.post(settings.CRM_ENDPOINT, data)
+    
+            if save_data.json()['status'] == -1:
+                messages.error(request, _('Error Message'))
                 form = PaymentForm()
                 form.initial['account_number'] = request.GET.get('knr', None)
                 form.initial['options'] = "1"
-
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'), {'form':form})
             else:
-                data = {"inhaber": owner, "iban": iban, "bic": bic, 'knr':account_number, 'token':token, 'zahlungsart':options}
-                save_data = requests.post(settings.CRM_ENDPOINT, data)
-        
-                if save_data.json()['status'] == -1:
-                    messages.error(request, _('Error Message'))
-                    form = PaymentForm()
-                    form.initial['account_number'] = request.GET.get('knr', None)
-                    form.initial['options'] = "1"
-                    return HttpResponseRedirect(request.META.get('HTTP_REFERER'), {'form':form})
-                else:
-                    return HttpResponse(_('Success Message'))
+                return HttpResponse(_('Success Message'))
         else:
             messages.error(request, _('Error Message'))
             form = PaymentForm()

@@ -52,4 +52,20 @@ test:django:
     - merge_requests
     - master
     - develop
+  
+  test:sonarqube:
+  stage: test
+  image:
+    name: sonarsource/sonar-scanner-cli:latest
+    entrypoint: [""]
+  variables:
+    GIT_DEPTH: 0
+  script:
+    - sonar-scanner -Dsonar.qualitygate.wait=true
+  only:
+    - merge_requests
+    - master
+    - develop
+  cache:
+    policy: pull
 
