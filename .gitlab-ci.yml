@@ -50,9 +50,8 @@ test:django:
     - coverage.xml
   only:
     - merge_requests
-    - master
     - develop
-  
+
 test:sonarqube:
   stage: test
   image:
@@ -64,8 +63,6 @@ test:sonarqube:
     - sonar-scanner -Dsonar.qualitygate.wait=true
   only:
     - merge_requests
-    - master
-    - develop
+    - main
   cache:
     policy: pull
-
