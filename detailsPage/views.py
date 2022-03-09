@@ -5,11 +5,14 @@ import requests
 from django.utils.translation import gettext as _
 from django.contrib import messages
 from django.conf import settings
+from django.views.decorators.http import require_http_methods
 
-# Create your views here.
+# Create your views here.\
+@require_http_methods(["GET", "POST"])
 def index(request):
     return render(request, "base.html")
 
+@require_http_methods(["GET", "POST"])
 def sepa_payment(request):
 
     if request.method == 'GET':
