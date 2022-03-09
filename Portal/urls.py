@@ -30,19 +30,18 @@ def favicon(request):
 
 urlpatterns = [
     path("i18n/", include("django.conf.urls.i18n")),
-    path("admin/", admin.site.urls),
-    path("payment/", include('detailsPage.urls')),
     path("", include('django_prometheus.urls')),
 
     # favicon
     path("favicon.ico", favicon, name="favicon"),
 ]
 
-
 # i18n urls for language change
 urlpatterns = i18n_patterns(
     path("admin/", admin.site.urls),
     path("payment/", include('detailsPage.urls')),
+    path("dashboard/", include('dashboard.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
 )
 
 # add static folder for css and js

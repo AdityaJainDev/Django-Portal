@@ -57,7 +57,13 @@
                         <li>
                             <a href="" title="Support">Support</a>
                         </li>
-                        <li class="login-button"><a href="#" class="diff-link">Login</a></li>
+
+                        {% if user.is_authenticated %}
+                        <li class="login-button"><a href="{% url 'logout' %}" class="diff-link">Logout</a></li>
+                        {% else %}
+                        <li class="login-button"><a href="{% url 'login' %}" class="diff-link">Login</a></li>
+                        {% endif %}
+
                         <li class="language-switcher">
                             <ul class="language-switcher__mobile">
                                 {% get_current_language as CURRENT_LANGUAGE %}
@@ -98,7 +104,13 @@
                         <li>
                             <a href="" title="Support">Support</a>
                         </li>
-                        <li class="login-button"><a href="#" class="diff-link">Login</a></li>
+                        
+                        {% if user.is_authenticated %}
+                        <li class="login-button"><a href="{% url 'logout' %}" class="diff-link">Logout</a></li>
+                        {% else %}
+                        <li class="login-button"><a href="{% url 'login' %}" class="diff-link">Login</a></li>
+                        {% endif %}
+
                         <li class="language-switcher">
                             <ul class="language-switcher__desktop">
                                 {% get_current_language as CURRENT_LANGUAGE %}
@@ -130,6 +142,13 @@
                     <div class="alert {% if message.tags %}alert-{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}danger{% else %}{{ message.tags }}{% endif %}{% endif %}" role="alert">{{ message }}</div>
             {% endfor %}
         {% endif %}
+
+        {% block login %}
+        {% endblock %}
+
+        {% block content %}
+        {% endblock %}
+
         {% block payment %}
         {% endblock %}
     </main>

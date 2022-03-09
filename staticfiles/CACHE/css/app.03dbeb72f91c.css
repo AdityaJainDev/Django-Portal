@@ -2771,7 +2771,7 @@ a {
 @use "sass:math";
 /* line 3, static/css/blocks/_form.scss */
 .form {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 3vw 2vw; }
   @media (min-width: 1024px) {
@@ -2802,24 +2802,29 @@ a {
     border: 1px solid #dadada;
     border-radius: 3px;
     padding: 1em;
-    margin-bottom: 2em; }
-  /* line 44, static/css/blocks/_form.scss */
+    margin-bottom: 2em;
+    -webkit-box-sizing: border-box;
+    /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;
+    /* Firefox, other Gecko */
+    box-sizing: border-box; }
+  /* line 47, static/css/blocks/_form.scss */
   .form textarea {
     min-height: 120px; }
-  /* line 48, static/css/blocks/_form.scss */
+  /* line 51, static/css/blocks/_form.scss */
   .form .choice {
     display: flex;
     align-items: center; }
-    /* line 52, static/css/blocks/_form.scss */
+    /* line 55, static/css/blocks/_form.scss */
     .form .choice input {
       margin: 0;
       padding: 0;
       flex: 0 0 1em; }
-    /* line 58, static/css/blocks/_form.scss */
+    /* line 61, static/css/blocks/_form.scss */
     .form .choice label {
       flex: 1 0 auto;
       margin-left: 1em; }
-  /* line 64, static/css/blocks/_form.scss */
+  /* line 67, static/css/blocks/_form.scss */
   .form .cta-btn {
     color: white;
     background-color: #342df3;
@@ -2827,61 +2832,61 @@ a {
     text-transform: uppercase;
     letter-spacing: 0.05em;
     cursor: pointer; }
-    /* line 72, static/css/blocks/_form.scss */
+    /* line 75, static/css/blocks/_form.scss */
     .form .cta-btn:hover {
       background: rgba(52, 45, 243, 0.8); }
-  /* line 79, static/css/blocks/_form.scss */
+  /* line 82, static/css/blocks/_form.scss */
   .form form > div {
     display: block; }
     @media (min-width: 481px) {
-      /* line 79, static/css/blocks/_form.scss */
+      /* line 82, static/css/blocks/_form.scss */
       .form form > div {
         display: block;
         grid-template-columns: repeat(12, 1fr); }
-        /* line 86, static/css/blocks/_form.scss */
+        /* line 89, static/css/blocks/_form.scss */
         .form form > div ul {
           grid-column: span 12;
           color: red; } }
-    /* line 93, static/css/blocks/_form.scss */
+    /* line 96, static/css/blocks/_form.scss */
     .form form > div input {
       background-color: red; }
-    /* line 98, static/css/blocks/_form.scss */
+    /* line 101, static/css/blocks/_form.scss */
     .form form > div > div {
       display: flex;
       flex-wrap: wrap;
       padding: 0.5em; }
-      /* line 103, static/css/blocks/_form.scss */
+      /* line 106, static/css/blocks/_form.scss */
       .form form > div > div.width-one-quarter {
         grid-column: span 3; }
-      /* line 107, static/css/blocks/_form.scss */
+      /* line 110, static/css/blocks/_form.scss */
       .form form > div > div.width-three-quarters {
         grid-column: span 9; }
-      /* line 111, static/css/blocks/_form.scss */
+      /* line 114, static/css/blocks/_form.scss */
       .form form > div > div.width-one-third {
         grid-column: span 4; }
-      /* line 115, static/css/blocks/_form.scss */
+      /* line 118, static/css/blocks/_form.scss */
       .form form > div > div.width-two-thirds {
         grid-column: span 8; }
-      /* line 119, static/css/blocks/_form.scss */
+      /* line 122, static/css/blocks/_form.scss */
       .form form > div > div.width-one-sixth {
         grid-column: span 2; }
-      /* line 123, static/css/blocks/_form.scss */
+      /* line 126, static/css/blocks/_form.scss */
       .form form > div > div.width-five-sixths {
         grid-column: span 10; }
-      /* line 127, static/css/blocks/_form.scss */
+      /* line 130, static/css/blocks/_form.scss */
       .form form > div > div.width-half {
         grid-column: span 6; }
-      /* line 131, static/css/blocks/_form.scss */
+      /* line 134, static/css/blocks/_form.scss */
       .form form > div > div.width-full {
         grid-column: span 12; }
-      /* line 135, static/css/blocks/_form.scss */
+      /* line 138, static/css/blocks/_form.scss */
       .form form > div > div label, .form form > div > div input, .form form > div > div textarea, .form form > div > div select, .form form > div > div button {
         font-weight: 600;
         resize: none; }
-      /* line 140, static/css/blocks/_form.scss */
+      /* line 143, static/css/blocks/_form.scss */
       .form form > div > div label {
         text-transform: uppercase; }
-      /* line 145, static/css/blocks/_form.scss */
+      /* line 148, static/css/blocks/_form.scss */
       .form form > div > div input:not([type=radio]):not([type=checkbox]), .form form > div > div textarea:not([type=radio]):not([type=checkbox]), .form form > div > div select:not([type=radio]):not([type=checkbox]) {
         border: none;
         -webkit-appearance: none;
@@ -2892,23 +2897,23 @@ a {
         border: 1px solid #dadada;
         border-radius: 3px;
         padding: 1em; }
-      /* line 159, static/css/blocks/_form.scss */
+      /* line 162, static/css/blocks/_form.scss */
       .form form > div > div textarea {
         min-height: 120px; }
-      /* line 163, static/css/blocks/_form.scss */
+      /* line 166, static/css/blocks/_form.scss */
       .form form > div > div .choice {
         display: flex;
         align-items: center; }
-        /* line 167, static/css/blocks/_form.scss */
+        /* line 170, static/css/blocks/_form.scss */
         .form form > div > div .choice input {
           margin: 0;
           padding: 0;
           flex: 0 0 1em; }
-        /* line 173, static/css/blocks/_form.scss */
+        /* line 176, static/css/blocks/_form.scss */
         .form form > div > div .choice label {
           flex: 1 0 auto;
           margin-left: 1em; }
-      /* line 179, static/css/blocks/_form.scss */
+      /* line 182, static/css/blocks/_form.scss */
       .form form > div > div .cta-btn {
         color: white;
         background-color: #342df3;
@@ -2916,15 +2921,15 @@ a {
         text-transform: uppercase;
         letter-spacing: 0.05em;
         cursor: pointer; }
-        /* line 187, static/css/blocks/_form.scss */
+        /* line 190, static/css/blocks/_form.scss */
         .form form > div > div .cta-btn:hover {
           background: rgba(52, 45, 243, 0.8); }
         @media (min-width: 481px) {
-          /* line 179, static/css/blocks/_form.scss */
+          /* line 182, static/css/blocks/_form.scss */
           .form form > div > div .cta-btn {
             width: auto;
             min-width: 150px; } }
-/* line 201, static/css/blocks/_form.scss */
+/* line 204, static/css/blocks/_form.scss */
 .form form > div > div label {
   text-transform: uppercase;
   padding-bottom: .7em; }

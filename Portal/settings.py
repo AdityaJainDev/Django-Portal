@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     "elasticapm.contrib.django",
     "adminsortable",
     "detailsPage",
+    "dashboard",
     'localflavor',
     "compressor",
     'crispy_forms',
@@ -147,10 +148,6 @@ LOGGING = {
     },
 }
 
-AUTHENTICATION_BACKENDS = (
-    'social_core.backends.gitlab.GitLabOAuth2',
-    'django.contrib.auth.backends.ModelBackend',
-)
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
@@ -200,6 +197,9 @@ EMAIL_HOST_PASSWORD = None
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRM_ENDPOINT = "https://ascrm.aditsystems.de/api/Kunden/SEPA/"
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 ELASTIC_APM = {
     'SERVICE_NAME': 'portal',

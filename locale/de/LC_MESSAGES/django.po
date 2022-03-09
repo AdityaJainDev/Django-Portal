@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-04 16:01+0100\n"
+"POT-Creation-Date: 2022-03-09 15:37+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,30 +50,42 @@ msgstr "BIC"
 msgid "Accept"
 msgstr "Ich akzeptiere die Einzugsermächtigung."
 
-#: detailsPage/views.py:23
+#: detailsPage/views.py:22
 msgid "Token Message"
-msgstr "Falscher oder fehlender Token, bitte überprüfen oder kontaktieren Sie uns."
+msgstr ""
+"Falscher oder fehlender Token, bitte überprüfen oder kontaktieren Sie uns."
 
-#: detailsPage/views.py:40
-msgid "Option Message"
-msgstr "Bitte wählen Sie eine Zahlungsmethode aus."
-
-#: detailsPage/views.py:51 detailsPage/views.py:59
+#: detailsPage/views.py:42 detailsPage/views.py:50
 msgid "Error Message"
 msgstr "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
 
-#: detailsPage/views.py:57
+#: detailsPage/views.py:48
 msgid "Success Message"
 msgstr "Details erfolgreich aktualisiert."
 
-#: templates/base.html:6
-msgid "Heading"
-msgstr "Sepa Zahlung"
-
-#: templates/form.html:6
+#: templates/payment.html:7
 msgid "FormHeading"
 msgstr "Elektronisches Lastschriftverfahren"
 
-#: templates/form.html:17
+#: templates/payment.html:18
 msgid "SendData"
 msgstr "Daten übermitteln"
+
+#: templates/registration/login.html:8
+msgid "LoginHeading"
+msgstr "Anmeldung"
+
+#: templates/registration/login.html:18
+msgid "LoginButton"
+msgstr "Senden und einloggen"
+
+#: templates/registration/password_reset_form.html:8
+msgid "ResetPasswordHeading"
+msgstr "Setze dein Passwort zurück"
+
+#: templates/registration/password_reset_form.html:18
+msgid "Passwordreset"
+msgstr "Senden"
+
+#~ msgid "Option Message"
+#~ msgstr "Bitte wählen Sie eine Zahlungsmethode aus."

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-04 15:57+0100\n"
+"POT-Creation-Date: 2022-03-09 15:37+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,30 +50,41 @@ msgstr "BIC"
 msgid "Accept"
 msgstr "I accept the direct debit authorization."
 
-#: detailsPage/views.py:23
+#: detailsPage/views.py:22
 msgid "Token Message"
 msgstr "Incorrect or missing token, please check or contact us."
 
-#: detailsPage/views.py:40
-msgid "Option Message"
-msgstr "Please select only one Payment Method."
-
-#: detailsPage/views.py:51 detailsPage/views.py:59
+#: detailsPage/views.py:42 detailsPage/views.py:50
 msgid "Error Message"
 msgstr "There was an error, please try again."
 
-#: detailsPage/views.py:57
+#: detailsPage/views.py:48
 msgid "Success Message"
 msgstr "Details updated successfully."
 
-#: templates/base.html:6
-msgid "Heading"
-msgstr "Sepa Payments"
-
-#: templates/form.html:6
+#: templates/payment.html:7
 msgid "FormHeading"
 msgstr "Electronic Checks"
 
-#: templates/form.html:17
+#: templates/payment.html:18
 msgid "SendData"
 msgstr "Submit Data"
+
+#: templates/registration/login.html:8
+msgid "LoginHeading"
+msgstr "Login"
+
+#: templates/registration/login.html:18
+msgid "LoginButton"
+msgstr "Submit and Login"
+
+#: templates/registration/password_reset_form.html:8
+msgid "ResetPasswordHeading"
+msgstr "Reset your Password"
+
+#: templates/registration/password_reset_form.html:18
+msgid "Passwordreset"
+msgstr "Submit"
+
+#~ msgid "Option Message"
+#~ msgstr "Please select only one Payment Method."

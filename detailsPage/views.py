@@ -54,4 +54,4 @@ def sepa_payment(request):
 
     context = {'form':form}
 
-    return render(request, "form.html", context)
+    return render(request, "payment.html", context)
