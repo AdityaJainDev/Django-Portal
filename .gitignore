@@ -115,5 +115,5 @@ db.sqlite3
 .vscode/settings.json
 pylint.txt
 
-#Staticfile Cache
-staticfiles/
+#Staticfiles
+/staticfiles

@@ -186,6 +186,11 @@ COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'django_libsass.SassCompiler'),
 )
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'dashboard.backends.CustomerBackend',
+]
+
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'kunden.aditsystems.de'
@@ -196,7 +201,7 @@ EMAIL_HOST_PASSWORD = None
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CRM_ENDPOINT = "https://ascrm.aditsystems.de/api/Kunden/SEPA/"
+CRM_ENDPOINT = "https://ascrm.aditsystems.de/api/Kunden/"
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'

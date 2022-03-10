@@ -5,21 +5,21 @@ import requests
 from django.utils.translation import gettext as _
 from django.contrib import messages
 from django.conf import settings
-from django.views.decorators.http import require_POST
+from django.views.decorators.http import require_GET
 
 # Create your views here.\
-@require_POST
+@require_GET
 def index(request):
     return render(request, "base.html")
 
-@require_POST
+@require_GET
 def sepa_payment(request):
 
     if request.method == 'GET':
         account_number = request.GET.get('knr', None)
         token = request.GET.get('token', None)
         data = {'knr':account_number, 'token':token}
-        save_data = requests.get(settings.CRM_ENDPOINT, params=data).json()
+        save_data = requests.get(settings.CRM_ENDPOINT + "SEPA/", params=data).json()
 
         if save_data['status'] == -1:
             return HttpResponse(_('Token Message'))
@@ -39,7 +39,7 @@ def sepa_payment(request):
             token = request.GET.get('token', None)
 
             data = {"inhaber": owner, "iban": iban, "bic": bic, 'knr':account_number, 'token':token, 'zahlungsart':options}
-            save_data = requests.post(settings.CRM_ENDPOINT, data)
+            save_data = requests.post(settings.CRM_ENDPOINT + "SEPA/", data)
     
             if save_data.json()['status'] == -1:
                 messages.error(request, _('Error Message'))
