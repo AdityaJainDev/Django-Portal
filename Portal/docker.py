@@ -7,10 +7,6 @@ Django settings for Portal project. for Docker container
 
 from Portal.settings import *
 
-# chromedriver path
-CHROMEDRIVER_PATH = "/usr/local/bin/chromedriver"
-CHROMEDRIVER_SHOW_UI = False
-
 # Api flags
 CALL_EXTERNAL_SERVICES = True
 PRODUCTION = True
