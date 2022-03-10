@@ -37,54 +37,6 @@
                         <span class="hamburger-inner"></span>
                     </span>
                 </button>
-
-                <div class="header__list-mobile hidden-desktop">
-                    <ul>
-                        <li>
-                            <a href="" title="DevOps Service">DevOps
-                                Service</a>
-                        </li>
-                        <li>
-                            <a href="" title="Managed Hosting">Managed
-                                Hosting</a>
-                        </li>
-                        <li>
-                            <a href="" title="Company">Company</a>
-                        </li>
-                        <li>
-                            <a href="" title="Blog">Blog</a>
-                        </li>
-                        <li>
-                            <a href="" title="Support">Support</a>
-                        </li>
-
-                        {% if user.is_authenticated %}
-                        <li class="login-button"><a href="{% url 'logout' %}" class="diff-link">Logout</a></li>
-                        {% else %}
-                        <li class="login-button"><a href="{% url 'login' %}" class="diff-link">Login</a></li>
-                        {% endif %}
-
-                        <li class="language-switcher">
-                            <ul class="language-switcher__mobile">
-                                {% get_current_language as CURRENT_LANGUAGE %}
-                                {% get_available_languages as AVAILABLE_LANGUAGES %}
-                                {% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
-                                <div class="languages" style="text-transform: uppercase;">
-                                    <ul class="languages">
-                                    {% for language in languages %}
-                                        <li>
-                                        <a href="/{{ language.code }}{{ request.get_full_path|slice:'3:' }}"
-                                            {% if language.code == CURRENT_LANGUAGE %} class="current"{% endif %}>
-                                            {{ language.code }}
-                                        </a>
-                                        </li>
-                                    {% endfor %}
-                                    </ul>
-                                </div>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
                 <div class="header__list">
                     <ul>
                         <li>
