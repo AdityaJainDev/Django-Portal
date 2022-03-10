@@ -12,7 +12,7 @@ from django.urls import reverse
 def index(request):
     return render(request, "home.html")
 
-
+@require_GET
 def password_reset(request):
     if request.method == 'GET':
         form = PasswordResetForm()
