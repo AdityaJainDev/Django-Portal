@@ -23,7 +23,7 @@ def index(request):
     return render(request, "home.html")
 
 
-@require_http_methods(["GET", "POST"])
+@require_http_methods(["POST"])
 def password_reset(request):
     if request.method == 'GET':
         form = PasswordResetForm()
@@ -50,7 +50,7 @@ def password_reset(request):
     return render(request, "registration/reset_password.html", context)
 
 
-@require_http_methods(["GET", "POST"])
+@require_http_methods(["POST"])
 def change_password(request):
     if request.method == 'GET':
         form = ChangePassword()
