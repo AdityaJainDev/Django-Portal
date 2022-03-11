@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-09 15:37+0100\n"
+"POT-Creation-Date: 2022-03-11 15:31+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,46 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: dashboard/forms.py:8
+msgid "EmailInput"
+msgstr "Enter Email ID"
+
+#: dashboard/forms.py:11
+msgid "OldPassword"
+msgstr "Enter your Old Password"
+
+#: dashboard/forms.py:12
+msgid "NewPassword"
+msgstr "Enter New Password"
+
+#: dashboard/forms.py:13
+msgid "ConfirmPassword"
+msgstr "Confirm New Password"
+
+#: dashboard/views.py:34
+msgid "ResetEmailSuccess"
+msgstr "Email has been sent successfully"
+
+#: dashboard/views.py:37
+msgid "ResetEmailError"
+msgstr "There was an error, please try again"
+
+#: dashboard/views.py:58
+msgid "PasswordMatchError"
+msgstr "The new passwords do not match, please try again"
+
+#: dashboard/views.py:61
+msgid "OldPasswordError"
+msgstr "Old password is Incorrect, please try again"
+
+#: dashboard/views.py:68
+msgid "PasswordChangeSuccess"
+msgstr "Password has been changed successfully"
+
+#: dashboard/views.py:71
+msgid "PasswordChangeError"
+msgstr "There was an error, please try again"
 
 #: detailsPage/forms.py:7
 msgid "Bank Transfer"
@@ -50,39 +90,47 @@ msgstr "BIC"
 msgid "Accept"
 msgstr "I accept the direct debit authorization."
 
-#: detailsPage/views.py:22
+#: detailsPage/views.py:25
 msgid "Token Message"
 msgstr "Incorrect or missing token, please check or contact us."
 
-#: detailsPage/views.py:42 detailsPage/views.py:50
+#: detailsPage/views.py:45 detailsPage/views.py:53
 msgid "Error Message"
 msgstr "There was an error, please try again."
 
-#: detailsPage/views.py:48
+#: detailsPage/views.py:51
 msgid "Success Message"
 msgstr "Details updated successfully."
 
-#: templates/payment.html:7
+#: templates/payment/payment.html:7
 msgid "FormHeading"
 msgstr "Electronic Checks"
 
-#: templates/payment.html:18
+#: templates/payment/payment.html:18
 msgid "SendData"
 msgstr "Submit Data"
+
+#: templates/registration/change_password.html:8
+msgid "ChangePasswordHeading"
+msgstr "Change your Password"
+
+#: templates/registration/change_password.html:18
+msgid "ChangePassword"
+msgstr "Change Password"
 
 #: templates/registration/login.html:8
 msgid "LoginHeading"
 msgstr "Login"
 
-#: templates/registration/login.html:18
+#: templates/registration/login.html:29
 msgid "LoginButton"
 msgstr "Submit and Login"
 
-#: templates/registration/password_reset_form.html:8
+#: templates/registration/reset_password.html:8
 msgid "ResetPasswordHeading"
 msgstr "Reset your Password"
 
-#: templates/registration/password_reset_form.html:18
+#: templates/registration/reset_password.html:18
 msgid "Passwordreset"
 msgstr "Submit"
 
