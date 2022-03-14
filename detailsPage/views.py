@@ -19,7 +19,7 @@ def sepa_payment(request):
         account_number = request.GET.get('knr', None)
         token = request.GET.get('token', None)
         data = {'knr':account_number, 'token':token}
-        save_data = requests.get(settings.CRM_ENDPOINT + "SEPA/", params=data).json()
+        save_data = requests.get(settings.CRM_ENDPOINT + "Kunden/SEPA/", params=data).json()
 
         if save_data['status'] == -1:
             return HttpResponse(_('Token Message'))
@@ -39,7 +39,7 @@ def sepa_payment(request):
             token = request.GET.get('token', None)
 
             data = {"inhaber": owner, "iban": iban, "bic": bic, 'knr':account_number, 'token':token, 'zahlungsart':options}
-            save_data = requests.post(settings.CRM_ENDPOINT + "SEPA/", data)
+            save_data = requests.post(settings.CRM_ENDPOINT + "Kunden/SEPA/", data)
     
             if save_data.json()['status'] == -1:
                 messages.error(request, _('Error Message'))

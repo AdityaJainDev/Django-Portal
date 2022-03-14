@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}\
+<div class="hero-simple aos-init aos-animate" style="background-color: darkblue" data-aos="fade">
+  <div class="hero-simple__container">
+    <div class="hero-simple__mainContainer">
+      <div class="hero-simple__text-container">
+        <div class="hero-simple__title">Hi, {{ user.username }}</div>
+        <div class="hero-simple__subtitle">
+          <p>Here, you can handle all your data and bills</p>
+        </div>
+      </div>
+      <div class="hero-simple__image">
+        <img src="/media/1/download/1.1ecea6a0.svg?v=1" alt="">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="article-list aos-init aos-animate" data-aos="fade">
+  <div class="article-preview__images swiper-slide">
+    <div class="article-preview__text"> Invoices </div>
+    <div class="article-preview__link-text">
+      {% for x in values %}
+      {% for y, z in x.items %}
+      <tr>
+        <td>{{y}}</td>
+        <td>{{z}}</td>
+      </tr>
+      {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+  <div class="article-preview__images swiper-slide">
+    <div class="article-preview__text"> Personal Data </div>
+    <div class="article-preview__link-text">
+      {% for x, y in personal.items %}
+      <tr>
+        <td>{{x}}</td>
+        <td>{{y}}</td>
+      </tr>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% else %}
+
+
+<p>You are not logged in</p>
+<a href="{% url 'login' %}">Log In</a>
+{% endif %}
+
+{% endblock %}

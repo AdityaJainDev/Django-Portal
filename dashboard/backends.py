@@ -8,14 +8,17 @@ class CustomerBackend(ModelBackend):
         knr = kwargs['username']
         password = kwargs['password']
         try:
-            data = requests.get(settings.CRM_ENDPOINT + "Login/", auth=(knr, password)).json()
+            data = requests.get(settings.CRM_ENDPOINT + "Kunden/Login/", auth=(knr, password)).json()
+            request.session['username'] = data["data"]["knr"]
+            request.session['password'] = password
+            request.session['name'] = data["data"]["kunde_name"]
             if data["status"]  == 1:
                 try:
                     user = User.objects.get(username=data["data"]["knr"])
                     if user.is_active:
                         return user
                 except Exception as e:
-                    user = User.objects.create_user(username=data["data"]["knr"], password=password, first_name=data["data"]["kunde_name"])
+                    user = User.objects.create_user(username=data["data"]["knr"])
                     return user
         except Exception as e:
             print(e)

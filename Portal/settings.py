@@ -201,10 +201,10 @@ EMAIL_HOST_PASSWORD = None
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CRM_ENDPOINT = "https://ascrm.aditsystems.de/api/Kunden/"
+CRM_ENDPOINT = "https://ascrm.aditsystems.de/api/"
 
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'dashboard/main/'
+LOGOUT_REDIRECT_URL = 'dashboard/home/'
 
 ELASTIC_APM = {
     'SERVICE_NAME': 'portal',

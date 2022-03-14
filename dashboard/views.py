@@ -1,6 +1,7 @@
+from multiprocessing import context
 from sre_constants import SUCCESS
 from django.shortcuts import render
-from django.views.decorators.http import require_GET
+from django.views.decorators.http import require_GET, require_POST
 from .forms import PasswordResetForm, ChangePassword
 from django.conf import settings
 import requests
@@ -9,7 +10,22 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views.decorators.http import require_http_methods
+from django.shortcuts import redirect
+from django.contrib.auth.models import User
 # Create your views here.
+
+
+@require_GET
+def home(request):
+    return render(request, "home.html")
+
+@require_GET
+def logout(request):
+    u = User.objects.get(username = request.user.username)
+    u.delete()
+    request.session.clear()
+    return HttpResponseRedirect('/login/')
+
 
 @require_GET
 def index(request):
@@ -17,13 +33,22 @@ def index(request):
         if request.user.last_login.replace(microsecond=0) == request.user.date_joined.replace(microsecond=0):
             return HttpResponseRedirect(reverse('dashboard:change_password'))
         else:
-            return render(request, "home.html")
+            account_number = request.session['username']
+            password = request.session['password']
+
+            invoice = requests.get(settings.CRM_ENDPOINT + "Rechnungen/Rechnungen/", auth=(account_number, password))
+            personal = requests.get(settings.CRM_ENDPOINT + "Kunden/Kunde/", auth=(account_number, password))
+
+            if invoice.json()["status"] == 1 and personal.json()["status"]:
+                invoices = invoice.json()["data"]
+                personal_data = personal.json()["data"]
+                context = {"values": invoices, "personal": personal_data}
+            return render(request, "dashboard/home.html", context)
     except Exception as e:
         print(e)
-    return render(request, "home.html")
+    return render(request, "dashboard/home.html")
 
-
-@require_http_methods(["POST"])
+@require_POST
 def password_reset(request):
     if request.method == 'GET':
         form = PasswordResetForm()
@@ -32,11 +57,11 @@ def password_reset(request):
         form = PasswordResetForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data['email']
-            account_number = request.GET.get('knr', None)
+            account_number = request.user.username
 
             data = {'knr':account_number, "email": email}
 
-            data = requests.post(settings.CRM_ENDPOINT + "LostPW/", data)
+            data = requests.post(settings.CRM_ENDPOINT + "Kunden/LostPW/", data)
 
             if data.json()["status"] == 1:
                 messages.success(request, _('ResetEmailSuccess'))
@@ -49,8 +74,7 @@ def password_reset(request):
 
     return render(request, "registration/reset_password.html", context)
 
-
-@require_http_methods(["POST"])
+@require_POST
 def change_password(request):
     if request.method == 'GET':
         form = ChangePassword()
@@ -70,9 +94,10 @@ def change_password(request):
                 return HttpResponseRedirect(request.META.get('HTTP_REFERER'), {'form':form})
             else:
                 data = {'knr':request.user.username, "alt_pwd": password, "neu_pwd":new_password, "neu_verify_pwd":confirm_password}
-                send_request = requests.post(settings.CRM_ENDPOINT + "ChangePWD/", auth=(request.user.username, password), data=data)
+                send_request = requests.post(settings.CRM_ENDPOINT + "Kunden/ChangePWD/", auth=(request.session['username'], request.session['password']), data=data)
 
                 if send_request.json()["status"] == 1:
+                    request.session['password'] = new_password
                     messages.success(request, _('PasswordChangeSuccess'))
                     return HttpResponseRedirect(reverse('dashboard:home'))
                 else:
