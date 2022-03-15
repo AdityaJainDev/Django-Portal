@@ -46,6 +46,79 @@
   </div>
 </div>
 
+
+<div data-aos="fade-up" class="products aos-init aos-animate">
+  <div class="products__container">
+    <div class="products__containerBoxes">
+
+      <div class="products__box">
+        <div class="products__background"> </div>
+        <div class="products__texts">
+          <div class="products__first-section">
+            <div class="products__text"> Your Invoices </div>
+          </div>
+          <div class="products__body">
+            <table style="width:100%">
+              <tr>
+                <th>R.-Id.</th>
+                <th>R.-Nr.</th>
+                <th>R.-Datum</th>
+                <th>Betrag</th>
+              </tr>
+              {% for x in values %}
+              <tr>
+                {% for y in x.items %}
+                <td>{{y.1}}<td>
+                {% endfor %}
+              </tr>
+              {% endfor %}
+            </table>
+          </div>
+        </div>
+        <div class="products__ctas">
+          <div class="cta">
+            <a class="cta-btn" href="http://www.google.it">
+              <span class="cta-btn-inner">
+                Select Plan
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="products__box">
+        <div class="products__background"> </div>
+        <div class="products__texts">
+          <div class="products__first-section">
+            <div class="products__text"> Your Data </div>
+            <div class="products__price"> {{personal.kunde_name}}, {{personal.kunde_vorname}} </div>
+          </div>
+          <div class="products__body">
+            <table style="width:100%">
+              <tr>
+                <td>Address</td>
+                <td>{{personal.kunde_adresse}}<td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="products__ctas">
+          <div class="cta">
+            <a class="cta-btn" href="http://www.google.it">
+              <span class="cta-btn-inner">
+                Select Plan
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
 {% else %}
 
 
