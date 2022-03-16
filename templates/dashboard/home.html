@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Home{% endblock %}
+{% load i18n %}
 
 {% block content %}
 {% if user.is_authenticated %}\
@@ -54,22 +54,28 @@
       <div class="products__box">
         <div class="products__background"> </div>
         <div class="products__texts">
-          <div class="products__first-section">
-            <div class="products__text"> Your Invoices </div>
-          </div>
+          <div class="products__text"> Your Invoices </div>
           <div class="products__body">
             <table style="width:100%" aria-hidden="True">
               <tr>
-                <th>R.-Id.</th>
-                <th>R.-Nr.</th>
-                <th>R.-Datum</th>
-                <th>Betrag</th>
+                <th>{% trans 'r_id' %}</th>
+                <th></th>
+                <th>{% trans 'r_no' %}</th>
+                <th></th>
+                <th>{% trans 'r_date' %}</th>
+                <th></th>
+                <th>{% trans 'r_cost' %}</th>
               </tr>
-              {% for x in values %}
+              {% for x in values|slice:":5" %}
               <tr>
-                {% for y in x.items %}
-                <td>{{y.1}}<td>
-                {% endfor %}
+                <td>{{x.rechnung_id}}
+                <td>
+                <td>{{x.rechnung_rnr}}
+                <td>
+                <td>{{x.rechnung_datum}}
+                <td>
+                <td>{{x.rechnung_betrag}}
+                <td>
               </tr>
               {% endfor %}
             </table>
@@ -79,7 +85,7 @@
           <div class="cta">
             <a class="cta-btn" href="http://www.google.it">
               <span class="cta-btn-inner">
-                Select Plan
+                {% trans 'view_invoices' %}
               </span>
             </a>
           </div>
@@ -90,15 +96,33 @@
       <div class="products__box">
         <div class="products__background"> </div>
         <div class="products__texts">
-          <div class="products__first-section">
-            <div class="products__text"> Your Data </div>
-            <div class="products__price"> {{personal.kunde_name}}, {{personal.kunde_vorname}} </div>
-          </div>
+          <div class="products__text"> Your Data </div>
           <div class="products__body">
             <table style="width:100%" aria-hidden="True">
               <tr>
-                <th>Address</th>
-                <td>{{personal.kunde_adresse}}<td>
+                <th scope="col">{% trans 'Company' %}</th>
+                <td>{{personal.kunde_firma}}
+                <td>
+              </tr>
+              <tr>
+                <th scope="col">{% trans 'Name' %}</th>
+                <td>{{personal.kunde_name}}, {{personal.kunde_vorname}}
+                <td>
+              </tr>
+              <tr>
+                <th scope="col">{% trans 'Address' %}</th>
+                <td>{{personal.kunde_adresse}}
+                <td>
+              </tr>
+              <tr>
+                <th scope="col">{% trans 'Email' %}</th>
+                <td>{{personal.kunde_email}}
+                <td>
+              </tr>
+              <tr>
+                <th scope="col">{% trans 'Phone' %}</th>
+                <td>{{personal.kunde_telefon}}
+                <td>
               </tr>
             </table>
           </div>
@@ -107,7 +131,7 @@
           <div class="cta">
             <a class="cta-btn" href="http://www.google.it">
               <span class="cta-btn-inner">
-                Select Plan
+                {% trans 'edit_personal_data' %}
               </span>
             </a>
           </div>

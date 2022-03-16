@@ -39,7 +39,7 @@ def index(request):
             invoice = requests.get(settings.CRM_ENDPOINT + "Rechnungen/Rechnungen/", auth=(account_number, password))
             personal = requests.get(settings.CRM_ENDPOINT + "Kunden/Kunde/", auth=(account_number, password))
 
-            if invoice.json()["status"] == 1 and personal.json()["status"]:
+            if invoice.json()["status"] == 1 and personal.json()["status"] == 1:
                 invoices = invoice.json()["data"]
                 personal_data = personal.json()["data"]
                 context = {"values": invoices, "personal": personal_data}
@@ -47,6 +47,21 @@ def index(request):
     except Exception as e:
         print(e)
     return render(request, "dashboard/home.html")
+
+
+@require_GET
+def invoice_details(request):
+    account_number = request.session['username']
+    password = request.session['password']
+
+    invoice = requests.get(settings.CRM_ENDPOINT + "Rechnungen/Rechnungen/", auth=(account_number, password))
+    invoice_detail = requests.get(settings.CRM_ENDPOINT + "Rechnungen/RechnungDetails/", auth=(account_number, password), params={"rechnung_id": "34415"})
+
+    if invoice_detail.json()["status"] == 1:
+        invoices = invoice.json()["data"]
+        context = {"values": invoices}
+    return render(request, "dashboard/invoices.html", context)
+
 
 @require_POST
 def password_reset(request):
