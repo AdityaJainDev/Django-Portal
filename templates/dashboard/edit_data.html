@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block payment %}
+<div class="form">
+    <div class="form__container">
+        <div class="caption-title-paragraph__title GilroySemiBold">{% trans 'EditDataHeading' %}</div>
+        <br>
+        <form action="#" method="post" id="">
+            {% csrf_token %}
+            {{form}}
+            <br>
+            <br>
+            <span class="text-muted"></span>
+            <input name="action" value="send_data" type="hidden">
+            <div class="cta">
+                <button type="submit" class="cta-btn"><span class="cta-btn-inner">
+                        {% trans 'SendData' %}
+                </span></button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

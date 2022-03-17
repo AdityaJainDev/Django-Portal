@@ -2,7 +2,7 @@ from multiprocessing import context
 from sre_constants import SUCCESS
 from django.shortcuts import render
 from django.views.decorators.http import require_GET, require_POST
-from .forms import PasswordResetForm, ChangePassword
+from .forms import PasswordResetForm, ChangePassword, PersonalDataEdit
 from django.conf import settings
 import requests
 from django.utils.translation import gettext as _
@@ -58,9 +58,19 @@ def invoice_details(request):
     invoice_detail = requests.get(settings.CRM_ENDPOINT + "Rechnungen/RechnungDetails/", auth=(account_number, password), params={"rechnung_id": "34415"})
 
     if invoice_detail.json()["status"] == 1:
-        invoices = invoice.json()["data"]
+        invoices = invoice_detail.json()["data"]
         context = {"values": invoices}
     return render(request, "dashboard/invoices.html", context)
+
+
+@require_GET
+def edit_personal_data(request):
+    if request.method == 'GET':
+        form = PersonalDataEdit()
+
+    context = {'form':form}
+
+    return render(request, "dashboard/edit_data.html", context)
 
 
 @require_POST

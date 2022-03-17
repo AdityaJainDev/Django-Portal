@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-09 15:37+0100\n"
+"POT-Creation-Date: 2022-03-17 16:50+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,47 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: dashboard/forms.py:8
+msgid "EmailInput"
+msgstr "E-Mail-ID eingeben"
+
+#: dashboard/forms.py:11
+msgid "OldPassword"
+msgstr "Geben Sie Ihr altes Passwort ein"
+
+#: dashboard/forms.py:12
+msgid "NewPassword"
+msgstr "Neues Passwort eingeben"
+
+#: dashboard/forms.py:13
+msgid "ConfirmPassword"
+msgstr "Bestätige neues Passwort"
+
+#: dashboard/views.py:82
+msgid "ResetEmailSuccess"
+msgstr "E-Mail wurde erfolgreich versendet"
+
+#: dashboard/views.py:85
+msgid "ResetEmailError"
+msgstr "Es ist ein Fehler aufgetreten, bitte versuchen Sie es erneut"
+
+#: dashboard/views.py:105
+msgid "PasswordMatchError"
+msgstr ""
+"Die neuen Passwörter stimmen nicht überein, bitte versuchen Sie es erneut"
+
+#: dashboard/views.py:108
+msgid "OldPasswordError"
+msgstr "Altes Passwort ist falsch, bitte versuchen Sie es erneut"
+
+#: dashboard/views.py:116
+msgid "PasswordChangeSuccess"
+msgstr "Passwort wurde erfolgreich geändert"
+
+#: dashboard/views.py:119
+msgid "PasswordChangeError"
+msgstr "Es ist ein Fehler aufgetreten, bitte versuchen Sie es erneut"
 
 #: detailsPage/forms.py:7
 msgid "Bank Transfer"
@@ -50,40 +91,117 @@ msgstr "BIC"
 msgid "Accept"
 msgstr "Ich akzeptiere die Einzugsermächtigung."
 
-#: detailsPage/views.py:22
+#: detailsPage/views.py:25
 msgid "Token Message"
 msgstr ""
 "Falscher oder fehlender Token, bitte überprüfen oder kontaktieren Sie uns."
 
-#: detailsPage/views.py:42 detailsPage/views.py:50
+#: detailsPage/views.py:45 detailsPage/views.py:53
 msgid "Error Message"
 msgstr "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
 
-#: detailsPage/views.py:48
+#: detailsPage/views.py:51
 msgid "Success Message"
 msgstr "Details erfolgreich aktualisiert."
 
-#: templates/payment.html:7
+#: templates/dashboard/home.html:61
+msgid "r_id"
+msgstr "R.-Id."
+
+#: templates/dashboard/home.html:63 templates/dashboard/invoices.html:10
+#: templates/dashboard/invoices.html:21
+msgid "r_no"
+msgstr "R.-Nr."
+
+#: templates/dashboard/home.html:65 templates/dashboard/invoices.html:22
+msgid "r_date"
+msgstr "R.-Datum."
+
+#: templates/dashboard/home.html:67
+msgid "r_cost"
+msgstr "Betrag"
+
+#: templates/dashboard/home.html:88
+msgid "view_invoices"
+msgstr "Rechnungen anzeigen"
+
+#: templates/dashboard/home.html:103
+msgid "Company"
+msgstr "Firma"
+
+#: templates/dashboard/home.html:108
+msgid "Name"
+msgstr "Name"
+
+#: templates/dashboard/home.html:113
+msgid "Address"
+msgstr "Anschrift"
+
+#: templates/dashboard/home.html:118
+msgid "Email"
+msgstr "E-Mail-Adresse"
+
+#: templates/dashboard/home.html:123
+msgid "Phone"
+msgstr "Telefon"
+
+#: templates/dashboard/home.html:134
+msgid "edit_personal_data"
+msgstr "Stammdaten editieren"
+
+#: templates/dashboard/invoices.html:20
+msgid "knr"
+msgstr "K.-Nr."
+
+#: templates/dashboard/invoices.html:31
+msgid "amount"
+msgstr "Menge"
+
+#: templates/dashboard/invoices.html:32
+msgid "designation"
+msgstr "Bezeichnung"
+
+#: templates/dashboard/invoices.html:34
+msgid "vat"
+msgstr "MwSt"
+
+#: templates/dashboard/invoices.html:35
+msgid "unit_price"
+msgstr "Einzelpreis"
+
+#: templates/dashboard/invoices.html:36
+msgid "total_price"
+msgstr "Gesamtpreis"
+
+#: templates/payment/payment.html:7
 msgid "FormHeading"
 msgstr "Elektronisches Lastschriftverfahren"
 
-#: templates/payment.html:18
+#: templates/payment/payment.html:18
 msgid "SendData"
 msgstr "Daten übermitteln"
+
+#: templates/registration/change_password.html:8
+msgid "ChangePasswordHeading"
+msgstr "Ändern Sie Ihr Passwort"
+
+#: templates/registration/change_password.html:18
+msgid "ChangePassword"
+msgstr "Passwort ändern"
 
 #: templates/registration/login.html:8
 msgid "LoginHeading"
 msgstr "Anmeldung"
 
-#: templates/registration/login.html:18
+#: templates/registration/login.html:29
 msgid "LoginButton"
 msgstr "Senden und einloggen"
 
-#: templates/registration/password_reset_form.html:8
+#: templates/registration/reset_password.html:8
 msgid "ResetPasswordHeading"
 msgstr "Setze dein Passwort zurück"
 
-#: templates/registration/password_reset_form.html:18
+#: templates/registration/reset_password.html:18
 msgid "Passwordreset"
 msgstr "Senden"
 

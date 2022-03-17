@@ -81,6 +81,7 @@
       margin-top: 4vw;
     }
   }
+
   &__contacts {
     position: relative;
     @include tabletPortrait {
@@ -92,6 +93,7 @@
       padding-left: 5vw;
     }
   }
+
   ul {
     margin-top: 6vw;
     @include tabletPortrait {
@@ -200,7 +202,7 @@
     }
     .image-text__contacts {
       @include tabletPortrait {
-        width: 50%;
+        width: 100%;
       }
     }
   }

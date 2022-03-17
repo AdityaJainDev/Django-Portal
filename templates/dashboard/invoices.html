@@ -1,98 +1,105 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% block content %}
-<div class="container marketing clearfix">
-    <div class="pull-right">
-        <a class="btn btn-default"
-            href=""><span
-                class="glyphicon glyphicon-print" aria-hidden="true"></span></a>
+
+<div data-aos="fade" class="title-text title-text__text-center aos-init aos-animate">
+    <div class="title-text__container">
+        <div class="title-text__contacts">
+            <div class="title-text__text">
+                <span style="float:left;">
+                    {% trans 'r_no' %} {{values.rechnung_rnr}}
+                </span>
+            </div>
+            <hr>
+            <div class="title-text__body_text">
+                <span style="float:left;">
+                    {{values.rechnung_vorname}} {{values.rechnung_name}}<br>
+                    {{values.rechnung_adresse}}<br>
+                </span>
+                <span style="float:right;">
+                    <span style="font-weight: 700; margin-right: 50px;">{% trans 'knr'%}</span>{{values.rechnung_knr}}<br>
+                    <span style="font-weight: 700; margin-right: 50px;">{% trans 'r_no'%}</span>{{values.rechnung_rnr}}<br>
+                    <span style="font-weight: 700; margin-right: 50px;">{% trans 'r_date'%}</span>{{values.rechnung_datum}}<br>
+                </span>
+            </div>
+            <br><br>
+            <div class="title-text__body">
+                <figure class="table">
+                    <table aria-describedby="invoice_details">
+                        <tbody>
+                            <tr>
+                                <th>{% trans 'amount' %}</th>
+                                <th>{% trans 'designation' %}</th>
+                                <th>&nbsp;</th>
+                                <th>{% trans 'vat' %}</th>
+                                <th>{% trans 'unit_price' %}</th>
+                                <th>{% trans 'total_price' %}</th>
+                            </tr>
+                            <tr>
+                                <td>1 x </td>
+                                <td>issued by mistake</td>
+                                <td></td>
+                                <td>{{values.mwst.mwst_wert}}%</td>
+                                <td>{{values.rechnung_betrag}}&nbsp;€</td>
+                                <td>{{values.mwst.netto}}&nbsp;€</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><strong></strong></td>
+                                <td></td>
+                                <td><strong></strong></td>
+                                <td><strong>Zwischensumme:</strong></td>
+                                <td><strong>{{values.mwst.netto}}&nbsp;€</strong></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>zzgl. 19% MwSt. auf -100,00&nbsp;€:</td>
+                                <td>{{values.mwst.betrag}},00&nbsp;€</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>&nbsp;</td>
+                                <td>Rechnungsbetrag:</td>
+                                <td>{{values.rechnung_brutto}},00&nbsp;€</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </figure>
+                <br>
+                {{values.rechnung_text}}
+                <br>
+                <hr>
+                <table aria-describedby="bank_details">
+                    <tbody>
+                        <th></th>
+                        <tr>
+                            <td colspan="2">ADITSYSTEMS, Inh. Anton Dollmaier</td>
+                        </tr>
+                        <tr>
+                            <td><strong>IBAN:</strong></td>
+                            <td>DE50 7406 1813 0000 6350 57</td>
+                        </tr>
+                        <tr>
+                            <td><strong>BIC:</strong></td>
+                            <td>GENODEF1PFK</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bank:</strong></td>
+                            <td>VR-Bank Rottal-Inn eG</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-    <h1>
-        <a href=""><span
-                class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>
-        {% trans 'r_no' %} {{x.rechnung_rnr}}
-    </h1>
-    <div style="float: right; width: 200px;">
-        <table class="table" aria-describedby="details">
-            <tbody>
-                <tr>
-                    <th scope="row">{% trans 'knr' %}</th>
-                    <td class="text-right">{{x.rechnung_knr}}</td>
-                </tr>
-                <tr>
-                    <th scope="row">{% trans 'r_no' %}</th>
-                    <td class="text-right">{{x.rechnung_rnr}}</td>
-                </tr>
-                <tr>
-                    <th scope="row">{% trans 'r_date' %}</th>
-                    <td class="text-right">{{x.rechnung_datum}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div style="vertical-align: top; padding-left: 50px; padding-top: 25px;">
-        {{x.rechnung_vorname}} {{x.rechnung_name}}<br>
-        {{x.rechnung_adresse}}<br>
-    </div>
-    <div class="ie_clearfix" style="height: 50px"> &nbsp;</div>
-    <table class="table table-hover table-striped" id="rpositiontable" aria-describedby="invoice_desc">
-        <tbody>
-            <tr>
-                <th scope="col" style="width: 50px;">{% trans 'amount' %}</th>
-                <th scope="col">{% trans 'designation' %}</th>
-                <th scope="col" class="text-right" style="width: 100px;">{% trans 'vat' %}</th>
-                <th scope="col" class="text-right" style="width: 100px;">{% trans 'unit_price' %}</th>
-                <th scope="col" class="text-right" style="width: 100px;">{% trans 'total_price' %}</th>
-            </tr>
-            <tr>
-                <td style="width: 50px;" class="text-right">1&nbsp;x</td>
-                <td>issued by mistake<br>
-                    2022-02</td>
-                <td class="text-right" style="width: 50px;">{{x.mwst.mwst_wert}}%</td>
-                <td class="text-right" style="width: 50px;">{{x.rechnung_betrag}}&nbsp;€</td>
-                <td class="text-right" style="width: 50px;">{{x.mwst.netto}}&nbsp;€</td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr class="nodrop nodrag">
-                <td class="text-right" colspan="4">Zwischensumme:</td>
-                <td class="text-right">{{x.mwst.netto}}&nbsp;€</td>
-            </tr>
-            <tr class="nodrop nodrag">
-                <td class="text-right" colspan="4">zzgl. 19% MwSt. auf -100,00&nbsp;€:</td>
-                <td class="text-right">{{x.mwst.betrag}},00&nbsp;€</td>
-            </tr>
-            <tr class="nodrop nodrag">
-                <td class="text-right" colspan="4">Rechnungsbetrag:</td>
-                <td class="text-right">{{x.rechnung_brutto}},00&nbsp;€</td>
-            </tr>
-            <tr class="nodrop nodrag">
-                <td colspan="5">{{x.rechnung_text}}<br>
-                    <br>
-                </td>
-            </tr>
-        </tfoot>
-    </table>
-    <hr>
-    <h3>{% trans 'bank connection' %}</h3>
-    <table aria-describedby="bank_details">
-        <tbody>
-            <tr>
-                <td colspan="2">ADITSYSTEMS, Inh. Anton Dollmaier</td>
-            </tr>
-            <tr>
-                <td><strong>IBAN:</strong></td>
-                <td>DE50 7406 1813 0000 6350 57</td>
-            </tr>
-            <tr>
-                <td><strong>BIC:</strong></td>
-                <td>GENODEF1PFK</td>
-            </tr>
-            <tr>
-                <td><strong>Bank:</strong></td>
-                <td>VR-Bank Rottal-Inn eG</td>
-            </tr>
-        </tbody>
-    </table>
 </div>
+
+
+
+
 {% endblock %}

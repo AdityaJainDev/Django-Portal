@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-11 15:31+0100\n"
+"POT-Creation-Date: 2022-03-17 16:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,27 +34,27 @@ msgstr "Enter New Password"
 msgid "ConfirmPassword"
 msgstr "Confirm New Password"
 
-#: dashboard/views.py:34
+#: dashboard/views.py:82
 msgid "ResetEmailSuccess"
 msgstr "Email has been sent successfully"
 
-#: dashboard/views.py:37
+#: dashboard/views.py:85
 msgid "ResetEmailError"
 msgstr "There was an error, please try again"
 
-#: dashboard/views.py:58
+#: dashboard/views.py:105
 msgid "PasswordMatchError"
 msgstr "The new passwords do not match, please try again"
 
-#: dashboard/views.py:61
+#: dashboard/views.py:108
 msgid "OldPasswordError"
 msgstr "Old password is Incorrect, please try again"
 
-#: dashboard/views.py:68
+#: dashboard/views.py:116
 msgid "PasswordChangeSuccess"
 msgstr "Password has been changed successfully"
 
-#: dashboard/views.py:71
+#: dashboard/views.py:119
 msgid "PasswordChangeError"
 msgstr "There was an error, please try again"
 
@@ -101,6 +101,75 @@ msgstr "There was an error, please try again."
 #: detailsPage/views.py:51
 msgid "Success Message"
 msgstr "Details updated successfully."
+
+#: templates/dashboard/home.html:61
+msgid "r_id"
+msgstr "Invoice ID"
+
+#: templates/dashboard/home.html:63 templates/dashboard/invoices.html:10
+#: templates/dashboard/invoices.html:21
+msgid "r_no"
+msgstr "Invoice Number"
+
+#: templates/dashboard/home.html:65 templates/dashboard/invoices.html:22
+msgid "r_date"
+msgstr "Invoice Date"
+
+#: templates/dashboard/home.html:67
+msgid "r_cost"
+msgstr "Amount"
+
+#: templates/dashboard/home.html:88
+msgid "view_invoices"
+msgstr "View Invoices"
+
+#: templates/dashboard/home.html:103
+msgid "Company"
+msgstr "Company"
+
+#: templates/dashboard/home.html:108
+msgid "Name"
+msgstr "Name"
+
+#: templates/dashboard/home.html:113
+msgid "Address"
+msgstr "Address"
+
+#: templates/dashboard/home.html:118
+msgid "Email"
+msgstr "Email"
+
+#: templates/dashboard/home.html:123
+msgid "Phone"
+msgstr "Phone"
+
+#: templates/dashboard/home.html:134
+msgid "edit_personal_data"
+msgstr "Edit Personal Data"
+
+#: templates/dashboard/invoices.html:20
+msgid "knr"
+msgstr "Account Number"
+
+#: templates/dashboard/invoices.html:31
+msgid "amount"
+msgstr "Quantity"
+
+#: templates/dashboard/invoices.html:32
+msgid "designation"
+msgstr "Description"
+
+#: templates/dashboard/invoices.html:34
+msgid "vat"
+msgstr "VAT"
+
+#: templates/dashboard/invoices.html:35
+msgid "unit_price"
+msgstr "Unit Price"
+
+#: templates/dashboard/invoices.html:36
+msgid "total_price"
+msgstr "Total Price"
 
 #: templates/payment/payment.html:7
 msgid "FormHeading"
