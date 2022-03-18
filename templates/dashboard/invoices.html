@@ -36,12 +36,14 @@
                                 <th>{% trans 'total_price' %}</th>
                             </tr>
                             <tr>
-                                <td>1 x </td>
-                                <td>issued by mistake</td>
-                                <td></td>
-                                <td>{{values.mwst.mwst_wert}}%</td>
-                                <td>{{values.rechnung_betrag}}&nbsp;€</td>
-                                <td>{{values.mwst.netto}}&nbsp;€</td>
+                                {% for x in list_items %}
+                                    <td>{{x.rposition_anzahl}}</td>
+                                    <td>{{x.rposition_text}}</td>
+                                    <td></td>
+                                    <td>{{x.mwst_wert}}%</td>
+                                    <td>{{values.rechnung_betrag}}&nbsp;€</td>
+                                    <td>{{values.mwst.netto}}&nbsp;€</td>
+                                {% endfor %}
                             </tr>
                             <tr>
                                 <td></td>

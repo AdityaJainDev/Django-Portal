@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-17 16:50+0100\n"
+"POT-Creation-Date: 2022-03-18 15:33+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,44 +18,112 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: dashboard/forms.py:7
+msgid "ByEmail"
+msgstr "Rechnungen per eMail senden"
+
 #: dashboard/forms.py:8
+msgid "ByPost"
+msgstr "Rechnungen per Post senden (Aufpreis: 1,50€ brutto pro Rechnungsversand)"
+
+#: dashboard/forms.py:9
+msgid "ByFax"
+msgstr "Rechnungen per Fax senden (Aufpreis: 0,50€ brutto pro Rechnungsversand)"
+
+#: dashboard/forms.py:14
 msgid "EmailInput"
 msgstr "E-Mail-ID eingeben"
 
-#: dashboard/forms.py:11
+#: dashboard/forms.py:17
 msgid "OldPassword"
 msgstr "Geben Sie Ihr altes Passwort ein"
 
-#: dashboard/forms.py:12
+#: dashboard/forms.py:18
 msgid "NewPassword"
 msgstr "Neues Passwort eingeben"
 
-#: dashboard/forms.py:13
+#: dashboard/forms.py:19
 msgid "ConfirmPassword"
 msgstr "Bestätige neues Passwort"
 
-#: dashboard/views.py:82
+#: dashboard/forms.py:22
+msgid "CompanyName"
+msgstr "Firma"
+
+#: dashboard/forms.py:23
+msgid "FirstName"
+msgstr "Vorname"
+
+#: dashboard/forms.py:24
+msgid "LastName"
+msgstr "Name"
+
+#: dashboard/forms.py:25 templates/dashboard/home.html:113
+msgid "Address"
+msgstr "Adresse"
+
+#: dashboard/forms.py:26
+msgid "Postcode"
+msgstr "PLZ"
+
+#: dashboard/forms.py:27
+msgid "City"
+msgstr "Ort"
+
+#: dashboard/forms.py:28
+msgid "Country"
+msgstr "Land"
+
+#: dashboard/forms.py:29 templates/dashboard/home.html:118
+msgid "Email"
+msgstr "E-Mail-Adresse"
+
+#: dashboard/forms.py:30 templates/dashboard/home.html:123
+msgid "Phone"
+msgstr "Telefon"
+
+#: dashboard/forms.py:31
+msgid "Fax"
+msgstr "Telefax"
+
+#: dashboard/forms.py:32
+msgid "BillingDetails"
+msgstr "Rechnungsdaten"
+
+#: dashboard/forms.py:33
+msgid "Newsletter"
+msgstr "ja, bitte den Newsletter für allgemeine Ankündigungen zusenden"
+
+#: dashboard/views.py:103
+msgid "EditDataSuccess"
+msgstr "Ihre Daten wurden erfolgreich aktualisiert"
+
+#: dashboard/views.py:106
+msgid "EditDataError"
+msgstr "Es ist ein Fehler aufgetreten, bitte versuchen Sie es erneut"
+
+#: dashboard/views.py:131
 msgid "ResetEmailSuccess"
 msgstr "E-Mail wurde erfolgreich versendet"
 
-#: dashboard/views.py:85
+#: dashboard/views.py:134
 msgid "ResetEmailError"
 msgstr "Es ist ein Fehler aufgetreten, bitte versuchen Sie es erneut"
 
-#: dashboard/views.py:105
+#: dashboard/views.py:155
 msgid "PasswordMatchError"
 msgstr ""
 "Die neuen Passwörter stimmen nicht überein, bitte versuchen Sie es erneut"
 
-#: dashboard/views.py:108
+#: dashboard/views.py:158
 msgid "OldPasswordError"
 msgstr "Altes Passwort ist falsch, bitte versuchen Sie es erneut"
 
-#: dashboard/views.py:116
+#: dashboard/views.py:168
 msgid "PasswordChangeSuccess"
 msgstr "Passwort wurde erfolgreich geändert"
 
-#: dashboard/views.py:119
+#: dashboard/views.py:171
 msgid "PasswordChangeError"
 msgstr "Es ist ein Fehler aufgetreten, bitte versuchen Sie es erneut"
 
@@ -104,6 +172,14 @@ msgstr "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
 msgid "Success Message"
 msgstr "Details erfolgreich aktualisiert."
 
+#: templates/dashboard/edit_data.html:7
+msgid "EditDataHeading"
+msgstr "Bearbeiten Sie Ihre persönlichen Daten"
+
+#: templates/dashboard/edit_data.html:18 templates/payment/payment.html:18
+msgid "SendData"
+msgstr "Daten übermitteln"
+
 #: templates/dashboard/home.html:61
 msgid "r_id"
 msgstr "R.-Id."
@@ -132,18 +208,6 @@ msgstr "Firma"
 #: templates/dashboard/home.html:108
 msgid "Name"
 msgstr "Name"
-
-#: templates/dashboard/home.html:113
-msgid "Address"
-msgstr "Anschrift"
-
-#: templates/dashboard/home.html:118
-msgid "Email"
-msgstr "E-Mail-Adresse"
-
-#: templates/dashboard/home.html:123
-msgid "Phone"
-msgstr "Telefon"
 
 #: templates/dashboard/home.html:134
 msgid "edit_personal_data"
@@ -176,10 +240,6 @@ msgstr "Gesamtpreis"
 #: templates/payment/payment.html:7
 msgid "FormHeading"
 msgstr "Elektronisches Lastschriftverfahren"
-
-#: templates/payment/payment.html:18
-msgid "SendData"
-msgstr "Daten übermitteln"
 
 #: templates/registration/change_password.html:8
 msgid "ChangePasswordHeading"

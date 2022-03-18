@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-17 16:49+0100\n"
+"POT-Creation-Date: 2022-03-18 15:32+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,43 +18,112 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: dashboard/forms.py:7
+
+msgid "ByEmail"
+msgstr "Send via Email"
+
 #: dashboard/forms.py:8
+msgid "ByPost"
+msgstr "Send via Post"
+
+#: dashboard/forms.py:9
+msgid "ByFax"
+msgstr "Send via Fax"
+
+#: dashboard/forms.py:14
 msgid "EmailInput"
 msgstr "Enter Email ID"
 
-#: dashboard/forms.py:11
+#: dashboard/forms.py:17
 msgid "OldPassword"
 msgstr "Enter your Old Password"
 
-#: dashboard/forms.py:12
+#: dashboard/forms.py:18
 msgid "NewPassword"
 msgstr "Enter New Password"
 
-#: dashboard/forms.py:13
+#: dashboard/forms.py:19
 msgid "ConfirmPassword"
 msgstr "Confirm New Password"
 
-#: dashboard/views.py:82
+#: dashboard/forms.py:22
+msgid "CompanyName"
+msgstr "Company Name"
+
+#: dashboard/forms.py:23
+msgid "FirstName"
+msgstr "First Name"
+
+#: dashboard/forms.py:24
+msgid "LastName"
+msgstr "Last Name"
+
+#: dashboard/forms.py:25 templates/dashboard/home.html:113
+msgid "Address"
+msgstr "Address"
+
+#: dashboard/forms.py:26
+msgid "Postcode"
+msgstr "Postcode"
+
+#: dashboard/forms.py:27
+msgid "City"
+msgstr "City"
+
+#: dashboard/forms.py:28
+msgid "Country"
+msgstr "Country"
+
+#: dashboard/forms.py:29 templates/dashboard/home.html:118
+msgid "Email"
+msgstr "Email"
+
+#: dashboard/forms.py:30 templates/dashboard/home.html:123
+msgid "Phone"
+msgstr "Phone"
+
+#: dashboard/forms.py:31
+msgid "Fax"
+msgstr "Fax"
+
+#: dashboard/forms.py:32
+msgid "BillingDetails"
+msgstr "Invoice Details"
+
+#: dashboard/forms.py:33
+msgid "Newsletter"
+msgstr "Yes, please send the newsletter for general announcements"
+
+#: dashboard/views.py:103
+msgid "EditDataSuccess"
+msgstr "Your data has been updated successfully"
+
+#: dashboard/views.py:106
+msgid "EditDataError"
+msgstr "There was an error, please try again"
+
+#: dashboard/views.py:131
 msgid "ResetEmailSuccess"
 msgstr "Email has been sent successfully"
 
-#: dashboard/views.py:85
+#: dashboard/views.py:134
 msgid "ResetEmailError"
 msgstr "There was an error, please try again"
 
-#: dashboard/views.py:105
+#: dashboard/views.py:155
 msgid "PasswordMatchError"
 msgstr "The new passwords do not match, please try again"
 
-#: dashboard/views.py:108
+#: dashboard/views.py:158
 msgid "OldPasswordError"
 msgstr "Old password is Incorrect, please try again"
 
-#: dashboard/views.py:116
+#: dashboard/views.py:168
 msgid "PasswordChangeSuccess"
 msgstr "Password has been changed successfully"
 
-#: dashboard/views.py:119
+#: dashboard/views.py:171
 msgid "PasswordChangeError"
 msgstr "There was an error, please try again"
 
@@ -102,6 +171,14 @@ msgstr "There was an error, please try again."
 msgid "Success Message"
 msgstr "Details updated successfully."
 
+#: templates/dashboard/edit_data.html:7
+msgid "EditDataHeading"
+msgstr "Edit your Personal Data"
+
+#: templates/dashboard/edit_data.html:18 templates/payment/payment.html:18
+msgid "SendData"
+msgstr "Submit Data"
+
 #: templates/dashboard/home.html:61
 msgid "r_id"
 msgstr "Invoice ID"
@@ -130,18 +207,6 @@ msgstr "Company"
 #: templates/dashboard/home.html:108
 msgid "Name"
 msgstr "Name"
-
-#: templates/dashboard/home.html:113
-msgid "Address"
-msgstr "Address"
-
-#: templates/dashboard/home.html:118
-msgid "Email"
-msgstr "Email"
-
-#: templates/dashboard/home.html:123
-msgid "Phone"
-msgstr "Phone"
 
 #: templates/dashboard/home.html:134
 msgid "edit_personal_data"
@@ -174,10 +239,6 @@ msgstr "Total Price"
 #: templates/payment/payment.html:7
 msgid "FormHeading"
 msgstr "Electronic Checks"
-
-#: templates/payment/payment.html:18
-msgid "SendData"
-msgstr "Submit Data"
 
 #: templates/registration/change_password.html:8
 msgid "ChangePasswordHeading"
