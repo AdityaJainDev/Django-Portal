@@ -5,11 +5,14 @@ import requests
 from django.utils.translation import gettext as _
 from django.contrib import messages
 from django.conf import settings
+from django.views.decorators.http import require_GET, require_POST
 
 # Create your views here.
+@require_GET
 def index(request):
     return render(request, "base.html")
 
+@require_POST
 def paymentoptions(request):
 
     if request.method == 'GET':
