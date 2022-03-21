@@ -10,7 +10,7 @@ PAYMENT_CHOICES =(
 
 class PaymentForm(forms.Form):
     account_number = forms.CharField(label=_('AccountNumber'), max_length = 100, required = False)
-    options = forms.MultipleChoiceField(label=_('options'), choices = PAYMENT_CHOICES, widget=forms.CheckboxSelectMultiple())
+    payment_options = forms.MultipleChoiceField(label=_('options'), choices = PAYMENT_CHOICES, widget=forms.CheckboxSelectMultiple())
     owner = forms.CharField(label=_('owner'), max_length = 100, required = True)
     iban = IBANFormField(label= _('iban'), required = True)
     bic = BICFormField(label= _('bic'), required = True)

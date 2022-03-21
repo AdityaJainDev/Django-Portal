@@ -8,17 +8,70 @@
         <br>
         <form action="#" method="post" id="">
             {% csrf_token %}
-            {{form}}
+
+            <label for="id_account_number">Accout Number:</label>
+            <input type="text" name="account_number" value="12072" maxlength="100" disabled="" id="id_account_number">
+            <label>Payment Method:</label>
+            <div id="id_payment_options">
+                <div>
+                    <label for="id_payment_options_0"><input type="checkbox" name="payment_options" value="0"
+                            id="id_payment_options_0">
+                        Payment by Bank Transfer</label>
+
+                </div>
+                <div>
+                    <label for="id_payment_options_1"><input type="checkbox" name="payment_options" value="1"
+                            id="id_payment_options_1" checked="">
+                        Payment by Direct Debit</label>
+
+                </div>
+            </div>
+            <label for="id_owner">Owner:</label>
+            <input type="text" name="owner" maxlength="100" required="" id="id_owner">
+            <label for="id_iban">IBAN:</label>
+            <input type="text" name="iban" maxlength="34" minlength="15" required="" id="id_iban">
+            <label for="id_bic">BIC:</label>
+            <input type="text" name="bic" maxlength="11" required="" id="id_bic">
+            <br>
+            <div data-aos="fade" class="title-text__text-left aos-init aos-animate">
+                <div class="title-text__container">
+                    <div class="title-text__text" style="margin-top: 0%;">Einzugsermächtigung </div>
+                    <div class="title-text__body-left" style="font-weight: 500;">
+                        <p>Firma publicompserver, Inh.: Ingo Klein, Weimarer Straße 22, D-92245 Kümmersbruck</p>
+                        <p>widerruflich, die von mir/uns zu entrichtenden Zahlungen und fälligen Rechnungen im
+                            Rahmen des Kunden-/Providerverhältnisses zu Lasten meines/unseres u.g. Girokontos
+                            einzuziehen. Wenn mein/unser Konto die erforderliche Deckung nicht aufweist, besteht
+                            seitens des kontoführenden Instituts keine Verpflichtung zur Einlösung. Teileinlösungen
+                            werden im Lastschriftverfahren/SEPA - Basis - Lastschriftverfahren nicht vorgenommen.
+                        </p>
+                        <p>Pro Rücklastschrift berechnen wir Ihnen eine Pauschale von 15 € (inkl.
+                            Rücklastschriftgebühren der Banken). Bei Erteilung des Lastschriftmandats erklären Sie
+                            sich mit dieser Pauschale einverstanden. Ihnen bleibt vorbehalten, nachzuweisen, dass
+                            ein Schaden überhaupt nicht entstanden oder dass er wesentlich niedriger ist, als die
+                            Pauschale.
+                        </p>
+                        <p>Dieses Lastschriftmandat wird durch</p>
+                        <p>Ihre Mandatsreferenznummer: 12379/#</p>
+                        <p>und</p>
+                        <p>- unsere Gläubiger - Identifikationsnummer: DE12ZZZ00001131937</p>
+                        <p>gekennzeichnet, die von uns bei allen Lastschrifteinzügen angegeben werden.</p>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <label for="id_confirm">I accept the direct debit authorization.</label>
+            <input type="checkbox" name="confirm" required="" id="id_confirm">
             <br>
             <br>
             <span class="text-muted"></span>
             <input name="action" value="send_data" type="hidden">
             <div class="cta">
                 <button type="submit" class="cta-btn"><span class="cta-btn-inner">
-                        {% trans 'SendData' %}
-                </span></button>
+                        Submit Data
+                    </span></button>
             </div>
         </form>
+
     </div>
 </div>
 {% endblock %}

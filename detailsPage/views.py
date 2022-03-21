@@ -18,12 +18,14 @@ def sepa_payment(request):
         data = {'knr':account_number, 'token':token}
         save_data = requests.get(settings.CRM_ENDPOINT, params=data).json()
 
+        zahlungsart = save_data["zahlungsart"]
+
         if save_data['status'] == -1:
             return HttpResponse(_('Token Message'))
         else:
             form = PaymentForm()
             form.initial['account_number'] = request.GET.get('knr', None)
-            form.initial['options'] = "1"
+            form.initial['payment_options'] = zahlungsart
 
     elif request.method == 'POST':
         form = PaymentForm(request.POST)
@@ -32,7 +34,7 @@ def sepa_payment(request):
             owner = form.cleaned_data['owner']
             iban = form.cleaned_data['iban']
             bic = form.cleaned_data['bic']
-            options = form.cleaned_data['options']
+            options = form.cleaned_data['payment_options']
             token = request.GET.get('token', None)
 
             data = {"inhaber": owner, "iban": iban, "bic": bic, 'knr':account_number, 'token':token, 'zahlungsart':options}
