@@ -18,34 +18,7 @@
     </div>
   </div>
 </div>
-
-<div class="article-list aos-init aos-animate" data-aos="fade">
-  <div class="article-preview__images swiper-slide">
-    <div class="article-preview__text"> Invoices </div>
-    <div class="article-preview__link-text">
-      {% for x in values %}
-      {% for y, z in x.items %}
-      <tr>
-        <td>{{y}}</td>
-        <td>{{z}}</td>
-      </tr>
-      {% endfor %}
-      {% endfor %}
-    </div>
-  </div>
-  <div class="article-preview__images swiper-slide">
-    <div class="article-preview__text"> Personal Data </div>
-    <div class="article-preview__link-text">
-      {% for x, y in personal.items %}
-      <tr>
-        <td>{{x}}</td>
-        <td>{{y}}</td>
-      </tr>
-      {% endfor %}
-    </div>
-  </div>
-</div>
-
+<br><br>
 
 <div data-aos="fade-up" class="products aos-init aos-animate">
   <div class="products__container">
@@ -58,24 +31,22 @@
           <div class="products__body">
             <table style="width:100%" aria-hidden="True">
               <tr>
-                <th>{% trans 'r_id' %}</th>
-                <th></th>
                 <th>{% trans 'r_no' %}</th>
                 <th></th>
                 <th>{% trans 'r_date' %}</th>
                 <th></th>
                 <th>{% trans 'r_cost' %}</th>
               </tr>
-              {% for x in values|slice:":5" %}
+              <hr>
+              {% for x in values|slice:":3" %}
               <tr>
-                <td>{{x.rechnung_id}}
-                <td>
-                <td>{{x.rechnung_rnr}}
-                <td>
-                <td>{{x.rechnung_datum}}
-                <td>
-                <td>{{x.rechnung_betrag}}
-                <td>
+                <td>{{x.rechnung_rnr}}</td>
+                <td></td>
+                <td>{{x.rechnung_datum}}</td>
+                <td></td>
+                <td>{{x.rechnung_betrag}}&nbsp;€</td>
+                <td></td>
+                <td><a href="/dashboard/invoice_details/?id={{x.rechnung_id}}">View</a></td>
               </tr>
               {% endfor %}
             </table>
@@ -99,6 +70,7 @@
           <div class="products__text"> Your Data </div>
           <div class="products__body">
             <table style="width:100%" aria-hidden="True">
+              <hr>
               <tr>
                 <th scope="col">{% trans 'Company' %}</th>
                 <td>{{personal.kunde_firma}}
@@ -129,7 +101,7 @@
         </div>
         <div class="products__ctas">
           <div class="cta">
-            <a class="cta-btn" href="">
+            <a class="cta-btn" href="/dashboard/edit_personal_data/">
               <span class="cta-btn-inner">
                 {% trans 'edit_personal_data' %}
               </span>

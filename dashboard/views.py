@@ -58,10 +58,12 @@ def index(request):
 def invoice_details(request):
     account_number = request.session['username']
     password = request.session['password']
+    invoice_id = request.GET.get('id', None)
 
-    invoice = requests.get(settings.CRM_ENDPOINT + "Rechnungen/Rechnungen/", auth=(account_number, password))
-    invoice_detail = requests.get(settings.CRM_ENDPOINT + "Rechnungen/RechnungDetails/", auth=(account_number, password), params={"rechnung_id": "34415"})
-    list_items = requests.get(settings.CRM_ENDPOINT + "Rechnungen/RechnungPositionen/", auth=(account_number, password), params={"rechnung_id": "34415"})
+    params = {"rechnung_id": invoice_id}
+
+    invoice_detail = requests.get(settings.CRM_ENDPOINT + "Rechnungen/RechnungDetails/", auth=(account_number, password), params=params)
+    list_items = requests.get(settings.CRM_ENDPOINT + "Rechnungen/RechnungPositionen/", auth=(account_number, password), params=params)
 
     if invoice_detail.json()["status"] == 1:
         invoices = invoice_detail.json()["data"]
