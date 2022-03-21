@@ -10,7 +10,7 @@ from django.conf import settings
 def index(request):
     return render(request, "base.html")
 
-def sepa_payment(request):
+def paymentoptions(request):
 
     if request.method == 'GET':
         account_number = request.GET.get('knr', None)
