@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-18 15:32+0100\n"
+"POT-Creation-Date: 2022-03-22 15:17+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,6 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: dashboard/forms.py:7
-
 msgid "ByEmail"
 msgstr "Send via Email"
 
@@ -59,7 +58,7 @@ msgstr "First Name"
 msgid "LastName"
 msgstr "Last Name"
 
-#: dashboard/forms.py:25 templates/dashboard/home.html:113
+#: dashboard/forms.py:25 templates/dashboard/home.html:85
 msgid "Address"
 msgstr "Address"
 
@@ -75,11 +74,11 @@ msgstr "City"
 msgid "Country"
 msgstr "Country"
 
-#: dashboard/forms.py:29 templates/dashboard/home.html:118
+#: dashboard/forms.py:29 templates/dashboard/home.html:90
 msgid "Email"
 msgstr "Email"
 
-#: dashboard/forms.py:30 templates/dashboard/home.html:123
+#: dashboard/forms.py:30 templates/dashboard/home.html:95
 msgid "Phone"
 msgstr "Phone"
 
@@ -95,35 +94,35 @@ msgstr "Invoice Details"
 msgid "Newsletter"
 msgstr "Yes, please send the newsletter for general announcements"
 
-#: dashboard/views.py:103
+#: dashboard/views.py:120
 msgid "EditDataSuccess"
 msgstr "Your data has been updated successfully"
 
-#: dashboard/views.py:106
+#: dashboard/views.py:123
 msgid "EditDataError"
 msgstr "There was an error, please try again"
 
-#: dashboard/views.py:131
+#: dashboard/views.py:148
 msgid "ResetEmailSuccess"
 msgstr "Email has been sent successfully"
 
-#: dashboard/views.py:134
+#: dashboard/views.py:151
 msgid "ResetEmailError"
 msgstr "There was an error, please try again"
 
-#: dashboard/views.py:155
+#: dashboard/views.py:172
 msgid "PasswordMatchError"
 msgstr "The new passwords do not match, please try again"
 
-#: dashboard/views.py:158
+#: dashboard/views.py:175
 msgid "OldPasswordError"
 msgstr "Old password is Incorrect, please try again"
 
-#: dashboard/views.py:168
+#: dashboard/views.py:185
 msgid "PasswordChangeSuccess"
 msgstr "Password has been changed successfully"
 
-#: dashboard/views.py:171
+#: dashboard/views.py:188
 msgid "PasswordChangeError"
 msgstr "There was an error, please try again"
 
@@ -171,6 +170,29 @@ msgstr "There was an error, please try again."
 msgid "Success Message"
 msgstr "Details updated successfully."
 
+#: templates/dashboard/all_invoices.html:10
+msgid "AllInvoicesHeading"
+msgstr "Invoice overview"
+
+#: templates/dashboard/all_invoices.html:20 templates/dashboard/home.html:34
+#: templates/dashboard/invoices.html:10 templates/dashboard/invoices.html:28
+msgid "r_no"
+msgstr "Invoice Number"
+
+#: templates/dashboard/all_invoices.html:22 templates/dashboard/home.html:36
+#: templates/dashboard/invoices.html:32
+msgid "r_date"
+msgstr "Invoice Date"
+
+#: templates/dashboard/all_invoices.html:24 templates/dashboard/home.html:38
+msgid "r_cost"
+msgstr "Amount"
+
+#: templates/dashboard/all_invoices.html:42
+#: templates/dashboard/invoices.html:99
+msgid "OurBankDetails"
+msgstr "Our Bank Details"
+
 #: templates/dashboard/edit_data.html:7
 msgid "EditDataHeading"
 msgstr "Edit your Personal Data"
@@ -179,60 +201,43 @@ msgstr "Edit your Personal Data"
 msgid "SendData"
 msgstr "Submit Data"
 
-#: templates/dashboard/home.html:61
-msgid "r_id"
-msgstr "Invoice ID"
-
-#: templates/dashboard/home.html:63 templates/dashboard/invoices.html:10
-#: templates/dashboard/invoices.html:21
-msgid "r_no"
-msgstr "Invoice Number"
-
-#: templates/dashboard/home.html:65 templates/dashboard/invoices.html:22
-msgid "r_date"
-msgstr "Invoice Date"
-
-#: templates/dashboard/home.html:67
-msgid "r_cost"
-msgstr "Amount"
-
-#: templates/dashboard/home.html:88
+#: templates/dashboard/home.html:59
 msgid "view_invoices"
 msgstr "View Invoices"
 
-#: templates/dashboard/home.html:103
+#: templates/dashboard/home.html:75
 msgid "Company"
 msgstr "Company"
 
-#: templates/dashboard/home.html:108
+#: templates/dashboard/home.html:80
 msgid "Name"
 msgstr "Name"
 
-#: templates/dashboard/home.html:134
+#: templates/dashboard/home.html:106
 msgid "edit_personal_data"
 msgstr "Edit Personal Data"
 
-#: templates/dashboard/invoices.html:20
+#: templates/dashboard/invoices.html:24
 msgid "knr"
 msgstr "Account Number"
 
-#: templates/dashboard/invoices.html:31
+#: templates/dashboard/invoices.html:45
 msgid "amount"
 msgstr "Quantity"
 
-#: templates/dashboard/invoices.html:32
+#: templates/dashboard/invoices.html:46
 msgid "designation"
 msgstr "Description"
 
-#: templates/dashboard/invoices.html:34
+#: templates/dashboard/invoices.html:48
 msgid "vat"
 msgstr "VAT"
 
-#: templates/dashboard/invoices.html:35
+#: templates/dashboard/invoices.html:49
 msgid "unit_price"
 msgstr "Unit Price"
 
-#: templates/dashboard/invoices.html:36
+#: templates/dashboard/invoices.html:50
 msgid "total_price"
 msgstr "Total Price"
 
@@ -263,6 +268,9 @@ msgstr "Reset your Password"
 #: templates/registration/reset_password.html:18
 msgid "Passwordreset"
 msgstr "Submit"
+
+#~ msgid "r_id"
+#~ msgstr "Invoice ID"
 
 #~ msgid "Option Message"
 #~ msgstr "Please select only one Payment Method."

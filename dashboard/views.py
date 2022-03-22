@@ -55,10 +55,10 @@ def index(request):
 
 
 @require_GET
-def invoice_details(request):
+def invoice_details(request, rechnung_id):
     account_number = request.session['username']
     password = request.session['password']
-    invoice_id = request.GET.get('id', None)
+    invoice_id = rechnung_id
 
     params = {"rechnung_id": invoice_id}
 
@@ -70,6 +70,20 @@ def invoice_details(request):
         list_items = list_items.json()["data"]
         context = {"values": invoices, "list_items": list_items}
     return render(request, "dashboard/invoices.html", context)
+
+
+@require_GET
+def all_invoices(request):
+    account_number = request.session['username']
+    password = request.session['password']
+
+    invoice = requests.get(settings.CRM_ENDPOINT + "Rechnungen/Rechnungen/", auth=(account_number, password))
+
+    if invoice.json()["status"] == 1:
+        invoices = invoice.json()["data"]
+        context = {"values": invoices}
+    return render(request, "dashboard/all_invoices.html", context)
+
 
 
 @require_GET

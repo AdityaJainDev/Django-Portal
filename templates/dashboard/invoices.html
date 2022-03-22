@@ -17,9 +17,23 @@
                     {{values.rechnung_adresse}}<br>
                 </span>
                 <span style="float:right;">
-                    <span style="font-weight: 700; margin-right: 50px;">{% trans 'knr'%}</span>{{values.rechnung_knr}}<br>
-                    <span style="font-weight: 700; margin-right: 50px;">{% trans 'r_no'%}</span>{{values.rechnung_rnr}}<br>
-                    <span style="font-weight: 700; margin-right: 50px;">{% trans 'r_date'%}</span>{{values.rechnung_datum}}<br>
+                    <table aria-describedby="bank_details" id="table_bank">
+                        <tbody style="text-align: start;">
+                            <th colspan="2"></th>
+                            <tr>
+                                <td><strong>{% trans 'knr'%}</strong></td>
+                                <td style="text-align: right;">{{values.rechnung_knr}}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>{% trans 'r_no'%}</strong></td>
+                                <td style="text-align: right;">{{values.rechnung_rnr}}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>{% trans 'r_date'%}</strong></td>
+                                <td style="text-align: right;">{{values.rechnung_datum}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </span>
             </div>
             <br><br>
@@ -35,16 +49,16 @@
                                 <th>{% trans 'unit_price' %}</th>
                                 <th>{% trans 'total_price' %}</th>
                             </tr>
+                            {% for x in list_items %}
                             <tr>
-                                {% for x in list_items %}
-                                    <td>{{x.rposition_anzahl}}</td>
-                                    <td>{{x.rposition_text}}</td>
-                                    <td></td>
-                                    <td>{{x.mwst_wert}}%</td>
-                                    <td>{{x.rposition_preis}}&nbsp;€</td>
-                                    <td>{{values.rechnung_betrag}}&nbsp;€</td>
-                                {% endfor %}
+                                <td>{{x.rposition_anzahl}}</td>
+                                <td>{{x.rposition_text}}</td>
+                                <td></td>
+                                <td>{{x.mwst_wert}}%</td>
+                                <td>{{x.rposition_preis}}&nbsp;€</td>
+                                <td>{{values.rechnung_betrag}}&nbsp;€</td>
                             </tr>
+                            {% endfor %}
                             <tr>
                                 <td></td>
                                 <td><strong></strong></td>
@@ -80,9 +94,9 @@
                 <span style="text-align: left;">{{values.rechnung_text|linebreaks}}</span>
                 <br>
                 <hr>
-                <table aria-describedby="bank_details">
-                    <tbody>
-                        <th></th>
+                <table aria-describedby="bank_details" id="table_bank">
+                    <tbody style="text-align: start;">
+                        <th colspan="2">{% trans 'OurBankDetails' %}&nbsp;:</th>
                         <tr>
                             <td colspan="2">ADITSYSTEMS, Inh. Anton Dollmaier</td>
                         </tr>

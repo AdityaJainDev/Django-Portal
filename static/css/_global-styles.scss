@@ -14,6 +14,17 @@ body {
   }
 }
 
+#table_bank td, tr {
+  padding-bottom: 0.5em;
+}
+
+#table_bank th {
+  font-size: 20px;
+  padding-bottom: 0.5em;
+  text-align: left;
+  padding-top: 1em;
+}
+
 .alert {
   position: relative;
   padding: 0.5rem 1.25rem;
