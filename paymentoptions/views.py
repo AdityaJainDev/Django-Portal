@@ -12,7 +12,7 @@ from django.views.decorators.http import require_GET, require_POST
 def index(request):
     return render(request, "base.html")
 
-@require_POST
+@require_GET
 def paymentoptions(request):
 
     if request.method == 'GET':
