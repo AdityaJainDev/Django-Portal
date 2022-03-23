@@ -40,21 +40,13 @@
                 <div class="header__list">
                     <ul>
                         <li>
-                            <a href="" title="DevOps Service">DevOps
-                                Service</a>
+                            <a href="{% url 'dashboard:all_invoices' %}" title="DevOps Service">{% trans 'AllInvoicesHeading' %}</a>
                         </li>
                         <li>
-                            <a href="" title="Managed Hosting">Managed
-                                Hosting</a>
+                            <a href="{% url 'dashboard:edit_personal_data' %}" title="Managed Hosting">{% trans 'edit_personal_data' %}</a>
                         </li>
                         <li>
-                            <a href="" title="Company">Company</a>
-                        </li>
-                        <li>
-                            <a href="" title="Blog">Blog</a>
-                        </li>
-                        <li>
-                            <a href="" title="Support">Support</a>
+                            <a href="{% url 'dashboard:change_password' %}" title="Company">{% trans 'ChangePassword' %}</a>
                         </li>
                         
                         {% if user.is_authenticated %}
@@ -121,9 +113,9 @@
                     </ul>
                     <div class="footer__contacts__spec--socials">
                         <a class="footer__contacts__spec--social"
-                            href=""><img
+                            href="https://www.linkedin.com/company/aditsystems/"><img
                                 src="{% static 'images/linkedin.e7455165.svg' %}" alt=""></a>
-                        <a class="footer__contacts__spec--social" href=""><img
+                        <a class="footer__contacts__spec--social" href="https://twitter.com/aditsystems"><img
                                 src="{% static 'images/twitter.16f1f846.svg' %}" alt=""></a>
                     </div>
                 </div>
@@ -145,11 +137,11 @@
                     <div class="footer__list">Compliance</div>
                     <div class="footer__item">
                         <ul>
-                            <li><a href="">Impressum</a></li>
-                            <li><a href="">Datenschutz</a></li>
-                            <li><a href="">Widerruf</a></li>
-                            <li><a href="">Kundeninformationen</a></li>
-                            <li><a href="">Allgemeine Geschäftsbedingungen</a></li>
+                            <li><a href="https://www.aditsystems.de/impressum.php">Impressum</a></li>
+                            <li><a href="https://www.aditsystems.de/datenschutz.php">Datenschutz</a></li>
+                            <li><a href="https://www.aditsystems.de/widerruf.php">Widerruf</a></li>
+                            <li><a href="https://www.aditsystems.de/kundeninfos.php">Kundeninformationen</a></li>
+                            <li><a href="https://www.aditsystems.de/agb.php">Allgemeine Geschäftsbedingungen</a></li>
                         </ul>
                     </div>
                 </div>
@@ -157,7 +149,7 @@
                     <div class="footer__list">Info Center</div>
                     <div class="footer__item">
                         <ul>
-                            <li><a href="">Blog</a></li>
+                            <li><a href="https://blog.aditsystems.de/">Blog</a></li>
                             <li><a href="">Support</a></li>
                             <li><a href="">Kundencenter</a></li>
                         </ul>
@@ -167,8 +159,8 @@
                     <div class="footer__list">Company</div>
                     <div class="footer__item">
                         <ul>
-                            <li><a href="">Kontakt</a></li>
-                            <li><a href="">Jobs</a></li>
+                            <li><a href="https://www.aditsystems.de/kontakt.php">Kontakt</a></li>
+                            <li><a href="https://www.aditsystems.de/jobs.php">Jobs</a></li>
                         </ul>
                     </div>
                 </div>

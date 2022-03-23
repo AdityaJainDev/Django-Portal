@@ -128,7 +128,7 @@ def edit_personal_data(request):
     return render(request, "dashboard/edit_data.html", context)
 
 
-@require_POST
+@require_GET
 def password_reset(request):
     if request.method == 'GET':
         form = PasswordResetForm()
@@ -156,7 +156,7 @@ def password_reset(request):
     return render(request, "registration/reset_password.html", context)
 
 
-@require_POST
+@require_GET
 def change_password(request):
     if request.method == 'GET':
         form = ChangePassword()

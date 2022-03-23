@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block payment %}
+<div class="form">
+    <div class="form__container">
+        <div class="caption-title-paragraph__title GilroySemiBold">{% trans 'FormHeading' %}</div>
+        <br>
+        <form action="#" method="post" id="">
+            {% csrf_token %}
+
+            <label for="id_account_number">{% trans 'AccountNumber' %}:</label>
+            {{form.account_number}}
+            <label>{% trans 'options' %}:</label>
+            {{form.payment_options}}
+            <div id="details">
+                <label for="id_owner">{% trans 'owner' %}:</label>
+                {{form.owner}}
+                <label for="id_iban">{% trans 'iban' %}:</label>
+                {{form.iban}}
+                <label for="id_bic">{% trans 'bic' %}:</label>
+                {{form.bic}}
+            </div>
+            <div data-aos="fade" class="title-text__text-left aos-init aos-animate" id="mandate">
+                <div class="title-text__container">
+                    <div class="title-text__text" style="margin-top: 0%;">{% trans 'DirectDebitHeading' %}</div>
+                    <div class="title-text__body-left" style="font-weight: 500;">
+                        <p>{% trans 'DDLine1' %}</p>
+                        <p>{% trans 'DDLine2' %}</p>
+                        <p>{% trans 'DDLine3' %}</p>
+                        <p>{% trans 'DDLine4' %}</p>
+                        <p>{% trans 'DDLine5' %}</p>
+                        <p>{% trans 'DDLine6' %}</p>
+                        <p>{% trans 'DDLine7' %}</p>
+                        <p>{% trans 'DDLine8' %}</p>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div id="confirm">
+                <label for="id_confirm">{% trans 'Accept' %}</label>
+                {{form.confirm}}
+            </div>
+            <br>
+            <br>
+            <span class="text-muted"></span>
+            <input name="action" value="send_data" type="hidden">
+            <div class="cta">
+                <button type="submit" class="cta-btn"><span class="cta-btn-inner">
+                    {% trans 'SendData' %}
+                    </span></button>
+            </div>
+        </form>
+
+    </div>
+</div>
+{% endblock %}

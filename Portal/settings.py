@@ -35,7 +35,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "elasticapm.contrib.django",
     "adminsortable",
-    "detailsPage",
     "dashboard",
     'localflavor',
     "compressor",
@@ -43,6 +42,7 @@ INSTALLED_APPS = [
     "markdownfield",
     "rest_framework",
     "django_prometheus",
+    "paymentoptions",
 ]
 
 MIDDLEWARE = [
@@ -63,7 +63,6 @@ MIDDLEWARE = [
 ]
 
 TITLE = "AD IT Systems Portal"
-OTP_TOTP_ISSUER = TITLE
 
 ROOT_URLCONF = "Portal.urls"
 

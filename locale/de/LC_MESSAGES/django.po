@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-22 15:17+0100\n"
+"POT-Creation-Date: 2022-03-23 12:14+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -129,54 +129,106 @@ msgstr "Passwort wurde erfolgreich geändert"
 msgid "PasswordChangeError"
 msgstr "Es ist ein Fehler aufgetreten, bitte versuchen Sie es erneut"
 
-#: detailsPage/forms.py:7
+#: paymentoptions/forms.py:7 paymentoptions/templates/form.html:19
 msgid "Bank Transfer"
 msgstr "Zahlung per Überweisung"
 
-#: detailsPage/forms.py:8
+#: paymentoptions/forms.py:8 paymentoptions/templates/form.html:25
 msgid "Direct Debit"
 msgstr "Zahlung per Lastschrift"
 
-#: detailsPage/forms.py:12
+#: paymentoptions/forms.py:14 paymentoptions/templates/form.html:12
 msgid "AccountNumber"
 msgstr "Kundennummer"
 
-#: detailsPage/forms.py:13
+#: paymentoptions/forms.py:17 paymentoptions/templates/form.html:14
 msgid "options"
-msgstr "Übertragungsmethoden"
+msgstr "Zahlungsoptionen"
 
-#: detailsPage/forms.py:14
+#: paymentoptions/forms.py:21 paymentoptions/templates/form.html:30
 msgid "owner"
 msgstr "Kontoinhaber"
 
-#: detailsPage/forms.py:15
+#: paymentoptions/forms.py:22 paymentoptions/templates/form.html:32
 msgid "iban"
 msgstr "IBAN"
 
-#: detailsPage/forms.py:16
+#: paymentoptions/forms.py:23 paymentoptions/templates/form.html:34
 msgid "bic"
 msgstr "BIC"
 
-#: detailsPage/forms.py:17
+#: paymentoptions/forms.py:24 paymentoptions/templates/form.html:63
 msgid "Accept"
 msgstr "Ich akzeptiere die Einzugsermächtigung."
 
-#: detailsPage/views.py:25
+#: paymentoptions/templates/form.html:7
+msgid "FormHeading"
+msgstr "Elektronisches Lastschriftverfahren"
+
+#: paymentoptions/templates/form.html:39
+msgid "DirectDebitHeading"
+msgstr "Einzugsermächtigung"
+
+#: paymentoptions/templates/form.html:41
+msgid "DDLine1"
+msgstr "Firma publicompserver, Inh.: Ingo Klein, Weimarer Straße 22, D-92245 Kümmersbruck"
+
+#: paymentoptions/templates/form.html:42
+msgid "DDLine2"
+msgstr "widerruflich, die von mir/uns zu entrichtenden Zahlungen und fälligen Rechnungen im Rahmen des Kunden-/Providerverhältnisses zu Lasten meines/unseres u.g. Girokontos einzuziehen. Wenn mein/unser Konto die erforderliche Deckung nicht aufweist, besteht seitens des kontoführenden Instituts keine Verpflichtung zur Einlösung. Teileinlösungen werden im Lastschriftverfahren/SEPA - Basis - Lastschriftverfahren nicht vorgenommen."
+
+#: paymentoptions/templates/form.html:48
+msgid "DDLine3"
+msgstr "Pro Rücklastschrift berechnen wir Ihnen eine Pauschale von 15 € (inkl. Rücklastschriftgebühren der Banken). Bei Erteilung des Lastschriftmandats erklären Sie sich mit dieser Pauschale einverstanden. Ihnen bleibt vorbehalten, nachzuweisen, dass ein Schaden überhaupt nicht entstanden oder dass er wesentlich niedriger ist, als die Pauschale."
+
+#: paymentoptions/templates/form.html:54
+msgid "DDLine4"
+msgstr "Dieses Lastschriftmandat wird durch"
+
+#: paymentoptions/templates/form.html:55
+msgid "DDLine5"
+msgstr "Ihre Mandatsreferenznummer: 12379/#"
+
+#: paymentoptions/templates/form.html:56
+msgid "DDLine6"
+msgstr "und"
+
+#: paymentoptions/templates/form.html:57
+msgid "DDLine7"
+msgstr "- unsere Gläubiger - Identifikationsnummer: DE12ZZZ00001131937"
+
+#: paymentoptions/templates/form.html:58
+msgid "DDLine8"
+msgstr "gekennzeichnet, die von uns bei allen Lastschrifteinzügen angegeben werden."
+
+#: paymentoptions/templates/form.html:71 templates/dashboard/edit_data.html:18
+msgid "SendData"
+msgstr "Daten übermitteln"
+
+#: paymentoptions/views.py:28
 msgid "Token Message"
 msgstr ""
 "Falscher oder fehlender Token, bitte überprüfen oder kontaktieren Sie uns."
 
-#: detailsPage/views.py:45 detailsPage/views.py:53
+#: paymentoptions/views.py:48 paymentoptions/views.py:56
 msgid "Error Message"
-msgstr "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
+msgstr "Es ist ein Fehler aufgetreten, bitte überprüfen Sie die ausgefüllten Details und versuchen Sie es erneut."
 
-#: detailsPage/views.py:51
+#: paymentoptions/views.py:54
 msgid "Success Message"
 msgstr "Details erfolgreich aktualisiert."
 
-#: templates/dashboard/all_invoices.html:10
+#: templates/base.html:43 templates/dashboard/all_invoices.html:10
 msgid "AllInvoicesHeading"
 msgstr "Rechnungsübersicht"
+
+#: templates/base.html:46 templates/dashboard/home.html:106
+msgid "edit_personal_data"
+msgstr "Stammdaten editieren"
+
+#: templates/base.html:49 templates/registration/change_password.html:18
+msgid "ChangePassword"
+msgstr "Passwort ändern"
 
 #: templates/dashboard/all_invoices.html:20 templates/dashboard/home.html:34
 #: templates/dashboard/invoices.html:10 templates/dashboard/invoices.html:28
@@ -201,10 +253,6 @@ msgstr "Unsere Bankverbindung"
 msgid "EditDataHeading"
 msgstr "Bearbeiten Sie Ihre persönlichen Daten"
 
-#: templates/dashboard/edit_data.html:18 templates/payment/payment.html:18
-msgid "SendData"
-msgstr "Daten übermitteln"
-
 #: templates/dashboard/home.html:59
 msgid "view_invoices"
 msgstr "Rechnungen anzeigen"
@@ -216,10 +264,6 @@ msgstr "Firma"
 #: templates/dashboard/home.html:80
 msgid "Name"
 msgstr "Name"
-
-#: templates/dashboard/home.html:106
-msgid "edit_personal_data"
-msgstr "Stammdaten editieren"
 
 #: templates/dashboard/invoices.html:24
 msgid "knr"
@@ -245,17 +289,9 @@ msgstr "Einzelpreis"
 msgid "total_price"
 msgstr "Gesamtpreis"
 
-#: templates/payment/payment.html:7
-msgid "FormHeading"
-msgstr "Elektronisches Lastschriftverfahren"
-
 #: templates/registration/change_password.html:8
 msgid "ChangePasswordHeading"
 msgstr "Ändern Sie Ihr Passwort"
-
-#: templates/registration/change_password.html:18
-msgid "ChangePassword"
-msgstr "Passwort ändern"
 
 #: templates/registration/login.html:8
 msgid "LoginHeading"
