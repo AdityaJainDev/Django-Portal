@@ -21,7 +21,7 @@ class PaymentForm(forms.Form):
     owner = forms.CharField(label=_("owner"), max_length=100, required=False)
     iban = IBANFormField(label=_("iban"), required=False)
     bic = BICFormField(label=_("bic"), required=False)
-    confirm = forms.BooleanField(label=_("Accept"), required=True)
+    confirm = forms.BooleanField(label=_("Accept"), required=False)
 
     def __init__(self, *args, **kwargs):
         super(PaymentForm, self).__init__(*args, **kwargs)

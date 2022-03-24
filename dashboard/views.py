@@ -48,10 +48,10 @@ def index(request):
                 invoices = invoice.json()["data"]
                 personal_data = personal.json()["data"]
                 context = {"values": invoices, "personal": personal_data}
-            return render(request, "dashboard/home.html", context)
+            return render(request, "home_main.html", context)
     except Exception as e:
         print(e)
-    return render(request, "dashboard/home.html")
+    return render(request, "home_main.html")
 
 
 @require_GET
@@ -69,7 +69,7 @@ def invoice_details(request, rechnung_id):
         invoices = invoice_detail.json()["data"]
         list_items = list_items.json()["data"]
         context = {"values": invoices, "list_items": list_items}
-    return render(request, "dashboard/invoices.html", context)
+    return render(request, "invoices.html", context)
 
 
 @require_GET
@@ -82,7 +82,7 @@ def all_invoices(request):
     if invoice.json()["status"] == 1:
         invoices = invoice.json()["data"]
         context = {"values": invoices}
-    return render(request, "dashboard/all_invoices.html", context)
+    return render(request, "all_invoices.html", context)
 
 
 
@@ -125,7 +125,7 @@ def edit_personal_data(request):
 
     context = {'form': form}
 
-    return render(request, "dashboard/edit_data.html", context)
+    return render(request, "edit_data.html", context)
 
 
 @require_GET

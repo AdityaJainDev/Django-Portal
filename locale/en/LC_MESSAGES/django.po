@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-23 12:14+0100\n"
+"POT-Creation-Date: 2022-03-24 16:28+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,7 +58,7 @@ msgstr "First Name"
 msgid "LastName"
 msgstr "Last Name"
 
-#: dashboard/forms.py:25 templates/dashboard/home.html:85
+#: dashboard/forms.py:25 dashboard/templates/home_main.html:85
 msgid "Address"
 msgstr "Address"
 
@@ -74,11 +74,11 @@ msgstr "City"
 msgid "Country"
 msgstr "Country"
 
-#: dashboard/forms.py:29 templates/dashboard/home.html:90
+#: dashboard/forms.py:29 dashboard/templates/home_main.html:90
 msgid "Email"
 msgstr "Email"
 
-#: dashboard/forms.py:30 templates/dashboard/home.html:95
+#: dashboard/forms.py:30 dashboard/templates/home_main.html:95
 msgid "Phone"
 msgstr "Phone"
 
@@ -93,6 +93,103 @@ msgstr "Invoice Details"
 #: dashboard/forms.py:33
 msgid "Newsletter"
 msgstr "Yes, please send the newsletter for general announcements"
+
+#: dashboard/templates/all_invoices.html:10 templates/base.html:44
+msgid "AllInvoicesHeading"
+msgstr "Invoice overview"
+
+#: dashboard/templates/all_invoices.html:20
+#: dashboard/templates/home_main.html:34 dashboard/templates/invoices.html:10
+#: dashboard/templates/invoices.html:28
+msgid "r_no"
+msgstr "Invoice Number"
+
+#: dashboard/templates/all_invoices.html:22
+#: dashboard/templates/home_main.html:36 dashboard/templates/invoices.html:32
+msgid "r_date"
+msgstr "Invoice Date"
+
+#: dashboard/templates/all_invoices.html:24
+#: dashboard/templates/home_main.html:38
+msgid "r_cost"
+msgstr "Amount"
+
+#: dashboard/templates/all_invoices.html:42
+#: dashboard/templates/invoices.html:99
+msgid "OurBankDetails"
+msgstr "Our Bank Details"
+
+#: dashboard/templates/edit_data.html:7
+msgid "EditDataHeading"
+msgstr "Edit your Personal Data"
+
+#: dashboard/templates/edit_data.html:18 paymentoptions/templates/form.html:50
+msgid "SendData"
+msgstr "Submit Data"
+
+#: dashboard/templates/home_main.html:59
+msgid "view_invoices"
+msgstr "View Invoices"
+
+#: dashboard/templates/home_main.html:75
+msgid "Company"
+msgstr "Company"
+
+#: dashboard/templates/home_main.html:80
+msgid "Name"
+msgstr "Name"
+
+#: dashboard/templates/home_main.html:106
+#: dashboard/templates/home_main.html:156 templates/base.html:47
+msgid "edit_personal_data"
+msgstr "Edit Personal Data"
+
+#: dashboard/templates/home_main.html:116
+msgid "SepaHeading"
+msgstr "SEPA Core Direct Debit"
+
+#: dashboard/templates/home_main.html:122 paymentoptions/forms.py:21
+#: paymentoptions/templates/form.html:17
+msgid "owner"
+msgstr "Owner"
+
+#: dashboard/templates/home_main.html:127 paymentoptions/forms.py:22
+#: paymentoptions/templates/form.html:19
+msgid "iban"
+msgstr "IBAN"
+
+#: dashboard/templates/home_main.html:132 paymentoptions/forms.py:23
+#: paymentoptions/templates/form.html:21
+msgid "bic"
+msgstr "BIC"
+
+#: dashboard/templates/home_main.html:137 dashboard/templates/invoices.html:24
+msgid "knr"
+msgstr "Account Number"
+
+#: dashboard/templates/home_main.html:146
+msgid "SepaNotFound"
+msgstr "You have not given us a SEPA direct debit authorization."
+
+#: dashboard/templates/invoices.html:45
+msgid "amount"
+msgstr "Quantity"
+
+#: dashboard/templates/invoices.html:46
+msgid "designation"
+msgstr "Description"
+
+#: dashboard/templates/invoices.html:48
+msgid "vat"
+msgstr "VAT"
+
+#: dashboard/templates/invoices.html:49
+msgid "unit_price"
+msgstr "Unit Price"
+
+#: dashboard/templates/invoices.html:50
+msgid "total_price"
+msgstr "Total Price"
 
 #: dashboard/views.py:120
 msgid "EditDataSuccess"
@@ -126,11 +223,11 @@ msgstr "Password has been changed successfully"
 msgid "PasswordChangeError"
 msgstr "There was an error, please try again"
 
-#: paymentoptions/forms.py:7 paymentoptions/templates/form.html:19
+#: paymentoptions/forms.py:7
 msgid "Bank Transfer"
 msgstr "Payment by Bank Transfer"
 
-#: paymentoptions/forms.py:8 paymentoptions/templates/form.html:25
+#: paymentoptions/forms.py:8
 msgid "Direct Debit"
 msgstr "Payment by Direct Debit"
 
@@ -142,19 +239,7 @@ msgstr "Accout Number"
 msgid "options"
 msgstr "Payment Options"
 
-#: paymentoptions/forms.py:21 paymentoptions/templates/form.html:30
-msgid "owner"
-msgstr "Owner"
-
-#: paymentoptions/forms.py:22 paymentoptions/templates/form.html:32
-msgid "iban"
-msgstr "IBAN"
-
-#: paymentoptions/forms.py:23 paymentoptions/templates/form.html:34
-msgid "bic"
-msgstr "BIC"
-
-#: paymentoptions/forms.py:24 paymentoptions/templates/form.html:63
+#: paymentoptions/forms.py:24 paymentoptions/templates/form.html:41
 msgid "Accept"
 msgstr "I accept the direct debit authorization."
 
@@ -162,128 +247,68 @@ msgstr "I accept the direct debit authorization."
 msgid "FormHeading"
 msgstr "Electronic Checks"
 
-#: paymentoptions/templates/form.html:39
+#: paymentoptions/templates/form.html:26
 msgid "DirectDebitHeading"
 msgstr "Direct Debit Authorization"
 
-#: paymentoptions/templates/form.html:41
+#: paymentoptions/templates/form.html:28
 msgid "DDLine1"
-msgstr "Company publicompserver, owner: Ingo Klein, Weimarer Straße 22, D-92245 Kümmersbruck"
+msgstr ""
+"Company publicompserver, owner: Ingo Klein, Weimarer Straße 22, D-92245 "
+"Kümmersbruck"
 
-#: paymentoptions/templates/form.html:42
+#: paymentoptions/templates/form.html:29
 msgid "DDLine2"
-msgstr "revocable, the payments to be made by me/us and invoices due in the context of the customer/provider relationship at the expense of my/our u.g. withdraw checking accounts. If my/our account does not have the necessary funds, the bank holding the account is not obliged to redeem it. Partial redemptions are not made in the direct debit/SEPA - Basis - direct debit procedure."
+msgstr ""
+"revocable, the payments to be made by me/us and invoices due in the context "
+"of the customer/provider relationship at the expense of my/our u.g. withdraw "
+"checking accounts. If my/our account does not have the necessary funds, the "
+"bank holding the account is not obliged to redeem it. Partial redemptions "
+"are not made in the direct debit/SEPA - Basis - direct debit procedure."
 
-#: paymentoptions/templates/form.html:48
+#: paymentoptions/templates/form.html:30
 msgid "DDLine3"
-msgstr "We will charge you a flat rate of €15 per return debit (incl. return debit fees charged by the banks). By issuing the direct debit mandate, you agree to this flat rate. You reserve the right to prove that no damage has occurred at all or that it is significantly lower than the lump sum."
+msgstr ""
+"We will charge you a flat rate of €15 per return debit (incl. return debit "
+"fees charged by the banks). By issuing the direct debit mandate, you agree "
+"to this flat rate. You reserve the right to prove that no damage has "
+"occurred at all or that it is significantly lower than the lump sum."
 
-#: paymentoptions/templates/form.html:54
+#: paymentoptions/templates/form.html:31
 msgid "DDLine4"
 msgstr "This direct debit mandate is"
 
-#: paymentoptions/templates/form.html:55
+#: paymentoptions/templates/form.html:32
 msgid "DDLine5"
 msgstr "Your mandate reference number: 12379/#"
 
-#: paymentoptions/templates/form.html:56
+#: paymentoptions/templates/form.html:33
 msgid "DDLine6"
 msgstr "and"
 
-#: paymentoptions/templates/form.html:57
+#: paymentoptions/templates/form.html:34
 msgid "DDLine7"
 msgstr "- our creditors - identification number: DE12ZZZ00001131937"
 
-#: paymentoptions/templates/form.html:58
+#: paymentoptions/templates/form.html:35
 msgid "DDLine8"
 msgstr "marked, which are indicated by us for all direct debits."
-
-#: paymentoptions/templates/form.html:71 templates/dashboard/edit_data.html:18
-msgid "SendData"
-msgstr "Submit Data"
 
 #: paymentoptions/views.py:28
 msgid "Token Message"
 msgstr "Incorrect or missing token, please check or contact us."
 
-#: paymentoptions/views.py:48 paymentoptions/views.py:56
+#: paymentoptions/views.py:52 paymentoptions/views.py:61
 msgid "Error Message"
 msgstr "There was an error, please check the details filled and try again."
 
-#: paymentoptions/views.py:54
+#: paymentoptions/views.py:58
 msgid "Success Message"
 msgstr "Details updated successfully."
 
-#: templates/base.html:43 templates/dashboard/all_invoices.html:10
-msgid "AllInvoicesHeading"
-msgstr "Invoice overview"
-
-#: templates/base.html:46 templates/dashboard/home.html:106
-msgid "edit_personal_data"
-msgstr "Edit Personal Data"
-
-#: templates/base.html:49 templates/registration/change_password.html:18
+#: templates/base.html:50 templates/registration/change_password.html:18
 msgid "ChangePassword"
 msgstr "Change Password"
-
-#: templates/dashboard/all_invoices.html:20 templates/dashboard/home.html:34
-#: templates/dashboard/invoices.html:10 templates/dashboard/invoices.html:28
-msgid "r_no"
-msgstr "Invoice Number"
-
-#: templates/dashboard/all_invoices.html:22 templates/dashboard/home.html:36
-#: templates/dashboard/invoices.html:32
-msgid "r_date"
-msgstr "Invoice Date"
-
-#: templates/dashboard/all_invoices.html:24 templates/dashboard/home.html:38
-msgid "r_cost"
-msgstr "Amount"
-
-#: templates/dashboard/all_invoices.html:42
-#: templates/dashboard/invoices.html:99
-msgid "OurBankDetails"
-msgstr "Our Bank Details"
-
-#: templates/dashboard/edit_data.html:7
-msgid "EditDataHeading"
-msgstr "Edit your Personal Data"
-
-#: templates/dashboard/home.html:59
-msgid "view_invoices"
-msgstr "View Invoices"
-
-#: templates/dashboard/home.html:75
-msgid "Company"
-msgstr "Company"
-
-#: templates/dashboard/home.html:80
-msgid "Name"
-msgstr "Name"
-
-#: templates/dashboard/invoices.html:24
-msgid "knr"
-msgstr "Account Number"
-
-#: templates/dashboard/invoices.html:45
-msgid "amount"
-msgstr "Quantity"
-
-#: templates/dashboard/invoices.html:46
-msgid "designation"
-msgstr "Description"
-
-#: templates/dashboard/invoices.html:48
-msgid "vat"
-msgstr "VAT"
-
-#: templates/dashboard/invoices.html:49
-msgid "unit_price"
-msgstr "Unit Price"
-
-#: templates/dashboard/invoices.html:50
-msgid "total_price"
-msgstr "Total Price"
 
 #: templates/registration/change_password.html:8
 msgid "ChangePasswordHeading"

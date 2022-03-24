@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-23 12:14+0100\n"
+"POT-Creation-Date: 2022-03-24 16:28+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -60,7 +60,7 @@ msgstr "Vorname"
 msgid "LastName"
 msgstr "Name"
 
-#: dashboard/forms.py:25 templates/dashboard/home.html:85
+#: dashboard/forms.py:25 dashboard/templates/home_main.html:85
 msgid "Address"
 msgstr "Adresse"
 
@@ -76,11 +76,11 @@ msgstr "Ort"
 msgid "Country"
 msgstr "Land"
 
-#: dashboard/forms.py:29 templates/dashboard/home.html:90
+#: dashboard/forms.py:29 dashboard/templates/home_main.html:90
 msgid "Email"
 msgstr "E-Mail-Adresse"
 
-#: dashboard/forms.py:30 templates/dashboard/home.html:95
+#: dashboard/forms.py:30 dashboard/templates/home_main.html:95
 msgid "Phone"
 msgstr "Telefon"
 
@@ -95,6 +95,103 @@ msgstr "Rechnungsdaten"
 #: dashboard/forms.py:33
 msgid "Newsletter"
 msgstr "ja, bitte den Newsletter für allgemeine Ankündigungen zusenden"
+
+#: dashboard/templates/all_invoices.html:10 templates/base.html:44
+msgid "AllInvoicesHeading"
+msgstr "Rechnungsübersicht"
+
+#: dashboard/templates/all_invoices.html:20
+#: dashboard/templates/home_main.html:34 dashboard/templates/invoices.html:10
+#: dashboard/templates/invoices.html:28
+msgid "r_no"
+msgstr "R.-Nr."
+
+#: dashboard/templates/all_invoices.html:22
+#: dashboard/templates/home_main.html:36 dashboard/templates/invoices.html:32
+msgid "r_date"
+msgstr "R.-Datum."
+
+#: dashboard/templates/all_invoices.html:24
+#: dashboard/templates/home_main.html:38
+msgid "r_cost"
+msgstr "Betrag"
+
+#: dashboard/templates/all_invoices.html:42
+#: dashboard/templates/invoices.html:99
+msgid "OurBankDetails"
+msgstr "Unsere Bankverbindung"
+
+#: dashboard/templates/edit_data.html:7
+msgid "EditDataHeading"
+msgstr "Bearbeiten Sie Ihre persönlichen Daten"
+
+#: dashboard/templates/edit_data.html:18 paymentoptions/templates/form.html:50
+msgid "SendData"
+msgstr "Daten übermitteln"
+
+#: dashboard/templates/home_main.html:59
+msgid "view_invoices"
+msgstr "Rechnungen anzeigen"
+
+#: dashboard/templates/home_main.html:75
+msgid "Company"
+msgstr "Firma"
+
+#: dashboard/templates/home_main.html:80
+msgid "Name"
+msgstr "Name"
+
+#: dashboard/templates/home_main.html:106
+#: dashboard/templates/home_main.html:156 templates/base.html:47
+msgid "edit_personal_data"
+msgstr "Stammdaten editieren"
+
+#: dashboard/templates/home_main.html:116
+msgid "SepaHeading"
+msgstr "SEPA-Basis-Lastschrift"
+
+#: dashboard/templates/home_main.html:122 paymentoptions/forms.py:21
+#: paymentoptions/templates/form.html:17
+msgid "owner"
+msgstr "Kontoinhaber"
+
+#: dashboard/templates/home_main.html:127 paymentoptions/forms.py:22
+#: paymentoptions/templates/form.html:19
+msgid "iban"
+msgstr "IBAN"
+
+#: dashboard/templates/home_main.html:132 paymentoptions/forms.py:23
+#: paymentoptions/templates/form.html:21
+msgid "bic"
+msgstr "BIC"
+
+#: dashboard/templates/home_main.html:137 dashboard/templates/invoices.html:24
+msgid "knr"
+msgstr "K.-Nr."
+
+#: dashboard/templates/home_main.html:146
+msgid "SepaNotFound"
+msgstr "Sie haben uns keine SEPA-Lastschrift-Ermächtigung erteilt."
+
+#: dashboard/templates/invoices.html:45
+msgid "amount"
+msgstr "Menge"
+
+#: dashboard/templates/invoices.html:46
+msgid "designation"
+msgstr "Bezeichnung"
+
+#: dashboard/templates/invoices.html:48
+msgid "vat"
+msgstr "MwSt"
+
+#: dashboard/templates/invoices.html:49
+msgid "unit_price"
+msgstr "Einzelpreis"
+
+#: dashboard/templates/invoices.html:50
+msgid "total_price"
+msgstr "Gesamtpreis"
 
 #: dashboard/views.py:120
 msgid "EditDataSuccess"
@@ -129,11 +226,11 @@ msgstr "Passwort wurde erfolgreich geändert"
 msgid "PasswordChangeError"
 msgstr "Es ist ein Fehler aufgetreten, bitte versuchen Sie es erneut"
 
-#: paymentoptions/forms.py:7 paymentoptions/templates/form.html:19
+#: paymentoptions/forms.py:7
 msgid "Bank Transfer"
 msgstr "Zahlung per Überweisung"
 
-#: paymentoptions/forms.py:8 paymentoptions/templates/form.html:25
+#: paymentoptions/forms.py:8
 msgid "Direct Debit"
 msgstr "Zahlung per Lastschrift"
 
@@ -145,19 +242,7 @@ msgstr "Kundennummer"
 msgid "options"
 msgstr "Zahlungsoptionen"
 
-#: paymentoptions/forms.py:21 paymentoptions/templates/form.html:30
-msgid "owner"
-msgstr "Kontoinhaber"
-
-#: paymentoptions/forms.py:22 paymentoptions/templates/form.html:32
-msgid "iban"
-msgstr "IBAN"
-
-#: paymentoptions/forms.py:23 paymentoptions/templates/form.html:34
-msgid "bic"
-msgstr "BIC"
-
-#: paymentoptions/forms.py:24 paymentoptions/templates/form.html:63
+#: paymentoptions/forms.py:24 paymentoptions/templates/form.html:41
 msgid "Accept"
 msgstr "Ich akzeptiere die Einzugsermächtigung."
 
@@ -165,129 +250,74 @@ msgstr "Ich akzeptiere die Einzugsermächtigung."
 msgid "FormHeading"
 msgstr "Elektronisches Lastschriftverfahren"
 
-#: paymentoptions/templates/form.html:39
+#: paymentoptions/templates/form.html:26
 msgid "DirectDebitHeading"
 msgstr "Einzugsermächtigung"
 
-#: paymentoptions/templates/form.html:41
+#: paymentoptions/templates/form.html:28
 msgid "DDLine1"
-msgstr "Firma publicompserver, Inh.: Ingo Klein, Weimarer Straße 22, D-92245 Kümmersbruck"
+msgstr ""
+"Firma publicompserver, Inh.: Ingo Klein, Weimarer Straße 22, D-92245 "
+"Kümmersbruck"
 
-#: paymentoptions/templates/form.html:42
+#: paymentoptions/templates/form.html:29
 msgid "DDLine2"
-msgstr "widerruflich, die von mir/uns zu entrichtenden Zahlungen und fälligen Rechnungen im Rahmen des Kunden-/Providerverhältnisses zu Lasten meines/unseres u.g. Girokontos einzuziehen. Wenn mein/unser Konto die erforderliche Deckung nicht aufweist, besteht seitens des kontoführenden Instituts keine Verpflichtung zur Einlösung. Teileinlösungen werden im Lastschriftverfahren/SEPA - Basis - Lastschriftverfahren nicht vorgenommen."
+msgstr ""
+"widerruflich, die von mir/uns zu entrichtenden Zahlungen und fälligen "
+"Rechnungen im Rahmen des Kunden-/Providerverhältnisses zu Lasten meines/"
+"unseres u.g. Girokontos einzuziehen. Wenn mein/unser Konto die erforderliche "
+"Deckung nicht aufweist, besteht seitens des kontoführenden Instituts keine "
+"Verpflichtung zur Einlösung. Teileinlösungen werden im Lastschriftverfahren/"
+"SEPA - Basis - Lastschriftverfahren nicht vorgenommen."
 
-#: paymentoptions/templates/form.html:48
+#: paymentoptions/templates/form.html:30
 msgid "DDLine3"
-msgstr "Pro Rücklastschrift berechnen wir Ihnen eine Pauschale von 15 € (inkl. Rücklastschriftgebühren der Banken). Bei Erteilung des Lastschriftmandats erklären Sie sich mit dieser Pauschale einverstanden. Ihnen bleibt vorbehalten, nachzuweisen, dass ein Schaden überhaupt nicht entstanden oder dass er wesentlich niedriger ist, als die Pauschale."
+msgstr ""
+"Pro Rücklastschrift berechnen wir Ihnen eine Pauschale von 15 € (inkl. "
+"Rücklastschriftgebühren der Banken). Bei Erteilung des Lastschriftmandats "
+"erklären Sie sich mit dieser Pauschale einverstanden. Ihnen bleibt "
+"vorbehalten, nachzuweisen, dass ein Schaden überhaupt nicht entstanden oder "
+"dass er wesentlich niedriger ist, als die Pauschale."
 
-#: paymentoptions/templates/form.html:54
+#: paymentoptions/templates/form.html:31
 msgid "DDLine4"
 msgstr "Dieses Lastschriftmandat wird durch"
 
-#: paymentoptions/templates/form.html:55
+#: paymentoptions/templates/form.html:32
 msgid "DDLine5"
 msgstr "Ihre Mandatsreferenznummer: 12379/#"
 
-#: paymentoptions/templates/form.html:56
+#: paymentoptions/templates/form.html:33
 msgid "DDLine6"
 msgstr "und"
 
-#: paymentoptions/templates/form.html:57
+#: paymentoptions/templates/form.html:34
 msgid "DDLine7"
 msgstr "- unsere Gläubiger - Identifikationsnummer: DE12ZZZ00001131937"
 
-#: paymentoptions/templates/form.html:58
+#: paymentoptions/templates/form.html:35
 msgid "DDLine8"
-msgstr "gekennzeichnet, die von uns bei allen Lastschrifteinzügen angegeben werden."
-
-#: paymentoptions/templates/form.html:71 templates/dashboard/edit_data.html:18
-msgid "SendData"
-msgstr "Daten übermitteln"
+msgstr ""
+"gekennzeichnet, die von uns bei allen Lastschrifteinzügen angegeben werden."
 
 #: paymentoptions/views.py:28
 msgid "Token Message"
 msgstr ""
 "Falscher oder fehlender Token, bitte überprüfen oder kontaktieren Sie uns."
 
-#: paymentoptions/views.py:48 paymentoptions/views.py:56
+#: paymentoptions/views.py:52 paymentoptions/views.py:61
 msgid "Error Message"
-msgstr "Es ist ein Fehler aufgetreten, bitte überprüfen Sie die ausgefüllten Details und versuchen Sie es erneut."
+msgstr ""
+"Es ist ein Fehler aufgetreten, bitte überprüfen Sie die ausgefüllten Details "
+"und versuchen Sie es erneut."
 
-#: paymentoptions/views.py:54
+#: paymentoptions/views.py:58
 msgid "Success Message"
 msgstr "Details erfolgreich aktualisiert."
 
-#: templates/base.html:43 templates/dashboard/all_invoices.html:10
-msgid "AllInvoicesHeading"
-msgstr "Rechnungsübersicht"
-
-#: templates/base.html:46 templates/dashboard/home.html:106
-msgid "edit_personal_data"
-msgstr "Stammdaten editieren"
-
-#: templates/base.html:49 templates/registration/change_password.html:18
+#: templates/base.html:50 templates/registration/change_password.html:18
 msgid "ChangePassword"
 msgstr "Passwort ändern"
-
-#: templates/dashboard/all_invoices.html:20 templates/dashboard/home.html:34
-#: templates/dashboard/invoices.html:10 templates/dashboard/invoices.html:28
-msgid "r_no"
-msgstr "R.-Nr."
-
-#: templates/dashboard/all_invoices.html:22 templates/dashboard/home.html:36
-#: templates/dashboard/invoices.html:32
-msgid "r_date"
-msgstr "R.-Datum."
-
-#: templates/dashboard/all_invoices.html:24 templates/dashboard/home.html:38
-msgid "r_cost"
-msgstr "Betrag"
-
-#: templates/dashboard/all_invoices.html:42
-#: templates/dashboard/invoices.html:99
-msgid "OurBankDetails"
-msgstr "Unsere Bankverbindung"
-
-#: templates/dashboard/edit_data.html:7
-msgid "EditDataHeading"
-msgstr "Bearbeiten Sie Ihre persönlichen Daten"
-
-#: templates/dashboard/home.html:59
-msgid "view_invoices"
-msgstr "Rechnungen anzeigen"
-
-#: templates/dashboard/home.html:75
-msgid "Company"
-msgstr "Firma"
-
-#: templates/dashboard/home.html:80
-msgid "Name"
-msgstr "Name"
-
-#: templates/dashboard/invoices.html:24
-msgid "knr"
-msgstr "K.-Nr."
-
-#: templates/dashboard/invoices.html:45
-msgid "amount"
-msgstr "Menge"
-
-#: templates/dashboard/invoices.html:46
-msgid "designation"
-msgstr "Bezeichnung"
-
-#: templates/dashboard/invoices.html:48
-msgid "vat"
-msgstr "MwSt"
-
-#: templates/dashboard/invoices.html:49
-msgid "unit_price"
-msgstr "Einzelpreis"
-
-#: templates/dashboard/invoices.html:50
-msgid "total_price"
-msgstr "Gesamtpreis"
 
 #: templates/registration/change_password.html:8
 msgid "ChangePasswordHeading"

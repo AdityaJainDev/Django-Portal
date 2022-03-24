@@ -110,6 +110,56 @@
         </div>
       </div>
 
+      <div class="products__box">
+        <div class="products__background"> </div>
+        <div class="products__texts">
+          <div class="products__text"> {% trans 'SepaHeading' %} </div>
+          <div class="products__body">
+            {% if personal.kunde_lastschrift == "1" %}
+            <table style="width:100%" aria-hidden="True">
+              <hr>
+              <tr>
+                <th scope="col">{% trans 'owner' %}</th>
+                <td>{{personal.kunde_inhaber}}
+                <td>
+              </tr>
+              <tr>
+                <th scope="col">{% trans 'iban' %}</th>
+                <td>{{personal.kunde_iban}}
+                <td>
+              </tr>
+              <tr>
+                <th scope="col">{% trans 'bic' %}</th>
+                <td>{{personal.kunde_bic}}
+                <td>
+              </tr>
+              <tr>
+                <th scope="col">{% trans 'knr' %}</th>
+                <td>{{personal.knr}}
+                <td>
+              </tr>
+            </table>
+            {% else %}
+            <table style="width:100%" aria-hidden="True">
+              <hr>
+              <tr>
+                <th scope="col">Sie haben uns keine SEPA-Lastschrift-Ermächtigung erteilt.{% trans 'SepaNotFound' %}</th>
+              </tr>
+            </table>
+            {% endif %}
+          </div>
+        </div>
+        <div class="products__ctas">
+          <div class="cta">
+            <a class="cta-btn" href="/dashboard/edit_personal_data/">
+              <span class="cta-btn-inner">
+                {% trans 'edit_personal_data' %}
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+
 
     </div>
   </div>
