@@ -9,7 +9,7 @@ variables:
 
 stages:
   - test
-  - deploy
+  - build
 
 cache:
   paths:
@@ -79,7 +79,9 @@ test:sonarqube:
 
 docker-build:
   image: portal:latest
-  stage: deploy
+  stage: build
+  services:
+    - docker:dind
   needs:
     - test:django
     - test:sonarqube
@@ -88,9 +90,8 @@ docker-build:
   script:
     - docker build --pull -t "$CI_REGISTRY_IMAGE" .
     - docker push "$CI_REGISTRY_IMAGE"
+    - docker logout
   tags:
     - latest
-  only:
-    - develop
   cache:
     policy: pull
