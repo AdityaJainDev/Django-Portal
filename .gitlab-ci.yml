@@ -15,10 +15,8 @@ cache:
   - ~/.cache/pip/
 
 build:
-  image: docker:19.03.12
+  image: 1drop/php-72-docker-utils
   stage: build
-  services:
-    - docker:19.03.12-dind
   variables:
     IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
   before_script:
@@ -27,6 +25,6 @@ build:
     - docker build -t $IMAGE_TAG .
     - docker push $IMAGE_TAG
   tags:
-    - latest
+    - nova
   cache:
     policy: pull
