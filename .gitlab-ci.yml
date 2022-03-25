@@ -75,3 +75,51 @@ test:sonarqube:
     - main
   cache:
     policy: pull
+
+start_review:
+  stage: review
+  image: 1drop/php-72-docker-utils
+  environment:
+    name: review/$CI_COMMIT_REF_NAME
+    url: "https://$CI_COMMIT_REF_NAME.$REVIEW_DOMAIN"
+    on_stop: stop_review
+  before_script:
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+    - mkdir -p ~/.ssh
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+  script:
+    - rsync -av --delete --exclude=.venv . $REVIEW_USER@$REVIEW_HOST:$REVIEW_PATH/$CI_COMMIT_REF_SLUG
+    - ssh $REVIEW_USER@$REVIEW_HOST "cd $REVIEW_PATH/$CI_COMMIT_REF_SLUG/ && ./bin/review_start.sh $CI_COMMIT_REF_SLUG $CI_MERGE_REQUEST_IID"
+  tags:
+    - nova
+  only:
+    - merge_requests
+  except:
+    - develop
+  cache:
+    policy: pull
+
+stop_review:
+  stage: review
+  before_script:
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+    - mkdir -p ~/.ssh
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+  script:
+      - ssh $REVIEW_USER@$REVIEW_HOST "cd $REVIEW_PATH/$CI_COMMIT_REF_SLUG/ && ./bin/review_stop.sh $CI_COMMIT_REF_SLUG && /bin/rm -rf ${REVIEW_PATH}/${CI_COMMIT_REF_SLUG}*"
+  variables:
+    GIT_STRATEGY: none
+  when: manual
+  environment:
+    name: review/$CI_COMMIT_REF_NAME
+    action: stop
+  tags:
+    - nova
+  only:
+  - merge_requests
+  cache:
+    policy: pull
