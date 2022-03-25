@@ -8,89 +8,24 @@ variables:
   VERBOSITY: 2
 
 stages:
-  - test
   - build
 
 cache:
   paths:
   - ~/.cache/pip/
 
-test:pylint:
-  stage: test
-  before_script:
-    - pip install -r requirements-frozen.txt
-  script:
-    - bash ./bin/pylint.sh
-  only:
-    changes:
-      - '**/*.py'
-    refs:
-      - merge_requests
-      - main
-      - develop
-  artifacts:
-    paths:
-    - pylint.txt
-
-
-test:django_check:
-  stage: test
-  only:
-    - merge_requests
-    - main
-  before_script:
-    - python -V
-    - pip install -r requirements-frozen.txt
-  script:
-    - touch Portal.local_settings.py
-    - python manage.py check
-
-test:django:
-  stage: test
-  only:
-    - merge_requests
-    - main
-  before_script:
-    - python -V
-    - pip install -r requirements-frozen.txt
-  script:
-    - touch Portal.local_settings.py
-    - django-admin compilemessages
-    - coverage run --branch manage.py test --settings Portal.settings_ci -v $VERBOSITY
-    - coverage xml
-  artifacts:
-    paths:
-    - coverage.xml
-
-test:sonarqube:
-  stage: test
-  image:
-    name: sonarsource/sonar-scanner-cli:latest
-    entrypoint: [""]
-  variables:
-    GIT_DEPTH: 0
-  script:
-    - sonar-scanner -Dsonar.qualitygate.wait=true
-  only:
-    - merge_requests
-    - main
-  cache:
-    policy: pull
-
-docker-build:
-  image: portal:latest
+build:
+  image: docker:19.03.12
   stage: build
   services:
-    - docker:dind
-  needs:
-    - test:django
-    - test:sonarqube
+    - docker:19.03.12-dind
+  variables:
+    IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
   before_script:
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
   script:
-    - docker build --pull -t "$CI_REGISTRY_IMAGE" .
-    - docker push "$CI_REGISTRY_IMAGE"
-    - docker logout
+    - docker build -t $IMAGE_TAG .
+    - docker push $IMAGE_TAG
   tags:
     - latest
   cache:
