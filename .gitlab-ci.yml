@@ -6,6 +6,9 @@ variables:
   CI_BUILD_REF_NAME: ${CI_COMMIT_REF_NAME}
   SONAR_GITLAB_PROJECT_ID: ${CI_PROJECT_URL}
   VERBOSITY: 2
+  TEST_IMAGE: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
+  RELEASE_IMAGE: $CI_REGISTRY_IMAGE:latest
+
 
 stages:
   - test
@@ -77,22 +80,14 @@ test:sonarqube:
   cache:
     policy: pull
 
-build:
-  image: 1drop/php-72-docker-utils
+dockerimage:build:
+  image: docker:latest
+  services:
+    - docker:dind
   stage: build
-  variables:
-    IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
   before_script:
-    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
-    - eval $(ssh-agent -s)
-    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
-    - mkdir -p ~/.ssh
-    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
-    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - echo $CI_REGISTRY_PASSWORD | docker login --username "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
   script:
-    - docker build -t $IMAGE_TAG .
-    - docker push $IMAGE_TAG
-  tags:
-    - nova
-  cache:
-    policy: pull
+    - docker pull $RELEASE_IMAGE || true
+    - docker build --cache-from $RELEASE_IMAGE --tag $TEST_IMAGE .
+    - docker push $TEST_IMAGE

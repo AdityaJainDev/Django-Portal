@@ -9,6 +9,7 @@ from django.conf.urls.i18n import i18n_patterns
 from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
+from django.views.generic.base import RedirectView
 
 admin.site.site_header = settings.TITLE
 admin.site.site_title = settings.TITLE
@@ -17,6 +18,7 @@ def favicon(request):
     from textwrap import dedent
     from django.http import HttpResponse
     import base64
+    
 
     icon = """\
     AAABAAEAEBACAAEAAQCwAAAAFgAAACgAAAAQAAAAIAAAAAEAAQAAAAAAgAAAAAAAAAAAAAAAAAAA
@@ -41,6 +43,7 @@ urlpatterns = [
 # i18n urls for language change
 urlpatterns = i18n_patterns(
     path("admin/", admin.site.urls),
+    path("", RedirectView.as_view(url='accounts/login/')),
     path("dashboard/", include('dashboard.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path("payment/", include('paymentoptions.urls')),

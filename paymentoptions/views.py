@@ -10,10 +10,6 @@ from django.views.decorators.http import require_GET, require_POST, require_http
 # Create your views here.
 
 @require_GET
-def index(request):
-    return render(request, "base.html")
-
-@require_GET
 def paymentoptions(request):
 
     if request.method == 'GET':

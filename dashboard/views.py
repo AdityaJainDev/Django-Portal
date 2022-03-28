@@ -19,7 +19,7 @@ home_link = 'dashboard:home'
 
 @require_GET
 def home(request):
-    return render(request, "home.html")
+    return render(request, "registration/login.html")
 
 
 @require_GET
