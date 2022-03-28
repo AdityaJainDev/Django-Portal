@@ -91,3 +91,19 @@ dockerimage:build:
     - docker pull $RELEASE_IMAGE || true
     - docker build --cache-from $RELEASE_IMAGE --tag $TEST_IMAGE .
     - docker push $TEST_IMAGE
+  
+dockerimage:release:
+  image: docker:latest
+  services:
+    - docker:dind
+  only:
+    - dockerbuild
+  stage: release
+  needs:
+    - dockerimage:build
+  before_script:
+    - echo $CI_REGISTRY_PASSWORD | docker login --username "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
+  script:
+    - docker pull $TEST_IMAGE
+    - docker tag $TEST_IMAGE $RELEASE_IMAGE
+    - docker push $RELEASE_IMAG
