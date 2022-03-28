@@ -17,6 +17,7 @@ from django.contrib.auth.models import User
 
 home_link = 'dashboard:home'
 
+@require_GET
 @login_required
 def home(request):
     return render(request, "registration/login.html")
@@ -29,7 +30,7 @@ def logout(request):
     request.session.clear()
     return HttpResponseRedirect('accounts/login/')
 
-
+@require_GET
 @login_required
 def index(request):
     try:
@@ -53,7 +54,7 @@ def index(request):
         print(e)
     return render(request, "home_main.html")
 
-
+@require_GET
 @login_required
 def invoice_details(request, rechnung_id):
     account_number = request.session['username']
@@ -71,7 +72,7 @@ def invoice_details(request, rechnung_id):
         context = {"values": invoices, "list_items": list_items}
     return render(request, "invoices.html", context)
 
-
+@require_GET
 @login_required
 def all_invoices(request):
     account_number = request.session['username']
@@ -85,7 +86,7 @@ def all_invoices(request):
     return render(request, "all_invoices.html", context)
 
 
-
+@require_GET
 @login_required
 def edit_personal_data(request):
     if request.method == 'GET':
@@ -155,7 +156,7 @@ def password_reset(request):
 
     return render(request, "registration/reset_password.html", context)
 
-
+@require_GET
 @login_required
 def change_password(request):
     if request.method == 'GET':
