@@ -9,8 +9,7 @@ COPY requirements-frozen.txt /app
 
 #install headless chrome
 RUN apt-get update \
-    && apt-get install apt-transport-https ca-certificates gettext rsync openssh-client ssh curl -y \
-    && apt-get -y update \
+    && apt-get install apt-transport-https ca-certificates gettext rsync openssh-client ssh curl -y
 # upgrade pip and install any needed packages specified in requirements-frozen.txt
 RUN pip install --upgrade pip \
     && pip install --trusted-host pypi.python.org -r requirements-frozen.txt
