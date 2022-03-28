@@ -9,7 +9,7 @@ from django.utils.translation import gettext as _
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from django.views.decorators.http import require_http_methods
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
 # Create your views here.
@@ -17,7 +17,7 @@ from django.contrib.auth.models import User
 
 home_link = 'dashboard:home'
 
-@require_GET
+@login_required
 def home(request):
     return render(request, "registration/login.html")
 
@@ -27,10 +27,10 @@ def logout(request):
     u = User.objects.get(username=request.user.username)
     u.delete()
     request.session.clear()
-    return HttpResponseRedirect('/login/')
+    return HttpResponseRedirect('accounts/login/')
 
 
-@require_GET
+@login_required
 def index(request):
     try:
         if request.user.last_login.replace(microsecond=0) == request.user.date_joined.replace(microsecond=0):
@@ -54,7 +54,7 @@ def index(request):
     return render(request, "home_main.html")
 
 
-@require_GET
+@login_required
 def invoice_details(request, rechnung_id):
     account_number = request.session['username']
     password = request.session['password']
@@ -72,7 +72,7 @@ def invoice_details(request, rechnung_id):
     return render(request, "invoices.html", context)
 
 
-@require_GET
+@login_required
 def all_invoices(request):
     account_number = request.session['username']
     password = request.session['password']
@@ -86,7 +86,7 @@ def all_invoices(request):
 
 
 
-@require_GET
+@login_required
 def edit_personal_data(request):
     if request.method == 'GET':
         form = PersonalDataEdit()
@@ -156,7 +156,7 @@ def password_reset(request):
     return render(request, "registration/reset_password.html", context)
 
 
-@require_GET
+@login_required
 def change_password(request):
     if request.method == 'GET':
         form = ChangePassword()

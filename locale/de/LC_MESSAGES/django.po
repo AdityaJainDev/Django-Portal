@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-24 16:28+0100\n"
+"POT-Creation-Date: 2022-03-28 15:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -141,8 +141,7 @@ msgstr "Firma"
 msgid "Name"
 msgstr "Name"
 
-#: dashboard/templates/home_main.html:106
-#: dashboard/templates/home_main.html:156 templates/base.html:47
+#: dashboard/templates/home_main.html:106 templates/base.html:47
 msgid "edit_personal_data"
 msgstr "Stammdaten editieren"
 
@@ -150,26 +149,30 @@ msgstr "Stammdaten editieren"
 msgid "SepaHeading"
 msgstr "SEPA-Basis-Lastschrift"
 
-#: dashboard/templates/home_main.html:122 paymentoptions/forms.py:21
+#: dashboard/templates/home_main.html:122
+msgid "SepaGranted"
+msgstr "Lastschrift-Ermächtigung erteilt"
+
+#: dashboard/templates/home_main.html:125 paymentoptions/forms.py:21
 #: paymentoptions/templates/form.html:17
 msgid "owner"
 msgstr "Kontoinhaber"
 
-#: dashboard/templates/home_main.html:127 paymentoptions/forms.py:22
+#: dashboard/templates/home_main.html:130 paymentoptions/forms.py:22
 #: paymentoptions/templates/form.html:19
 msgid "iban"
 msgstr "IBAN"
 
-#: dashboard/templates/home_main.html:132 paymentoptions/forms.py:23
+#: dashboard/templates/home_main.html:135 paymentoptions/forms.py:23
 #: paymentoptions/templates/form.html:21
 msgid "bic"
 msgstr "BIC"
 
-#: dashboard/templates/home_main.html:137 dashboard/templates/invoices.html:24
+#: dashboard/templates/home_main.html:140 dashboard/templates/invoices.html:24
 msgid "knr"
 msgstr "K.-Nr."
 
-#: dashboard/templates/home_main.html:146
+#: dashboard/templates/home_main.html:149
 msgid "SepaNotFound"
 msgstr "Sie haben uns keine SEPA-Lastschrift-Ermächtigung erteilt."
 
@@ -300,18 +303,18 @@ msgid "DDLine8"
 msgstr ""
 "gekennzeichnet, die von uns bei allen Lastschrifteinzügen angegeben werden."
 
-#: paymentoptions/views.py:28
+#: paymentoptions/views.py:24
 msgid "Token Message"
 msgstr ""
 "Falscher oder fehlender Token, bitte überprüfen oder kontaktieren Sie uns."
 
-#: paymentoptions/views.py:52 paymentoptions/views.py:61
+#: paymentoptions/views.py:48 paymentoptions/views.py:57
 msgid "Error Message"
 msgstr ""
 "Es ist ein Fehler aufgetreten, bitte überprüfen Sie die ausgefüllten Details "
 "und versuchen Sie es erneut."
 
-#: paymentoptions/views.py:58
+#: paymentoptions/views.py:54
 msgid "Success Message"
 msgstr "Details erfolgreich aktualisiert."
 
@@ -327,7 +330,7 @@ msgstr "Ändern Sie Ihr Passwort"
 msgid "LoginHeading"
 msgstr "Anmeldung"
 
-#: templates/registration/login.html:29
+#: templates/registration/login.html:24
 msgid "LoginButton"
 msgstr "Senden und einloggen"
 

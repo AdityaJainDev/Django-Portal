@@ -12,18 +12,13 @@
             {% csrf_token %}
             <p>
                 <label for="id_username">Customer Number:</label>
-                <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username"
-                    maxlength="150" required="" id="id_username" data-com.bitwarden.browser.user-edited="yes" class="">
+                {{form.username}}
             </p>
             <p>
                 <label for="id_password">Password:</label>
-                <input type="password" name="password" autocomplete="current-password" required="" id="id_password"
-                    data-com.bitwarden.browser.user-edited="yes" class="">
+                {{form.password}}
             </p>
-            <span class="text-muted"></span>
-            <input name="action" value="send_data" type="hidden">
-            <span class="text-muted"></span>
-            <input name="action" value="send_data" type="hidden">
+            <a href="{% url 'dashboard:password_reset' %}"><strong>Forgot Password</strong></a><br><br>
             <div class="form__ctas">
                 <button type="submit" class="cta-btn"><span class="cta-btn-inner">
                         {% trans 'LoginButton' %}

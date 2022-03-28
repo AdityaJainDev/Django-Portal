@@ -1,6 +1,7 @@
 from cProfile import label
 from urllib import request
 from django import forms
+from django_countries.fields import CountryField
 from django.utils.translation import gettext_lazy as _
 
 Billing_Details =(
@@ -25,7 +26,7 @@ class PersonalDataEdit(forms.Form):
     address = forms.CharField(label=_('Address'))
     postcode = forms.CharField(label=_('Postcode'))
     city = forms.CharField(label=_('City'))
-    country = forms.CharField(label=_('Country'))
+    country = CountryField(blank_label=_('Country')).formfield()
     email = forms.EmailField(label=_('Email'))
     phone = forms.CharField(widget=forms.NumberInput(), label=_('Phone'))
     fax = forms.CharField(label=_('Fax'))

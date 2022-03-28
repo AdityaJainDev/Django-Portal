@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     "elasticapm.contrib.django",
     "adminsortable",
     "dashboard",
+    "django_countries",
     'localflavor',
     "compressor",
     'crispy_forms',
@@ -203,7 +204,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CRM_ENDPOINT = "https://ascrm.aditsystems.de/api/"
 
 LOGIN_REDIRECT_URL = 'dashboard/main/'
-LOGOUT_REDIRECT_URL = 'dashboard/home/'
+LOGOUT_REDIRECT_URL = 'accounts/login/'
 
 ELASTIC_APM = {
     'SERVICE_NAME': 'portal',

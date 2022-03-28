@@ -119,6 +119,9 @@
             <table style="width:100%" aria-hidden="True">
               <hr>
               <tr>
+                <td colspan="2" style="text-align: center;"><strong>{% trans 'SepaGranted' %} &#x2705;</strong></td>
+              </tr>
+              <tr>
                 <th scope="col">{% trans 'owner' %}</th>
                 <td>{{personal.kunde_inhaber}}
                 <td>
@@ -147,15 +150,6 @@
               </tr>
             </table>
             {% endif %}
-          </div>
-        </div>
-        <div class="products__ctas">
-          <div class="cta">
-            <a class="cta-btn" href="/dashboard/edit_personal_data/">
-              <span class="cta-btn-inner">
-                {% trans 'edit_personal_data' %}
-              </span>
-            </a>
           </div>
         </div>
       </div>

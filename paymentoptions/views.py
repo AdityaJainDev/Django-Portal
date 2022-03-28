@@ -5,14 +5,12 @@ import requests
 from django.utils.translation import gettext as _
 from django.contrib import messages
 from django.conf import settings
-from django.views.decorators.http import require_GET, require_POST, require_http_methods, require_safe
+from django.views.generic import TemplateView
 
 # Create your views here.
+class paymentoptions(TemplateView):
 
-@require_GET
-def paymentoptions(request):
-
-    if request.method == 'GET':
+    def get(self, request, *args, **kwargs):
         account_number = request.GET.get('knr', None)
         token = request.GET.get('token', None)
         data = {'knr':account_number, 'token':token}
@@ -26,8 +24,12 @@ def paymentoptions(request):
             form = PaymentForm()
             form.initial['account_number'] = request.GET.get('knr', None)
             form.initial['payment_options'] = zahlungsart
-
-    elif request.method == 'POST':
+    
+        context = {'form':form}
+        
+        return render(request, "form.html", context)
+    
+    def post(self, request, *args, **kwargs):
         form = PaymentForm(request.POST)
         if form.is_valid():
             account_number = request.GET.get('knr', None)
@@ -59,6 +61,10 @@ def paymentoptions(request):
             form.initial['account_number'] = request.GET.get('knr', None)
             form.initial['options'] = "1"
 
-    context = {'form':form}
+        context = {'form':form}
+        
+        return render(request, "form.html", context)
 
-    return render(request, "form.html", context)
+    
+
+    

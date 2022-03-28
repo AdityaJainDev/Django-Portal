@@ -3,6 +3,7 @@ django-admin-sortable
 django-markdownfield
 django-phonenumber-field
 djangorestframework
+django-countries
 django-crispy-forms
 django-localflavor
 mysqlclient

@@ -85,6 +85,9 @@ dockerimage:build:
   image: docker:latest
   services:
     - docker:dind
+  only:
+    - merge_requests
+    - main
   stage: build
   before_script:
     - echo $CI_REGISTRY_PASSWORD | docker login --username "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
