@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-28 15:06+0200\n"
+"POT-Creation-Date: 2022-03-29 15:42+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,79 +18,79 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: dashboard/forms.py:7
+#: dashboard/forms.py:8
 msgid "ByEmail"
 msgstr "Send via Email"
 
-#: dashboard/forms.py:8
+#: dashboard/forms.py:9
 msgid "ByPost"
 msgstr "Send via Post"
 
-#: dashboard/forms.py:9
+#: dashboard/forms.py:10
 msgid "ByFax"
 msgstr "Send via Fax"
 
-#: dashboard/forms.py:14
+#: dashboard/forms.py:15
 msgid "EmailInput"
 msgstr "Enter Email ID"
 
-#: dashboard/forms.py:17
+#: dashboard/forms.py:18
 msgid "OldPassword"
 msgstr "Enter your Old Password"
 
-#: dashboard/forms.py:18
+#: dashboard/forms.py:19
 msgid "NewPassword"
 msgstr "Enter New Password"
 
-#: dashboard/forms.py:19
+#: dashboard/forms.py:20
 msgid "ConfirmPassword"
 msgstr "Confirm New Password"
 
-#: dashboard/forms.py:22
+#: dashboard/forms.py:23
 msgid "CompanyName"
 msgstr "Company Name"
 
-#: dashboard/forms.py:23
+#: dashboard/forms.py:24
 msgid "FirstName"
 msgstr "First Name"
 
-#: dashboard/forms.py:24
+#: dashboard/forms.py:25
 msgid "LastName"
 msgstr "Last Name"
 
-#: dashboard/forms.py:25 dashboard/templates/home_main.html:85
+#: dashboard/forms.py:26 dashboard/templates/home_main.html:85
 msgid "Address"
 msgstr "Address"
 
-#: dashboard/forms.py:26
+#: dashboard/forms.py:27
 msgid "Postcode"
 msgstr "Postcode"
 
-#: dashboard/forms.py:27
+#: dashboard/forms.py:28
 msgid "City"
 msgstr "City"
 
-#: dashboard/forms.py:28
+#: dashboard/forms.py:29
 msgid "Country"
 msgstr "Country"
 
-#: dashboard/forms.py:29 dashboard/templates/home_main.html:90
+#: dashboard/forms.py:30 dashboard/templates/home_main.html:90
 msgid "Email"
 msgstr "Email"
 
-#: dashboard/forms.py:30 dashboard/templates/home_main.html:95
+#: dashboard/forms.py:31 dashboard/templates/home_main.html:95
 msgid "Phone"
 msgstr "Phone"
 
-#: dashboard/forms.py:31
+#: dashboard/forms.py:32
 msgid "Fax"
 msgstr "Fax"
 
-#: dashboard/forms.py:32
+#: dashboard/forms.py:33
 msgid "BillingDetails"
 msgstr "Invoice Details"
 
-#: dashboard/forms.py:33
+#: dashboard/forms.py:34
 msgid "Newsletter"
 msgstr "Yes, please send the newsletter for general announcements"
 
@@ -123,7 +123,7 @@ msgstr "Our Bank Details"
 msgid "EditDataHeading"
 msgstr "Edit your Personal Data"
 
-#: dashboard/templates/edit_data.html:18 paymentoptions/templates/form.html:50
+#: dashboard/templates/edit_data.html:16 paymentoptions/templates/form.html:50
 msgid "SendData"
 msgstr "Submit Data"
 
@@ -194,35 +194,35 @@ msgstr "Unit Price"
 msgid "total_price"
 msgstr "Total Price"
 
-#: dashboard/views.py:120
+#: dashboard/views.py:121
 msgid "EditDataSuccess"
 msgstr "Your data has been updated successfully"
 
-#: dashboard/views.py:123
+#: dashboard/views.py:124
 msgid "EditDataError"
 msgstr "There was an error, please try again"
 
-#: dashboard/views.py:148
+#: dashboard/views.py:149
 msgid "ResetEmailSuccess"
 msgstr "Email has been sent successfully"
 
-#: dashboard/views.py:151
+#: dashboard/views.py:152
 msgid "ResetEmailError"
 msgstr "There was an error, please try again"
 
-#: dashboard/views.py:172
+#: dashboard/views.py:173
 msgid "PasswordMatchError"
 msgstr "The new passwords do not match, please try again"
 
-#: dashboard/views.py:175
+#: dashboard/views.py:176
 msgid "OldPasswordError"
 msgstr "Old password is Incorrect, please try again"
 
-#: dashboard/views.py:185
+#: dashboard/views.py:186
 msgid "PasswordChangeSuccess"
 msgstr "Password has been changed successfully"
 
-#: dashboard/views.py:188
+#: dashboard/views.py:189
 msgid "PasswordChangeError"
 msgstr "There was an error, please try again"
 
@@ -297,15 +297,15 @@ msgstr "- our creditors - identification number: DE12ZZZ00001131937"
 msgid "DDLine8"
 msgstr "marked, which are indicated by us for all direct debits."
 
-#: paymentoptions/views.py:24
+#: paymentoptions/views.py:22
 msgid "Token Message"
 msgstr "Incorrect or missing token, please check or contact us."
 
-#: paymentoptions/views.py:48 paymentoptions/views.py:57
+#: paymentoptions/views.py:50 paymentoptions/views.py:59
 msgid "Error Message"
 msgstr "There was an error, please check the details filled and try again."
 
-#: paymentoptions/views.py:54
+#: paymentoptions/views.py:56
 msgid "Success Message"
 msgstr "Details updated successfully."
 
@@ -320,6 +320,16 @@ msgstr "Change your Password"
 #: templates/registration/login.html:8
 msgid "LoginHeading"
 msgstr "Login"
+
+#: templates/registration/login.html:14
+msgid "KnrOrEmail"
+msgstr "Customer Number / Email Address"
+
+#: templates/registration/login.html:18
+#, fuzzy
+#| msgid "OldPassword"
+msgid "Password"
+msgstr "Enter your Old Password"
 
 #: templates/registration/login.html:24
 msgid "LoginButton"
