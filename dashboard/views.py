@@ -194,7 +194,8 @@ def change_password(request):
 
     return render(request, "registration/reset_password.html", context)
 
-
+@require_GET
+@login_required
 def download_pdf(request):
 
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
