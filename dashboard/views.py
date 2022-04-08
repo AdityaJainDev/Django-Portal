@@ -193,16 +193,3 @@ def change_password(request):
     context = {'form': form}
 
     return render(request, "registration/reset_password.html", context)
-
-@require_GET
-@login_required
-def download_pdf(request):
-
-    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    filename = 'pdftest.pdf'
-    filepath = BASE_DIR + '/dashboard/templates/pdf/' + filename
-    path = open(filepath, 'rb')
-    mime_type, _ = mimetypes.guess_type(filepath)
-    response = HttpResponse(path, content_type=mime_type)
-    response['Content-Disposition'] = "attachment; filename=%s" % filename
-    return response
