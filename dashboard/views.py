@@ -193,7 +193,8 @@ def change_password(request):
 
     return render(request, "registration/reset_password.html", context)
 
-
+@require_GET
+@login_required
 def download_pdf(request, rechnung_id):
     account_number = request.session['username']
     password = request.session['password']
