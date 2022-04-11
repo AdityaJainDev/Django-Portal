@@ -10,7 +10,7 @@
                     {% trans 'r_no' %} {{values.rechnung_rnr}}
                 </span>
                 <span style="float:right;">
-                    <a href="https://kunden.aditsystems.de/kc/Rechnungen/RechnungPDF.html?rechnung_id={{values.rechnung_id}}&rechnung_rnr={{values.rechnung_rnr}}" download>Download PDF</a>
+                    <a href="{% url 'dashboard:download_pdf' values.rechnung_id %}">Download PDF</a>
                 </span>
             </div>
             <hr>

@@ -10,9 +10,8 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-import mimetypes
 from django.contrib.auth.models import User
-import os
+import base64
 # Create your views here.
 
 
@@ -193,3 +192,21 @@ def change_password(request):
     context = {'form': form}
 
     return render(request, "registration/reset_password.html", context)
+
+
+def download_pdf(request, rechnung_id):
+    account_number = request.session['username']
+    password = request.session['password']
+
+    params = {"rechnung_id" : rechnung_id}
+
+    download_pdf = requests.get(settings.CRM_ENDPOINT + "Rechnungen/RechnungPDF/", auth=(account_number, password), params=params)
+
+    jsondata = download_pdf.json()["data"]
+    decoded = base64.b64decode(jsondata)
+    
+    with open("invoice.pdf", 'wb') as out:
+        response = HttpResponse(out.write(decoded), content_type="application/pdf")
+        response['Content-Disposition'] = 'inline'
+        return response
+

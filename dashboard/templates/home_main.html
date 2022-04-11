@@ -2,18 +2,15 @@
 {% load i18n %}
 
 {% block content %}
-{% if user.is_authenticated %}\
+{% if user.is_authenticated %}
 <div class="hero-simple aos-init aos-animate" style="background-color: darkblue" data-aos="fade">
   <div class="hero-simple__container">
-    <div class="hero-simple__mainContainer">
+    <div class="hero-simple__mainContainer" style="justify-content: left;">
       <div class="hero-simple__text-container">
-        <div class="hero-simple__title">Hi, {{personal.kunde_vorname}} {{personal.kunde_name}} </div>
+        <div class="hero-simple__title">{% trans 'Hello' %}, {{personal.kunde_vorname}} {{personal.kunde_name}} </div>
         <div class="hero-simple__subtitle">
-          <p>Here, you can handle all your data and bills</p>
+          <p>{% trans 'HandleBills' %}</p>
         </div>
-      </div>
-      <div class="hero-simple__image">
-        <img src="/media/1/download/1.1ecea6a0.svg?v=1" alt="">
       </div>
     </div>
   </div>
@@ -27,7 +24,7 @@
       <div class="products__box">
         <div class="products__background"> </div>
         <div class="products__texts">
-          <div class="products__text"> Your Invoices </div>
+          <div class="products__text">{% trans 'Invoices' %}</div>
           <div class="products__body">
             <table style="width:100%" aria-hidden="True">
               <tr>
@@ -46,7 +43,7 @@
                 <td></td>
                 <td>{{x.rechnung_betrag}}&nbsp;€</td>
                 <td></td>
-                <td><a href="{% url 'dashboard:invoice_details' x.rechnung_id %}">View</a></td>
+                <td><a href="{% url 'dashboard:invoice_details' x.rechnung_id %}">{% trans 'View' %}</a></td>
               </tr>
               {% endfor %}
             </table>
@@ -67,7 +64,7 @@
       <div class="products__box">
         <div class="products__background"> </div>
         <div class="products__texts">
-          <div class="products__text"> Your Data </div>
+          <div class="products__text">{% trans 'YourData' %}</div>
           <div class="products__body">
             <table style="width:100%" aria-hidden="True">
               <hr>
@@ -101,7 +98,7 @@
         </div>
         <div class="products__ctas">
           <div class="cta">
-            <a class="cta-btn" href="/dashboard/edit_personal_data/">
+            <a class="cta-btn" href="{% url 'dashboard:edit_personal_data' %}">
               <span class="cta-btn-inner">
                 {% trans 'edit_personal_data' %}
               </span>
@@ -146,7 +143,7 @@
             <table style="width:100%" aria-hidden="True">
               <hr>
               <tr>
-                <th scope="col">Sie haben uns keine SEPA-Lastschrift-Ermächtigung erteilt.{% trans 'SepaNotFound' %}</th>
+                <th scope="col">{% trans 'SepaNotFound' %}</th>
               </tr>
             </table>
             {% endif %}
@@ -162,8 +159,7 @@
 {% else %}
 
 
-<p>You are not logged in</p>
-<a href="{% url 'login' %}">Log In</a>
+<p>{% trans 'NotLoggedIn' %}</p>
 {% endif %}
 
 {% endblock %}

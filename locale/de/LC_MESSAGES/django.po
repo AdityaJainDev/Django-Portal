@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-29 15:42+0200\n"
+"POT-Creation-Date: 2022-04-11 12:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -60,7 +60,7 @@ msgstr "Vorname"
 msgid "LastName"
 msgstr "Name"
 
-#: dashboard/forms.py:26 dashboard/templates/home_main.html:85
+#: dashboard/forms.py:26 dashboard/templates/home_main.html:82
 msgid "Address"
 msgstr "Adresse"
 
@@ -76,11 +76,11 @@ msgstr "Ort"
 msgid "Country"
 msgstr "Land"
 
-#: dashboard/forms.py:30 dashboard/templates/home_main.html:90
+#: dashboard/forms.py:30 dashboard/templates/home_main.html:87
 msgid "Email"
 msgstr "E-Mail-Adresse"
 
-#: dashboard/forms.py:31 dashboard/templates/home_main.html:95
+#: dashboard/forms.py:31 dashboard/templates/home_main.html:92
 msgid "Phone"
 msgstr "Telefon"
 
@@ -101,23 +101,23 @@ msgid "AllInvoicesHeading"
 msgstr "Rechnungsübersicht"
 
 #: dashboard/templates/all_invoices.html:20
-#: dashboard/templates/home_main.html:34 dashboard/templates/invoices.html:10
-#: dashboard/templates/invoices.html:28
+#: dashboard/templates/home_main.html:31 dashboard/templates/invoices.html:10
+#: dashboard/templates/invoices.html:31
 msgid "r_no"
 msgstr "R.-Nr."
 
 #: dashboard/templates/all_invoices.html:22
-#: dashboard/templates/home_main.html:36 dashboard/templates/invoices.html:32
+#: dashboard/templates/home_main.html:33 dashboard/templates/invoices.html:35
 msgid "r_date"
 msgstr "R.-Datum."
 
 #: dashboard/templates/all_invoices.html:24
-#: dashboard/templates/home_main.html:38
+#: dashboard/templates/home_main.html:35
 msgid "r_cost"
 msgstr "Betrag"
 
 #: dashboard/templates/all_invoices.html:42
-#: dashboard/templates/invoices.html:99
+#: dashboard/templates/invoices.html:102
 msgid "OurBankDetails"
 msgstr "Unsere Bankverbindung"
 
@@ -129,103 +129,127 @@ msgstr "Bearbeiten Sie Ihre persönlichen Daten"
 msgid "SendData"
 msgstr "Daten übermitteln"
 
-#: dashboard/templates/home_main.html:59
+#: dashboard/templates/home_main.html:10
+msgid "Hello"
+msgstr "Hallo"
+
+#: dashboard/templates/home_main.html:12
+msgid "HandleBills"
+msgstr "Hier können Sie alle Ihre Daten und Rechnungen verwalten"
+
+#: dashboard/templates/home_main.html:27
+msgid "Invoices"
+msgstr "Ihre Rechnungen"
+
+#: dashboard/templates/home_main.html:46
+msgid "View"
+msgstr "Ansehen"
+
+#: dashboard/templates/home_main.html:56
 msgid "view_invoices"
 msgstr "Rechnungen anzeigen"
 
-#: dashboard/templates/home_main.html:75
+#: dashboard/templates/home_main.html:67
+msgid "YourData"
+msgstr "Ihre Daten"
+
+#: dashboard/templates/home_main.html:72
 msgid "Company"
 msgstr "Firma"
 
-#: dashboard/templates/home_main.html:80
+#: dashboard/templates/home_main.html:77
 msgid "Name"
 msgstr "Name"
 
-#: dashboard/templates/home_main.html:106 templates/base.html:47
+#: dashboard/templates/home_main.html:103 templates/base.html:47
 msgid "edit_personal_data"
 msgstr "Stammdaten editieren"
 
-#: dashboard/templates/home_main.html:116
+#: dashboard/templates/home_main.html:113
 msgid "SepaHeading"
 msgstr "SEPA-Basis-Lastschrift"
 
-#: dashboard/templates/home_main.html:122
+#: dashboard/templates/home_main.html:119
 msgid "SepaGranted"
 msgstr "Lastschrift-Ermächtigung erteilt"
 
-#: dashboard/templates/home_main.html:125 paymentoptions/forms.py:21
+#: dashboard/templates/home_main.html:122 paymentoptions/forms.py:21
 #: paymentoptions/templates/form.html:17
 msgid "owner"
 msgstr "Kontoinhaber"
 
-#: dashboard/templates/home_main.html:130 paymentoptions/forms.py:22
+#: dashboard/templates/home_main.html:127 paymentoptions/forms.py:22
 #: paymentoptions/templates/form.html:19
 msgid "iban"
 msgstr "IBAN"
 
-#: dashboard/templates/home_main.html:135 paymentoptions/forms.py:23
+#: dashboard/templates/home_main.html:132 paymentoptions/forms.py:23
 #: paymentoptions/templates/form.html:21
 msgid "bic"
 msgstr "BIC"
 
-#: dashboard/templates/home_main.html:140 dashboard/templates/invoices.html:24
+#: dashboard/templates/home_main.html:137 dashboard/templates/invoices.html:27
 msgid "knr"
 msgstr "K.-Nr."
 
-#: dashboard/templates/home_main.html:149
+#: dashboard/templates/home_main.html:146
 msgid "SepaNotFound"
 msgstr "Sie haben uns keine SEPA-Lastschrift-Ermächtigung erteilt."
 
-#: dashboard/templates/invoices.html:45
+#: dashboard/templates/home_main.html:162
+msgid "NotLoggedIn"
+msgstr "Sie sind derzeit nicht eingeloggt."
+
+#: dashboard/templates/invoices.html:48
 msgid "amount"
 msgstr "Menge"
 
-#: dashboard/templates/invoices.html:46
+#: dashboard/templates/invoices.html:49
 msgid "designation"
 msgstr "Bezeichnung"
 
-#: dashboard/templates/invoices.html:48
+#: dashboard/templates/invoices.html:51
 msgid "vat"
 msgstr "MwSt"
 
-#: dashboard/templates/invoices.html:49
+#: dashboard/templates/invoices.html:52
 msgid "unit_price"
 msgstr "Einzelpreis"
 
-#: dashboard/templates/invoices.html:50
+#: dashboard/templates/invoices.html:53
 msgid "total_price"
 msgstr "Gesamtpreis"
 
-#: dashboard/views.py:121
+#: dashboard/views.py:122
 msgid "EditDataSuccess"
 msgstr "Ihre Daten wurden erfolgreich aktualisiert"
 
-#: dashboard/views.py:124
+#: dashboard/views.py:125
 msgid "EditDataError"
 msgstr "Es ist ein Fehler aufgetreten, bitte versuchen Sie es erneut"
 
-#: dashboard/views.py:149
+#: dashboard/views.py:150
 msgid "ResetEmailSuccess"
 msgstr "E-Mail wurde erfolgreich versendet"
 
-#: dashboard/views.py:152
+#: dashboard/views.py:153
 msgid "ResetEmailError"
 msgstr "Es ist ein Fehler aufgetreten, bitte versuchen Sie es erneut"
 
-#: dashboard/views.py:173
+#: dashboard/views.py:174
 msgid "PasswordMatchError"
 msgstr ""
 "Die neuen Passwörter stimmen nicht überein, bitte versuchen Sie es erneut"
 
-#: dashboard/views.py:176
+#: dashboard/views.py:177
 msgid "OldPasswordError"
 msgstr "Altes Passwort ist falsch, bitte versuchen Sie es erneut"
 
-#: dashboard/views.py:186
+#: dashboard/views.py:187
 msgid "PasswordChangeSuccess"
 msgstr "Passwort wurde erfolgreich geändert"
 
-#: dashboard/views.py:189
+#: dashboard/views.py:190
 msgid "PasswordChangeError"
 msgstr "Es ist ein Fehler aufgetreten, bitte versuchen Sie es erneut"
 
