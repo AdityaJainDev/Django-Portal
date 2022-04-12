@@ -103,31 +103,11 @@
                 <span style="text-align: left;">{{values.rechnung_text|linebreaks}}</span>
                 <br>
                 <hr>
-                <table aria-describedby="bank_details" id="table_bank">
-                    <tbody style="text-align: start;">
-                        <th colspan="2">{% trans 'OurBankDetails' %}&nbsp;:</th>
-                        <tr>
-                            <td colspan="2">ADITSYSTEMS, Inh. Anton Dollmaier</td>
-                        </tr>
-                        <tr>
-                            <td><strong>{% trans 'iban' %}:</strong></td>
-                            <td>DE50 7406 1813 0000 6350 57</td>
-                        </tr>
-                        <tr>
-                            <td><strong>{% trans 'bic' %}:</strong></td>
-                            <td>GENODEF1PFK</td>
-                        </tr>
-                        <tr>
-                            <td><strong>{% trans 'Bank' %}:</strong></td>
-                            <td>VR-Bank Rottal-Inn eG</td>
-                        </tr>
-                    </tbody>
-                </table>
+                {% include "bank_details.html" %}
             </div>
         </div>
     </div>
 </div>
-
 
 
 

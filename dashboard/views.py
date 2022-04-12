@@ -1,4 +1,5 @@
 from multiprocessing import context
+from optparse import Values
 from sre_constants import SUCCESS
 from django.shortcuts import render
 from django.views.decorators.http import require_GET, require_POST
@@ -203,10 +204,13 @@ def download_pdf(request, rechnung_rnr, rechnung_id):
     params = {"rechnung_id" : rechnung_id}
 
     download_pdf = requests.get(settings.CRM_ENDPOINT + "Rechnungen/RechnungPDF/", auth=(account_number, password), params=params)
+    invoice_detail = requests.get(settings.CRM_ENDPOINT + "Rechnungen/RechnungDetails/", auth=(account_number, password), params=params)
 
-    jsondata = download_pdf.json()["data"]
-    decoded = base64.b64decode(jsondata)
+    values = invoice_detail.json()["data"]
 
-    response = HttpResponse(decoded, content_type="application/pdf")
-    response['Content-Disposition'] = 'inline; filename="RE{}.pdf"'.format(rnr)
-    return response
+    if values["rechnung_rnr"] == str(rnr) and download_pdf.json()["status"] == 1:
+        jsondata = download_pdf.json()["data"]
+        decoded = base64.b64decode(jsondata)
+        response = HttpResponse(decoded, content_type="application/pdf")
+        response['Content-Disposition'] = 'inline; filename="RE{}.pdf"'.format(rnr)
+        return response
