@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-11 12:01+0200\n"
+"POT-Creation-Date: 2022-04-12 15:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -94,18 +94,18 @@ msgstr "Invoice Details"
 msgid "Newsletter"
 msgstr "Yes, please send the newsletter for general announcements"
 
-#: dashboard/templates/all_invoices.html:10 templates/base.html:44
+#: dashboard/templates/all_invoices.html:10 templates/base.html:43
 msgid "AllInvoicesHeading"
 msgstr "Invoice overview"
 
 #: dashboard/templates/all_invoices.html:20
 #: dashboard/templates/home_main.html:31 dashboard/templates/invoices.html:10
-#: dashboard/templates/invoices.html:31
+#: dashboard/templates/invoices.html:37
 msgid "r_no"
 msgstr "Invoice Number"
 
 #: dashboard/templates/all_invoices.html:22
-#: dashboard/templates/home_main.html:33 dashboard/templates/invoices.html:35
+#: dashboard/templates/home_main.html:33 dashboard/templates/invoices.html:41
 msgid "r_date"
 msgstr "Invoice Date"
 
@@ -115,9 +115,26 @@ msgid "r_cost"
 msgstr "Amount"
 
 #: dashboard/templates/all_invoices.html:42
-#: dashboard/templates/invoices.html:102
+#: dashboard/templates/invoices.html:108
 msgid "OurBankDetails"
 msgstr "Our Bank Details"
+
+#: dashboard/templates/all_invoices.html:47
+#: dashboard/templates/home_main.html:127 dashboard/templates/invoices.html:113
+#: paymentoptions/forms.py:22 paymentoptions/templates/form.html:19
+msgid "iban"
+msgstr "IBAN"
+
+#: dashboard/templates/all_invoices.html:51
+#: dashboard/templates/home_main.html:132 dashboard/templates/invoices.html:117
+#: paymentoptions/forms.py:23 paymentoptions/templates/form.html:21
+msgid "bic"
+msgstr "BIC"
+
+#: dashboard/templates/all_invoices.html:55
+#: dashboard/templates/invoices.html:121
+msgid "Bank"
+msgstr "Bank"
 
 #: dashboard/templates/edit_data.html:7
 msgid "EditDataHeading"
@@ -151,7 +168,7 @@ msgstr "View Invoices"
 msgid "YourData"
 msgstr "Your Data"
 
-#: dashboard/templates/home_main.html:72
+#: dashboard/templates/home_main.html:72 templates/base.html:161
 msgid "Company"
 msgstr "Company"
 
@@ -159,7 +176,7 @@ msgstr "Company"
 msgid "Name"
 msgstr "Name"
 
-#: dashboard/templates/home_main.html:103 templates/base.html:47
+#: dashboard/templates/home_main.html:103 templates/base.html:46
 msgid "edit_personal_data"
 msgstr "Edit Personal Data"
 
@@ -176,17 +193,7 @@ msgstr "Direct debit authorization granted"
 msgid "owner"
 msgstr "Owner"
 
-#: dashboard/templates/home_main.html:127 paymentoptions/forms.py:22
-#: paymentoptions/templates/form.html:19
-msgid "iban"
-msgstr "IBAN"
-
-#: dashboard/templates/home_main.html:132 paymentoptions/forms.py:23
-#: paymentoptions/templates/form.html:21
-msgid "bic"
-msgstr "BIC"
-
-#: dashboard/templates/home_main.html:137 dashboard/templates/invoices.html:27
+#: dashboard/templates/home_main.html:137 dashboard/templates/invoices.html:33
 msgid "knr"
 msgstr "Account Number"
 
@@ -198,55 +205,59 @@ msgstr "You have not given us a SEPA direct debit authorization."
 msgid "NotLoggedIn"
 msgstr "You are currently not logged in."
 
-#: dashboard/templates/invoices.html:48
+#: dashboard/templates/invoices.html:16
+msgid "DownloadPDF"
+msgstr "Download PDF"
+
+#: dashboard/templates/invoices.html:54
 msgid "amount"
 msgstr "Quantity"
 
-#: dashboard/templates/invoices.html:49
+#: dashboard/templates/invoices.html:55
 msgid "designation"
 msgstr "Description"
 
-#: dashboard/templates/invoices.html:51
+#: dashboard/templates/invoices.html:57
 msgid "vat"
 msgstr "VAT"
 
-#: dashboard/templates/invoices.html:52
+#: dashboard/templates/invoices.html:58
 msgid "unit_price"
 msgstr "Unit Price"
 
-#: dashboard/templates/invoices.html:53
+#: dashboard/templates/invoices.html:59
 msgid "total_price"
 msgstr "Total Price"
 
-#: dashboard/views.py:122
+#: dashboard/views.py:121
 msgid "EditDataSuccess"
 msgstr "Your data has been updated successfully"
 
-#: dashboard/views.py:125
+#: dashboard/views.py:124
 msgid "EditDataError"
 msgstr "There was an error, please try again"
 
-#: dashboard/views.py:150
+#: dashboard/views.py:149
 msgid "ResetEmailSuccess"
 msgstr "Email has been sent successfully"
 
-#: dashboard/views.py:153
+#: dashboard/views.py:152
 msgid "ResetEmailError"
 msgstr "There was an error, please try again"
 
-#: dashboard/views.py:174
+#: dashboard/views.py:173
 msgid "PasswordMatchError"
 msgstr "The new passwords do not match, please try again"
 
-#: dashboard/views.py:177
+#: dashboard/views.py:176
 msgid "OldPasswordError"
 msgstr "Old password is Incorrect, please try again"
 
-#: dashboard/views.py:187
+#: dashboard/views.py:186
 msgid "PasswordChangeSuccess"
 msgstr "Password has been changed successfully"
 
-#: dashboard/views.py:190
+#: dashboard/views.py:189
 msgid "PasswordChangeError"
 msgstr "There was an error, please try again"
 
@@ -333,9 +344,77 @@ msgstr "There was an error, please check the details filled and try again."
 msgid "Success Message"
 msgstr "Details updated successfully."
 
-#: templates/base.html:50 templates/registration/change_password.html:18
+#: templates/base.html:13
+msgid "Homepage"
+msgstr "Homepage"
+
+#: templates/base.html:49 templates/registration/change_password.html:18
 msgid "ChangePassword"
 msgstr "Change Password"
+
+#: templates/base.html:53
+msgid "Logout"
+msgstr "Logout"
+
+#: templates/base.html:55
+msgid "Login"
+msgstr "Login"
+
+#: templates/base.html:110
+msgid "Contact"
+msgstr "Contact"
+
+#: templates/base.html:127
+msgid "Services"
+msgstr "Services"
+
+#: templates/base.html:139
+msgid "Compliance"
+msgstr "Compliance"
+
+#: templates/base.html:142
+msgid "LegalNotice"
+msgstr "Legal Notice"
+
+#: templates/base.html:143
+msgid "Privacy"
+msgstr "Privacy"
+
+#: templates/base.html:144
+msgid "Revocation"
+msgstr "Revocation"
+
+#: templates/base.html:145
+msgid "CustomerInformation"
+msgstr "Customer Information"
+
+#: templates/base.html:146
+msgid "TermsofService"
+msgstr "Terms of Service"
+
+#: templates/base.html:151
+msgid "InfoCenter"
+msgstr "Info Center"
+
+#: templates/base.html:154
+msgid "Blog"
+msgstr "Blog"
+
+#: templates/base.html:155
+msgid "Support"
+msgstr "Support"
+
+#: templates/base.html:156
+msgid "CustomerCenter"
+msgstr "Customer Center"
+
+#: templates/base.html:164
+msgid "ContactDetails"
+msgstr "Contact Details"
+
+#: templates/base.html:165
+msgid "Jobs"
+msgstr "Jobs"
 
 #: templates/registration/change_password.html:8
 msgid "ChangePasswordHeading"
@@ -350,10 +429,12 @@ msgid "KnrOrEmail"
 msgstr "Customer Number / Email Address"
 
 #: templates/registration/login.html:18
-#, fuzzy
-#| msgid "OldPassword"
 msgid "Password"
-msgstr "Enter your Old Password"
+msgstr "Password"
+
+#: templates/registration/login.html:21
+msgid "ForgotPassword"
+msgstr "Forgot Password"
 
 #: templates/registration/login.html:24
 msgid "LoginButton"

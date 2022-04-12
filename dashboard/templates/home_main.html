@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
-
+{% load static %}
 {% block content %}
 {% if user.is_authenticated %}
 <div class="hero-simple aos-init aos-animate" style="background-color: darkblue" data-aos="fade">
@@ -43,7 +43,7 @@
                 <td></td>
                 <td>{{x.rechnung_betrag}}&nbsp;€</td>
                 <td></td>
-                <td><a href="{% url 'dashboard:invoice_details' x.rechnung_id %}">{% trans 'View' %}</a></td>
+                <td><a href="{% url 'dashboard:invoice_details' x.rechnung_id %}">{% trans 'View' %}</a>&nbsp;&nbsp;&nbsp;<a href="{% url 'dashboard:download_pdf' x.rechnung_rnr x.rechnung_id %}" title="Download PDF" download>&#128438</a></td>
               </tr>
               {% endfor %}
             </table>

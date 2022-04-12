@@ -25,7 +25,7 @@
                             </tr>
                             {% for x in values %}
                             <tr>
-                                <td><a href="{% url 'dashboard:invoice_details' x.rechnung_id %}">View</a></td>
+                                <td><a href="{% url 'dashboard:download_pdf' x.rechnung_rnr x.rechnung_id %}" title="Download PDF" download>&#128438</a>&nbsp;&nbsp;&nbsp;<a href="{% url 'dashboard:invoice_details' x.rechnung_id %}">View</a></td>
                                 <td>{{x.rechnung_rnr}}</td>
                                 <td></td>
                                 <td>{{x.rechnung_datum}}</td>
@@ -44,15 +44,15 @@
                             <td colspan="2">ADITSYSTEMS, Inh. Anton Dollmaier</td>
                         </tr>
                         <tr>
-                            <td><strong>IBAN:</strong></td>
+                            <td><strong>{% trans 'iban' %}:</strong></td>
                             <td>DE50 7406 1813 0000 6350 57</td>
                         </tr>
                         <tr>
-                            <td><strong>BIC:</strong></td>
+                            <td><strong>{% trans 'bic' %}:</strong></td>
                             <td>GENODEF1PFK</td>
                         </tr>
                         <tr>
-                            <td><strong>Bank:</strong></td>
+                            <td><strong>{% trans 'Bank' %}:</strong></td>
                             <td>VR-Bank Rottal-Inn eG</td>
                         </tr>
                     </tbody>

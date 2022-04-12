@@ -18,7 +18,7 @@
                 <label for="id_password">{% trans 'Password' %}:</label>
                 {{form.password}}
             </p>
-            <a href="{% url 'dashboard:password_reset' %}"><strong>Forgot Password</strong></a><br><br>
+            <a href="{% url 'dashboard:password_reset' %}"><strong>{% trans 'ForgotPassword' %}</strong></a><br><br>
             <div class="form__ctas">
                 <button type="submit" class="cta-btn"><span class="cta-btn-inner">
                         {% trans 'LoginButton' %}

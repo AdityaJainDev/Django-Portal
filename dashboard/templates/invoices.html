@@ -10,7 +10,13 @@
                     {% trans 'r_no' %} {{values.rechnung_rnr}}
                 </span>
                 <span style="float:right;">
-                    <a href="{% url 'dashboard:download_pdf' values.rechnung_id %}">Download PDF</a>
+                            <div class="cta">
+                            <a class="cta-btn" href="{% url 'dashboard:download_pdf' values.rechnung_rnr values.rechnung_id %}" download>
+                                <span class="cta-btn-inner">
+                                {% trans 'DownloadPDF' %}
+                                </span>
+                            </a>
+                            </div>
                 </span>
             </div>
             <hr>
@@ -104,15 +110,15 @@
                             <td colspan="2">ADITSYSTEMS, Inh. Anton Dollmaier</td>
                         </tr>
                         <tr>
-                            <td><strong>IBAN:</strong></td>
+                            <td><strong>{% trans 'iban' %}:</strong></td>
                             <td>DE50 7406 1813 0000 6350 57</td>
                         </tr>
                         <tr>
-                            <td><strong>BIC:</strong></td>
+                            <td><strong>{% trans 'bic' %}:</strong></td>
                             <td>GENODEF1PFK</td>
                         </tr>
                         <tr>
-                            <td><strong>Bank:</strong></td>
+                            <td><strong>{% trans 'Bank' %}:</strong></td>
                             <td>VR-Bank Rottal-Inn eG</td>
                         </tr>
                     </tbody>

@@ -195,9 +195,10 @@ def change_password(request):
 
 @require_GET
 @login_required
-def download_pdf(request, rechnung_id):
+def download_pdf(request, rechnung_rnr, rechnung_id):
     account_number = request.session['username']
     password = request.session['password']
+    rnr = rechnung_rnr
 
     params = {"rechnung_id" : rechnung_id}
 
@@ -205,9 +206,7 @@ def download_pdf(request, rechnung_id):
 
     jsondata = download_pdf.json()["data"]
     decoded = base64.b64decode(jsondata)
-    
-    with open("invoice.pdf", 'wb') as out:
-        response = HttpResponse(out.write(decoded), content_type="application/pdf")
-        response['Content-Disposition'] = 'inline'
-        return response
 
+    response = HttpResponse(decoded, content_type="application/pdf")
+    response['Content-Disposition'] = 'inline; filename="RE{}.pdf"'.format(rnr)
+    return response
