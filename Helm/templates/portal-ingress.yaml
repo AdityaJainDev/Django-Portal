@@ -1,0 +1,27 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
+    cert-manager.io/cluster-issuer: {{ .Values.clusterIssuer | quote }}
+  name: as-crm
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+      - {{ .Values.instanceDomain | quote }}
+      secretName: {{ template "appname" . }}-tls
+  rules:
+    - host: {{ .Values.instanceDomain | quote }}
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/system"
+            backend:
+              service:
+                name: portal 
+                port:
+                  number: 8002

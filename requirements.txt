@@ -6,10 +6,10 @@ djangorestframework
 django-countries
 django-crispy-forms
 django-localflavor
-mysqlclient
 phonenumbers
 gunicorn
 django-compressor
 django-libsass
 elastic-apm
 django-prometheus
+kubernetes

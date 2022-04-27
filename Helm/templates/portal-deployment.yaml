@@ -1,0 +1,75 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "appname" . }}-portal
+  labels:
+    app: {{ template "appname" . }}-portal
+  annotations:
+    keel.sh/approvals: "1"
+    keel.sh/policy: major
+    keel.sh/pollSchedule: "@every 1m"
+    keel.sh/trigger: poll
+spec:
+  replicas: {{ .Values.portal.replicas }}
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: {{ template "appname" . }}-portal
+  template:
+    metadata:
+      labels:
+        app: {{ template "appname" . }}-portal
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '8002'
+    spec:
+      imagePullSecrets:
+        - name: as-crm-run-secrets
+      containers:
+        - name: portal-app
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          securityContext:
+            capabilities:
+              drop:
+                - ALL
+            privileged: false
+            runAsNonRoot: true
+            runAsUser: 10014
+            runAsGroup: 10014
+            privileged: false
+          env:
+            - name: PORTAL_HOST
+              value: ""
+            - name: PORTAL_PORT
+              value: "8002"
+          envFrom:
+            - secretRef:
+                name: as-crm-run-secrets
+          resources:
+{{ toYaml .Values.portal.resources | indent 12 }}
+          ports:
+            - name: http
+              containerPort: 8002
+          volumeMounts:
+            - name: run-secrets
+              mountPath: /run/secrets/django
+              subPath: django
+            - mountPath: /var/cache/nginx
+              name: nginx-cache
+            - mountPath: /var/run
+              name: nginx-run
+      volumes:
+        #- name: my-csi-volume
+         # persistentVolumeClaim:
+          #  claimName: csi-pvc
+        - name: run-secrets
+          secret:
+            secretName: as-crm-run-secrets
+            defaultMode: 0777
+        - name: nginx-cache
+          emptyDir: {}
+        - name: nginx-run
+          emptyDir: {}

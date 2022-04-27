@@ -118,4 +118,27 @@ pylint.txt
 #Staticfiles
 /staticfiles
 
+.vagrant
+*.retry
+**/vagrant_ansible_inventory
+*.iml
+temp
+.idea
+.tox
+.cache
+*.bak
+*.tfstate
+*.tfstate.backup
+.terraform/
+contrib/terraform/aws/credentials.tfvars
+/ssh-bastion.conf
+**/*.sw[pon]
+*~
+vagrant/
+plugins/mitogen
 
+# Ansible inventory
+# inventory/*
+!inventory/local
+!inventory/sample
+inventory/*/artifacts/
