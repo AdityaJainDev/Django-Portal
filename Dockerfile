@@ -7,9 +7,14 @@ WORKDIR /app
 # Packages required to run the app should be built into the image
 COPY requirements-frozen.txt /app
 
+ENV MUSL_LOCPATH="/usr/share/i18n/locales/musl"
+
 #install headless chrome
 RUN set -ex \
-    && apk add --no-cache --virtual .build-deps build-base libffi-dev\
+    && apk add --no-cache --virtual .build-deps gcc build-base musl-dev mariadb-connector-c-dev libffi-dev \
+    && apk add gettext-dev \
+    musl-locales \
+    musl-locales-lang \
     && python -m venv /env \
     && /env/bin/pip install --upgrade pip \
     && /env/bin/pip install --no-cache-dir -r /app/requirements-frozen.txt \
@@ -21,8 +26,7 @@ RUN set -ex \
     && apk add --virtual rundeps $runDeps \
     && apk del .build-deps
 
-ENV VIRTUAL_ENV /env
-ENV PATH /env/bin:$PATH
+ENV VIRTUAL_ENV=/env PATH=/env/bin:$PATH
 
 #Copy project to App
 COPY . /app
@@ -30,6 +34,6 @@ COPY . /app
 # Make port 8000 available to the world outside this container
 EXPOSE 8000
 
-RUN python manage.py collectstatic --noinput
+RUN python manage.py collectstatic --noinput && django-admin compilemessages
 
-CMD ["gunicorn", "--bind", ":8000", "--workers", "3", "Portal.wsgi:application"]
+CMD ["gunicorn", "-c", "gunicorn.py"]

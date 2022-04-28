@@ -15,10 +15,9 @@
     {% compress css %}
     <link type="text/x-scss" href="{% static 'css/app.scss' %}" rel="stylesheet" media="screen">
     {% endcompress %}
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'image/apple-touch-icon.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/apple-touch-icon.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
-    <link rel="manifest" href="{% static 'manifest/manifest.json' %}">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
@@ -38,7 +37,8 @@
                     </span>
                 </button>
                 <div class="header__list">
-                    <ul>
+                    <ul style="display: flex; justify-content: right;">                 
+                        {% if user.is_authenticated %}
                         <li>
                             <a href="{% url 'dashboard:all_invoices' %}" title="DevOps Service">{% trans 'AllInvoicesHeading' %}</a>
                         </li>
@@ -48,8 +48,6 @@
                         <li>
                             <a href="{% url 'dashboard:change_password' %}" title="Company">{% trans 'ChangePassword' %}</a>
                         </li>
-                        
-                        {% if user.is_authenticated %}
                         <li class="login-button"><a href="{% url 'logout' %}" class="diff-link">{% trans 'Logout' %}</a></li>
                         {% else %}
                         <li class="login-button"><a href="{% url 'login' %}" class="diff-link">{% trans 'Login' %}</a></li>

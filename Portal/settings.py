@@ -20,9 +20,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: don't run with debug turned on in production!
-SECRET_KEY = "g4g-3$@r0*#k(yw!#nai9^zrv1sc*ao$5-$ouxv@m6%%@lys2p" 
+SECRET_KEY = os.getenv('SECRET_KEY', "g4g-3$@r0*#k(yw!#nai9^zrv1sc*ao$5-$ouxv@m6%%@lys2p")
 
-DEBUG = True
+DEBUG = os.getenv('DJANGO_DEBUG', True)
+
+ALLOWED_HOSTS = [os.getenv('ALLOWED_HOSTS', 'localhost')]
 
 # Application definition
 INSTALLED_APPS = [
@@ -33,7 +35,6 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "elasticapm.contrib.django",
     "adminsortable",
     "dashboard",
     "django_countries",
@@ -58,7 +59,6 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "elasticapm.contrib.django.middleware.TracingMiddleware",
 
     "django_prometheus.middleware.PrometheusAfterMiddleware"
 ]
@@ -121,13 +121,13 @@ LOGGING = {
     'disable_existing_loggers': False,
     'handlers': {
         'console': {
-            'level': 'INFO',
+            'level': os.getenv('level_console', 'INFO'),
             'class': 'logging.StreamHandler',
             'stream': sys.stdout,
             'formatter': 'verbose'
         },
         'file': {
-            'level': 'DEBUG',
+            'level': os.getenv('level_file', 'DEBUG'),
             'class': 'logging.FileHandler',
             'filename': os.path.join(BASE_DIR, "debug.log"),
             'formatter': 'verbose'
@@ -143,7 +143,7 @@ LOGGING = {
         'django': {
             'handlers': ['console', "file"],
             'propagate': True,
-            'level': 'INFO',
+            'level': os.getenv('level_django', 'INFO'),
         },
     },
 }
@@ -172,7 +172,7 @@ USE_TZ = True
 USE_I18N = True
 USE_L10N = True
 
-STATIC_URL = "/static/"
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
@@ -201,17 +201,10 @@ EMAIL_HOST_PASSWORD = None
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CRM_ENDPOINT = "https://ascrm.aditsystems.de/api/"
+CRM_ENDPOINT = os.getenv('ENDPOINT_URL', 'https://ascrm-api.aditsystems.de/')
 
-LOGIN_REDIRECT_URL = 'dashboard/main/'
-LOGOUT_REDIRECT_URL = 'accounts/login/'
-
-ELASTIC_APM = {
-    'SERVICE_NAME': 'portal',
-    'DISABLE_METRICS': '*',
-    'CENTRAL_CONFIG': False,
-    'DEBUG': True,
-}
+LOGIN_REDIRECT_URL = '/dashboard/main/'
+LOGOUT_REDIRECT_URL = '/accounts/login/'
 
 try:
     from .local_settings import *

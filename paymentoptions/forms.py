@@ -25,4 +25,4 @@ class PaymentForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super(PaymentForm, self).__init__(*args, **kwargs)
-        self.fields['account_number'].disabled = True
+        self.fields["account_number"].disabled = True
