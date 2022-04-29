@@ -126,12 +126,6 @@ LOGGING = {
             'stream': sys.stdout,
             'formatter': 'verbose'
         },
-        'file': {
-            'level': os.getenv('level_file', 'DEBUG'),
-            'class': 'logging.FileHandler',
-            'filename': os.path.join(BASE_DIR, "debug.log"),
-            'formatter': 'verbose'
-        },
     },
     'formatters': {
         'verbose': {
@@ -141,7 +135,7 @@ LOGGING = {
     },
     'loggers': {
         'django': {
-            'handlers': ['console', "file"],
+            'handlers': ['console'],
             'propagate': True,
             'level': os.getenv('level_django', 'INFO'),
         },
