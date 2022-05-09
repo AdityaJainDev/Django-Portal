@@ -7,11 +7,12 @@ from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.conf import settings
 from django.views.generic.base import RedirectView
+from django.views.decorators.http import require_GET
 
 admin.site.site_header = settings.TITLE
 admin.site.site_title = settings.TITLE
 
-
+@require_GET
 def favicon(request):
     from textwrap import dedent
     from django.http import HttpResponse
