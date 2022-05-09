@@ -1,8 +1,11 @@
-from django.urls import path, re_path
+from django.urls import path
 from .views import paymentoptions
+from django.views.generic import TemplateView
 
 app_name = "paymentoptions"
 
 urlpatterns = [
-    path("details", paymentoptions.as_view(), name="payment"),
+    path("", paymentoptions.as_view(), name="payment"),
+    path("success", TemplateView.as_view(template_name="success.html"), name="success"),
+    path("error", TemplateView.as_view(template_name="token_error.html"), name="token_error"),
 ]

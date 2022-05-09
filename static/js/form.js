@@ -16,6 +16,8 @@ if (this.checked) {
 }
 });
 
+
+
 checkbox2.addEventListener('change', function() {
     if (this.checked) {
         checkbox1.checked = false;
@@ -25,3 +27,13 @@ checkbox2.addEventListener('change', function() {
         document.querySelector("input[id=id_confirm]").required = true;
     }
 });
+
+
+window.addEventListener('load', function() {
+    if (checkbox2.checked) {
+        document.querySelector("input[id=id_confirm]").required = true;
+    } else {
+        document.querySelector("input[id=id_confirm]").required = false;
+    }
+});
+    

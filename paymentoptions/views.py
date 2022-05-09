@@ -1,3 +1,4 @@
+import logging
 from django.shortcuts import render, redirect
 from .forms import PaymentForm
 from django.http import HttpResponse, HttpResponseRedirect
@@ -7,21 +8,27 @@ from django.contrib import messages
 from django.conf import settings
 from django.views.generic import TemplateView
 
+logger = logging.getLogger(__name__)
+
 # Create your views here.
 class paymentoptions(TemplateView):
     def get(self, request, *args, **kwargs):
         account_number = request.GET.get("knr", None)
         token = request.GET.get("token", None)
         data = {"knr": account_number, "token": token}
-        save_data = requests.get(
-            settings.CRM_ENDPOINT + "Kunden/SEPA/", params=data
-        ).json()
 
-        zahlungsart = save_data["zahlungsart"]
+        try:
+            save_data = requests.get(
+                settings.CRM_ENDPOINT + "Kunden/SEPA/", params=data
+            )
+            save_data.raise_for_status()
+        except Exception as exec:
+            logger.error(exec)
 
-        if save_data["status"] == -1:
-            return HttpResponse(_("Token Message"))
+        if save_data.json()["status"] == -1:
+            return redirect("paymentoptions:token_error")
         else:
+            zahlungsart = save_data.json()["zahlungsart"]
             form = PaymentForm()
             form.initial["account_number"] = request.GET.get("knr", None)
             form.initial["payment_options"] = zahlungsart
@@ -47,6 +54,7 @@ class paymentoptions(TemplateView):
                     "token": token,
                     "zahlungsart": options,
                 }
+            
             else:
                 data = {
                     "inhaber": owner,
@@ -57,25 +65,47 @@ class paymentoptions(TemplateView):
                     "zahlungsart": options,
                 }
 
-            save_data = requests.post(settings.CRM_ENDPOINT + "Kunden/SEPA/", data)
+            try:
+                save_data = requests.post(settings.CRM_ENDPOINT + "Kunden/SEPA/", data=data)
+                save_data.raise_for_status()
+            except Exception as exec:
+                logger.error(exec)
 
             if save_data.json()["status"] == -1:
                 messages.error(request, _("Error Message"))
                 form = PaymentForm()
                 form.initial["account_number"] = request.GET.get("knr", None)
-                form.initial["options"] = "1"
+                form.initial["payment_options"] = "1"
                 return HttpResponseRedirect(
                     request.META.get("HTTP_REFERER"), {"form": form}
                 )
             else:
-                messages.success(request, _("Success Message"))
-                return redirect("dashboard:main")
+                return redirect("paymentoptions:success")
         else:
-            messages.error(request, _("Error Message"))
+            print(form.errors.keys)
+            for issue in form.errors:
+                messages.error(request, form.errors[issue])
             form = PaymentForm()
             form.initial["account_number"] = request.GET.get("knr", None)
-            form.initial["options"] = "1"
+            form.initial["payment_options"] = "1"
+
 
         context = {"form": form}
 
         return render(request, "form.html", context)
+
+
+def error_404(request, exception):
+    return render(request, "errors/404.html", {})
+
+
+def error_500(request, exception=None):
+    return render(request, "errors/500.html", {})
+
+
+def error_403(request, exception=None):
+    return render(request, "errors/403.html", {})
+
+
+def error_400(request, exception=None):
+    return render(request, "errors/400.html", {})

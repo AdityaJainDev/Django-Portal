@@ -20,11 +20,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: don't run with debug turned on in production!
-SECRET_KEY = os.getenv('SECRET_KEY', "g4g-3$@r0*#k(yw!#nai9^zrv1sc*ao$5-$ouxv@m6%%@lys2p")
+SECRET_KEY = os.getenv(
+    "SECRET_KEY", "g4g-3$@r0*#k(yw!#nai9^zrv1sc*ao$5-$ouxv@m6%%@lys2p"
+)
 
-DEBUG = os.getenv('DJANGO_DEBUG', True)
+DEBUG = os.getenv("DJANGO_DEBUG", True)
 
-ALLOWED_HOSTS = [os.getenv('ALLOWED_HOSTS', 'localhost')]
+ALLOWED_HOSTS = [os.getenv("ALLOWED_HOSTS", "localhost")]
 
 # Application definition
 INSTALLED_APPS = [
@@ -36,20 +38,19 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "adminsortable",
-    "dashboard",
     "django_countries",
-    'localflavor',
+    "localflavor",
     "compressor",
-    'crispy_forms',
+    "crispy_forms",
     "markdownfield",
     "rest_framework",
     "django_prometheus",
     "paymentoptions",
+    "dashboard",
 ]
 
 MIDDLEWARE = [
     "django_prometheus.middleware.PrometheusBeforeMiddleware",
-
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.locale.LocaleMiddleware",
@@ -59,8 +60,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
-
-    "django_prometheus.middleware.PrometheusAfterMiddleware"
+    "django_prometheus.middleware.PrometheusAfterMiddleware",
 ]
 
 TITLE = "AD IT Systems Portal"
@@ -117,35 +117,35 @@ AUTH_PASSWORD_VALIDATORS = [
 # Logging Configuration
 # https://docs.djangoproject.com/en/3.0/topics/logging
 LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'level': os.getenv('level_console', 'INFO'),
-            'class': 'logging.StreamHandler',
-            'stream': sys.stdout,
-            'formatter': 'verbose'
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "level": os.getenv("level_console", "INFO"),
+            "class": "logging.StreamHandler",
+            "stream": sys.stdout,
+            "formatter": "verbose",
         },
     },
-    'formatters': {
-        'verbose': {
-            'format': "{levelname}: {asctime} {module} {filename} {funcName} {lineno} {message}",
-            'style': '{',
+    "formatters": {
+        "verbose": {
+            "format": "{levelname}: {asctime} {module} {filename} {funcName} {lineno} {message}",
+            "style": "{",
         },
     },
-    'loggers': {
-        'django': {
-            'handlers': ['console'],
-            'propagate': True,
-            'level': os.getenv('level_django', 'INFO'),
+    "loggers": {
+        "django": {
+            "handlers": ["console"],
+            "propagate": True,
+            "level": os.getenv("level_django", "INFO"),
         },
     },
 }
 
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAdminUser',
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAdminUser",
     ]
 }
 
@@ -166,39 +166,36 @@ USE_TZ = True
 USE_I18N = True
 USE_L10N = True
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+    "compressor.finders.CompressorFinder",
 ]
 
-COMPRESS_PRECOMPILERS = (
-    ('text/x-scss', 'django_libsass.SassCompiler'),
-)
+COMPRESS_PRECOMPILERS = (("text/x-scss", "django_libsass.SassCompiler"),)
 
 AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-    'dashboard.backends.CustomerBackend',
+    "django.contrib.auth.backends.ModelBackend",
+    "dashboard.backends.CustomerBackend",
 ]
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'kunden.aditsystems.de'
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "kunden.aditsystems.de"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = None
 EMAIL_HOST_PASSWORD = None
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-CRM_ENDPOINT = os.getenv('ENDPOINT_URL', 'https://ascrm-api.aditsystems.de/')
+CRM_ENDPOINT = os.getenv("ENDPOINT_URL", "https://ascrm-api.aditsystems.de/")
 
-LOGIN_REDIRECT_URL = '/dashboard/main/'
-LOGOUT_REDIRECT_URL = '/accounts/login/'
+
 
 try:
     from .local_settings import *

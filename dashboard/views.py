@@ -1,8 +1,6 @@
-from multiprocessing import context
-from optparse import Values
-from sre_constants import SUCCESS
-from django.shortcuts import render
-from django.views.decorators.http import require_GET, require_POST
+import logging
+from django.shortcuts import render, redirect
+from django.views.decorators.http import require_GET
 from .forms import PasswordResetForm, ChangePassword, PersonalDataEdit
 from django.conf import settings
 import requests
@@ -18,7 +16,7 @@ import base64
 
 
 home_link = "dashboard:home"
-
+logger = logging.getLogger(__name__)
 
 @require_GET
 @login_required
@@ -46,13 +44,18 @@ def index(request):
             account_number = request.session["username"]
             password = request.session["password"]
 
-            invoice = requests.get(
-                settings.CRM_ENDPOINT + "Rechnungen/Rechnungen/",
-                auth=(account_number, password),
-            )
-            personal = requests.get(
-                settings.CRM_ENDPOINT + "Kunden/Kunde/", auth=(account_number, password)
-            )
+            try:
+                invoice = requests.get(
+                    settings.CRM_ENDPOINT + "Rechnungen/Rechnungen/",
+                    auth=(account_number, password),
+                )
+                personal = requests.get(
+                    settings.CRM_ENDPOINT + "Kunden/Kunde/",
+                    auth=(account_number, password),
+                )
+                invoice.raise_for_status()
+            except Exception as exec:
+                logger.error(exec)
 
             if invoice.json()["status"] == 1 and personal.json()["status"] == 1:
                 invoices = invoice.json()["data"]
@@ -73,16 +76,20 @@ def invoice_details(request, rechnung_id):
 
     params = {"rechnung_id": invoice_id}
 
-    invoice_detail = requests.get(
-        settings.CRM_ENDPOINT + "Rechnungen/RechnungDetails/",
-        auth=(account_number, password),
-        params=params,
-    )
-    list_items = requests.get(
-        settings.CRM_ENDPOINT + "Rechnungen/RechnungPositionen/",
-        auth=(account_number, password),
-        params=params,
-    )
+    try:
+        invoice_detail = requests.get(
+            settings.CRM_ENDPOINT + "Rechnungen/RechnungDetails/",
+            auth=(account_number, password),
+            params=params,
+        )
+        list_items = requests.get(
+            settings.CRM_ENDPOINT + "Rechnungen/RechnungPositionen/",
+            auth=(account_number, password),
+            params=params,
+        )
+        invoice_detail.raise_for_status()
+    except Exception as exec:
+        logger.error(exec)
 
     if invoice_detail.json()["status"] == 1:
         invoices = invoice_detail.json()["data"]
@@ -97,10 +104,14 @@ def all_invoices(request):
     account_number = request.session["username"]
     password = request.session["password"]
 
-    invoice = requests.get(
-        settings.CRM_ENDPOINT + "Rechnungen/Rechnungen/",
-        auth=(account_number, password),
-    )
+    try:
+        invoice = requests.get(
+            settings.CRM_ENDPOINT + "Rechnungen/Rechnungen/",
+            auth=(account_number, password),
+        )
+        invoice.raise_for_status()
+    except Exception as exec:
+        logger.error(exec)
 
     if invoice.json()["status"] == 1:
         invoices = invoice.json()["data"]
@@ -147,11 +158,15 @@ def edit_personal_data(request):
                 "kunde_newsletter_marketing": newsletter,
             }
 
-            edit_data = requests.post(
-                settings.CRM_ENDPOINT + "Kunden/StammdatenEdit/",
-                auth=(account_number, password),
-                data=data,
-            )
+            try:
+                edit_data = requests.post(
+                    settings.CRM_ENDPOINT + "Kunden/StammdatenEdit/",
+                    auth=(account_number, password),
+                    data=data,
+                )
+                edit_data.raise_for_status()
+            except Exception as exec:
+                logger.error(exec)
 
             if edit_data.json()["status"] == 1:
                 messages.success(request, _("EditDataSuccess"))
@@ -180,7 +195,11 @@ def password_reset(request):
 
             data = {"knr": account_number, "email": email}
 
-            data = requests.post(settings.CRM_ENDPOINT + "Kunden/LostPW/", data)
+            try:
+                data = requests.post(settings.CRM_ENDPOINT + "Kunden/LostPW/", data)
+                data.raise_for_status()
+            except Exception as exec:
+                logger.error(exec)
 
             if data.json()["status"] == 1:
                 messages.success(request, _("ResetEmailSuccess"))
@@ -226,11 +245,16 @@ def change_password(request):
                     "neu_pwd": new_password,
                     "neu_verify_pwd": confirm_password,
                 }
-                send_request = requests.post(
-                    settings.CRM_ENDPOINT + "Kunden/ChangePWD/",
-                    auth=(request.session["username"], request.session["password"]),
-                    data=data,
-                )
+
+                try:
+                    send_request = requests.post(
+                        settings.CRM_ENDPOINT + "Kunden/ChangePWD/",
+                        auth=(request.session["username"], request.session["password"]),
+                        data=data,
+                    )
+                    send_request.raise_for_status()
+                except Exception as exec:
+                    logger.error(exec)
 
                 if send_request.json()["status"] == 1:
                     request.session["password"] = new_password
@@ -256,16 +280,22 @@ def download_pdf(request, rechnung_rnr, rechnung_id):
 
     params = {"rechnung_id": rechnung_id}
 
-    download_pdf = requests.get(
-        settings.CRM_ENDPOINT + "Rechnungen/RechnungPDF/",
-        auth=(account_number, password),
-        params=params,
-    )
-    invoice_detail = requests.get(
-        settings.CRM_ENDPOINT + "Rechnungen/RechnungDetails/",
-        auth=(account_number, password),
-        params=params,
-    )
+    try:
+        download_pdf = requests.get(
+            settings.CRM_ENDPOINT + "Rechnungen/RechnungPDF/",
+            auth=(account_number, password),
+            params=params,
+        )
+        invoice_detail = requests.get(
+            settings.CRM_ENDPOINT + "Rechnungen/RechnungDetails/",
+            auth=(account_number, password),
+            params=params,
+        )
+        download_pdf.raise_for_status()
+        invoice_detail.raise_for_status()
+
+    except Exception as exec:
+        logger.error(exec)
 
     values = invoice_detail.json()["data"]
 
