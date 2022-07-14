@@ -3,20 +3,21 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-04 12:32+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2022-07-14 17:47+0000\n"
+"Last-Translator: Anton Dollmaier <a.dollmaier@aditsystems.de>\n"
+"Language-Team: German <https://translate.aditsystems.dev/projects/crm-portal/"
+"portal/de/>\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.13.1\n"
 
 #: dashboard/forms.py:8
 msgid "ByEmail"
@@ -58,7 +59,7 @@ msgstr "Vorname"
 
 #: dashboard/forms.py:29
 msgid "LastName"
-msgstr "Name"
+msgstr "Nachname"
 
 #: dashboard/forms.py:30 dashboard/templates/home_main.html:82
 msgid "Address"
@@ -109,7 +110,7 @@ msgstr "R.-Nr."
 #: dashboard/templates/all_invoices.html:22
 #: dashboard/templates/home_main.html:33 dashboard/templates/invoices.html:41
 msgid "r_date"
-msgstr "R.-Datum."
+msgstr "R.-Datum"
 
 #: dashboard/templates/all_invoices.html:24
 #: dashboard/templates/home_main.html:35
@@ -199,11 +200,11 @@ msgstr "K.-Nr."
 
 #: dashboard/templates/home_main.html:146
 msgid "SepaNotFound"
-msgstr "Sie haben uns keine SEPA-Lastschrift-Ermächtigung erteilt."
+msgstr "Sie haben uns keine SEPA-Lastschrift-Ermächtigung erteilt"
 
 #: dashboard/templates/home_main.html:162
 msgid "NotLoggedIn"
-msgstr "Sie sind derzeit nicht eingeloggt."
+msgstr "Sie sind derzeit nicht eingeloggt"
 
 #: dashboard/templates/invoices.html:16
 msgid "DownloadPDF"
@@ -280,7 +281,7 @@ msgstr "Zahlungsoptionen"
 
 #: paymentoptions/forms.py:24 paymentoptions/templates/form.html:41
 msgid "Accept"
-msgstr "Ich akzeptiere die Einzugsermächtigung."
+msgstr "Ich akzeptiere die Einzugsermächtigung"
 
 #: paymentoptions/templates/form.html:7
 msgid "FormHeading"
@@ -339,17 +340,17 @@ msgstr ""
 #: paymentoptions/views.py:27
 msgid "Token Message"
 msgstr ""
-"Falscher oder fehlender Token, bitte überprüfen oder kontaktieren Sie uns."
+"Falscher oder fehlender Token, bitte überprüfen oder kontaktieren Sie uns"
 
 #: paymentoptions/views.py:74 paymentoptions/views.py:85
 msgid "Error Message"
 msgstr ""
 "Es ist ein Fehler aufgetreten, bitte überprüfen Sie die ausgefüllten Details "
-"und versuchen Sie es erneut."
+"und versuchen Sie es erneut"
 
 #: paymentoptions/views.py:82
 msgid "Success Message"
-msgstr "Details erfolgreich aktualisiert."
+msgstr "Details erfolgreich aktualisiert"
 
 #: templates/base.html:13
 msgid "Homepage"
