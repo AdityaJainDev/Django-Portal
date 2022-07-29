@@ -31,10 +31,10 @@ We truncate at 63 chars because some Kubernetes name fields are limited to this 
 {{- end }}
 {{- end }}
 
-{{- define "os.configSha256" -}}
-{{ .Values.os | toYaml | sha256sum | trunc 8 }}
+{{- define "configSha256" -}}
+{{ .Values | toYaml | sha256sum | trunc 8 }}
 {{- end }}
 
-{{- define "os.configMapName" -}}
-{{- printf "%s-%s" (include "appname" . ) (include "os.configSha256" .) }}
+{{- define "configMapName" -}}
+{{- printf "%s-%s" (include "appname" . ) (include "configSha256" .) }}
 {{- end }}

@@ -4,7 +4,6 @@ from . import views
 app_name = "dashboard"
 
 urlpatterns = [
-    path("", views.home, name="home"),
     path("main/", views.index, name="main"),
     path(
         "invoice_details/<int:rechnung_id>",
@@ -20,4 +19,5 @@ urlpatterns = [
         views.download_pdf,
         name="download_pdf",
     ),
+    path("logout/", views.logout, name="logout"),
 ]

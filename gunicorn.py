@@ -1,6 +1,5 @@
 # The IP address (typically localhost) and port that the Netbox WSGI process should listen on
-from email.mime import application
-
+import os
 
 bind = "0.0.0.0:8000"
 
@@ -18,6 +17,6 @@ timeout = 120
 max_requests = 5000
 max_requests_jitter = 500
 
-loglevel = "error"
+loglevel = os.getenv("loglevel_gunicorn", "debug")
 
 wsgi_app = "Portal.wsgi:application"

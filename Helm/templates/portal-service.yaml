@@ -2,10 +2,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: portal
+  name: "{{ template "appname" . }}"
 spec:
   selector:
-    app: {{ template "appname" . }}-portal
+    app: "{{ template "appname" . }}"
   ports:
-    - port: 8002
-      targetPort: 8002
+    - port: 8000
+      targetPort: 8000

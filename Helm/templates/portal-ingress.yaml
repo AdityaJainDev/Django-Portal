@@ -3,25 +3,30 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
+    cert-manager.io/cluster-issuer: {{ .Values.clusterIssuer | quote }}
     nginx.ingress.kubernetes.io/proxy-body-size: "0"
     nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
-    cert-manager.io/cluster-issuer: {{ .Values.clusterIssuer | quote }}
-  name: as-crm
+    {{ if eq .Values.auth true }}
+    nginx.ingress.kubernetes.io/auth-type: basic
+    nginx.ingress.kubernetes.io/auth-secret: "basic-auth"
+    nginx.ingress.kubernetes.io/auth-realm: "Authentication Required - Halteverbot"
+    {{ end }}
+  name: "{{ template "appname" . }}"
 spec:
   ingressClassName: nginx
   tls:
     - hosts:
-      - {{ .Values.instanceDomain | quote }}
-      secretName: {{ template "appname" . }}-tls
+        - {{ .Values.instanceDomain | quote }}
+      secretName: "{{ template "appname" . }}-tls"
   rules:
     - host: {{ .Values.instanceDomain | quote }}
       http:
         paths:
           - pathType: Prefix
-            path: "/system"
+            path: "/"
             backend:
               service:
-                name: portal 
+                name: portal
                 port:
-                  number: 8002
+                  number: 8000

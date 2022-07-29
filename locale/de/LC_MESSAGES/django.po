@@ -141,7 +141,7 @@ msgstr "Bank"
 msgid "EditDataHeading"
 msgstr "Bearbeiten Sie Ihre persönlichen Daten"
 
-#: dashboard/templates/edit_data.html:16 paymentoptions/templates/form.html:50
+#: dashboard/templates/edit_data.html:16 paymentoptions/templates/form.html:45
 msgid "SendData"
 msgstr "Daten übermitteln"
 
@@ -230,36 +230,36 @@ msgstr "Einzelpreis"
 msgid "total_price"
 msgstr "Gesamtpreis"
 
-#: dashboard/views.py:175
+#: dashboard/views.py:160
 msgid "EditDataSuccess"
 msgstr "Ihre Daten wurden erfolgreich aktualisiert"
 
-#: dashboard/views.py:178
+#: dashboard/views.py:163
 msgid "EditDataError"
 msgstr "Es ist ein Fehler aufgetreten, bitte versuchen Sie es erneut"
 
-#: dashboard/views.py:208
+#: dashboard/views.py:192
 msgid "ResetEmailSuccess"
 msgstr "E-Mail wurde erfolgreich versendet"
 
-#: dashboard/views.py:211
+#: dashboard/views.py:195
 msgid "ResetEmailError"
 msgstr "Es ist ein Fehler aufgetreten, bitte versuchen Sie es erneut"
 
-#: dashboard/views.py:235
+#: dashboard/views.py:218
 msgid "PasswordMatchError"
 msgstr ""
 "Die neuen Passwörter stimmen nicht überein, bitte versuchen Sie es erneut"
 
-#: dashboard/views.py:240
+#: dashboard/views.py:223
 msgid "OldPasswordError"
 msgstr "Altes Passwort ist falsch, bitte versuchen Sie es erneut"
 
-#: dashboard/views.py:264
+#: dashboard/views.py:247
 msgid "PasswordChangeSuccess"
 msgstr "Passwort wurde erfolgreich geändert"
 
-#: dashboard/views.py:267
+#: dashboard/views.py:250
 msgid "PasswordChangeError"
 msgstr "Es ist ein Fehler aufgetreten, bitte versuchen Sie es erneut"
 
@@ -272,77 +272,58 @@ msgid "Direct Debit"
 msgstr "Zahlung per Lastschrift"
 
 #: paymentoptions/forms.py:14 paymentoptions/templates/form.html:12
-msgid "AccountNumber"
+msgid "CustomerNumber"
 msgstr "Kundennummer"
 
-#: paymentoptions/forms.py:17 paymentoptions/templates/form.html:14
-msgid "options"
+#: paymentoptions/forms.py:17
+msgid "PaymentOptions"
 msgstr "Zahlungsoptionen"
 
-#: paymentoptions/forms.py:24 paymentoptions/templates/form.html:41
+#: paymentoptions/forms.py:24 paymentoptions/templates/form.html:35
 msgid "Accept"
 msgstr "Ich akzeptiere die Einzugsermächtigung"
 
 #: paymentoptions/templates/form.html:7
-msgid "FormHeading"
-msgstr "Elektronisches Lastschriftverfahren"
+msgid "PaymentOptionsHeading"
+msgstr "Zahlungsoptionen"
+
+#: paymentoptions/templates/form.html:14
+msgid "payment_options"
+msgstr "Zahlungsoptionen"
 
 #: paymentoptions/templates/form.html:26
-msgid "DirectDebitHeading"
-msgstr "Einzugsermächtigung"
+msgid "DirectDebitAuthorization"
+msgstr "SEPA-Einzugsermächtigung"
 
 #: paymentoptions/templates/form.html:28
-msgid "DDLine1"
+msgid "DirectDebitConfirmationText"
 msgstr ""
-"Firma publicompserver, Inh.: Ingo Klein, Weimarer Straße 22, D-92245 "
-"Kümmersbruck"
-
-#: paymentoptions/templates/form.html:29
-msgid "DDLine2"
-msgstr ""
+"Hiermit ermächtige(n) ich/wir \n"
+"\n"
+"AD IT Systems GmbH, Ostendstraße 132, 90482 Nürnberg\n"
+"\n"
 "widerruflich, die von mir/uns zu entrichtenden Zahlungen und fälligen "
 "Rechnungen im Rahmen des Kunden-/Providerverhältnisses zu Lasten meines/"
-"unseres u.g. Girokontos einzuziehen. Wenn mein/unser Konto die erforderliche "
-"Deckung nicht aufweist, besteht seitens des kontoführenden Instituts keine "
-"Verpflichtung zur Einlösung. Teileinlösungen werden im Lastschriftverfahren/"
-"SEPA - Basis - Lastschriftverfahren nicht vorgenommen."
+"unseres o.g. Bankkontos einzuziehen.\n"
+"Wenn mein/unser Konto die erforderliche Deckung nicht aufweist, besteht "
+"seitens des kontoführenden Instituts keine Verpflichtung zur Einlösung. "
+"Teileinlösungen werden im Lastschriftverfahren/SEPA-Basis-"
+"Lastschriftverfahren nicht vorgenommen.\n"
+"\n"
+"Pro Rücklastschrift berechnen wir Ihnen die von Ihrer und unserer Bank "
+"berechneten Rücklastschriftgebühren. \n"
+"\n"
+"Dieses Lastschriftmandat wird durchIhre Mandatsreferenznummer und unsere "
+"unsere SEPA-Gläubiger-Identifikationsnummergekennzeichnet, die von uns bei "
+"allen Lastschrifteinzügen angegeben werden. Beide Angaben finden Sie auf der "
+"Rechnung, die die Lastschrift auslöst."
 
-#: paymentoptions/templates/form.html:30
-msgid "DDLine3"
-msgstr ""
-"Pro Rücklastschrift berechnen wir Ihnen eine Pauschale von 15 € (inkl. "
-"Rücklastschriftgebühren der Banken). Bei Erteilung des Lastschriftmandats "
-"erklären Sie sich mit dieser Pauschale einverstanden. Ihnen bleibt "
-"vorbehalten, nachzuweisen, dass ein Schaden überhaupt nicht entstanden oder "
-"dass er wesentlich niedriger ist, als die Pauschale."
-
-#: paymentoptions/templates/form.html:31
-msgid "DDLine4"
-msgstr "Dieses Lastschriftmandat wird durch"
-
-#: paymentoptions/templates/form.html:32
-msgid "DDLine5"
-msgstr "Ihre Mandatsreferenznummer: 12379/#"
-
-#: paymentoptions/templates/form.html:33
-msgid "DDLine6"
-msgstr "und"
-
-#: paymentoptions/templates/form.html:34
-msgid "DDLine7"
-msgstr "- unsere Gläubiger - Identifikationsnummer: DE12ZZZ00001131937"
-
-#: paymentoptions/templates/form.html:35
-msgid "DDLine8"
-msgstr ""
-"gekennzeichnet, die von uns bei allen Lastschrifteinzügen angegeben werden."
-
-#: paymentoptions/views.py:27
+#: paymentoptions/templates/token_error.html:6
 msgid "Token Message"
 msgstr ""
 "Falscher oder fehlender Token, bitte überprüfen oder kontaktieren Sie uns"
 
-#: paymentoptions/views.py:74 paymentoptions/views.py:85
+#: paymentoptions/views.py:74
 msgid "Error Message"
 msgstr ""
 "Es ist ein Fehler aufgetreten, bitte überprüfen Sie die ausgefüllten Details "
@@ -356,7 +337,7 @@ msgstr "Details erfolgreich aktualisiert"
 msgid "Homepage"
 msgstr "Startseite"
 
-#: templates/base.html:49 templates/registration/change_password.html:19
+#: templates/base.html:49 templates/registration/change_password.html:16
 msgid "ChangePassword"
 msgstr "Passwort ändern"
 
@@ -366,7 +347,7 @@ msgstr "Abmelden"
 
 #: templates/base.html:53
 msgid "Login"
-msgstr "Anmeldung"
+msgstr "Login"
 
 #: templates/base.html:108
 msgid "Contact"
@@ -424,26 +405,13 @@ msgstr "Kontakt"
 msgid "Jobs"
 msgstr "Jobs"
 
-#: templates/error.html:6
-msgid "Error1"
-msgstr "Ups! Irgendwas lief schief..."
-
-#: templates/error.html:7
-msgid "Error2"
-msgstr "Wenn das Problem weiterhin besteht, kontaktieren Sie bitte einen Administrator."
-
 #: templates/registration/change_password.html:8
 msgid "ChangePasswordHeading"
 msgstr "Ändern Sie Ihr Passwort"
 
-#: templates/registration/change_password.html:16
-#: templates/registration/reset_password.html:14
-msgid "SkipPassword"
-msgstr "überspringen"
-
 #: templates/registration/login.html:8
 msgid "LoginHeading"
-msgstr "Anmeldung"
+msgstr "Login"
 
 #: templates/registration/login.html:14
 msgid "KnrOrEmail"
@@ -465,9 +433,30 @@ msgstr "Senden und einloggen"
 msgid "ResetPasswordHeading"
 msgstr "Setze dein Passwort zurück"
 
+#: templates/registration/reset_password.html:14
+msgid "SkipPassword"
+msgstr "überspringen"
+
 #: templates/registration/reset_password.html:17
 msgid "Passwordreset"
 msgstr "Senden"
+
+#~ msgid "AccountNumber"
+#~ msgstr "Kundennummer"
+
+#~ msgid "options"
+#~ msgstr "Zahlungsoptionen"
+
+#~ msgid "FormHeading"
+#~ msgstr "Elektronisches Lastschriftverfahren"
+
+#~ msgid "Error1"
+#~ msgstr "Ups! Irgendwas lief schief..."
+
+#~ msgid "Error2"
+#~ msgstr ""
+#~ "Wenn das Problem weiterhin besteht, kontaktieren Sie bitte einen "
+#~ "Administrator."
 
 #~ msgid "r_id"
 #~ msgstr "R.-Id."

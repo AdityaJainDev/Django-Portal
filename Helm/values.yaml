@@ -1,34 +1,43 @@
-#instanceDomain: ostest.as-servertest.net
-os:
-  secret_key: djangokey
-  #admin_password: f00B4r
-  email_from: system@example.com
-  email_host: mail.example.com
-  email_user: system@example.com
-  email_password: foo
-  email_ssl: true
-  email_tls: false
-  email_port: 587
+---
 imageCredentials:
   registry: registry.aditsystems.de
   username: gitlab+deploy-token-5
   password: ZHR42urCrJyZqxw7E7nz
-  #email: support@aditsystems.de
+  email: support@aditsystems.de
 
 clusterIssuer: letsencrypt-prod
 
 storageClassName: hcloud-volumes
 
 image:
-  tag: deploy
+  tag: main
   pullPolicy: Always
   repository: registry.aditsystems.de/as-crm/portal
+
 portal:
   replicas: 1
   resources:
-    limits:
-      cpu: 1000m
-      memory: 512Mi
     requests:
       cpu: 100m
       memory: 256Mi
+
+redis:
+  resources:
+    limits:
+      cpu: 500m
+      memory: 128Mi
+    requests:
+      cpu: 100m
+      memory: 32Mi
+
+db:
+  storage: 10Gi
+  engine: django.db.backends.postgresql
+  name: postgres
+  user: postgres
+  pass: password
+  host: postgres
+  port: 5432
+
+auth: false
+instanceDomain: example.com

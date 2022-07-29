@@ -12,6 +12,7 @@ from django.views.decorators.http import require_GET
 admin.site.site_header = settings.TITLE
 admin.site.site_title = settings.TITLE
 
+
 @require_GET
 def favicon(request):
     from textwrap import dedent
@@ -29,26 +30,24 @@ def favicon(request):
     return HttpResponse(icon, content_type="image/x-icon")
 
 
-urlpatterns = [
+# i18n urls for language change
+urlpatterns = i18n_patterns(
     path("i18n/", include("django.conf.urls.i18n")),
-    path("admin/", admin.site.urls),
-    path("payment/", include("paymentoptions.urls")),
     path("", include("django_prometheus.urls")),
     # favicon
     path("favicon.ico", favicon, name="favicon"),
-]
-
-# i18n urls for language change
-urlpatterns = i18n_patterns(
     path("admin/", admin.site.urls),
-    path("", RedirectView.as_view(url="accounts/login/")),
+    path("", RedirectView.as_view(url="dashboard/main/")),
     path("dashboard/", include("dashboard.urls")),
-    path("accounts/", include("django.contrib.auth.urls")),
     path("sepa", include("paymentoptions.urls")),
 )
 
+if 'dashboard' in settings.INSTALLED_APPS:
+    urlpatterns += i18n_patterns(
+        path("accounts/", include("django.contrib.auth.urls")),
+    )
+
 handler404 = "paymentoptions.views.error_404"
-handler500 = "paymentoptions.views.error_500"
 handler403 = "paymentoptions.views.error_403"
 handler400 = "paymentoptions.views.error_400"
 

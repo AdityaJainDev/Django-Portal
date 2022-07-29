@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: "{{ template "appname" . }}"
+data:
+  logging_console: "DEBUG"
+  logging_django: "DEBUG"
+  ENDPOINT_URL: "https://ascrm-api.aditsystems.de/"
+  REDIS_HOST: "redis"
+  REDIS_DB: "0"
+  SESSION_REDIS_PORT: "6379"
+  POSTGRES_USER: {{ .Values.db.user | quote }}
+  DB_ENGINE: {{ .Values.db.engine | quote }}
+  DB_NAME: {{ .Values.db.name | quote }}
+  DB_USER: {{ .Values.db.user | quote }}
+  DB_PASS: {{ .Values.db.pass | quote }}
+  DB_HOST: {{ .Values.db.host | quote }}
+  DB_PORT: {{ .Values.db.port | quote }}

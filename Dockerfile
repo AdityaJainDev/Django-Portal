@@ -1,5 +1,5 @@
 # Use an official Python runtime as a parent image
-FROM python:3.8-alpine
+FROM python:3.9-alpine
 
 # Set the working directory to /app
 WORKDIR /app
@@ -11,12 +11,10 @@ ENV MUSL_LOCPATH="/usr/share/i18n/locales/musl"
 
 #install headless chrome
 RUN set -ex \
-    && apk add --no-cache --virtual .build-deps gcc build-base musl-dev mariadb-connector-c-dev libffi-dev \
-    && apk add gettext-dev \
-    musl-locales \
-    musl-locales-lang \
+    && apk add --no-cache --virtual .build-deps gcc build-base musl-dev mariadb-connector-c-dev libffi-dev busybox-extras \
+    && apk add --no-cache --virtual tzdata gettext-dev gettext-dev musl-locales musl-locales-lang curl \
     && python -m venv /env \
-    && /env/bin/pip install --upgrade pip \
+    && /env/bin/pip install --upgrade pip wheel \
     && /env/bin/pip install --no-cache-dir -r /app/requirements-frozen.txt \
     && runDeps="$(scanelf --needed --nobanner --recursive /env \
         | awk '{ gsub(/,/, "\nso:", $2); print "so:" $2 }' \
@@ -32,8 +30,10 @@ ENV VIRTUAL_ENV=/env PATH=/env/bin:$PATH
 COPY . /app
 
 # Make port 8000 available to the world outside this container
-EXPOSE 8000
+EXPOSE 6379 8000
 
-RUN python manage.py collectstatic --noinput && django-admin compilemessages
+RUN python manage.py collectstatic --noinput \
+    && python manage.py compress \
+    && django-admin compilemessages
 
 CMD ["gunicorn", "-c", "gunicorn.py"]

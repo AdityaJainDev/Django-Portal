@@ -11,63 +11,54 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 import base64
+from django.contrib.auth import logout as auth_logout
 
 # Create your views here.
 
 
-home_link = "dashboard:home"
+home_link = "dashboard:main"
 logger = logging.getLogger(__name__)
 
-@require_GET
-@login_required
-def home(request):
-    return render(request, "registration/login.html")
 
 
-@require_GET
 def logout(request):
-    u = User.objects.get(username=request.user.username)
-    u.delete()
+    user = User.objects.get(username=request.user.username)
+    user.delete()
     request.session.clear()
-    return HttpResponseRedirect("accounts/login/")
+    auth_logout(request)
+    return HttpResponseRedirect("/accounts/login/")
 
 
-@require_GET
+
 @login_required
 def index(request):
     try:
-        if request.user.last_login.replace(
-            microsecond=0
-        ) == request.user.date_joined.replace(microsecond=0):
-            return HttpResponseRedirect(reverse("dashboard:change_password"))
-        else:
-            account_number = request.session["username"]
-            password = request.session["password"]
+        account_number = request.session["username"]
+        password = request.session["password"]
 
-            try:
-                invoice = requests.get(
-                    settings.CRM_ENDPOINT + "Rechnungen/Rechnungen/",
-                    auth=(account_number, password),
-                )
-                personal = requests.get(
-                    settings.CRM_ENDPOINT + "Kunden/Kunde/",
-                    auth=(account_number, password),
-                )
-                invoice.raise_for_status()
-            except Exception as exec:
-                logger.error(exec)
+        try:
+            invoice = requests.get(
+                settings.CRM_ENDPOINT + "Rechnungen/Rechnungen/",
+                auth=(account_number, password),
+            )
+            personal = requests.get(
+                settings.CRM_ENDPOINT + "Kunden/Kunde/",
+                auth=(account_number, password),
+            )
+            invoice.raise_for_status()
+        except Exception as exec:
+            logger.error(exec)
 
-            if invoice.json()["status"] == 1 and personal.json()["status"] == 1:
-                invoices = invoice.json()["data"]
-                personal_data = personal.json()["data"]
-                context = {"values": invoices, "personal": personal_data}
-            return render(request, "home_main.html", context)
-    except Exception as e:
-        print(e)
+        if invoice.json()["status"] == 1 and personal.json()["status"] == 1:
+            invoices = invoice.json()["data"]
+            personal_data = personal.json()["data"]
+            context = {"values": invoices, "personal": personal_data}
+        return render(request, "home_main.html", context)
+    except Exception as exec:
+            logger.debug(exec)
     return render(request, "home_main.html")
 
 
-@require_GET
 @login_required
 def invoice_details(request, rechnung_id):
     account_number = request.session["username"]
@@ -98,7 +89,6 @@ def invoice_details(request, rechnung_id):
     return render(request, "invoices.html", context)
 
 
-@require_GET
 @login_required
 def all_invoices(request):
     account_number = request.session["username"]
@@ -119,7 +109,6 @@ def all_invoices(request):
     return render(request, "all_invoices.html", context)
 
 
-@require_GET
 @login_required
 def edit_personal_data(request):
     if request.method == "GET":
@@ -182,7 +171,6 @@ def edit_personal_data(request):
     return render(request, "edit_data.html", context)
 
 
-@require_GET
 def password_reset(request):
     if request.method == "GET":
         form = PasswordResetForm()
@@ -215,7 +203,6 @@ def password_reset(request):
     return render(request, "registration/reset_password.html", context)
 
 
-@require_GET
 @login_required
 def change_password(request):
     if request.method == "GET":
@@ -233,7 +220,7 @@ def change_password(request):
                 return HttpResponseRedirect(
                     request.META.get("HTTP_REFERER"), {"form": form}
                 )
-            elif request.user.check_password(password) is SUCCESS:
+            elif request.user.check_password(password) == True:
                 messages.error(request, _("OldPasswordError"))
                 return HttpResponseRedirect(
                     request.META.get("HTTP_REFERER"), {"form": form}
@@ -271,7 +258,6 @@ def change_password(request):
     return render(request, "registration/reset_password.html", context)
 
 
-@require_GET
 @login_required
 def download_pdf(request, rechnung_rnr, rechnung_id):
     account_number = request.session["username"]

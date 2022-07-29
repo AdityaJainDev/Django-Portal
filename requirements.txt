@@ -11,3 +11,4 @@ gunicorn
 django-compressor
 django-libsass
 django-prometheus
+UnleashClient

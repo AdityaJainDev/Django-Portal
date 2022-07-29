@@ -117,6 +117,13 @@ pylint.txt
 
 #Staticfiles
 /staticfiles
+/static/cache/
+
+#Unleash Cache
+#static/cache
+
+#Kubespray
+kubespray/
 
 .vagrant
 *.retry

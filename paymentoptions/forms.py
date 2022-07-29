@@ -10,11 +10,11 @@ PAYMENT_CHOICES = (
 
 
 class PaymentForm(forms.Form):
-    account_number = forms.CharField(
-        label=_("AccountNumber"), max_length=100, required=False
+    customer_number = forms.CharField(
+        label=_("CustomerNumber"), max_length=100, required=False
     )
     payment_options = forms.MultipleChoiceField(
-        label=_("options"),
+        label=_("PaymentOptions"),
         choices=PAYMENT_CHOICES,
         widget=forms.CheckboxSelectMultiple(),
     )
@@ -25,4 +25,4 @@ class PaymentForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super(PaymentForm, self).__init__(*args, **kwargs)
-        self.fields["account_number"].disabled = True
+        self.fields["customer_number"].disabled = True

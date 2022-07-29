@@ -4,7 +4,7 @@
 
 * Install Requirements.txt:
   ```
-  $ pip3 install requirements.txt
+  $ pip3 install requirements-frozen.txt
   ```
   Source: <https://pypi.org/project/mysqlclient/>
   
@@ -14,7 +14,7 @@
     ```
 - For SEPA payments, navigate to 
     ```
-    localhost:8000/payments/details?knr="knr"&token="token"
+    localhost:8000/sepa?knr="knr"&token="token"
     ```
     - Replace `knr` and `token` with respective values
     - No login required for this form.

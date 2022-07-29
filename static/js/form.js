@@ -36,4 +36,3 @@ window.addEventListener('load', function() {
         document.querySelector("input[id=id_confirm]").required = false;
     }
 });
-    

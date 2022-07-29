@@ -1,45 +1,65 @@
+---
 image: registry.aditsystems.de/as-crm/portal:latest
+
 variables:
   SONAR_URL: https://sonarqube.aditsystems.de
-  SONAR_USER_HOME: ${CI_PROJECT_DIR}/${CACHE_DIR}/sonar
-  CI_BUILD_REF: ${CI_COMMIT_SHA}
-  CI_BUILD_REF_NAME: ${CI_COMMIT_REF_NAME}
-  SONAR_GITLAB_PROJECT_ID: ${CI_PROJECT_URL}
-  VERBOSITY: 2
-  TEST_IMAGE: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
-  RELEASE_IMAGE: $CI_REGISTRY_IMAGE:deploy
+  SONAR_USER_HOME: "${CI_PROJECT_DIR}/${CACHE_DIR}/sonar"
+  SONAR_IMAGE: "$CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX/sonarsource/sonar-scanner-cli:latest"
+  CI_BUILD_REF: "${CI_COMMIT_SHA}"
+  CI_BUILD_REF_NAME: "${CI_COMMIT_REF_NAME}"
+  SONAR_GITLAB_PROJECT_ID: "${CI_PROJECT_URL}"
+  VERBOSITY:
+    value: 2
+    description: "Django Test Verbositoy"
+  K8S_VERSION: "alpine/k8s:1.19.16"
+  IMAGE_TEST: "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
+  IMAGE_RELEASE: "$CI_REGISTRY_IMAGE:latest"
+  IMAGE_TAG: "$CI_COMMIT_SHA"
 
+sast:
+  stage: test
+include:
+  - template: Security/SAST.gitlab-ci.yml
+
+kubesec-sast:
+  artifacts:
+    when: always
+    untracked: true
+  variables:
+    KUBESEC_HELM_CHARTS_PATH: "$CI_PROJECT_DIR/Helm"
 
 stages:
   - test
   - build
   - release
   - deploy
-
 cache:
   paths:
-  - ~/.cache/pip/
-
+    - "~/.cache/pip/"
 test:pylint:
   stage: test
   before_script:
+    - /usr/local/bin/python -m pip install --upgrade pip
     - pip install -r requirements-frozen.txt
   script:
     - bash ./bin/pylint.sh
   only:
     changes:
-      - '**/*.py'
+      - "**/*.py"
     refs:
       - merge_requests
       - main
       - develop
   artifacts:
     paths:
-    - pylint.txt
+      - pylint.txt
 
 
-test:django_check:
+.test:django_check:
   stage: test
+  services:
+    - name: "$CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX/postgres:11"
+      alias: postgres
   only:
     - merge_requests
     - main
@@ -48,10 +68,22 @@ test:django_check:
     - pip install -r requirements-frozen.txt
   script:
     - touch Portal.local_settings.py
+    - coverage run --branch manage.py test \
+      --settings Portal.settings_ci -v $VERBOSITY
+    - coverage xml
     - python manage.py check
+  allow_failure: true
 
 test:django:
   stage: test
+  services:
+    - name: postgres:11
+      alias: db
+  variables:
+    POSTGRES_DB: nice_marmot
+    POSTGRES_USER: runner
+    POSTGRES_PASSWORD: "password"
+    POSTGRES_HOST_AUTH_METHOD: trust
   only:
     - merge_requests
     - main
@@ -61,17 +93,19 @@ test:django:
   script:
     - touch Portal.local_settings.py
     - django-admin compilemessages
-    - coverage run --branch manage.py test --settings Portal.settings_ci -v $VERBOSITY
+    - coverage run --branch manage.py test
+      --settings Portal.settings_ci -v $VERBOSITY
     - coverage xml
   artifacts:
     paths:
-    - coverage.xml
+      - coverage.xml
 
 test:sonarqube:
   stage: test
   image:
-    name: sonarsource/sonar-scanner-cli:latest
-    entrypoint: [""]
+    name: $SONAR_IMAGE
+    entrypoint:
+      - ''
   variables:
     GIT_DEPTH: 0
   script:
@@ -83,32 +117,67 @@ test:sonarqube:
     policy: pull
 
 dockerimage:build:
-  image: $CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX/docker:latest
-  services:
-    - docker:dind
-  rules:
-    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+  image: "$CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX/docker:latest"
   stage: build
-  before_script:
-    - echo $CI_REGISTRY_PASSWORD | docker login --username "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
-  script:
-    - docker pull $RELEASE_IMAGE || true
-    - docker build --cache-from $RELEASE_IMAGE --tag $TEST_IMAGE .
-    - docker push $TEST_IMAGE
-  
-dockerimage:release:
-  image: $CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX/docker:latest
   services:
-    - docker:dind
+    - "$CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX/docker:dind"
   rules:
-    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+    - if: "$CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH"
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+  before_script:
+    - echo $CI_REGISTRY_PASSWORD | docker login --username "$CI_REGISTRY_USER"
+      --password-stdin $CI_REGISTRY
+  script:
+    - docker pull $IMAGE_RELEASE || true
+    - docker build --cache-from $IMAGE_RELEASE --tag $IMAGE_TEST .
+    - docker push $IMAGE_TEST
+
+dockerimage:release:
+  image: "$CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX/docker:latest"
+  services:
+    - "$CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX/docker:dind"
+  rules:
+    - if: "$CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH"
   stage: release
   needs:
     - dockerimage:build
   before_script:
-    - echo $CI_REGISTRY_PASSWORD | docker login --username "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
+    - echo $CI_REGISTRY_PASSWORD | docker login --username "$CI_REGISTRY_USER"
+      --password-stdin $CI_REGISTRY
   script:
-    - docker pull $TEST_IMAGE
-    - docker tag $TEST_IMAGE $RELEASE_IMAGE
-    - docker push $RELEASE_IMAGE
+    - docker pull $IMAGE_TEST
+    - docker tag $IMAGE_TEST $IMAGE_RELEASE
+    - docker push $IMAGE_RELEASE
+
+kubectl_staging:deploy:
+  stage: deploy
+  image:
+    name: alpine/k8s:$K8S_VERSION
+    entrypoint: ['']
+  rules:
+    - if: "$CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH"
+  script:
+    - kubectl config use-context as-crm/portal:k8sportal
+    - kubectl create secret generic basic-auth --from-file=$auth
+      --namespace "${NAME_SPACE}" || true
+    - helm upgrade --install --namespace "$NAME_SPACE" --wait --reuse-values --set image.tag=$IMAGE_TAG -f ./Helm/values.staging.yaml portal ./Helm
+  environment:
+    name: staging
+    url: $CI_ENVIRONMENT_URL
+
+kubectl_prod:deploy:
+  stage: deploy
+  image:
+    name: alpine/k8s:$K8S_VERSION
+    entrypoint: ['']
+  rules:
+    - if: $CI_COMMIT_TAG
+  script:
+    - kubectl config use-context as-crm/portal:k8sportal
+    - helm upgrade --install --namespace "${NAME_SPACE}" --reuse-values
+      --wait -f ./Helm/values.production.yaml
+      --set image.tag=$IMAGE_TAG
+      portal ./Helm
+  environment:
+    name: production
+    url: $CI_ENVIRONMENT_URL

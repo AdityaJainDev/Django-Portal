@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-04 12:32+0200\n"
+"POT-Creation-Date: 2022-06-29 12:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,7 +138,7 @@ msgstr "Bank"
 msgid "EditDataHeading"
 msgstr "Edit your Personal Data"
 
-#: dashboard/templates/edit_data.html:16 paymentoptions/templates/form.html:50
+#: dashboard/templates/edit_data.html:16 paymentoptions/templates/form.html:45
 msgid "SendData"
 msgstr "Submit Data"
 
@@ -227,35 +227,35 @@ msgstr "Unit Price"
 msgid "total_price"
 msgstr "Total Price"
 
-#: dashboard/views.py:175
+#: dashboard/views.py:160
 msgid "EditDataSuccess"
 msgstr "Your data has been updated successfully"
 
-#: dashboard/views.py:178
+#: dashboard/views.py:163
 msgid "EditDataError"
 msgstr "There was an error, please try again"
 
-#: dashboard/views.py:208
+#: dashboard/views.py:192
 msgid "ResetEmailSuccess"
 msgstr "Email has been sent successfully"
 
-#: dashboard/views.py:211
+#: dashboard/views.py:195
 msgid "ResetEmailError"
 msgstr "There was an error, please try again"
 
-#: dashboard/views.py:235
+#: dashboard/views.py:218
 msgid "PasswordMatchError"
 msgstr "The new passwords do not match, please try again"
 
-#: dashboard/views.py:240
+#: dashboard/views.py:223
 msgid "OldPasswordError"
 msgstr "Old password is Incorrect, please try again"
 
-#: dashboard/views.py:264
+#: dashboard/views.py:247
 msgid "PasswordChangeSuccess"
 msgstr "Password has been changed successfully"
 
-#: dashboard/views.py:267
+#: dashboard/views.py:250
 msgid "PasswordChangeError"
 msgstr "There was an error, please try again"
 
@@ -268,85 +268,64 @@ msgid "Direct Debit"
 msgstr "Payment by Direct Debit"
 
 #: paymentoptions/forms.py:14 paymentoptions/templates/form.html:12
-msgid "AccountNumber"
-msgstr "Accout Number"
+msgid "CustomerNumber"
+msgstr "Customer Number"
 
-#: paymentoptions/forms.py:17 paymentoptions/templates/form.html:14
-msgid "options"
-msgstr "Payment Options"
+#: paymentoptions/forms.py:17
+msgid "PaymentOptions"
+msgstr ""
 
-#: paymentoptions/forms.py:24 paymentoptions/templates/form.html:41
+#: paymentoptions/forms.py:24 paymentoptions/templates/form.html:35
 msgid "Accept"
 msgstr "I accept the direct debit authorization."
 
 #: paymentoptions/templates/form.html:7
-msgid "FormHeading"
-msgstr "Electronic Checks"
+msgid "PaymentOptionsHeading"
+msgstr "Payment Options"
+
+#: paymentoptions/templates/form.html:14
+msgid "payment_options"
+msgstr "Payment Options"
 
 #: paymentoptions/templates/form.html:26
-msgid "DirectDebitHeading"
+msgid "DirectDebitAuthorization"
 msgstr "Direct Debit Authorization"
 
 #: paymentoptions/templates/form.html:28
-msgid "DDLine1"
+msgid "DirectDebitConfirmationText"
 msgstr ""
-"Company publicompserver, owner: Ingo Klein, Weimarer Straße 22, D-92245 "
-"Kümmersbruck"
+"Hiermit ermächtige(n) ich/wir \n"
+"AD IT Systems GmbH, Ostendstraße 132, 90482 Nürnberg\n"
+"widerruflich, die von mir/uns zu entrichtenden Zahlungen und fälligen "
+"Rechnungen im Rahmen des Kunden-/Providerverhältnisses zu Lasten meines/"
+"unseres o.g. Bankkontos einzuziehen. Wenn mein/unser Konto die erforderliche "
+"Deckung nicht aufweist, besteht seitens des kontoführenden Instituts keine "
+"Verpflichtung zur Einlösung. Teileinlösungen werden im Lastschriftverfahren/"
+"SEPA - Basis - Lastschriftverfahren nicht vorgenommen.\n"
+"Pro Rücklastschrift berechnen wir Ihnen die von Ihrer und unserer Bank "
+"berechneten Rücklastschriftgebühren. \n"
+"Dieses Lastschriftmandat wird durchIhre Mandatsreferenznummer und unsere "
+"unsere SEPA-Gläubiger-Identifikationsnummergekennzeichnet, die von uns bei "
+"allen Lastschrifteinzügen angegeben werden. Beide Angaben finden Sie auf der "
+"Rechnung, die die Lastschrift auslöst."
 
-#: paymentoptions/templates/form.html:29
-msgid "DDLine2"
-msgstr ""
-"revocable, the payments to be made by me/us and invoices due in the context "
-"of the customer/provider relationship at the expense of my/our u.g. withdraw "
-"checking accounts. If my/our account does not have the necessary funds, the "
-"bank holding the account is not obliged to redeem it. Partial redemptions "
-"are not made in the direct debit/SEPA - Basis - direct debit procedure."
+#: paymentoptions/templates/success.html:6
+msgid "Success Message"
+msgstr "Details updated successfully."
 
-#: paymentoptions/templates/form.html:30
-msgid "DDLine3"
-msgstr ""
-"We will charge you a flat rate of €15 per return debit (incl. return debit "
-"fees charged by the banks). By issuing the direct debit mandate, you agree "
-"to this flat rate. You reserve the right to prove that no damage has "
-"occurred at all or that it is significantly lower than the lump sum."
-
-#: paymentoptions/templates/form.html:31
-msgid "DDLine4"
-msgstr "This direct debit mandate is"
-
-#: paymentoptions/templates/form.html:32
-msgid "DDLine5"
-msgstr "Your mandate reference number: 12379/#"
-
-#: paymentoptions/templates/form.html:33
-msgid "DDLine6"
-msgstr "and"
-
-#: paymentoptions/templates/form.html:34
-msgid "DDLine7"
-msgstr "- our creditors - identification number: DE12ZZZ00001131937"
-
-#: paymentoptions/templates/form.html:35
-msgid "DDLine8"
-msgstr "marked, which are indicated by us for all direct debits."
-
-#: paymentoptions/views.py:27
+#: paymentoptions/templates/token_error.html:6
 msgid "Token Message"
 msgstr "Incorrect or missing token, please check or contact us."
 
-#: paymentoptions/views.py:74 paymentoptions/views.py:85
+#: paymentoptions/views.py:74
 msgid "Error Message"
 msgstr "There was an error, please check the details filled and try again."
-
-#: paymentoptions/views.py:82
-msgid "Success Message"
-msgstr "Details updated successfully."
 
 #: templates/base.html:13
 msgid "Homepage"
 msgstr "Homepage"
 
-#: templates/base.html:49 templates/registration/change_password.html:19
+#: templates/base.html:49 templates/registration/change_password.html:16
 msgid "ChangePassword"
 msgstr "Change Password"
 
@@ -414,22 +393,9 @@ msgstr "Contact Details"
 msgid "Jobs"
 msgstr "Jobs"
 
-#: templates/error.html:6
-msgid "Error1"
-msgstr "Oops, something went wrong..."
-
-#: templates/error.html:7
-msgid "Error2"
-msgstr "If the problems persists, please contact an adminstrator."
-
 #: templates/registration/change_password.html:8
 msgid "ChangePasswordHeading"
 msgstr "Change your Password"
-
-#: templates/registration/change_password.html:16
-#: templates/registration/reset_password.html:14
-msgid "SkipPassword"
-msgstr "Skip"
 
 #: templates/registration/login.html:8
 msgid "LoginHeading"
@@ -455,9 +421,62 @@ msgstr "Submit and Login"
 msgid "ResetPasswordHeading"
 msgstr "Reset your Password"
 
+#: templates/registration/reset_password.html:14
+msgid "SkipPassword"
+msgstr "Skip"
+
 #: templates/registration/reset_password.html:17
 msgid "Passwordreset"
 msgstr "Submit"
+
+#~ msgid "AccountNumber"
+#~ msgstr "Accout Number"
+
+#~ msgid "FormHeading"
+#~ msgstr "Electronic Checks"
+
+#~ msgid "DDLine1"
+#~ msgstr ""
+#~ "Company publicompserver, owner: Ingo Klein, Weimarer Straße 22, D-92245 "
+#~ "Kümmersbruck"
+
+#~ msgid "DDLine2"
+#~ msgstr ""
+#~ "revocable, the payments to be made by me/us and invoices due in the "
+#~ "context of the customer/provider relationship at the expense of my/our u."
+#~ "g. withdraw checking accounts. If my/our account does not have the "
+#~ "necessary funds, the bank holding the account is not obliged to redeem "
+#~ "it. Partial redemptions are not made in the direct debit/SEPA - Basis - "
+#~ "direct debit procedure."
+
+#~ msgid "DDLine3"
+#~ msgstr ""
+#~ "We will charge you a flat rate of €15 per return debit (incl. return "
+#~ "debit fees charged by the banks). By issuing the direct debit mandate, "
+#~ "you agree to this flat rate. You reserve the right to prove that no "
+#~ "damage has occurred at all or that it is significantly lower than the "
+#~ "lump sum."
+
+#~ msgid "DDLine4"
+#~ msgstr "This direct debit mandate is"
+
+#~ msgid "DDLine5"
+#~ msgstr "Your mandate reference number: 12379/#"
+
+#~ msgid "DDLine6"
+#~ msgstr "and"
+
+#~ msgid "DDLine7"
+#~ msgstr "- our creditors - identification number: DE12ZZZ00001131937"
+
+#~ msgid "DDLine8"
+#~ msgstr "marked, which are indicated by us for all direct debits."
+
+#~ msgid "Error1"
+#~ msgstr "Oops, something went wrong..."
+
+#~ msgid "Error2"
+#~ msgstr "If the problems persists, please contact an adminstrator."
 
 #~ msgid "r_id"
 #~ msgstr "Invoice ID"

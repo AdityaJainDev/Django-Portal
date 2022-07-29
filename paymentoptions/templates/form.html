@@ -4,14 +4,14 @@
 {% block payment %}
 <div class="form">
     <div class="form__container">
-        <div class="caption-title-paragraph__title GilroySemiBold">{% trans 'FormHeading' %}</div>
+        <div class="caption-title-paragraph__title GilroySemiBold">{% trans 'PaymentOptionsHeading' %}</div>
         <br>
         <form action="#" method="post" id="">
             {% csrf_token %}
 
-            <label for="id_account_number">{% trans 'AccountNumber' %}:</label>
-            {{form.account_number}}
-            <label>{% trans 'options' %}:</label>
+            <label for="id_customer_number">{% trans 'CustomerNumber' %}:</label>
+            {{form.customer_number}}
+            <label>{% trans 'payment_options' %}:</label>
             {{form.payment_options}}
             <div id="details">
                 <label for="id_owner">{% trans 'owner' %}:</label>
@@ -23,16 +23,10 @@
             </div>
             <div data-aos="fade" class="title-text__text-left aos-init aos-animate" id="mandate">
                 <div class="title-text__container">
-                    <div class="title-text__text" style="margin-top: 0%;">{% trans 'DirectDebitHeading' %}</div>
+                    <div class="title-text__text" style="margin-top: 0%;">{% trans 'DirectDebitAuthorization' %}</div>
                     <div class="title-text__body-left" style="font-weight: 500;">
-                        <p>{% trans 'DDLine1' %}</p>
-                        <p>{% trans 'DDLine2' %}</p>
-                        <p>{% trans 'DDLine3' %}</p>
-                        <p>{% trans 'DDLine4' %}</p>
-                        <p>{% trans 'DDLine5' %}</p>
-                        <p>{% trans 'DDLine6' %}</p>
-                        <p>{% trans 'DDLine7' %}</p>
-                        <p>{% trans 'DDLine8' %}</p>
+                      {% trans 'DirectDebitConfirmationText' as confirm_text %}
+                      <p>{{ confirm_text|linebreaksbr }}</p>
                     </div>
                 </div>
             </div>
@@ -46,9 +40,11 @@
             <span class="text-muted"></span>
             <input name="action" value="send_data" type="hidden">
             <div class="cta">
-                <button type="submit" class="cta-btn"><span class="cta-btn-inner">
+                <button type="submit" class="cta-btn">
+                  <span class="cta-btn-inner">
                     {% trans 'SendData' %}
-                    </span></button>
+                  </span>
+                </button>
             </div>
         </form>
 

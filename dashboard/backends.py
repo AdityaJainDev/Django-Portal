@@ -2,10 +2,13 @@ from django.contrib.auth.backends import ModelBackend
 import requests
 from django.conf import settings
 from django.contrib.auth.models import User
+from django.utils.translation import gettext as _
+import logging
 
+logger = logging.getLogger(__name__)
 
 class CustomerBackend(ModelBackend):
-    def authenticate(self, request, errors, **kwargs):
+    def authenticate(self, request, **kwargs):
         knr_or_email = kwargs["username"]
         password = kwargs["password"]
 
@@ -13,6 +16,8 @@ class CustomerBackend(ModelBackend):
             settings.CRM_ENDPOINT + "Kunden/Login/", auth=(knr_or_email, password)
         )
         data.raise_for_status()
+
+        logger.debug(knr_or_email + " is try to authenticate")
 
         request.session["username"] = data.json()["data"]["knr"]
         request.session["password"] = password
@@ -23,6 +28,8 @@ class CustomerBackend(ModelBackend):
                 user = User.objects.get(username=data.json()["data"]["knr"])
                 if user.is_active:
                     return user
-            except Exception as e:
+            except Exception as exec:
+                logger.debug(exec)
                 user = User.objects.create_user(username=data.json()["data"]["knr"])
                 return user
+

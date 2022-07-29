@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 import sys
+from UnleashClient import UnleashClient
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,9 +27,13 @@ SECRET_KEY = os.getenv(
 
 DEBUG = os.getenv("DJANGO_DEBUG", True)
 
+if os.getenv("DJANGO_DEBUG") == "False":
+    DEBUG = False
+
 ALLOWED_HOSTS = [os.getenv("ALLOWED_HOSTS", "localhost")]
 
 # Application definition
+
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -37,7 +42,6 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "adminsortable",
     "django_countries",
     "localflavor",
     "compressor",
@@ -49,14 +53,27 @@ INSTALLED_APPS = [
     "dashboard",
 ]
 
+client = UnleashClient(
+        url="https://git.aditsystems.de/api/v4/feature_flags/unleash/382",
+        app_name="production",
+        instance_id="homfRhCXj97Ks4NA-_kj",
+        disable_metrics=True,
+        disable_registration=True,
+        cache_directory= "static/")
+
+client.initialize_client()
+
+if client.is_enabled("dashboard") == False:
+    INSTALLED_APPS.remove("dashboard")
+
 MIDDLEWARE = [
     "django_prometheus.middleware.PrometheusBeforeMiddleware",
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
-    "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -88,15 +105,16 @@ WSGI_APPLICATION = "Portal.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+    'default': {
+        'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.sqlite3'),
+        'NAME': os.getenv("DB_NAME", 'db.sqlite3'),
+        'USER': os.getenv("DB_USER"),
+        'PASSWORD': os.getenv("DB_PASS"),
+        'HOST': os.getenv("DB_HOST"),
+        'PORT': os.getenv("DB_PORT"),
     }
 }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
@@ -121,7 +139,7 @@ LOGGING = {
     "disable_existing_loggers": False,
     "handlers": {
         "console": {
-            "level": os.getenv("level_console", "INFO"),
+            "level": os.getenv("logging_console", "INFO"),
             "class": "logging.StreamHandler",
             "stream": sys.stdout,
             "formatter": "verbose",
@@ -137,7 +155,7 @@ LOGGING = {
         "django": {
             "handlers": ["console"],
             "propagate": True,
-            "level": os.getenv("level_django", "INFO"),
+            "level": os.getenv("logging_django", "INFO"),
         },
     },
 }
@@ -160,7 +178,7 @@ LANGUAGE_CODE = "de"
 
 LOCALE_PATHS = (os.path.join(BASE_DIR, "locale"),)
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Europe/Berlin"
 
 USE_TZ = True
 USE_I18N = True
@@ -169,13 +187,14 @@ USE_L10N = True
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+COMPRESS_OFFLINE = True
+COMPRESS_ENABLED = True
 
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
     "compressor.finders.CompressorFinder",
 ]
-
 COMPRESS_PRECOMPILERS = (("text/x-scss", "django_libsass.SassCompiler"),)
 
 AUTHENTICATION_BACKENDS = [
@@ -195,7 +214,30 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CRM_ENDPOINT = os.getenv("ENDPOINT_URL", "https://ascrm-api.aditsystems.de/")
 
+LOGIN_REDIRECT_URL = '/dashboard/main/'
+LOGOUT_REDIRECT_URL = '/accounts/login/'
 
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://redis:6379/0",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "SOCKET_CONNECT_TIMEOUT": 5,
+            "SOCKET_TIMEOUT": 5,
+        }
+    }
+}
+
+DJANGO_REDIS_IGNORE_EXCEPTIONS = True
+
+SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
+
+SESSION_CACHE_ALIAS = "default"
+
+SESSION_SAVE_EVERY_REQUEST = True
+
+print(DATABASES)
 
 try:
     from .local_settings import *

@@ -13,9 +13,9 @@ logger = logging.getLogger(__name__)
 # Create your views here.
 class paymentoptions(TemplateView):
     def get(self, request, *args, **kwargs):
-        account_number = request.GET.get("knr", None)
+        customer_number = request.GET.get("knr", None)
         token = request.GET.get("token", None)
-        data = {"knr": account_number, "token": token}
+        data = {"knr": customer_number, "token": token}
 
         try:
             save_data = requests.get(
@@ -30,7 +30,7 @@ class paymentoptions(TemplateView):
         else:
             zahlungsart = save_data.json()["zahlungsart"]
             form = PaymentForm()
-            form.initial["account_number"] = request.GET.get("knr", None)
+            form.initial["customer_number"] = request.GET.get("knr", None)
             form.initial["payment_options"] = zahlungsart
 
         context = {"form": form}
@@ -40,27 +40,26 @@ class paymentoptions(TemplateView):
     def post(self, request, *args, **kwargs):
         form = PaymentForm(request.POST)
         if form.is_valid():
-            account_number = request.GET.get("knr", None)
+            customer_number = request.GET.get("knr", None)
             owner = form.cleaned_data["owner"]
             iban = form.cleaned_data["iban"]
             bic = form.cleaned_data["bic"]
             options = form.cleaned_data["payment_options"]
             token = request.GET.get("token", None)
 
-            if iban == "":
-                data = {
-                    "inhaber": owner,
-                    "knr": account_number,
-                    "token": token,
-                    "zahlungsart": options,
-                }
-            
-            else:
+            data = {
+                "inhaber": owner,
+                "knr": customer_number,
+                "token": token,
+                "zahlungsart": options,
+            }
+
+            if iban:
                 data = {
                     "inhaber": owner,
                     "iban": iban,
                     "bic": bic,
-                    "knr": account_number,
+                    "knr": customer_number,
                     "token": token,
                     "zahlungsart": options,
                 }
@@ -74,7 +73,7 @@ class paymentoptions(TemplateView):
             if save_data.json()["status"] == -1:
                 messages.error(request, _("Error Message"))
                 form = PaymentForm()
-                form.initial["account_number"] = request.GET.get("knr", None)
+                form.initial["customer_number"] = request.GET.get("knr", None)
                 form.initial["payment_options"] = "1"
                 return HttpResponseRedirect(
                     request.META.get("HTTP_REFERER"), {"form": form}
@@ -86,7 +85,7 @@ class paymentoptions(TemplateView):
             for issue in form.errors:
                 messages.error(request, form.errors[issue])
             form = PaymentForm()
-            form.initial["account_number"] = request.GET.get("knr", None)
+            form.initial["customer_number"] = request.GET.get("knr", None)
             form.initial["payment_options"] = "1"
 
 
@@ -95,17 +94,17 @@ class paymentoptions(TemplateView):
         return render(request, "form.html", context)
 
 
-def error_404(request, exception):
-    return render(request, "errors/404.html", {})
+def error_404(request, exception, template_name="errors/404.html"):
+    response = render(request, template_name)
+    response.status_code = 404
+    return response
 
+def error_403(request, exception, template_name="errors/403.html"):
+    response = render(request, template_name)
+    response.status_code = 403
+    return response
 
-def error_500(request, exception=None):
-    return render(request, "errors/500.html", {})
-
-
-def error_403(request, exception=None):
-    return render(request, "errors/403.html", {})
-
-
-def error_400(request, exception=None):
-    return render(request, "errors/400.html", {})
+def error_400(request, exception, template_name="errors/400.html"):
+    response = render(request, template_name)
+    response.status_code = 400
+    return response

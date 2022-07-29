@@ -1,31 +1,22 @@
 ---
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: batch/v1
+kind: Job
 metadata:
-  name: "{{ template "appname" . }}"
+  name: "{{ template "appname" . }}-migrate"
+  annotations:
+    meta.helm.sh/release-name: "{{ template "appname" . }}"
+    "helm.sh/hook": post-upgrade
+    "helm.sh/hook-delete-policy": before-hook-creation
+    "helm.sh/hook-weight": "0"
   labels:
     app: "{{ template "appname" . }}"
-  annotations:
-    keel.sh/approvals: "1"
-    keel.sh/policy: major
-    keel.sh/pollSchedule: "@every 1m"
-    keel.sh/trigger: poll
 spec:
-  replicas: {{ .Values.portal.replicas }}
-  strategy:
-    type: Recreate
-  selector:
-    matchLabels:
-      app: "{{ template "appname" . }}"
   template:
     metadata:
       labels:
         app: "{{ template "appname" . }}"
-        date: "{{ now | unixEpoch }}"
-      annotations:
-        prometheus.io/scrape: 'true'
-        prometheus.io/port: '8000'
     spec:
+      restartPolicy: OnFailure
       imagePullSecrets:
         - name: "{{ template "appname" . }}-run-secrets"
       containers:
@@ -35,27 +26,33 @@ spec:
           securityContext:
             runAsUser: 0
             runAsGroup: 0
-          env:
-            - name: ALLOWED_HOSTS
-              value: {{ .Values.instanceDomain | quote }}
-            - name: PORTAL_PORT
-              value: "8000"
+          command: ["python","manage.py","migrate"]
           envFrom:
             - configMapRef:
                 name: "{{ template "appname" . }}"
             - secretRef:
                 name: "{{ template "appname" . }}-run-secrets"
-          resources:
-{{ toYaml .Values.portal.resources | indent 12 }}
+          env:
+            - name: ALLOWED_HOSTS
+              value: {{ .Values.instanceDomain | quote }}
+            - name: PORTAL_PORT
+              value: "8000"
+          volumeMounts:
+            - mountPath: "/run/secrets/django"
+              name: run-secrets
+              subPath: django
+            - mountPath: /var/cache/nginx
+              name: nginx-cache
           ports:
             - name: http
               containerPort: 8000
-          volumeMounts:
-            - name: run-secrets
-              mountPath: /run/secrets/django
-              subPath: django
-            - name: nginx-cache
-              mountPath: /var/cache/nginx
+          resources:
+            limits:
+              cpu: 500m
+              memory: 128Mi
+            requests:
+              cpu: 100m
+              memory: 32Mi
       volumes:
         - name: run-secrets
           secret:
