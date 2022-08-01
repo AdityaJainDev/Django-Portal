@@ -10,7 +10,7 @@ data:
   REDIS_HOST: "redis"
   REDIS_DB: "0"
   SESSION_REDIS_PORT: "6379"
-  POSTGRES_USER: {{ .Values.db.user | quote }}
+  POSTGRES_USER: {{ .Values.db.user | quote }} 
   DB_ENGINE: {{ .Values.db.engine | quote }}
   DB_NAME: {{ .Values.db.name | quote }}
   DB_USER: {{ .Values.db.user | quote }}
