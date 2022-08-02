@@ -12,18 +12,12 @@ spec:
     metadata:
       labels:
         app: postgres
+        date: "{{ now | unixEpoch }}"
     spec:
       containers:
         - name: postgres
-          image: postgres:14
-          # env:
-            # - name: POSTGRES_USER
-            #   value: postgres
-            # - name: POSTGRES_PASSWORD
-            #   valueFrom:
-            #     secretKeyRef:
-            #       name: postgres-secrets
-            #       key: POSTGRES_PASSWORD
+          image: postgres:12
+          imagePullPolicy: "IfNotPresent"
           envFrom:
             - configMapRef:
                 name: "{{ template "appname" . }}"
