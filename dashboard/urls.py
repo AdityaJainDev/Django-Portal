@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from .views import password_reset, change_password, edit_personal_data
 
 app_name = "dashboard"
 
@@ -11,9 +12,9 @@ urlpatterns = [
         name="invoice_details",
     ),
     path("all_invoices/", views.all_invoices, name="all_invoices"),
-    path("edit_personal_data/", views.edit_personal_data, name="edit_personal_data"),
-    path("password_reset/", views.password_reset, name="password_reset"),
-    path("change_password/", views.change_password, name="change_password"),
+    path("edit_personal_data/", edit_personal_data.as_view(), name="edit_personal_data"),
+    path("password_reset/", password_reset.as_view(), name="password_reset"),
+    path("change_password/", change_password.as_view(), name="change_password"),
     path(
         "download_pdf/<int:rechnung_rnr>/<int:rechnung_id>",
         views.download_pdf,

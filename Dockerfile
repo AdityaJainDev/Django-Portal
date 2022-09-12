@@ -11,8 +11,8 @@ ENV MUSL_LOCPATH="/usr/share/i18n/locales/musl"
 
 #install headless chrome
 RUN set -ex \
-    && apk add --no-cache --virtual .build-deps gcc build-base musl-dev mariadb-connector-c-dev libffi-dev busybox-extras \
-    && apk add --no-cache --virtual tzdata gettext-dev gettext-dev musl-locales musl-locales-lang curl \
+    && apk add --no-cache --virtual .build-deps gcc build-base musl-dev mariadb-connector-c-dev libffi-dev busybox-extras python3-dev gettext \
+    && apk add --no-cache --virtual tzdata gettext-dev musl-locales musl-locales-lang curl \
     && python -m venv /env \
     && /env/bin/pip install --upgrade pip wheel \
     && /env/bin/pip install --no-cache-dir -r /app/requirements-frozen.txt \

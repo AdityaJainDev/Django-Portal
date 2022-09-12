@@ -25,10 +25,7 @@ SECRET_KEY = os.getenv(
     "SECRET_KEY", "g4g-3$@r0*#k(yw!#nai9^zrv1sc*ao$5-$ouxv@m6%%@lys2p"
 )
 
-DEBUG = os.getenv("DJANGO_DEBUG", True)
-
-if os.getenv("DJANGO_DEBUG") == "False":
-    DEBUG = False
+DEBUG = os.getenv("DJANGO_DEBUG", 'False').lower() == 'true'
 
 ALLOWED_HOSTS = [os.getenv("ALLOWED_HOSTS", "localhost")]
 
@@ -230,14 +227,6 @@ CACHES = {
 }
 
 DJANGO_REDIS_IGNORE_EXCEPTIONS = True
-
-SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
-
-SESSION_CACHE_ALIAS = "default"
-
-SESSION_SAVE_EVERY_REQUEST = True
-
-print(DATABASES)
 
 try:
     from .local_settings import *

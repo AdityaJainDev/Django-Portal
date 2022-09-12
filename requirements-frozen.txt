@@ -2,6 +2,7 @@
 asgiref==3.5.0
 bleach==4.1.0
 certifi==2021.10.8
+coverage==6.4.4
 charset-normalizer==2.0.11
 Django==3.2.12
 django-admin-sortable==2.3

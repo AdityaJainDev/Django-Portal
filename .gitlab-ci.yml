@@ -1,5 +1,5 @@
 ---
-image: registry.aditsystems.de/as-crm/portal:latest
+image: registry.aditsystems.de/as-crm/portal:d9a0c995
 
 variables:
   SONAR_URL: https://sonarqube.aditsystems.de
@@ -39,6 +39,7 @@ cache:
 test:pylint:
   stage: test
   before_script:
+    - apk add bash
     - /usr/local/bin/python -m pip install --upgrade pip
     - pip install -r requirements-frozen.txt
   script:

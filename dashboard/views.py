@@ -12,29 +12,42 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 import base64
 from django.contrib.auth import logout as auth_logout
+from django.views.generic import TemplateView
+from django.core.exceptions import PermissionDenied
+from .models import APIData
 
 # Create your views here.
 
 
 home_link = "dashboard:main"
 logger = logging.getLogger(__name__)
+password_reset_template = "registration/reset_password.html"
+change_password_template = "registration/change_password.html"
 
 
-
+@require_GET
 def logout(request):
-    user = User.objects.get(username=request.user.username)
-    user.delete()
-    request.session.clear()
-    auth_logout(request)
+    try:
+        user = User.objects.get(username=request.user.username)
+        data = APIData.objects.get(account_number=request.user.username)
+        user.delete()
+        data.delete()
+    except Exception as exec:
+        logger.error(exec)
+        request.session.clear()
+        auth_logout(request)
     return HttpResponseRedirect("/accounts/login/")
 
 
-
+@require_GET
 @login_required
 def index(request):
     try:
-        account_number = request.session["username"]
-        password = request.session["password"]
+        data=APIData.objects.get(account_number=request.user.username)
+        account_number = data.account_number
+        password = data.password
+
+        print(data.account_number, data.password)
 
         try:
             invoice = requests.get(
@@ -48,6 +61,7 @@ def index(request):
             invoice.raise_for_status()
         except Exception as exec:
             logger.error(exec)
+            raise PermissionDenied()
 
         if invoice.json()["status"] == 1 and personal.json()["status"] == 1:
             invoices = invoice.json()["data"]
@@ -59,10 +73,12 @@ def index(request):
     return render(request, "home_main.html")
 
 
+@require_GET
 @login_required
 def invoice_details(request, rechnung_id):
-    account_number = request.session["username"]
-    password = request.session["password"]
+    data=APIData.objects.get(account_number=request.user.username)
+    account_number = data.account_number
+    password = data.password
     invoice_id = rechnung_id
 
     params = {"rechnung_id": invoice_id}
@@ -81,6 +97,8 @@ def invoice_details(request, rechnung_id):
         invoice_detail.raise_for_status()
     except Exception as exec:
         logger.error(exec)
+        raise PermissionDenied()
+        
 
     if invoice_detail.json()["status"] == 1:
         invoices = invoice_detail.json()["data"]
@@ -89,10 +107,12 @@ def invoice_details(request, rechnung_id):
     return render(request, "invoices.html", context)
 
 
+@require_GET
 @login_required
 def all_invoices(request):
-    account_number = request.session["username"]
-    password = request.session["password"]
+    data=APIData.objects.get(account_number=request.user.username)
+    account_number = data.account_number
+    password = data.password
 
     try:
         invoice = requests.get(
@@ -102,6 +122,7 @@ def all_invoices(request):
         invoice.raise_for_status()
     except Exception as exec:
         logger.error(exec)
+        raise PermissionDenied()
 
     if invoice.json()["status"] == 1:
         invoices = invoice.json()["data"]
@@ -109,11 +130,13 @@ def all_invoices(request):
     return render(request, "all_invoices.html", context)
 
 
-@login_required
-def edit_personal_data(request):
-    if request.method == "GET":
+class edit_personal_data(TemplateView):
+    def get(self, request, *args, **kwargs):
         form = PersonalDataEdit()
-    elif request.method == "POST":
+        context = {"form": form}
+        return render(request, "edit_data.html", context)
+
+    def post(self, request, *args, **kwargs):
         form = PersonalDataEdit(request.POST)
         if form.is_valid():
             company = form.cleaned_data["company"]
@@ -129,8 +152,9 @@ def edit_personal_data(request):
             billing = form.cleaned_data["billing"]
             newsletter = form.cleaned_data["newsletter"]
 
-            account_number = request.session["username"]
-            password = request.session["password"]
+            data=APIData.objects.get(account_number=request.user.username)
+            account_number = data.account_number
+            password = data.password
 
             data = {
                 "kunde_firma": company,
@@ -156,6 +180,7 @@ def edit_personal_data(request):
                 edit_data.raise_for_status()
             except Exception as exec:
                 logger.error(exec)
+                raise PermissionDenied()
 
             if edit_data.json()["status"] == 1:
                 messages.success(request, _("EditDataSuccess"))
@@ -166,20 +191,23 @@ def edit_personal_data(request):
                     request.META.get("HTTP_REFERER"), {"form": form}
                 )
 
-    context = {"form": form}
+        context = {"form": form}
 
-    return render(request, "edit_data.html", context)
+        return render(request, "edit_data.html", context)
 
 
-def password_reset(request):
-    if request.method == "GET":
+class password_reset(TemplateView):
+    def get(self, request, *args, **kwargs):
         form = PasswordResetForm()
-
-    elif request.method == "POST":
+        context = {"form": form}
+        return render(request, password_reset_template, context)
+    
+    def post(self, request, *args, **kwargs):
         form = PasswordResetForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data["email"]
-            account_number = request.user.username
+            data=APIData.objects.get(account_number=request.user.username)
+            account_number = data.account_number
 
             data = {"knr": account_number, "email": email}
 
@@ -188,6 +216,7 @@ def password_reset(request):
                 data.raise_for_status()
             except Exception as exec:
                 logger.error(exec)
+                raise PermissionDenied()
 
             if data.json()["status"] == 1:
                 messages.success(request, _("ResetEmailSuccess"))
@@ -198,17 +227,18 @@ def password_reset(request):
                     request.META.get("HTTP_REFERER"), {"form": form}
                 )
 
-    context = {"form": form}
+        context = {"form": form}
 
-    return render(request, "registration/reset_password.html", context)
+        return render(request, password_reset_template, context)
 
 
-@login_required
-def change_password(request):
-    if request.method == "GET":
+class change_password(TemplateView):
+    def get(self, request, *args, **kwargs):
         form = ChangePassword()
-
-    elif request.method == "POST":
+        context = {"form": form}
+        return render(request, change_password_template, context)
+    
+    def post(self, request, *args, **kwargs):
         form = ChangePassword(request.POST)
         if form.is_valid():
             password = form.cleaned_data["password"]
@@ -253,15 +283,17 @@ def change_password(request):
                         request.META.get("HTTP_REFERER"), {"form": form}
                     )
 
-    context = {"form": form}
+        context = {"form": form}
 
-    return render(request, "registration/reset_password.html", context)
+        return render(request, change_password_template, context)
 
 
+@require_GET
 @login_required
 def download_pdf(request, rechnung_rnr, rechnung_id):
-    account_number = request.session["username"]
-    password = request.session["password"]
+    data=APIData.objects.get(account_number=request.user.username)
+    account_number = data.account_number
+    password = data.password
     rnr = rechnung_rnr
 
     params = {"rechnung_id": rechnung_id}
@@ -282,6 +314,7 @@ def download_pdf(request, rechnung_rnr, rechnung_id):
 
     except Exception as exec:
         logger.error(exec)
+        raise PermissionDenied()
 
     values = invoice_detail.json()["data"]
 
@@ -291,3 +324,24 @@ def download_pdf(request, rechnung_rnr, rechnung_id):
         response = HttpResponse(decoded, content_type="application/pdf")
         response["Content-Disposition"] = 'inline; filename="RE{}.pdf"'.format(rnr)
         return response
+
+
+def error_404(request, exception, template_name="errors/404.html"):
+    response = render(request, template_name)
+    response.status_code = 404
+    return response
+
+def error_403(request, exception, template_name="errors/403.html"):
+    response = render(request, template_name)
+    response.status_code = 403
+    return response
+
+def error_400(request, exception, template_name="errors/400.html"):
+    response = render(request, template_name)
+    response.status_code = 400
+    return response
+
+def error_500(request, template_name="errors/500.html"):
+    response = render(request, template_name)
+    response.status_code = 500
+    return response

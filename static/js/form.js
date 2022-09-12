@@ -1,5 +1,5 @@
-var checkbox1 = document.querySelector("input[id=id_payment_options_0]");
-var checkbox2 = document.querySelector("input[id=id_payment_options_1]");
+let checkbox1 = document.querySelector("input[id=id_payment_options_0]");
+let checkbox2 = document.querySelector("input[id=id_payment_options_1]");
 
 checkbox1.addEventListener('change', function() {
 if (this.checked) {
@@ -15,7 +15,6 @@ if (this.checked) {
     document.querySelector("div[id=confirm]").style.display = '';
 }
 });
-
 
 
 checkbox2.addEventListener('change', function() {
@@ -36,3 +35,13 @@ window.addEventListener('load', function() {
         document.querySelector("input[id=id_confirm]").required = false;
     }
 });
+
+window.onload = function() {
+    if (checkbox1.checked) {
+        document.querySelector("input[id=id_confirm]").required = false;
+        document.querySelector("div[id=details]").style.display = 'none';
+        document.querySelector("input[id=id_payment_options_1]").checked = false;
+        document.querySelector("div[id=mandate]").style.display = 'none';
+        document.querySelector("div[id=confirm]").style.display = 'none';
+    }
+};

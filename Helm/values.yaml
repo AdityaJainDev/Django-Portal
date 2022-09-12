@@ -39,5 +39,6 @@ db:
   host: postgres
   port: 5432
 
+
 auth: false
 instanceDomain: example.com

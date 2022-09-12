@@ -5,7 +5,7 @@ metadata:
   name: "{{ template "appname" . }}-migrate"
   annotations:
     meta.helm.sh/release-name: "{{ template "appname" . }}"
-    "helm.sh/hook": post-upgrade
+    "helm.sh/hook": post-install,post-upgrade
     "helm.sh/hook-delete-policy": before-hook-creation
     "helm.sh/hook-weight": "0"
   labels:
