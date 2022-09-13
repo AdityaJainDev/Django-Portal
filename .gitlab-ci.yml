@@ -11,7 +11,7 @@ variables:
   VERBOSITY:
     value: 2
     description: "Django Test Verbositoy"
-  K8S_VERSION: "alpine/k8s:1.24.3"
+  K8S_VERSION: "1.24.3"
   IMAGE_TEST: "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
   IMAGE_RELEASE: "$CI_REGISTRY_IMAGE:latest"
   IMAGE_TAG: "$CI_COMMIT_SHA"
