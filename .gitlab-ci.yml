@@ -11,7 +11,7 @@ variables:
   VERBOSITY:
     value: 2
     description: "Django Test Verbositoy"
-  K8S_VERSION: "1.24.3"
+  K8S_VERSION: "alpine/k8s:1.23.7"
   IMAGE_TEST: "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
   IMAGE_RELEASE: "$CI_REGISTRY_IMAGE:latest"
   IMAGE_TAG: "$CI_COMMIT_SHA"
@@ -153,12 +153,12 @@ dockerimage:release:
 kubectl_staging:deploy:
   stage: deploy
   image:
-    name: alpine/k8s:$K8S_VERSION
+    name: $K8S_VERSION
     entrypoint: ['']
   rules:
     - if: "$CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH"
   script:
-    - kubectl config use-context as-crm/portal:k8sportal
+    - kubectl config use-context as-crm/portal:k8s-portal
     - kubectl create secret generic basic-auth --from-file=$auth
       --namespace "${NAME_SPACE}" || true
     - helm upgrade --install --namespace "$NAME_SPACE" --wait --reuse-values --set image.tag=$IMAGE_TAG -f ./Helm/values.staging.yaml portal ./Helm
@@ -169,12 +169,12 @@ kubectl_staging:deploy:
 kubectl_prod:deploy:
   stage: deploy
   image:
-    name: alpine/k8s:$K8S_VERSION
+    name: $K8S_VERSION
     entrypoint: ['']
   rules:
     - if: $CI_COMMIT_TAG
   script:
-    - kubectl config use-context as-crm/portal:k8sportal
+    - kubectl config use-context as-crm/portal:k8s-portal
     - helm upgrade --install --namespace "${NAME_SPACE}" --reuse-values
       --wait -f ./Helm/values.production.yaml
       --set image.tag=$IMAGE_TAG

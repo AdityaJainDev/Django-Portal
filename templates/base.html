@@ -38,6 +38,7 @@
                 </button>
                 <div class="header__list">
                     <ul style="display: flex; justify-content: right;">
+                        {% block header %}
                         {% if user.is_authenticated %}
                         <li>
                             <a href="{% url 'dashboard:all_invoices' %}" title="DevOps Service">{% trans 'AllInvoicesHeading' %}</a>
@@ -52,7 +53,7 @@
                         {% else %}
                         <li class="login-button"><a href="{% url 'dashboard:main' %}" class="diff-link">{% trans 'Login' %}</a></li>
                         {% endif %}
-
+                        {% endblock header %}
                         <li class="language-switcher">
                             <ul class="language-switcher__desktop">
                                 {% get_current_language as CURRENT_LANGUAGE %}
@@ -126,10 +127,10 @@
                     <div class="footer__item">
                         <ul>
                             <li><a href="">DevOps Service</a></li>
-                            <li><a href="">Managed Hosting</a></li>
-                            <li><a href="">LiveConfig</a></li>
-                            <li><a href="">Webmail</a></li>
-                            <li><a href="">PHPMyAdmin</a></li>
+                            <li><a href="https://www.aditsystems.de/mhosting_about.php">Managed Hosting</a></li>
+                            <li><a href="https://kunden.aditsystems.de/liveconfig/">LiveConfig</a></li>
+                            <li><a href="https://www.aditsystems.email/">Webmail</a></li>
+                            <li><a href="https://kunden.aditsystems.de/phpmyadmin/pma-sso/signon.php">PHPMyAdmin</a></li>
                         </ul>
                     </div>
                 </div>
