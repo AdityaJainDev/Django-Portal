@@ -37,14 +37,14 @@ urlpatterns = i18n_patterns(
     # favicon
     path("favicon.ico", favicon, name="favicon"),
     path("admin/", admin.site.urls),
-    path("", RedirectView.as_view(url="dashboard/main/")),
-    path("dashboard/", include("dashboard.urls")),
     path("sepa", include("paymentoptions.urls")),
 )
 
 if 'dashboard' in settings.INSTALLED_APPS:
     urlpatterns += i18n_patterns(
         path("accounts/", include("django.contrib.auth.urls")),
+        path("", RedirectView.as_view(url="dashboard/main/")),
+        path("dashboard/", include("dashboard.urls")),
     )
 
 handler404 = "dashboard.views.error_404"

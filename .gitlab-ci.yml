@@ -14,7 +14,6 @@ variables:
   K8S_VERSION: "alpine/k8s:1.23.7"
   IMAGE_TEST: "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
   IMAGE_RELEASE: "$CI_REGISTRY_IMAGE:latest"
-  IMAGE_TAG: "$CI_COMMIT_SHA"
 
 sast:
   stage: test
@@ -161,7 +160,7 @@ kubectl_staging:deploy:
     - kubectl config use-context as-crm/portal:k8s-portal
     - kubectl create secret generic basic-auth --from-file=$auth
       --namespace "${NAME_SPACE}" || true
-    - helm upgrade --install --namespace "$NAME_SPACE" --wait --reuse-values --set image.tag=$IMAGE_TAG -f ./Helm/values.staging.yaml portal ./Helm
+    - helm upgrade --install --namespace "$NAME_SPACE" --wait --reuse-values --set image.tag=$CI_COMMIT_SHORT_SHA -f ./Helm/values.staging.yaml portal ./Helm
   environment:
     name: staging
     url: $CI_ENVIRONMENT_URL
@@ -177,7 +176,7 @@ kubectl_prod:deploy:
     - kubectl config use-context as-crm/portal:k8s-portal
     - helm upgrade --install --namespace "${NAME_SPACE}" --reuse-values
       --wait -f ./Helm/values.production.yaml
-      --set image.tag=$IMAGE_TAG
+      --set image.tag=$CI_COMMIT_SHORT_SHA
       portal ./Helm
   environment:
     name: production

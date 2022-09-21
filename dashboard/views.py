@@ -14,7 +14,11 @@ import base64
 from django.contrib.auth import logout as auth_logout
 from django.views.generic import TemplateView
 from django.core.exceptions import PermissionDenied
-from .models import APIData
+
+try:
+    from .models import APIData
+except Exception as e:
+    pass
 
 # Create your views here.
 

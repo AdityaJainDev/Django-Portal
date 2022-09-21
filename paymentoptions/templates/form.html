@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
+{% block logo %}
+<div class="header__logo"><a class="logo-link" href=""><img
+            alt="AD IT Systems" src="{% static 'images/logo-nav.9aa4c274.svg' %}"></a></div>
+{% endblock logo %}
 {% block header %}
 {% endblock header %}
 {% block payment %}
@@ -12,7 +16,7 @@
             {% csrf_token %}
 
             <label for="id_customer_number">{% trans 'CustomerNumber' %}:</label>
-            {{form.customer_number}}
+            <input type="text" name="customer_number" value="{{customer_number}}" maxlength="100" id="id_customer_number" readonly>
             <label>{% trans 'payment_options' %}:</label>
             {{form.payment_options}}
             <div id="details">

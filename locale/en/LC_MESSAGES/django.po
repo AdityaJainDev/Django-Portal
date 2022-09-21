@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-29 12:08+0200\n"
+"POT-Creation-Date: 2022-09-20 12:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -94,7 +94,7 @@ msgstr "Invoice Details"
 msgid "Newsletter"
 msgstr "Yes, please send the newsletter for general announcements"
 
-#: dashboard/templates/all_invoices.html:10 templates/base.html:43
+#: dashboard/templates/all_invoices.html:10 templates/base.html:44
 msgid "AllInvoicesHeading"
 msgstr "Invoice overview"
 
@@ -120,13 +120,13 @@ msgstr "Our Bank Details"
 
 #: dashboard/templates/bank_details.html:10
 #: dashboard/templates/home_main.html:127 paymentoptions/forms.py:22
-#: paymentoptions/templates/form.html:19
+#: paymentoptions/templates/form.html:21
 msgid "iban"
 msgstr "IBAN"
 
 #: dashboard/templates/bank_details.html:14
 #: dashboard/templates/home_main.html:132 paymentoptions/forms.py:23
-#: paymentoptions/templates/form.html:21
+#: paymentoptions/templates/form.html:23
 msgid "bic"
 msgstr "BIC"
 
@@ -138,7 +138,7 @@ msgstr "Bank"
 msgid "EditDataHeading"
 msgstr "Edit your Personal Data"
 
-#: dashboard/templates/edit_data.html:16 paymentoptions/templates/form.html:45
+#: dashboard/templates/edit_data.html:16 paymentoptions/templates/form.html:47
 msgid "SendData"
 msgstr "Submit Data"
 
@@ -166,7 +166,7 @@ msgstr "View Invoices"
 msgid "YourData"
 msgstr "Your Data"
 
-#: dashboard/templates/home_main.html:72 templates/base.html:159
+#: dashboard/templates/home_main.html:72 templates/base.html:160
 msgid "Company"
 msgstr "Company"
 
@@ -174,7 +174,7 @@ msgstr "Company"
 msgid "Name"
 msgstr "Name"
 
-#: dashboard/templates/home_main.html:103 templates/base.html:46
+#: dashboard/templates/home_main.html:103 templates/base.html:47
 msgid "edit_personal_data"
 msgstr "Edit Personal Data"
 
@@ -187,7 +187,7 @@ msgid "SepaGranted"
 msgstr "Direct debit authorization granted"
 
 #: dashboard/templates/home_main.html:122 paymentoptions/forms.py:21
-#: paymentoptions/templates/form.html:17
+#: paymentoptions/templates/form.html:19
 msgid "owner"
 msgstr "Owner"
 
@@ -227,35 +227,35 @@ msgstr "Unit Price"
 msgid "total_price"
 msgstr "Total Price"
 
-#: dashboard/views.py:160
+#: dashboard/views.py:186
 msgid "EditDataSuccess"
 msgstr "Your data has been updated successfully"
 
-#: dashboard/views.py:163
+#: dashboard/views.py:189
 msgid "EditDataError"
 msgstr "There was an error, please try again"
 
-#: dashboard/views.py:192
+#: dashboard/views.py:222
 msgid "ResetEmailSuccess"
 msgstr "Email has been sent successfully"
 
-#: dashboard/views.py:195
+#: dashboard/views.py:225
 msgid "ResetEmailError"
 msgstr "There was an error, please try again"
 
-#: dashboard/views.py:218
+#: dashboard/views.py:249
 msgid "PasswordMatchError"
 msgstr "The new passwords do not match, please try again"
 
-#: dashboard/views.py:223
+#: dashboard/views.py:254
 msgid "OldPasswordError"
 msgstr "Old password is Incorrect, please try again"
 
-#: dashboard/views.py:247
+#: dashboard/views.py:278
 msgid "PasswordChangeSuccess"
 msgstr "Password has been changed successfully"
 
-#: dashboard/views.py:250
+#: dashboard/views.py:281
 msgid "PasswordChangeError"
 msgstr "There was an error, please try again"
 
@@ -267,31 +267,31 @@ msgstr "Payment by Bank Transfer"
 msgid "Direct Debit"
 msgstr "Payment by Direct Debit"
 
-#: paymentoptions/forms.py:14 paymentoptions/templates/form.html:12
+#: paymentoptions/forms.py:14 paymentoptions/templates/form.html:14
 msgid "CustomerNumber"
 msgstr "Customer Number"
 
 #: paymentoptions/forms.py:17
 msgid "PaymentOptions"
-msgstr ""
+msgstr "Payment Options"
 
-#: paymentoptions/forms.py:24 paymentoptions/templates/form.html:35
+#: paymentoptions/forms.py:24 paymentoptions/templates/form.html:37
 msgid "Accept"
 msgstr "I accept the direct debit authorization."
 
-#: paymentoptions/templates/form.html:7
+#: paymentoptions/templates/form.html:9
 msgid "PaymentOptionsHeading"
 msgstr "Payment Options"
 
-#: paymentoptions/templates/form.html:14
+#: paymentoptions/templates/form.html:16
 msgid "payment_options"
 msgstr "Payment Options"
 
-#: paymentoptions/templates/form.html:26
+#: paymentoptions/templates/form.html:28
 msgid "DirectDebitAuthorization"
 msgstr "Direct Debit Authorization"
 
-#: paymentoptions/templates/form.html:28
+#: paymentoptions/templates/form.html:30
 msgid "DirectDebitConfirmationText"
 msgstr ""
 "Hiermit ermächtige(n) ich/wir \n"
@@ -309,93 +309,102 @@ msgstr ""
 "allen Lastschrifteinzügen angegeben werden. Beide Angaben finden Sie auf der "
 "Rechnung, die die Lastschrift auslöst."
 
-#: paymentoptions/templates/success.html:6
-msgid "Success Message"
-msgstr "Details updated successfully."
-
 #: paymentoptions/templates/token_error.html:6
 msgid "Token Message"
 msgstr "Incorrect or missing token, please check or contact us."
 
-#: paymentoptions/views.py:74
+#: paymentoptions/views.py:78
 msgid "Error Message"
 msgstr "There was an error, please check the details filled and try again."
 
-#: templates/base.html:13
-msgid "Homepage"
-msgstr "Homepage"
+#: paymentoptions/views.py:84
+msgid "DD Success Message"
+msgstr "Sepa Direct Debit has been selected as Payment Option successfully."
 
-#: templates/base.html:49 templates/registration/change_password.html:16
+#: paymentoptions/views.py:87
+msgid "BT Success Message"
+msgstr "Bank Transfer has been selected as Payment Option successfully."
+
+#: templates/base.html:13
+msgid "Portal"
+msgstr "AD IT SYSTEMS - Portal"
+
+#: templates/base.html:50 templates/registration/change_password.html:17
 msgid "ChangePassword"
 msgstr "Change Password"
 
-#: templates/base.html:51
+#: templates/base.html:52
 msgid "Logout"
 msgstr "Logout"
 
-#: templates/base.html:53
+#: templates/base.html:54
 msgid "Login"
 msgstr "Login"
 
-#: templates/base.html:108
+#: templates/base.html:109
 msgid "Contact"
 msgstr "Contact"
 
-#: templates/base.html:125
+#: templates/base.html:126
 msgid "Services"
 msgstr "Services"
 
-#: templates/base.html:137
+#: templates/base.html:138
 msgid "Compliance"
 msgstr "Compliance"
 
-#: templates/base.html:140
+#: templates/base.html:141
 msgid "LegalNotice"
 msgstr "Legal Notice"
 
-#: templates/base.html:141
+#: templates/base.html:142
 msgid "Privacy"
 msgstr "Privacy"
 
-#: templates/base.html:142
+#: templates/base.html:143
 msgid "Revocation"
 msgstr "Revocation"
 
-#: templates/base.html:143
+#: templates/base.html:144
 msgid "CustomerInformation"
 msgstr "Customer Information"
 
-#: templates/base.html:144
+#: templates/base.html:145
 msgid "TermsofService"
 msgstr "Terms of Service"
 
-#: templates/base.html:149
+#: templates/base.html:150
 msgid "InfoCenter"
 msgstr "Info Center"
 
-#: templates/base.html:152
+#: templates/base.html:153
 msgid "Blog"
 msgstr "Blog"
 
-#: templates/base.html:153
+#: templates/base.html:154
 msgid "Support"
 msgstr "Support"
 
-#: templates/base.html:154
+#: templates/base.html:155
 msgid "CustomerCenter"
 msgstr "Customer Center"
 
-#: templates/base.html:162
+#: templates/base.html:163
 msgid "ContactDetails"
 msgstr "Contact Details"
 
-#: templates/base.html:163
+#: templates/base.html:164
 msgid "Jobs"
 msgstr "Jobs"
 
 #: templates/registration/change_password.html:8
 msgid "ChangePasswordHeading"
 msgstr "Change your Password"
+
+#: templates/registration/change_password.html:14
+#: templates/registration/reset_password.html:14
+msgid "SkipPassword"
+msgstr "Skip"
 
 #: templates/registration/login.html:8
 msgid "LoginHeading"
@@ -421,13 +430,12 @@ msgstr "Submit and Login"
 msgid "ResetPasswordHeading"
 msgstr "Reset your Password"
 
-#: templates/registration/reset_password.html:14
-msgid "SkipPassword"
-msgstr "Skip"
-
 #: templates/registration/reset_password.html:17
 msgid "Passwordreset"
 msgstr "Submit"
+
+#~ msgid "Homepage"
+#~ msgstr "Homepage"
 
 #~ msgid "AccountNumber"
 #~ msgstr "Accout Number"

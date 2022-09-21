@@ -33,15 +33,9 @@ window.addEventListener('load', function() {
         document.querySelector("input[id=id_confirm]").required = true;
     } else {
         document.querySelector("input[id=id_confirm]").required = false;
-    }
-});
-
-window.onload = function() {
-    if (checkbox1.checked) {
-        document.querySelector("input[id=id_confirm]").required = false;
         document.querySelector("div[id=details]").style.display = 'none';
         document.querySelector("input[id=id_payment_options_1]").checked = false;
         document.querySelector("div[id=mandate]").style.display = 'none';
         document.querySelector("div[id=confirm]").style.display = 'none';
     }
-};
+});

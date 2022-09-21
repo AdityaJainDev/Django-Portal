@@ -22,7 +22,3 @@ class PaymentForm(forms.Form):
     iban = IBANFormField(label=_("iban"), required=False)
     bic = BICFormField(label=_("bic"), required=False)
     confirm = forms.BooleanField(label=_("Accept"), required=False)
-
-    def __init__(self, *args, **kwargs):
-        super(PaymentForm, self).__init__(*args, **kwargs)
-        self.fields["customer_number"].disabled = True

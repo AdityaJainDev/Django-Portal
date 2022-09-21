@@ -1,7 +1,6 @@
 import logging
 from django.shortcuts import render, redirect
 from .forms import PaymentForm
-from django.http import HttpResponse, HttpResponseRedirect
 import requests
 from django.utils.translation import gettext as _
 from django.contrib import messages
@@ -9,6 +8,8 @@ from django.conf import settings
 from django.views.generic import TemplateView
 
 logger = logging.getLogger(__name__)
+
+form_template = "form.html"
 
 # Create your views here.
 class paymentoptions(TemplateView):
@@ -30,17 +31,18 @@ class paymentoptions(TemplateView):
         else:
             zahlungsart = save_data.json()["zahlungsart"]
             form = PaymentForm()
-            form.initial["customer_number"] = request.GET.get("knr", None)
+            form.initial["customer_number"] = customer_number
             form.initial["payment_options"] = zahlungsart
 
-        context = {"form": form}
+        context = {"form": form, "customer_number": customer_number}
 
-        return render(request, "form.html", context)
+        return render(request, form_template, context)
 
     def post(self, request, *args, **kwargs):
         form = PaymentForm(request.POST)
+        customer_number = request.GET.get("knr", None)
         if form.is_valid():
-            customer_number = request.GET.get("knr", None)
+            customer_number = form.cleaned_data["customer_number"]
             owner = form.cleaned_data["owner"]
             iban = form.cleaned_data["iban"]
             bic = form.cleaned_data["bic"]
@@ -75,20 +77,13 @@ class paymentoptions(TemplateView):
                 form = PaymentForm()
                 form.initial["customer_number"] = request.GET.get("knr", None)
                 form.initial["payment_options"] = "1"
-                return HttpResponseRedirect(
-                    request.META.get("HTTP_REFERER"), {"form": form}
-                )
             else:
-                return redirect("paymentoptions:success")
+                if iban:
+                    messages.success(request, _("DD Success Message"))
+                else:
+                    messages.success(request, _("BT Success Message"))
         else:
-            print(form.errors.keys)
             for issue in form.errors:
                 messages.error(request, form.errors[issue])
-            form = PaymentForm()
-            form.initial["customer_number"] = request.GET.get("knr", None)
-            form.initial["payment_options"] = "1"
-
-
-        context = {"form": form}
-
-        return render(request, "form.html", context)
+            
+        return render(request, form_template, {"form": form,"customer_number": customer_number})

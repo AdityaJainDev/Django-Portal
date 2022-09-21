@@ -6,6 +6,5 @@ app_name = "paymentoptions"
 
 urlpatterns = [
     path("", paymentoptions.as_view(), name="payment"),
-    path("success", TemplateView.as_view(template_name="success.html"), name="success"),
     path("error", TemplateView.as_view(template_name="token_error.html"), name="token_error"),
 ]
