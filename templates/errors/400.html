@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
+{% block logo %}
+<div class="header__logo"><a class="logo-link" href=""><img
+            alt="AD IT Systems" src="{% static 'images/logo-nav.9aa4c274.svg' %}"></a></div>
+{% endblock logo %}
+{% block header %}
+{% endblock header %}
 {% block payment %}
 <div data-aos="fade" class="caption-title-paragraph servers-text aos-init aos-animate" style="padding-top: 20px; padding-bottom: 80px;">
     <div class="caption-title-paragraph__title GilroySemiBold">400 Bad Request</div>

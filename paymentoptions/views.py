@@ -87,3 +87,23 @@ class paymentoptions(TemplateView):
                 messages.error(request, form.errors[issue])
             
         return render(request, form_template, {"form": form,"customer_number": customer_number})
+
+def error_404(request, exception, template_name="errors/404.html"):
+    response = render(request, template_name)
+    response.status_code = 404
+    return response
+
+def error_403(request, exception, template_name="errors/403.html"):
+    response = render(request, template_name)
+    response.status_code = 403
+    return response
+
+def error_400(request, exception, template_name="errors/400.html"):
+    response = render(request, template_name)
+    response.status_code = 400
+    return response
+
+def error_500(request, template_name="errors/500.html"):
+    response = render(request, template_name)
+    response.status_code = 500
+    return response

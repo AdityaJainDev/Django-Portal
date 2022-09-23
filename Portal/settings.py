@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
+from email.policy import default
 import os
 import sys
 from UnleashClient import UnleashClient
@@ -56,12 +57,14 @@ client = UnleashClient(
         instance_id="homfRhCXj97Ks4NA-_kj",
         disable_metrics=True,
         disable_registration=True,
-        cache_directory= "static/")
+
+        )
 
 client.initialize_client()
 
-if client.is_enabled("dashboard") == False:
+if client.is_enabled("dashboard", fallback_function=lambda feature_name, context: True) == False:
     INSTALLED_APPS.remove("dashboard")
+    client.destroy()
 
 MIDDLEWARE = [
     "django_prometheus.middleware.PrometheusBeforeMiddleware",
@@ -171,6 +174,7 @@ LANGUAGES = (
     ("de", "Deutsch"),
     ("en", "English"),
 )
+
 LANGUAGE_CODE = "de"
 
 LOCALE_PATHS = (os.path.join(BASE_DIR, "locale"),)

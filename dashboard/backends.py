@@ -4,7 +4,11 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.utils.translation import gettext as _
 import logging
-from .models import APIData
+
+try:
+    from .models import APIData
+except Exception as e:
+    pass
 
 logger = logging.getLogger(__name__)
 

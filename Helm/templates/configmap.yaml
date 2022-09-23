@@ -16,3 +16,4 @@ data:
   DB_PASS: {{ .Values.db.pass | quote }}
   DB_HOST: {{ .Values.db.host | quote }}
   DB_PORT: {{ .Values.db.port | quote }}
+  dashboard: "false"

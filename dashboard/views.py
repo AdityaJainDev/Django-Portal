@@ -328,24 +328,3 @@ def download_pdf(request, rechnung_rnr, rechnung_id):
         response = HttpResponse(decoded, content_type="application/pdf")
         response["Content-Disposition"] = 'inline; filename="RE{}.pdf"'.format(rnr)
         return response
-
-
-def error_404(request, exception, template_name="errors/404.html"):
-    response = render(request, template_name)
-    response.status_code = 404
-    return response
-
-def error_403(request, exception, template_name="errors/403.html"):
-    response = render(request, template_name)
-    response.status_code = 403
-    return response
-
-def error_400(request, exception, template_name="errors/400.html"):
-    response = render(request, template_name)
-    response.status_code = 400
-    return response
-
-def error_500(request, template_name="errors/500.html"):
-    response = render(request, template_name)
-    response.status_code = 500
-    return response

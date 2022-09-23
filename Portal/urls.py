@@ -47,10 +47,10 @@ if 'dashboard' in settings.INSTALLED_APPS:
         path("dashboard/", include("dashboard.urls")),
     )
 
-handler404 = "dashboard.views.error_404"
-handler403 = "dashboard.views.error_403"
-handler400 = "dashboard.views.error_400"
-handler500 = "dashboard.views.error_500"
+handler404 = "paymentoptions.views.error_404"
+handler403 = "paymentoptions.views.error_403"
+handler400 = "paymentoptions.views.error_400"
+handler500 = "paymentoptions.views.error_500"
 # add static folder for css and js
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
