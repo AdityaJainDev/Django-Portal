@@ -1,3 +1,4 @@
 ---
 auth: false
 instanceDomain: portal.aditsystems.de
+dashboard: false

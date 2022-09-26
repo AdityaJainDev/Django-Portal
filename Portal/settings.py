@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 from email.policy import default
 import os
 import sys
-from UnleashClient import UnleashClient
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -51,20 +50,8 @@ INSTALLED_APPS = [
     "dashboard",
 ]
 
-client = UnleashClient(
-        url="https://git.aditsystems.de/api/v4/feature_flags/unleash/382",
-        app_name="production",
-        instance_id="homfRhCXj97Ks4NA-_kj",
-        disable_metrics=True,
-        disable_registration=True,
-
-        )
-
-client.initialize_client()
-
-if client.is_enabled("dashboard", fallback_function=lambda feature_name, context: True) == False:
+if os.getenv("dashboard", 'False').lower() == 'false':
     INSTALLED_APPS.remove("dashboard")
-    client.destroy()
 
 MIDDLEWARE = [
     "django_prometheus.middleware.PrometheusBeforeMiddleware",
