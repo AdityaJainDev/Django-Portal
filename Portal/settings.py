@@ -43,14 +43,12 @@ INSTALLED_APPS = [
     "localflavor",
     "compressor",
     "crispy_forms",
-    "markdownfield",
-    "rest_framework",
     "django_prometheus",
     "paymentoptions",
     "dashboard",
 ]
 
-if os.getenv("dashboard", 'False').lower() == 'false':
+if os.getenv("dashboard", 'True').lower() == 'false':
     INSTALLED_APPS.remove("dashboard")
 
 MIDDLEWARE = [
@@ -145,13 +143,6 @@ LOGGING = {
             "level": os.getenv("logging_django", "INFO"),
         },
     },
-}
-
-
-REST_FRAMEWORK = {
-    "DEFAULT_PERMISSION_CLASSES": [
-        "rest_framework.permissions.IsAdminUser",
-    ]
 }
 
 # Internationalization

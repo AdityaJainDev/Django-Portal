@@ -42,3 +42,4 @@ db:
 
 auth: false
 instanceDomain: example.com
+dashboord: true

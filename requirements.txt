@@ -1,14 +1,9 @@
 Django
 django-admin-sortable
-django-markdownfield
-django-phonenumber-field
-djangorestframework
 django-countries
-django-crispy-forms
 django-localflavor
-phonenumbers
-gunicorn
+django-crispy-forms
 django-compressor
 django-libsass
 django-prometheus
-UnleashClient
+gunicorn
