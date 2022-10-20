@@ -1,1 +1,3 @@
-
+ci_access:
+  projects:
+    - id: git.aditsystems.de/as-crm/statuspage
