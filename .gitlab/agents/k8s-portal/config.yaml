@@ -1,5 +1,10 @@
 ci_access:
+  groups:
+    - id: "as-crm/statuspage"
+      access_as:
+        ci_job: {}
   projects:
     - id: "as-crm/statuspage"
       access_as:
         ci_job: {}
+
