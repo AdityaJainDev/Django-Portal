@@ -1,3 +1,5 @@
 ci_access:
   projects:
-    - id: git.aditsystems.de/as-crm/statuspage
+    - id: "as-crm/statuspage"
+      access_as:
+        ci_job: {}
