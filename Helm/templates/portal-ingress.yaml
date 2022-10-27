@@ -27,6 +27,6 @@ spec:
             path: "/"
             backend:
               service:
-                name: portal
+                name: "{{ template "appname" . }}"
                 port:
                   number: 8000

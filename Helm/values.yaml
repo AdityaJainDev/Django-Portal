@@ -1,8 +1,8 @@
 ---
 imageCredentials:
   registry: registry.aditsystems.de
-  username: gitlab+deploy-token-5
-  password: ZHR42urCrJyZqxw7E7nz
+  username: ${DEPLOY_USERNAME}
+  password: ${DEPLOY_PASSWORD}
   email: support@aditsystems.de
 
 clusterIssuer: letsencrypt-prod
@@ -33,10 +33,10 @@ redis:
 db:
   storage: 10Gi
   engine: django.db.backends.postgresql
-  name: postgres
-  user: postgres
-  pass: password
-  host: postgres
+  name: $DB_NAME
+  user: $DB_USER
+  pass: $DB_PASS
+  host: $DB_HOST
   port: 5432
 
 
