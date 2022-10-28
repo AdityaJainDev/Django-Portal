@@ -160,7 +160,7 @@ kubectl_staging:deploy:
     - kubectl config use-context as-crm/portal:k8s-portal
     - kubectl create secret generic basic-auth --from-file=$auth
       --namespace "${NAME_SPACE}" || true
-    - helm upgrade --install --namespace "$NAME_SPACE" --create-namespace --wait --reuse-values --set image.tag=$CI_COMMIT_SHORT_SHA ---set instanceDomain=$instanceDomain -set imageCredentials.username=$DEPLOY_USERNAME --set imageCredentials.password=$DEPLOY_PASSWORD --set db.name=$DB_NAME --set db.user=$DB_USER --set db.pass=$DB_PASS --set db.host=$DB_HOST -f ./Helm/values.staging.yaml portal ./Helm
+    - helm upgrade --install --namespace "$NAME_SPACE" --create-namespace --wait --reuse-values --set image.tag=$CI_COMMIT_SHORT_SHA --set instanceDomain=$instanceDomain --set imageCredentials.username=$DEPLOY_USERNAME --set imageCredentials.password=$DEPLOY_PASSWORD --set db.name=$DB_NAME --set db.user=$DB_USER --set db.pass=$DB_PASS --set db.host=$DB_HOST -f ./Helm/values.staging.yaml portal ./Helm
   environment:
     name: staging
     url: $CI_ENVIRONMENT_URL
