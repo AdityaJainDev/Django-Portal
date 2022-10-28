@@ -9,7 +9,7 @@ variables:
   CI_BUILD_REF_NAME: "${CI_COMMIT_REF_NAME}"
   SONAR_GITLAB_PROJECT_ID: "${CI_PROJECT_URL}"
   VERBOSITY:
-    value: 2
+    value: "2"
     description: "Django Test Verbositoy"
   K8S_VERSION: "alpine/k8s:1.23.7"
   IMAGE_TEST: "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
@@ -160,7 +160,7 @@ kubectl_staging:deploy:
     - kubectl config use-context as-crm/portal:k8s-portal
     - kubectl create secret generic basic-auth --from-file=$auth
       --namespace "${NAME_SPACE}" || true
-    - helm upgrade --install --namespace "$NAME_SPACE" --wait --reuse-values --set image.tag=$CI_COMMIT_SHORT_SHA --set imageCredentials.username=$DEPLOY_USERNAME --set imageCredentials.password=$DEPLOY_PASSWORD --set db.name=$DB_NAME --set db.user=$DB_USER --set db.pass=$DB_PASS --set db.host=$DB_HOST -f ./Helm/values.staging.yaml portal ./Helm
+    - helm upgrade --install --namespace "$NAME_SPACE" --create-namespace --wait --reuse-values --set image.tag=$CI_COMMIT_SHORT_SHA ---set instanceDomain=$instanceDomain -set imageCredentials.username=$DEPLOY_USERNAME --set imageCredentials.password=$DEPLOY_PASSWORD --set db.name=$DB_NAME --set db.user=$DB_USER --set db.pass=$DB_PASS --set db.host=$DB_HOST -f ./Helm/values.staging.yaml portal ./Helm
   environment:
     name: staging
     url: $CI_ENVIRONMENT_URL
@@ -174,7 +174,7 @@ kubectl_prod:deploy:
     - if: $CI_COMMIT_TAG
   script:
     - kubectl config use-context as-crm/portal:k8s-portal
-    - helm upgrade --install --namespace "${NAME_SPACE}" --wait --reuse-values --set image.tag=$CI_COMMIT_SHORT_SHA --set instanceDomain=portal.aditsystems.de --set imageCredentials.username=$DOCKER_USERNAME --set imageCredentials.password=$DOCKER_PASSWORD --set db.name=$DB_NAME --set db.user=$DB_USER --set db.pass=$DB_PASS --set db.host=$DB_HOST -f ./Helm/values.production.yaml portal ./Helm
+    - helm upgrade --install --namespace "${NAME_SPACE}" --create-namespace --wait --reuse-values --set image.tag=$CI_COMMIT_SHORT_SHA --set instanceDomain=$instanceDomain --set imageCredentials.username=$DEPLOY_USERNAME --set imageCredentials.password=$DEPLOY_PASSWORD --set db.name=$DB_NAME --set db.user=$DB_USER --set db.pass=$DB_PASS --set db.host=$DB_HOST -f ./Helm/values.production.yaml portal ./Helm
   environment:
     name: production
     url: $CI_ENVIRONMENT_URL
