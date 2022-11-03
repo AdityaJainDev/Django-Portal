@@ -33,6 +33,13 @@ class paymentoptions(TemplateView):
             form = PaymentForm()
             form.initial["customer_number"] = customer_number
             form.initial["payment_options"] = zahlungsart
+            if zahlungsart == 1:
+                form.initial["payment_options"] = zahlungsart
+                form.initial["iban"] = save_data.json()["iban"]
+                form.initial["owner"] = save_data.json()["inhaber"]
+                form.initial["bic"] = save_data.json()["bic"]
+
+            print(save_data.json())
 
         context = {"form": form, "customer_number": customer_number}
 
