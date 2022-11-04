@@ -29,14 +29,17 @@ def favicon(request):
 
     return HttpResponse(icon, content_type="image/x-icon")
 
-
-# i18n urls for language change
-urlpatterns = i18n_patterns(
-    path("i18n/", include("django.conf.urls.i18n")),
+urlpatterns = [
     path("", include("django_prometheus.urls")),
     # favicon
     path("favicon.ico", favicon, name="favicon"),
-    path("admin/", admin.site.urls),
+    path("admin/", admin.site.urls), 
+]
+
+
+# i18n urls for language change
+urlpatterns += i18n_patterns(
+    path("i18n/", include("django.conf.urls.i18n")),
     path("sepa", include("paymentoptions.urls")),
 )
 

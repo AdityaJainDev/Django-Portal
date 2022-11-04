@@ -39,8 +39,6 @@ class paymentoptions(TemplateView):
                 form.initial["owner"] = save_data.json()["inhaber"]
                 form.initial["bic"] = save_data.json()["bic"]
 
-            print(save_data.json())
-
         context = {"form": form, "customer_number": customer_number}
 
         return render(request, form_template, context)

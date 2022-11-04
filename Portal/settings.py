@@ -10,9 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
-from email.policy import default
 import os
 import sys
+from prometheus_client import Info
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -80,6 +80,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "Portal.context_processors.site_id",
             ],
         },
     },
@@ -181,6 +182,7 @@ AUTHENTICATION_BACKENDS = [
     "dashboard.backends.CustomerBackend",
 ]
 
+SITE_ID = os.getenv("SITE_ID", 22)
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "kunden.aditsystems.de"
@@ -209,6 +211,20 @@ CACHES = {
 }
 
 DJANGO_REDIS_IGNORE_EXCEPTIONS = True
+
+def get_service_version():
+    VERSIONFILE = os.path.join(BASE_DIR, "VERSION")
+    if os.path.exists(VERSIONFILE):
+        with open(VERSIONFILE, "r") as v:
+            return v.readline().strip()
+    else:
+        return "dev"
+
+VERSION = get_service_version()
+
+i = Info("portal_version", "Portal Version Info")
+i.info({"version": VERSION})
+
 
 try:
     from .local_settings import *

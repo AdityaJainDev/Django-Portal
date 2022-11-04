@@ -22,7 +22,8 @@ RUN set -ex \
         | xargs -r apk info --installed \
         | sort -u)" \
     && apk add --virtual rundeps $runDeps \
-    && apk del .build-deps
+    && apk del .build-deps \
+    && echo $(git describe --long --tags --dirty --always) > VERSION
 
 ENV VIRTUAL_ENV=/env PATH=/env/bin:$PATH
 
