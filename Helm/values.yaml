@@ -18,6 +18,7 @@ portal:
   has_auth: false
   dashboard: true
   secret_key: "secret"
+  instanceDomain: ""
   replicas: 2
   resources:
     requests:
