@@ -1,3 +1,4 @@
 ---
 # auth: true
 instanceDomain: portal.aditsystems.dev
+dashboard: true

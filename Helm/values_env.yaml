@@ -7,7 +7,6 @@ portal:
   secret_key: "${ENV_secretKey}"
   auth_credentials: "${AUTH_CREDENTIALS}"
   instanceDomain: "${instanceDomain}"
-  dashboard: true
 
 db:
   name: "${ENV_DB_HOST}"
