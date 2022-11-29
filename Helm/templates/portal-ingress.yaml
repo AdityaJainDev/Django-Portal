@@ -22,7 +22,7 @@ metadata:
          deny all;
          return 404;
         }
-    {{ if eq .Values.auth true }}
+    {{ if eq .Values.portal.has_auth true }}
     nginx.ingress.kubernetes.io/auth-type: basic
     nginx.ingress.kubernetes.io/auth-secret: {{ template "appname" . }}-basic-auth
     nginx.ingress.kubernetes.io/auth-realm: "Authentication Required"
