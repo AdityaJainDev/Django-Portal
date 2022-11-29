@@ -1,4 +1,4 @@
 ---
-auth: false
-instanceDomain: portal.aditsystems.de
-dashboard: false
+portal:
+  instanceDomain: portal.aditsystems.de
+  dashboard: false

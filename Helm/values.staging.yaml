@@ -1,4 +1,5 @@
 ---
-has_auth: true
-instanceDomain: portal.aditsystems.dev
-dashboard: true
+portal:
+  has_auth: true
+  instanceDomain: portal.aditsystems.dev
+  dashboard: true
