@@ -7,13 +7,14 @@ data:
   logging_console: "DEBUG"
   logging_django: "DEBUG"
   ENDPOINT_URL: "https://ascrm-api.aditsystems.de/"
+  ALLOWED_HOSTS: {{ .Values.portal.instanceDomain | quote }}
+  PORTAL_PORT: "8000"
   REDIS_HOST: "redis"
   REDIS_DB: "0"
   SESSION_REDIS_PORT: "6379"
   DB_ENGINE: {{ .Values.db.engine | quote }}
-  DB_NAME: {{ .Values.db.name | quote }}
-  DB_USER: {{ .Values.db.user | quote }}
-  DB_PASS: {{ .Values.db.pass | quote }}
-  DB_HOST: {{ .Values.db.host | quote }}
   DB_PORT: {{ .Values.db.port | quote }}
   dashboard: {{ .Values.dashboard | quote }}
+  DJANGO_DASHBOARD: {{ .Values.portal.dashboard | quote }}
+  DJANGO_SECRETKEY: {{ .Values.portal.secret_key | quote }}
+  

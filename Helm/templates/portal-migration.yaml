@@ -18,7 +18,7 @@ spec:
     spec:
       restartPolicy: OnFailure
       imagePullSecrets:
-        - name: "{{ template "appname" . }}-run-secrets"
+        - name: "{{ template "appname" . }}-deploy-secret"
       containers:
         - name: "{{ template "appname" . }}-app"
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -26,23 +26,12 @@ spec:
           securityContext:
             runAsUser: 0
             runAsGroup: 0
-          command: ["python","manage.py","migrate"]
+          command: ["python", "manage.py", "migrate"]
           envFrom:
             - configMapRef:
                 name: "{{ template "appname" . }}"
             - secretRef:
-                name: "{{ template "appname" . }}-run-secrets"
-          env:
-            - name: ALLOWED_HOSTS
-              value: {{ .Values.instanceDomain | quote }}
-            - name: PORTAL_PORT
-              value: "8000"
-          volumeMounts:
-            - mountPath: "/run/secrets/django"
-              name: run-secrets
-              subPath: django
-            - mountPath: /var/cache/nginx
-              name: nginx-cache
+                name: "{{ template "appname" . }}-secret"
           ports:
             - name: http
               containerPort: 8000
@@ -53,10 +42,3 @@ spec:
             requests:
               cpu: 100m
               memory: 32Mi
-      volumes:
-        - name: run-secrets
-          secret:
-            secretName: "{{ template "appname" . }}-run-secrets"
-            defaultMode: 0777
-        - name: nginx-cache
-          emptyDir: {}

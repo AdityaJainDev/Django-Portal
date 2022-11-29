@@ -12,20 +12,9 @@ variables:
     value: "2"
     description: "Django Test Verbositoy"
   K8S_VERSION: "alpine/k8s:1.23.7"
-  IMAGE_TEST: "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
-  IMAGE_RELEASE: "$CI_REGISTRY_IMAGE:latest"
-
-sast:
-  stage: test
-include:
-  - template: Security/SAST.gitlab-ci.yml
-
-kubesec-sast:
-  artifacts:
-    when: always
-    untracked: true
-  variables:
-    KUBESEC_HELM_CHARTS_PATH: "$CI_PROJECT_DIR/Helm"
+  IMAGE_SHA: "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
+  IMAGE_BRANCH: "${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_NAME}"
+  KUBE_CONTEXT: "as-crm/portal:k8s-portal"
 
 stages:
   - test
@@ -128,53 +117,75 @@ dockerimage:build:
     - echo $CI_REGISTRY_PASSWORD | docker login --username "$CI_REGISTRY_USER"
       --password-stdin $CI_REGISTRY
   script:
-    - docker pull $IMAGE_RELEASE || true
-    - docker build --cache-from $IMAGE_RELEASE --tag $IMAGE_TEST .
-    - docker push $IMAGE_TEST
+    - docker pull $IMAGE_BRANCH || true
+    - docker build --cache-from $IMAGE_BRANCH --tag $IMAGE_SHA .
+    - docker push $IMAGE_SHA
+    - docker tag $IMAGE_SHA $IMAGE_BRANCH
+    - docker push $IMAGE_BRANCH
 
-dockerimage:release:
-  image: "$CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX/docker:latest"
-  services:
-    - "$CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX/docker:dind"
-  rules:
-    - if: "$CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH"
-  stage: release
-  needs:
-    - dockerimage:build
-  before_script:
-    - echo $CI_REGISTRY_PASSWORD | docker login --username "$CI_REGISTRY_USER"
-      --password-stdin $CI_REGISTRY
-  script:
-    - docker pull $IMAGE_TEST
-    - docker tag $IMAGE_TEST $IMAGE_RELEASE
-    - docker push $IMAGE_RELEASE
 
-kubectl_staging:deploy:
+.deploy: &deploy
   stage: deploy
   image:
     name: $K8S_VERSION
     entrypoint: ['']
+  before_script:
+    - kubectl config get-contexts
+    - if [ -n "$KUBE_CONTEXT" ]; then kubectl config
+      use-context "$KUBE_CONTEXT"; fi
+  script:
+    - if [ -n "$TRACE" ]; then envsubst < Helm/values_env.yaml | helm template
+      --debug
+      --namespace "$NAME_SPACE" --create-namespace --wait
+      --set image.tag=$CI_COMMIT_SHORT_SHA -f ./Helm/values.staging.yaml
+      --values - portal ./Helm;
+      fi
+    - if [ -n "$TRACE" ]; then envsubst < Helm/values_env.yaml | helm upgrade
+      --install --dry-run --debug
+      --namespace "$NAME_SPACE" --create-namespace --wait --reuse-values
+      --set image.tag=$CI_COMMIT_SHORT_SHA -f ./Helm/values.staging.yaml
+      --values - portal ./Helm;
+      fi
+    - envsubst < Helm/values_env.yaml | helm upgrade --install
+      --namespace "$NAME_SPACE" --create-namespace --wait --reuse-values
+      --set image.tag=$CI_COMMIT_SHORT_SHA -f ./Helm/values.staging.yaml
+      --values - portal ./Helm
+    - kubectl logs --selector=app=portal -n "$NAME_SPACE"
+
+kubectl:deploy_staging:
+  <<: *deploy
   rules:
     - if: "$CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH"
-  script:
-    - kubectl config use-context as-crm/portal:k8s-portal
-    - kubectl create secret generic basic-auth --from-file=$auth
-      --namespace "${NAME_SPACE}" || true
-    - helm upgrade --install --namespace "$NAME_SPACE" --create-namespace --wait --reuse-values --set image.tag=$CI_COMMIT_SHORT_SHA --set instanceDomain=$instanceDomain --set imageCredentials.username=$DEPLOY_USERNAME --set imageCredentials.password=$DEPLOY_PASSWORD --set db.name=$DB_NAME --set db.user=$DB_USER --set db.pass=$DB_PASS --set db.host=$DB_HOST -f ./Helm/values.staging.yaml portal ./Helm
   environment:
     name: staging
-    url: $CI_ENVIRONMENT_URL
+    url: $STAGING_CI_ENVIRONMENT_URL
 
-kubectl_prod:deploy:
-  stage: deploy
-  image:
-    name: $K8S_VERSION
-    entrypoint: ['']
+kubectl:reset:
+  <<: *deploy
+  when: manual
+  rules:
+    - if: "$CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH"
+    - if: $CI_COMMIT_TAG
+  script:
+    - helm rollback "portal" 0
+    - kubectl logs --selector=app=portal -n "$NAME_SPACE"
+
+kubectl:deploy_prod:
+  <<: *deploy
   rules:
     - if: $CI_COMMIT_TAG
   script:
-    - kubectl config use-context as-crm/portal:k8s-portal
-    - helm upgrade --install --namespace "${NAME_SPACE}" --create-namespace --wait --reuse-values --set image.tag=$CI_COMMIT_SHORT_SHA --set instanceDomain=$instanceDomain --set imageCredentials.username=$DEPLOY_USERNAME --set imageCredentials.password=$DEPLOY_PASSWORD --set db.name=$DB_NAME --set db.user=$DB_USER --set db.pass=$DB_PASS --set db.host=$DB_HOST -f ./Helm/values.production.yaml portal ./Helm
+    - if [ -n "$TRACE" ]; then envsubst < Helm/values_env.yaml | helm upgrade
+      --install --dry-run --debug
+      --namespace "$NAME_SPACE" --create-namespace --wait --reuse-values
+      --set image.tag=$CI_COMMIT_SHORT_SHA -f ./Helm/values.production.yaml
+      --values - portal ./Helm;
+      fi
+    - envsubst < Helm/values_env.yaml | helm upgrade --install
+      --namespace "$NAME_SPACE" --create-namespace --wait --reuse-values
+      --set image.tag=$CI_COMMIT_SHORT_SHA -f ./Helm/values.production.yaml
+      --values - portal ./Helm
+    - kubectl logs --selector=app=portal -n "$NAME_SPACE"
   environment:
     name: production
-    url: $CI_ENVIRONMENT_URL
+    url: $PROD_CI_ENVIRONMENT_URL

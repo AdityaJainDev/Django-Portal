@@ -1,3 +1,13 @@
+{{ if eq .Values.portal.has_auth true }}
+---
+apiVersion: v1
+data:
+  auth: {{ .Values.portal.auth_credentials | b64enc | quote }}
+kind: Secret
+metadata:
+  name: {{ template "appname" . }}-basic-auth
+type: Opaque
+{{ end }}
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -14,7 +24,7 @@ metadata:
         }
     {{ if eq .Values.auth true }}
     nginx.ingress.kubernetes.io/auth-type: basic
-    nginx.ingress.kubernetes.io/auth-secret: "basic-auth"
+    nginx.ingress.kubernetes.io/auth-secret: {{ template "appname" . }}-basic-auth
     nginx.ingress.kubernetes.io/auth-realm: "Authentication Required"
     {{ end }}
   name: "{{ template "appname" . }}"

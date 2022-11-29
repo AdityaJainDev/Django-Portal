@@ -5,11 +5,6 @@ metadata:
   name: "{{ template "appname" . }}"
   labels:
     app: "{{ template "appname" . }}"
-  annotations:
-    keel.sh/approvals: "1"
-    keel.sh/policy: major
-    keel.sh/pollSchedule: "@every 1m"
-    keel.sh/trigger: poll
 spec:
   replicas: {{ .Values.portal.replicas }}
   strategy:
@@ -27,7 +22,7 @@ spec:
         prometheus.io/port: '8000'
     spec:
       imagePullSecrets:
-        - name: "{{ template "appname" . }}-run-secrets"
+        - name: "{{ template "appname" . }}-deploy-secret"
       containers:
         - name: "{{ template "appname" . }}-app"
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -35,31 +30,13 @@ spec:
           securityContext:
             runAsUser: 0
             runAsGroup: 0
-          env:
-            - name: ALLOWED_HOSTS
-              value: {{ .Values.instanceDomain | quote }}
-            - name: PORTAL_PORT
-              value: "8000"
           envFrom:
             - configMapRef:
                 name: "{{ template "appname" . }}"
             - secretRef:
-                name: "{{ template "appname" . }}-run-secrets"
+                name: "{{ template "appname" . }}-secret"
           resources:
 {{ toYaml .Values.portal.resources | indent 12 }}
           ports:
             - name: http
               containerPort: 8000
-          volumeMounts:
-            - name: run-secrets
-              mountPath: /run/secrets/django
-              subPath: django
-            - name: nginx-cache
-              mountPath: /var/cache/nginx
-      volumes:
-        - name: run-secrets
-          secret:
-            secretName: "{{ template "appname" . }}-run-secrets"
-            defaultMode: 0777
-        - name: nginx-cache
-          emptyDir: {}
