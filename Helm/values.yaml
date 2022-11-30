@@ -19,6 +19,7 @@ portal:
   dashboard: true
   secret_key: "secret"
   instanceDomain: ""
+  SITE_ID: ""
   replicas: 2
   resources:
     requests:

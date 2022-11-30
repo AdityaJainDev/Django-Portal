@@ -17,4 +17,5 @@ data:
   dashboard: {{ .Values.dashboard | quote }}
   DJANGO_DASHBOARD: {{ .Values.portal.dashboard | quote }}
   DJANGO_SECRETKEY: {{ .Values.portal.secret_key | quote }}
-  
+  SITE_ID: {{ .Values.portal.SITE_ID | quote }}
+
