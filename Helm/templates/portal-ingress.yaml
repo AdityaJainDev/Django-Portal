@@ -32,10 +32,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - {{ .Values.instanceDomain | quote }}
+        - {{ .Values.portal.instanceDomain | quote }}
       secretName: "{{ template "appname" . }}-tls"
   rules:
-    - host: {{ .Values.instanceDomain | quote }}
+    - host: {{ .Values.portal.instanceDomain | quote }}
       http:
         paths:
           - pathType: Prefix
