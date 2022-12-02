@@ -167,7 +167,17 @@ kubectl:reset:
     - if: "$CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH"
     - if: $CI_COMMIT_TAG
   script:
-    - helm rollback "portal" 0
+    - helm rollback "portal" 0 -n "$NAME_SPACE"
+    - kubectl logs --selector=app=portal -n "$NAME_SPACE"
+
+kubectl:uninstall:
+  <<: *deploy
+  when: manual
+  rules:
+    - if: "$CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH"
+    - if: $CI_COMMIT_TAG
+  script:
+    - helm uninstall "portal" -n "$NAME_SPACE"
     - kubectl logs --selector=app=portal -n "$NAME_SPACE"
 
 kubectl:deploy_prod:
