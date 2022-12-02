@@ -14,7 +14,7 @@ data:
   SESSION_REDIS_PORT: "6379"
   DB_ENGINE: {{ .Values.db.engine | quote }}
   DB_PORT: {{ .Values.db.port | quote }}
-  dashboard: {{ .Values.dashboard | quote }}
+  dashboard: {{ .Values.portal.dashboard | quote }}
   DJANGO_DASHBOARD: {{ .Values.portal.dashboard | quote }}
   DJANGO_SECRETKEY: {{ .Values.portal.secret_key | quote }}
   SITE_ID: {{ .Values.portal.SITE_ID | quote }}
