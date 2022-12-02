@@ -160,17 +160,16 @@ kubectl:deploy_staging:
     name: staging
     url: $STAGING_CI_ENVIRONMENT_URL
 
-kubectl:reset:
+kubectl:reset_staging:
   <<: *deploy
   when: manual
   rules:
     - if: "$CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH"
-    - if: $CI_COMMIT_TAG
   script:
-    - helm list --all-namespaces
-    - helm history portal -n "$NAME_SPACE"
     - helm rollback "portal" 0 -n "$NAME_SPACE"
     - kubectl logs --selector=app=portal -n "$NAME_SPACE"
+  environment:
+    name: staging
 
 kubectl:deploy_prod:
   <<: *deploy
@@ -191,3 +190,14 @@ kubectl:deploy_prod:
   environment:
     name: production
     url: $PROD_CI_ENVIRONMENT_URL
+
+kubectl:reset_prod:
+  <<: *deploy
+  when: manual
+  rules:
+    - if: $CI_COMMIT_TAG
+  script:
+    - helm rollback "portal" 0 -n "$NAME_SPACE"
+    - kubectl logs --selector=app=portal -n "$NAME_SPACE"
+  environment:
+    name: production
