@@ -18,7 +18,7 @@ spec:
         app: "{{ template "appname" . }}"
         date: "{{ now | unixEpoch }}"
       annotations:
-        prometheus.io/scheme : 'https'
+        prometheus.io/scheme : 'http'
         prometheus.io/path: /metrics
         prometheus.io/scrape: 'true'
         prometheus.io/port: '8000'
