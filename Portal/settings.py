@@ -27,7 +27,7 @@ SECRET_KEY = os.getenv(
 
 DEBUG = os.getenv("DJANGO_DEBUG", 'False').lower() == 'true'
 
-ALLOWED_HOSTS = [os.getenv("ALLOWED_HOSTS", "localhost")]
+ALLOWED_HOSTS = ["localhost", os.getenv("ALLOWED_HOSTS"), os.getenv("POD_IP")]
 
 # Application definition
 

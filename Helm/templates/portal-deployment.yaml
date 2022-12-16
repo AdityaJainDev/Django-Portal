@@ -32,6 +32,11 @@ spec:
           securityContext:
             runAsUser: 0
             runAsGroup: 0
+          env:
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
           envFrom:
             - configMapRef:
                 name: "{{ template "appname" . }}"

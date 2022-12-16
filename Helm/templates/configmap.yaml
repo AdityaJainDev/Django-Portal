@@ -18,3 +18,5 @@ data:
   DJANGO_DASHBOARD: {{ .Values.portal.dashboard | quote }}
   DJANGO_SECRETKEY: {{ .Values.portal.secret_key | quote }}
   SITE_ID: {{ .Values.portal.SITE_ID | quote }}
+  EMAIL_HOST: {{ .Values.email.user | quote }}
+  EMAIL_PASSWORD: {{ .Values.email.password | quote }}

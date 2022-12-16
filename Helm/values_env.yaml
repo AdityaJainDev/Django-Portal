@@ -1,16 +1,20 @@
 ---
 imageCredentials:
-  username: "${DEPLOY_USERNAME}"
-  password: "${DEPLOY_PASSWORD}"
+    username: "${DEPLOY_USERNAME}"
+    password: "${DEPLOY_PASSWORD}"
 
 portal:
-  secret_key: "${ENV_secretKey}"
-  auth_credentials: "${AUTH_CREDENTIALS}"
-  instanceDomain: "${instanceDomain}"
-  SITE_ID: "${ENV_SITE_ID}"
+    secret_key: "${ENV_secretKey}"
+    auth_credentials: "${AUTH_CREDENTIALS}"
+    instanceDomain: "${instanceDomain}"
+    SITE_ID: "${ENV_SITE_ID}"
 
 db:
-  name: "${ENV_DB_HOST}"
-  user: "${ENV_DB_USER}"
-  pass: "${ENV_DB_PASS}"
-  host: "${ENV_DB_HOST}"
+    name: "${ENV_DB_HOST}"
+    user: "${ENV_DB_USER}"
+    pass: "${ENV_DB_PASS}"
+    host: "${ENV_DB_HOST}"
+
+email:
+    user: "${EMAIL_USER}"
+    password: "${EMAIL_PASSWORD}"
