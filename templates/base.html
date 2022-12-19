@@ -2,7 +2,8 @@
 {% load static %}
 {% load i18n %}
 {% load compress %}
-<html lang="en">
+{% get_current_language as CURRENT_LANGUAGE %}
+<html lang="{{ CURRENT_LANGUAGE }}">
 
 <head>
     <meta charset="utf-8">

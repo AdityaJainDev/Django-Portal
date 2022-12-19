@@ -1,13 +1,11 @@
 from django import forms
 from localflavor.generic.forms import BICFormField, IBANFormField
 from django.utils.translation import gettext_lazy as _
-from django.forms.widgets import Widget, CheckboxInput, boolean_check
 
 PAYMENT_CHOICES = (
     ("0", _("Bank Transfer")),
     ("1", _("Direct Debit")),
 )
-
 
 class PaymentForm(forms.Form):
     customer_number = forms.CharField(
@@ -22,3 +20,4 @@ class PaymentForm(forms.Form):
     iban = IBANFormField(label=_("iban"), required=False)
     bic = BICFormField(label=_("bic"), required=False)
     confirm = forms.BooleanField(label=_("Accept"), required=False)
+

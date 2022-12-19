@@ -74,13 +74,6 @@ body {
   }
 }
 
-a {
-  text-underline-offset: 0.2em;
-  &:hover {
-    text-decoration: underline !important;
-  }
-}
-
 .GilroySemiBold {
   font-weight: 600;
 }

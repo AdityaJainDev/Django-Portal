@@ -1,0 +1,34 @@
+Dear Customer,
+
+
+You gave notice of termination on {{value}} containing the following information:
+
+
+{{name}}
+
+{{customer_number}}
+
+{{phone_number}}
+
+{{contract_number}}
+
+{{ domain_options }}
+
+{{email}}
+
+and through which the contractual relationship is to be terminated as soon as possible.
+
+Our team will now check the content of your notice of termination. You will then receive another confirmation of your cancellation.
+  
+If we have any questions or anything is unclear, we will get in touch with you again.
+
+
+AD IT Systems GmbH
+Ostendstraße 132
+90482 Nürnberg
+Telefon: +49-911-14885510
+USt.-ID: DE350000070
+Geschäftsführer: Anton Dollmaier
+Amtsgericht Nürnberg, HRB 40005
+
+https://www.aditsystems.de/ 

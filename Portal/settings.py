@@ -21,13 +21,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: don't run with debug turned on in production!
-SECRET_KEY = os.getenv(
-    "SECRET_KEY", "g4g-3$@r0*#k(yw!#nai9^zrv1sc*ao$5-$ouxv@m6%%@lys2p"
-)
+SECRET_KEY = os.getenv("secretKey", "g4g-3$@r0*#k(yw!#nai9^zrv1sc*ao$5-$ouxv@m6%%@lys2p")
 
 DEBUG = os.getenv("DJANGO_DEBUG", 'False').lower() == 'true'
 
 ALLOWED_HOSTS = ["localhost", os.getenv("ALLOWED_HOSTS"), os.getenv("POD_IP")]
+
+CSRF_TRUSTED_ORIGINS = ['https://*.aditsystems.dev', 'https://*.aditsystems.de']
+
 
 # Application definition
 
@@ -46,6 +47,7 @@ INSTALLED_APPS = [
     "django_prometheus",
     "paymentoptions",
     "dashboard",
+    "cancellation",
 ]
 
 if os.getenv("dashboard", 'True').lower() == 'false':
@@ -188,8 +190,13 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "kunden.aditsystems.de"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = None
-EMAIL_HOST_PASSWORD = None
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_PASSWORD")
+
+
+EMAIL_FROM = "status@aditsystems.de"
+
+EMAIL_SUPPORT = "support@aditsystems.de"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 

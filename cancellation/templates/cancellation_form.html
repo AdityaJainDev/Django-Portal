@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block logo %}
+<div class="header__logo"><a class="logo-link" href=""><img alt="AD IT Systems"
+      src="{% static 'images/logo-nav.9aa4c274.svg' %}"></a></div>
+{% endblock logo %}
+
+{% block header %}
+<ul style="display: flex; justify-content: right; padding-right: 50px;">
+  <li>
+    <a href="https://kunden.aditsystems.de/kc/" title="DevOps Service">{% trans 'CustomerCenter' %}</a>
+  </li>
+</ul>
+{% endblock header %}
+
+{% block payment %}
+<div class="form">
+  <div class="caption-title-paragraph__title GilroySemiBold">{% trans 'ConsumerTermination' %}</div>
+  <br><br>
+  <div class="caption-title-paragraph__desc GilroyMedium">{% trans 'ConsumerDocumentHeading' %}</div>
+  <br><br>
+  <form method="post" class="my-class">
+    {% csrf_token %}
+    <div id="div_id_name" class="control-group"> <label for="id_name" class="control-label requiredField">
+        {% trans 'CancelName' %}<span class="asteriskField">*</span> </label>
+      <div class="controls"> <input type="text" name="name" maxlength="100" class="textinput textInput" required=""
+          id="id_name"> </div>
+    </div>
+
+    <div id="div_id_customer_number" class="control-group"> <label for="id_customer_number" class="control-label requiredField">
+      {% trans 'CancelNumber' %}<span class="asteriskField">*</span> <span><div class="caption-title-paragraph__eyelet GilroyMedium" style="text-transform: none;">{% trans 'CustomerNoDetail' %}</div></span> </label>
+      <div class="controls"> <input type="text" name="customer_number" maxlength="100" class="textinput textInput" required=""
+          id="id_customer_number"> </div>
+    </div>
+
+    <div id="div_id_phone_number" class="control-group"> <label for="id_phone_number" class="control-label requiredField">
+      {% trans 'CancelPhoneNumber' %}<span class="asteriskField">*</span></label>
+      <div class="controls"> <input type="text" name="phone_number" maxlength="100" class="textinput textInput" required=""
+          id="id_phone_number"> </div>
+    </div>
+
+    <div id="div_id_contract_number" class="control-group"> <label for="id_contract_number"
+        class="control-label requiredField">
+        {% trans 'CancelContract' %}<span class="asteriskField">*</span> <span><div class="caption-title-paragraph__eyelet GilroyMedium" style="text-transform: none;">{% trans 'ContractDetails' %}</div></span> </label>
+      <div class="controls"> <input type="text" name="contract_number" maxlength="100" class="textinput textInput"
+          required="" id="id_contract_number"> </div>
+    </div>
+
+    <div id="div_id_email" class="control-group"> <label for="id_email" class="control-label requiredField">
+      {% trans 'CancelEmail' %}<span class="asteriskField">*</span> <span><div class="caption-title-paragraph__eyelet GilroyMedium" style="text-transform: none;">{% trans 'EmailCustomerData' %}</div></span> </label>
+      <div class="controls"> <input type="email" name="email" maxlength="100" class="emailinput" required=""
+          id="id_email"> </div>
+    </div>
+
+    <br>
+    <div class="caption-title-paragraph__eyelet GilroyMedium">{% trans 'PleaseConfirm' %}..</div>
+    <div id="div_id_confirm_tariff" class="control-group">
+      <div class="controls"> <a for="id_confirm_tariff" class="checkbox "> <input type="checkbox"
+            name="confirm_tariff" class="checkboxinput" id="id_confirm_tariff" required="">
+            {% trans 'CancelTariff' %}
+        </a> </div>
+    </div>
+    <br><br>
+    
+    <div id="div_id_confirm_consumer" class="control-group">
+      <div class="controls"> <a for="id_confirm_consumer" class="checkbox "> <input type="checkbox"
+            name="confirm_consumer" class="checkboxinput" id="id_confirm_consumer" required="">
+            {% trans 'CancelConsumer' %}
+        </a> </div>
+    </div>
+    <br><br>
+    <div id="div_id_domain_options" class="control-group"> <a for="id_domain_options"
+        class="control-label requiredField">
+        {% trans 'CancelOptions' %}<span class="asteriskField">*</span><span><div class="caption-title-paragraph__eyelet GilroyMedium" style="text-transform: none;">{% trans 'DomainComment' %}</div></span> </a>
+      <div class="controls"> <select name="domain_options" class="select" id="id_domain_options">
+          <option value="0">{% trans 'EndOfTerm' %}</option>
+          <option value="1">{% trans 'ChangeProvider' %}</option>
+
+        </select> </div>
+    </div>
+
+    <br>
+    <div class="caption-title-paragraph__eyelet GilroyMedium">{% trans 'AdditionalNotice' %}</div>
+    <textarea name="additional_data" cols="40" rows="10" id="id_additional_data" spellcheck="false"></textarea>
+    
+    <div class="caption-title-paragraph__eyelet GilroyMedium">{% trans 'PleaseConfirm' %}..</div>
+    <div id="div_id_confirm_data" class="control-group">
+      <div class="controls"> <a for="id_confirm_data" class="checkbox "> <input type="checkbox" name="confirm_data"
+            class="checkboxinput" id="id_confirm_data" required="">
+            {% trans 'CancelData' %}
+        </a></div>
+    </div>
+
+    <br>
+    
+    <div id="div_id_confirm_data_deletion" class="control-group">
+      <div class="controls"> <a for="id_confirm_data_deletion" class="checkbox "> <input type="checkbox"
+            name="confirm_data_deletion" class="checkboxinput" id="id_confirm_data_deletion" required="">
+            {% trans 'CancelDeletion' %}
+      </a></div>
+    </div>
+
+    <input type="checkbox" name="field_garb" style="display:none !important;" tabindex="-1" autocomplete="off" id="id_field_garb" class="checkboxinput">
+
+    <br>
+    <br>
+    <span class="text-muted"></span>
+    <input name="action" value="send_data" type="hidden">
+    <div class="cta">
+      <button type="submit" class="cta-btn">
+        <span class="cta-btn-inner">
+          {% trans 'SendData' %}
+        </span>
+      </button>
+    </div>
+  </form>
+</div>
+{% endblock %}

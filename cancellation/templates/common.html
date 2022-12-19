@@ -1,0 +1,65 @@
+{% load i18n %}
+{% get_current_language as CURRENT_LANGUAGE %}
+
+<ul>
+    <li>
+        <p
+            style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">
+            <strong>{% trans 'Name' %}:</strong>
+            {{name}}
+        </p>
+    </li>
+</ul>
+<ul>
+    <li>
+        <p
+            style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">
+            <strong>{% trans 'CustomerNumber' %}:</strong>
+            {{customer_number}}
+        </p>
+    </li>
+</ul>
+<ul>
+    <li>
+        <p
+            style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">
+            <strong>{% trans 'PhoneNumber' %}:</strong>
+            {{phone_number}}
+        </p>
+    </li>
+</ul>
+<ul>
+    <li>
+        <p
+            style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">
+            <strong>{% trans 'SubjectTermination' %}:</strong> {{contract_number}}
+        </p>
+    </li>
+</ul>
+<ul>
+    <li>
+        <p
+            style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">
+            <strong>{% trans 'DomainAction' %}:</strong>
+            {{ domain_options }}
+        </p>
+    </li>
+</ul>
+<ul>
+    <li>
+        <p
+            style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">
+            <strong>{% trans 'AdditionalData' %}:</strong>
+            {{ additional_data }}
+        </p>
+    </li>
+</ul>
+<ul>
+    <li>
+        <p
+            style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">
+            <strong>{% trans 'Email' %}:</strong>
+            {{email}}
+        </p>
+    </li>
+</ul>

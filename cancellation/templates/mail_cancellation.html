@@ -1,0 +1,22 @@
+{% extends 'base_template.html' %}
+{% load i18n %}
+{% get_current_language as CURRENT_LANGUAGE %}
+
+{% block customer %}
+        <p style="font-family: sans-serif; font-size: 16px; font-weight: bold; margin: 0; margin-bottom: 0px;">
+            {% trans 'DearCustomer' %},</p>
+        <br>
+        <p style="font-family: sans-serif; font-size: 16px;  margin: 0; margin-bottom: 15px;">
+            {% blocktranslate %}Sie haben am {{value}} eine Kündigung ausgesprochen, die folgende Angaben enthält{% endblocktranslate %}:</p>
+            
+        {% include "common.html" %}
+
+        <p style="font-family: sans-serif; font-size: 16px;  margin: 0; margin-bottom: 15px;">
+            {% trans 'TerminateContract' %}.</p>
+
+        <p style="font-family: sans-serif; font-size: 16px;  margin: 0; margin-bottom: 15px;">
+            {% trans 'TeamCheck' %}.</p>
+
+        <p style="font-family: sans-serif; font-size: 16px;  margin: 0; margin-bottom: 15px;">
+            {% trans 'QueryContact' %}.</p>
+{% endblock %}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-20 12:06+0200\n"
+"POT-Creation-Date: 2022-12-19 14:57+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,232 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: cancellation/forms.py:6 cancellation/templates/cancellation_form.html:79
+msgid "EndOfTerm"
+msgstr "be ordered to delete at the end of the current term."
+
+#: cancellation/forms.py:7 cancellation/templates/cancellation_form.html:80
+msgid "ChangeProvider"
+msgstr "for the change of provider (please send the AUTH code)."
+
+#: cancellation/forms.py:11 cancellation/templates/cancellation_form.html:28
+msgid "CancelName"
+msgstr "Your Name"
+
+#: cancellation/forms.py:12 cancellation/templates/cancellation_form.html:34
+msgid "CancelNumber"
+msgstr "Your Customer Number"
+
+#: cancellation/forms.py:13 cancellation/templates/cancellation_form.html:40
+msgid "CancelPhoneNumber"
+msgstr "Your Phone Number"
+
+#: cancellation/forms.py:14 cancellation/templates/cancellation_form.html:47
+msgid "CancelContract"
+msgstr "The contract/hosting you want to cancel"
+
+#: cancellation/forms.py:15 cancellation/templates/cancellation_form.html:53
+msgid "CancelEmail"
+msgstr "Your Email address"
+
+#: cancellation/forms.py:16 cancellation/templates/cancellation_form.html:63
+msgid "CancelTariff"
+msgstr ""
+"I hereby confirm that I am a contractual partner for the above tariff under "
+"the customer number stated. The hosting tariff is to be terminated as soon "
+"as possible."
+
+#: cancellation/forms.py:17 cancellation/templates/cancellation_form.html:71
+msgid "CancelConsumer"
+msgstr ""
+"I am a consumer within the meaning of § 13 BGB (private customer). The "
+"tariff was not concluded to exercise my commercial or self-employed "
+"professional activity (entrepreneur according to § 14 BGB)."
+
+#: cancellation/forms.py:18 cancellation/templates/cancellation_form.html:77
+msgid "CancelOptions"
+msgstr "Furthermore, the domain(s) included in the hosting tariff"
+
+#: cancellation/forms.py:19 cancellation/templates/common.html:52
+msgid "AdditionalData"
+msgstr "Additional Information"
+
+#: cancellation/forms.py:20 cancellation/templates/cancellation_form.html:93
+msgid "CancelData"
+msgstr ""
+"I agree that my contact details and assignment will be stored permanently "
+"for any queries."
+
+#: cancellation/forms.py:21 cancellation/templates/cancellation_form.html:102
+msgid "CancelDeletion"
+msgstr ""
+"Due to the termination of the hosting tariff, it is no longer possible to "
+"access the data stored at ESTUGO at the end of the contract. If there is "
+"still data in the customer account after the end of the contract, it will be "
+"irretrievably deleted."
+
+#: cancellation/templates/cancellation_form.html:14 templates/base.html:158
+msgid "CustomerCenter"
+msgstr "Customer Center"
+
+#: cancellation/templates/cancellation_form.html:21
+msgid "ConsumerTermination"
+msgstr "Termination for Consumers"
+
+#: cancellation/templates/cancellation_form.html:23
+msgid "ConsumerDocumentHeading"
+msgstr ""
+"If you are a consumer and would like to cancel your hosting plan or server, "
+"simply send us the following document. Of course, you can also generate a "
+"termination via our customer center"
+
+#: cancellation/templates/cancellation_form.html:34
+msgid "CustomerNoDetail"
+msgstr "You can find your customer number on all bills, you received from us."
+
+#: cancellation/templates/cancellation_form.html:47
+msgid "ContractDetails"
+msgstr ""
+"The more precisely you name the contract you want to cancel, the easier it "
+"is to assign or verify your termination. Ideally, enter your contract number "
+"and the hosting name (e.g. SSD1234)."
+
+#: cancellation/templates/cancellation_form.html:53
+msgid "EmailCustomerData"
+msgstr ""
+"If possible, please enter the email address that is also stored in your "
+"customer data."
+
+#: cancellation/templates/cancellation_form.html:59
+#: cancellation/templates/cancellation_form.html:89
+msgid "PleaseConfirm"
+msgstr "Please Confirm"
+
+#: cancellation/templates/cancellation_form.html:77
+msgid "DomainComment"
+msgstr "If you do not want to cancel all domains in the contract, reach out to us."
+
+#: cancellation/templates/cancellation_form.html:86
+msgid "AdditionalNotice"
+msgstr "Would you like to send us additional information?"
+
+#: cancellation/templates/cancellation_form.html:115
+#: dashboard/templates/edit_data.html:16 paymentoptions/templates/form.html:51
+msgid "SendData"
+msgstr "Submit Data"
+
+#: cancellation/templates/common.html:8 dashboard/templates/home_main.html:77
+msgid "Name"
+msgstr "Name"
+
+#: cancellation/templates/common.html:17 paymentoptions/forms.py:12
+#: paymentoptions/templates/form.html:18
+msgid "CustomerNumber"
+msgstr "Customer Number"
+
+#: cancellation/templates/common.html:26
+msgid "PhoneNumber"
+msgstr "Phone Number"
+
+#: cancellation/templates/common.html:35
+msgid "SubjectTermination"
+msgstr "Subject of the termination"
+
+#: cancellation/templates/common.html:43
+msgid "DomainAction"
+msgstr "Domain action"
+
+#: cancellation/templates/common.html:61 dashboard/forms.py:34
+#: dashboard/templates/home_main.html:87
+msgid "Email"
+msgstr "Email"
+
+#: cancellation/templates/mail_cancellation.html:7
+msgid "DearCustomer"
+msgstr "Dear Customer"
+
+#: cancellation/templates/mail_cancellation.html:10
+#, python-format
+msgid "Sie haben am %(value)s eine Kündigung ausgesprochen, die folgende Angaben enthält"
+msgstr ""
+"You gave a notice of termination on %(value)s containing the following "
+"information"
+
+#: cancellation/templates/mail_cancellation.html:15
+msgid "TerminateContract"
+msgstr ""
+"and through which the contractual relationship is to be terminated as soon "
+"as possible"
+
+#: cancellation/templates/mail_cancellation.html:18
+msgid "TeamCheck"
+msgstr ""
+"Our team will now check the content of your notice of termination. You will "
+"then receive another confirmation of your cancellation"
+
+#: cancellation/templates/mail_cancellation.html:21
+msgid "QueryContact"
+msgstr ""
+"If we have any questions or anything is unclear, we will get in touch with "
+"you again"
+
+#: cancellation/templates/mail_cancellation_support.html:7
+msgid "DearSupport"
+msgstr "Hi"
+
+#: cancellation/templates/mail_cancellation_support.html:10
+#, python-format
+msgid "um %(value)s hat ein Kunde eine Kündigung ausgesprochen, die folgende Informationen enthält"
+msgstr ""
+"At %(value)s, a customer gave a notice of termination, which contains the "
+"following information"
+
+#: cancellation/templates/mail_cancellation_support.html:17
+msgid "IP"
+msgstr "IP"
+
+#: cancellation/templates/mail_cancellation_support.html:26
+msgid "Browser"
+msgstr "Browser and OS"
+
+#: cancellation/templates/mail_cancellation_support.html:33
+msgid "supportVerify"
+msgstr "Please verify the cancelation and then run it through CRM."
+
+#: cancellation/views.py:43
+msgid "SpamMessage"
+msgstr ""
+"Your response was flagged as Spam. Please try again or contact Support."
+
+#: cancellation/views.py:44 cancellation/views.py:45
+msgid "Spam"
+msgstr "Spam Detected"
+
+#: cancellation/views.py:48
+msgid "DomainDeletion"
+msgstr ""
+"The domain is commissioned to be deleted at the end of the current term."
+
+#: cancellation/views.py:50
+msgid "DomainTransfer"
+msgstr "The domain is to be released for the change of provider."
+
+#: cancellation/views.py:83
+msgid "CancelSubject"
+msgstr "Cancellation Details"
+
+#: cancellation/views.py:87
+msgid "SupportSubject"
+msgstr "Customer Request"
+
+#: cancellation/views.py:91
+msgid "CustomerFormSuccess"
+msgstr "Your data was submitted successfully."
+
+#: cancellation/views.py:93
+msgid "CustomerFormError"
+msgstr "Something went wrong, please try again."
 
 #: dashboard/forms.py:8
 msgid "ByEmail"
@@ -74,10 +300,6 @@ msgstr "City"
 msgid "Country"
 msgstr "Country"
 
-#: dashboard/forms.py:34 dashboard/templates/home_main.html:87
-msgid "Email"
-msgstr "Email"
-
 #: dashboard/forms.py:35 dashboard/templates/home_main.html:92
 msgid "Phone"
 msgstr "Phone"
@@ -94,7 +316,7 @@ msgstr "Invoice Details"
 msgid "Newsletter"
 msgstr "Yes, please send the newsletter for general announcements"
 
-#: dashboard/templates/all_invoices.html:10 templates/base.html:44
+#: dashboard/templates/all_invoices.html:10 templates/base.html:47
 msgid "AllInvoicesHeading"
 msgstr "Invoice overview"
 
@@ -119,14 +341,14 @@ msgid "OurBankDetails"
 msgstr "Our Bank Details"
 
 #: dashboard/templates/bank_details.html:10
-#: dashboard/templates/home_main.html:127 paymentoptions/forms.py:22
-#: paymentoptions/templates/form.html:21
+#: dashboard/templates/home_main.html:127 paymentoptions/forms.py:20
+#: paymentoptions/templates/form.html:25
 msgid "iban"
 msgstr "IBAN"
 
 #: dashboard/templates/bank_details.html:14
-#: dashboard/templates/home_main.html:132 paymentoptions/forms.py:23
-#: paymentoptions/templates/form.html:23
+#: dashboard/templates/home_main.html:132 paymentoptions/forms.py:21
+#: paymentoptions/templates/form.html:27
 msgid "bic"
 msgstr "BIC"
 
@@ -137,10 +359,6 @@ msgstr "Bank"
 #: dashboard/templates/edit_data.html:7
 msgid "EditDataHeading"
 msgstr "Edit your Personal Data"
-
-#: dashboard/templates/edit_data.html:16 paymentoptions/templates/form.html:47
-msgid "SendData"
-msgstr "Submit Data"
 
 #: dashboard/templates/home_main.html:10
 msgid "Hello"
@@ -166,15 +384,11 @@ msgstr "View Invoices"
 msgid "YourData"
 msgstr "Your Data"
 
-#: dashboard/templates/home_main.html:72 templates/base.html:160
+#: dashboard/templates/home_main.html:72 templates/base.html:163
 msgid "Company"
 msgstr "Company"
 
-#: dashboard/templates/home_main.html:77
-msgid "Name"
-msgstr "Name"
-
-#: dashboard/templates/home_main.html:103 templates/base.html:47
+#: dashboard/templates/home_main.html:103 templates/base.html:50
 msgid "edit_personal_data"
 msgstr "Edit Personal Data"
 
@@ -186,8 +400,8 @@ msgstr "SEPA Core Direct Debit"
 msgid "SepaGranted"
 msgstr "Direct debit authorization granted"
 
-#: dashboard/templates/home_main.html:122 paymentoptions/forms.py:21
-#: paymentoptions/templates/form.html:19
+#: dashboard/templates/home_main.html:122 paymentoptions/forms.py:19
+#: paymentoptions/templates/form.html:23
 msgid "owner"
 msgstr "Owner"
 
@@ -227,71 +441,67 @@ msgstr "Unit Price"
 msgid "total_price"
 msgstr "Total Price"
 
-#: dashboard/views.py:186
+#: dashboard/views.py:190
 msgid "EditDataSuccess"
 msgstr "Your data has been updated successfully"
 
-#: dashboard/views.py:189
+#: dashboard/views.py:193
 msgid "EditDataError"
 msgstr "There was an error, please try again"
 
-#: dashboard/views.py:222
+#: dashboard/views.py:226
 msgid "ResetEmailSuccess"
 msgstr "Email has been sent successfully"
 
-#: dashboard/views.py:225
+#: dashboard/views.py:229
 msgid "ResetEmailError"
 msgstr "There was an error, please try again"
 
-#: dashboard/views.py:249
+#: dashboard/views.py:253
 msgid "PasswordMatchError"
 msgstr "The new passwords do not match, please try again"
 
-#: dashboard/views.py:254
+#: dashboard/views.py:258
 msgid "OldPasswordError"
 msgstr "Old password is Incorrect, please try again"
 
-#: dashboard/views.py:278
+#: dashboard/views.py:282
 msgid "PasswordChangeSuccess"
 msgstr "Password has been changed successfully"
 
-#: dashboard/views.py:281
+#: dashboard/views.py:285
 msgid "PasswordChangeError"
 msgstr "There was an error, please try again"
 
-#: paymentoptions/forms.py:7
+#: paymentoptions/forms.py:6
 msgid "Bank Transfer"
 msgstr "Payment by Bank Transfer"
 
-#: paymentoptions/forms.py:8
+#: paymentoptions/forms.py:7
 msgid "Direct Debit"
 msgstr "Payment by Direct Debit"
 
-#: paymentoptions/forms.py:14 paymentoptions/templates/form.html:14
-msgid "CustomerNumber"
-msgstr "Customer Number"
-
-#: paymentoptions/forms.py:17
+#: paymentoptions/forms.py:15
 msgid "PaymentOptions"
 msgstr "Payment Options"
 
-#: paymentoptions/forms.py:24 paymentoptions/templates/form.html:37
+#: paymentoptions/forms.py:22 paymentoptions/templates/form.html:41
 msgid "Accept"
 msgstr "I accept the direct debit authorization."
 
-#: paymentoptions/templates/form.html:9
+#: paymentoptions/templates/form.html:13
 msgid "PaymentOptionsHeading"
 msgstr "Payment Options"
 
-#: paymentoptions/templates/form.html:16
+#: paymentoptions/templates/form.html:20
 msgid "payment_options"
 msgstr "Payment Options"
 
-#: paymentoptions/templates/form.html:28
+#: paymentoptions/templates/form.html:32
 msgid "DirectDebitAuthorization"
 msgstr "Direct Debit Authorization"
 
-#: paymentoptions/templates/form.html:30
+#: paymentoptions/templates/form.html:34
 msgid "DirectDebitConfirmationText"
 msgstr ""
 "Hiermit ermächtige(n) ich/wir \n"
@@ -309,91 +519,87 @@ msgstr ""
 "allen Lastschrifteinzügen angegeben werden. Beide Angaben finden Sie auf der "
 "Rechnung, die die Lastschrift auslöst."
 
-#: paymentoptions/templates/token_error.html:6
+#: paymentoptions/templates/token_error.html:12
 msgid "Token Message"
 msgstr "Incorrect or missing token, please check or contact us."
 
-#: paymentoptions/views.py:78
+#: paymentoptions/views.py:81
 msgid "Error Message"
 msgstr "There was an error, please check the details filled and try again."
 
-#: paymentoptions/views.py:84
+#: paymentoptions/views.py:87
 msgid "DD Success Message"
 msgstr "Sepa Direct Debit has been selected as Payment Option successfully."
 
-#: paymentoptions/views.py:87
+#: paymentoptions/views.py:89
 msgid "BT Success Message"
 msgstr "Bank Transfer has been selected as Payment Option successfully."
 
-#: templates/base.html:13
+#: templates/base.html:14
 msgid "Portal"
 msgstr "AD IT SYSTEMS - Portal"
 
-#: templates/base.html:50 templates/registration/change_password.html:17
+#: templates/base.html:53 templates/registration/change_password.html:17
 msgid "ChangePassword"
 msgstr "Change Password"
 
-#: templates/base.html:52
+#: templates/base.html:55
 msgid "Logout"
 msgstr "Logout"
 
-#: templates/base.html:54
+#: templates/base.html:57
 msgid "Login"
 msgstr "Login"
 
-#: templates/base.html:109
+#: templates/base.html:112
 msgid "Contact"
 msgstr "Contact"
 
-#: templates/base.html:126
+#: templates/base.html:129
 msgid "Services"
 msgstr "Services"
 
-#: templates/base.html:138
+#: templates/base.html:141
 msgid "Compliance"
 msgstr "Compliance"
 
-#: templates/base.html:141
+#: templates/base.html:144
 msgid "LegalNotice"
 msgstr "Legal Notice"
 
-#: templates/base.html:142
+#: templates/base.html:145
 msgid "Privacy"
 msgstr "Privacy"
 
-#: templates/base.html:143
+#: templates/base.html:146
 msgid "Revocation"
 msgstr "Revocation"
 
-#: templates/base.html:144
+#: templates/base.html:147
 msgid "CustomerInformation"
 msgstr "Customer Information"
 
-#: templates/base.html:145
+#: templates/base.html:148
 msgid "TermsofService"
 msgstr "Terms of Service"
 
-#: templates/base.html:150
+#: templates/base.html:153
 msgid "InfoCenter"
 msgstr "Info Center"
 
-#: templates/base.html:153
-msgid "Blog"
-msgstr "Blog"
-
-#: templates/base.html:154
+#: templates/base.html:156
 msgid "Support"
 msgstr "Support"
 
-#: templates/base.html:155
-msgid "CustomerCenter"
-msgstr "Customer Center"
+#: templates/base.html:157
+msgid "Blog"
+msgstr "Blog"
 
-#: templates/base.html:163
+#: templates/base.html:166
 msgid "ContactDetails"
 msgstr "Contact Details"
 
-#: templates/base.html:164
+#: templates/base.html:167
 msgid "Jobs"
 msgstr "Jobs"
 
@@ -433,6 +639,17 @@ msgstr "Reset your Password"
 #: templates/registration/reset_password.html:17
 msgid "Passwordreset"
 msgstr "Submit"
+
+#~ msgid "OS"
+#~ msgstr "OS"
+
+#~ msgid "CancelSurname"
+#~ msgstr "Surname"
+
+#~ msgid "TerminationNotice"
+#~ msgstr ""
+#~ "You gave notice of termination on {{date}} at {{time}} containing the "
+#~ "following information"
 
 #~ msgid "Homepage"
 #~ msgstr "Homepage"
@@ -488,6 +705,3 @@ msgstr "Submit"
 
 #~ msgid "r_id"
 #~ msgstr "Invoice ID"
-
-#~ msgid "Option Message"
-#~ msgstr "Please select only one Payment Method."
