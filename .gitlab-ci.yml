@@ -1,5 +1,5 @@
 ---
-image: registry.aditsystems.de/as-crm/portal:5ae845b8
+image: "$CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX/python:3.9-alpine"
 
 variables:
   SONAR_URL: https://sonarqube.aditsystems.de
@@ -26,42 +26,18 @@ cache:
     - "~/.cache/pip/"
 test:pylint:
   stage: test
-  before_script:
-    - apk add bash
-    - /usr/local/bin/python -m pip install --upgrade pip
-    - pip install -r requirements-frozen.txt
   script:
-    - bash ./bin/pylint.sh
+    - ./bin/pylint.sh
   only:
     changes:
       - "**/*.py"
     refs:
       - merge_requests
       - main
-      - develop
   artifacts:
     paths:
       - pylint.txt
 
-
-.test:django_check:
-  stage: test
-  services:
-    - name: "$CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX/postgres:11"
-      alias: postgres
-  only:
-    - merge_requests
-    - main
-  before_script:
-    - python -V
-    - pip install -r requirements-frozen.txt
-  script:
-    - touch Portal.local_settings.py
-    - coverage run --branch manage.py test \
-      --settings Portal.settings_ci -v $VERBOSITY
-    - coverage xml
-    - python manage.py check
-  allow_failure: true
 
 test:django:
   stage: test
@@ -77,10 +53,10 @@ test:django:
     - merge_requests
     - main
   before_script:
-    - python -V
+    - apk add --no-cache --virtual .build-deps gcc build-base musl-dev mariadb-connector-c-dev libffi-dev busybox-extras python3-dev gettext
     - pip install -r requirements-frozen.txt
   script:
-    - touch Portal.local_settings.py
+    - touch Portal/local_settings.py
     - django-admin compilemessages
     - coverage run --branch manage.py test
       --settings Portal.settings_ci -v $VERBOSITY
@@ -117,6 +93,7 @@ dockerimage:build:
     - echo $CI_REGISTRY_PASSWORD | docker login --username "$CI_REGISTRY_USER"
       --password-stdin $CI_REGISTRY
   script:
+    - apk add git; git describe --long --tags --dirty --always > VERSION
     - docker pull $IMAGE_BRANCH || true
     - docker build --cache-from $IMAGE_BRANCH --tag $IMAGE_SHA .
     - docker push $IMAGE_SHA

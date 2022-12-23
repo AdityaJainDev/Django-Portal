@@ -149,3 +149,4 @@ plugins/mitogen
 !inventory/local
 !inventory/sample
 inventory/*/artifacts/
+VERSION

@@ -22,7 +22,7 @@ RUN set -ex \
         | xargs -r apk info --installed \
         | sort -u)" \
     && apk add --virtual rundeps $runDeps \
-    && apk del .build-deps 
+    && apk del .build-deps
 
 ENV VIRTUAL_ENV=/env PATH=/env/bin:$PATH
 
@@ -34,7 +34,6 @@ EXPOSE 6379 8000
 
 RUN python manage.py collectstatic --noinput \
     && python manage.py compress \
-    && django-admin compilemessages \
-    && git describe --long --tags --dirty --always > VERSION
+    && django-admin compilemessages
 
 CMD ["gunicorn", "-c", "gunicorn.py"]
