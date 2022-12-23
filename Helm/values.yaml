@@ -1,45 +1,45 @@
 ---
 imageCredentials:
-  registry: registry.aditsystems.de
-  username: ""
-  password: ""
-  email: support@aditsystems.de
+    registry: registry.aditsystems.de
+    username: ""
+    password: ""
+    email: support@aditsystems.de
 
 clusterIssuer: letsencrypt-prod
 
 storageClassName: hcloud-volumes
 
 image:
-  tag: main
-  pullPolicy: Always
-  repository: registry.aditsystems.de/as-crm/portal
+    tag: main
+    pullPolicy: Always
+    repository: registry.aditsystems.de/as-crm/portal
 
 portal:
-  has_auth: false
-  dashboard: true
-  secret_key: "secret"
-  instanceDomain: ""
-  SITE_ID: ""
-  replicas: 2
-  resources:
-    requests:
-      cpu: 100m
-      memory: 256Mi
+    has_auth: false
+    dashboard: true
+    secret_key: "secret"
+    instanceDomain: ""
+    SITE_ID: ""
+    replicas: 2
+    resources:
+        requests:
+            cpu: 100m
+            memory: 256Mi
 
 redis:
-  resources:
-    limits:
-      cpu: 500m
-      memory: 128Mi
-    requests:
-      cpu: 100m
-      memory: 32Mi
+    resources:
+        limits:
+            cpu: 500m
+            memory: 128Mi
+        requests:
+            cpu: 100m
+            memory: 32Mi
 
 db:
-  storage: 10Gi
-  engine: django.db.backends.postgresql
-  name: "postgres"
-  user: "postgres"
-  pass: "postgres"
-  host: "postgres"
-  port: 5432
+    storage: 10Gi
+    engine: django.db.backends.postgresql
+    name: "postgres"
+    user: "postgres"
+    pass: "postgres"
+    host: "postgres"
+    port: 5432
