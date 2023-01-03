@@ -27,12 +27,10 @@
     }
     td:first-of-type {
       // background-color: red;
-      padding-left: 10px;
       font-weight: 700;
     }
     td:nth-child(2) {
       // background-color: red;
-      padding-left: 10px;
       font-weight: 700;
     }
     tr:nth-child(even){
@@ -45,9 +43,6 @@
       background-color: $blueAditB;
       color: white;
       font-weight: 700;
-    }
-    tr:last-child {
-      border-bottom: 1px solid black;
     }
     tr:hover {
       background-color: $hoverTable;

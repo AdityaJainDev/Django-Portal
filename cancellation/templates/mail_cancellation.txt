@@ -3,6 +3,7 @@ Dear Customer,
 
 You gave notice of termination on {{value}} containing the following information:
 
+Personal Information:
 
 {{name}}
 
@@ -10,11 +11,15 @@ You gave notice of termination on {{value}} containing the following information
 
 {{phone_number}}
 
+{{email}}
+
+Request Information:
+
 {{contract_number}}
 
 {{ domain_options }}
 
-{{email}}
+{{additional_information}}
 
 and through which the contractual relationship is to be terminated as soon as possible.
 

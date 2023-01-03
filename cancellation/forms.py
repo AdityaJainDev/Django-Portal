@@ -1,10 +1,17 @@
 from django import forms
+from django.forms import formset_factory
 from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
 
 DOMAIN_DELETION = (
     ("0", _("EndOfTerm")),
     ("1", _("ChangeProvider")),
+    ("2", _("Custom")),
+)
+
+DOMAIN_HANDLING = (
+    ("0", _("Delete")),
+    ("1", _("SendAuth")),
 )
 
 class CancellationForm(forms.Form):
@@ -20,3 +27,11 @@ class CancellationForm(forms.Form):
     confirm_data = forms.BooleanField(label=_("CancelData"), required=False)
     confirm_data_deletion = forms.BooleanField(label=_("CancelDeletion"), required=False)
     field_garb = forms.BooleanField(required=False)
+
+# Make a django formset_factory class
+
+class DomainForm(forms.Form):
+    domain_name = forms.CharField(required=False)
+    domain_handling = forms.ChoiceField(choices=DOMAIN_HANDLING, required=False)
+
+DomainFormset = formset_factory(DomainForm)

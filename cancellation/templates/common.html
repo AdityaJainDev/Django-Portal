@@ -1,6 +1,7 @@
 {% load i18n %}
 {% get_current_language as CURRENT_LANGUAGE %}
-
+<p style="font-family: sans-serif; font-size: 16px;  margin: 0; margin-bottom: 15px;">
+    {% trans 'PersonalInformation' %}:</p>
 <ul>
     <li>
         <p
@@ -32,6 +33,18 @@
     <li>
         <p
             style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">
+            <strong>{% trans 'Email' %}:</strong>
+            {{email}}
+        </p>
+    </li>
+</ul>
+<br>
+<p style="font-family: sans-serif; font-size: 16px;  margin: 0; margin-bottom: 15px;">
+    {% trans 'RequestInformation' %}:</p>
+<ul>
+    <li>
+        <p
+            style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">
             <strong>{% trans 'SubjectTermination' %}:</strong> {{contract_number}}
         </p>
     </li>
@@ -54,12 +67,28 @@
         </p>
     </li>
 </ul>
-<ul>
-    <li>
-        <p
-            style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">
-            <strong>{% trans 'Email' %}:</strong>
-            {{email}}
-        </p>
-    </li>
-</ul>
+
+
+{% for key, values in domain_dict.items %}
+    {% if key == "" %}
+    <ul>
+        <li>
+            <p
+                style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">
+                <strong>{% trans 'CustomRequest' %}</strong>
+            </p>
+        </li>
+    </ul>
+    {% else %}
+    <ul>
+        <li>
+            <p
+                style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">
+                <strong>{{key}}:</strong>
+                {{ values }}
+            </p>
+        </li>
+    </ul>
+    {% endif %}
+{% endfor %}
+

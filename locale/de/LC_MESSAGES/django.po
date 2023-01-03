@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-19 14:57+0100\n"
+"POT-Creation-Date: 2023-01-02 14:45+0100\n"
 "PO-Revision-Date: 2022-07-14 17:47+0000\n"
 "Last-Translator: Anton Dollmaier <a.dollmaier@aditsystems.de>\n"
 "Language-Team: German <https://translate.aditsystems.dev/projects/crm-portal/"
@@ -19,65 +19,79 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 4.13.1\n"
 
-#: cancellation/forms.py:6 cancellation/templates/cancellation_form.html:79
+#: cancellation/forms.py:7
 msgid "EndOfTerm"
 msgstr ""
-"zum Ablauf der aktuellen Laufzeit zur Löschung in Auftrag gegeben werden."
+"Zum Ablauf der aktuellen Laufzeit zur Löschung in Auftrag gegeben werden."
 
-#: cancellation/forms.py:7 cancellation/templates/cancellation_form.html:80
+#: cancellation/forms.py:8
 msgid "ChangeProvider"
 msgstr ""
-"für den Providerwechsel freigegeben werden (AUTH Code bitte übersenden)."
+"Für den Providerwechsel freigegeben werden (AUTH Code bitte übersenden)."
 
-#: cancellation/forms.py:11 cancellation/templates/cancellation_form.html:28
+#: cancellation/forms.py:9
+msgid "Custom"
+msgstr ""
+"Benutzerdefinierte (Wählen Sie aus, welche Domain Sie löschen und welche Sie "
+"behalten möchten)."
+
+#: cancellation/forms.py:13 cancellation/views.py:51
+msgid "Delete"
+msgstr "Löschen"
+
+#: cancellation/forms.py:14 cancellation/views.py:53
+msgid "SendAuth"
+msgstr "AUTH Code senden"
+
+#: cancellation/forms.py:18 cancellation/templates/cancellation_form.html:28
 msgid "CancelName"
 msgstr "Ihre Name"
 
-#: cancellation/forms.py:12 cancellation/templates/cancellation_form.html:34
+#: cancellation/forms.py:19 cancellation/templates/cancellation_form.html:33
 msgid "CancelNumber"
 msgstr "Ihre Kundennummer"
 
-#: cancellation/forms.py:13 cancellation/templates/cancellation_form.html:40
+#: cancellation/forms.py:20 cancellation/templates/cancellation_form.html:38
 msgid "CancelPhoneNumber"
 msgstr "Ihre Telefonnummer"
 
-#: cancellation/forms.py:14 cancellation/templates/cancellation_form.html:47
+#: cancellation/forms.py:21 cancellation/templates/cancellation_form.html:44
 msgid "CancelContract"
 msgstr "Den Vertrag/das Hosting, das Sie kündigen möchten"
 
-#: cancellation/forms.py:15 cancellation/templates/cancellation_form.html:53
+#: cancellation/forms.py:22 cancellation/templates/cancellation_form.html:49
 msgid "CancelEmail"
 msgstr "Ihre E-Mail-Adresse"
 
-#: cancellation/forms.py:16 cancellation/templates/cancellation_form.html:63
+#: cancellation/forms.py:23 cancellation/templates/cancellation_form.html:57
 msgid "CancelTariff"
 msgstr ""
 "Ich bestätige hiermit, Vertragspartner(in) des oben genannten Tarifs unter "
 "der genannten Kundennummer zu sein. Der Hosting-Tarif soll zum "
 "nächstmöglichen Zeitpunkt gekündigt werden."
 
-#: cancellation/forms.py:17 cancellation/templates/cancellation_form.html:71
+#: cancellation/forms.py:24 cancellation/templates/cancellation_form.html:64
 msgid "CancelConsumer"
 msgstr ""
 "Ich bin Verbraucher im Sinne des § 13 BGB (Privatkunde). Der Tarif wurde "
 "nicht zur Ausübung meiner gewerblichen oder selbständigen beruflichen "
 "Tätigkeit (Unternehmer nach § 14 BGB) geschlossen."
 
-#: cancellation/forms.py:18 cancellation/templates/cancellation_form.html:77
+#: cancellation/forms.py:25 cancellation/templates/cancellation_form.html:71
 msgid "CancelOptions"
 msgstr "Des Weiteren sollen die im Hosting-Tarif enthaltenen Domain(s)"
 
-#: cancellation/forms.py:19 cancellation/templates/common.html:52
+#: cancellation/forms.py:26 cancellation/templates/common.html:65
 msgid "AdditionalData"
 msgstr "Zusätzliche Informationen"
 
-#: cancellation/forms.py:20 cancellation/templates/cancellation_form.html:93
+#: cancellation/forms.py:27 cancellation/templates/cancellation_form.html:100
 msgid "CancelData"
 msgstr ""
 "Ich willige ein, dass meine Angaben zur Kontaktaufnahme und Zuordnung für "
 "eventuelle Rückfragen dauerhaft gespeichert werden."
 
-#: cancellation/forms.py:21 cancellation/templates/cancellation_form.html:102
+#: cancellation/forms.py:28 cancellation/templates/cancellation_form.html:108
 msgid "CancelDeletion"
 msgstr ""
 "Durch die Kündigung des Hosting-Tarifs ist es mit Vertragsende nicht mehr "
@@ -100,67 +114,97 @@ msgstr ""
 "übermitteln Sie uns einfach das folgende Dokument. Selbstverständlich können "
 "Sie sich auch über unser Kundencenter eine Kündigung generieren. "
 
-#: cancellation/templates/cancellation_form.html:34
+#: cancellation/templates/cancellation_form.html:33
 msgid "CustomerNoDetail"
 msgstr ""
 "Ihre Kundennummer finden Sie auf allen Rechnungen, die Sie von uns erhalten."
 
-#: cancellation/templates/cancellation_form.html:47
+#: cancellation/templates/cancellation_form.html:44
 msgid "ContractDetails"
 msgstr ""
 "Je genauer Sie den zu kündigenden Vertrag benennen, desto einfacher ist die "
 "Zuordnung bzw. Überprüfung Ihrer Kündigung. Geben Sie idealerweise Ihre "
 "Vertragsnummer und den Hostingnamen (z. B. SSD1234) ein."
 
-#: cancellation/templates/cancellation_form.html:53
+#: cancellation/templates/cancellation_form.html:49
 msgid "EmailCustomerData"
 msgstr ""
 "Bitte geben Sie nach Möglichkeit die Emailadresse an, die auch in Ihren "
 "Kundendaten hinterlegt ist."
 
-#: cancellation/templates/cancellation_form.html:59
-#: cancellation/templates/cancellation_form.html:89
+#: cancellation/templates/cancellation_form.html:54
+#: cancellation/templates/cancellation_form.html:97
 msgid "PleaseConfirm"
 msgstr "Bitte bestätigen Sie"
 
-#: cancellation/templates/cancellation_form.html:77
+#: cancellation/templates/cancellation_form.html:71
 msgid "DomainComment"
-msgstr "Wenn Sie nicht alle Domains im Vertrag kündigen möchten, wenden Sie sich an uns"
+msgstr ""
+"Wenn Sie nicht alle Domains im Vertrag kündigen möchten, wählen Sie die "
+"benutzerdefinierte Option."
 
-#: cancellation/templates/cancellation_form.html:86
+#: cancellation/templates/cancellation_form.html:81
+msgid "Domain"
+msgstr "Domain"
+
+#: cancellation/templates/cancellation_form.html:82
+msgid "Handling"
+msgstr "Handling"
+
+#: cancellation/templates/cancellation_form.html:94
 msgid "AdditionalNotice"
 msgstr "Möchten Sie uns zusätzliche Informationen übermitteln?"
 
-#: cancellation/templates/cancellation_form.html:115
+#: cancellation/templates/cancellation_form.html:122
 #: dashboard/templates/edit_data.html:16 paymentoptions/templates/form.html:51
 msgid "SendData"
 msgstr "Daten übermitteln"
 
-#: cancellation/templates/common.html:8 dashboard/templates/home_main.html:77
+#: cancellation/templates/cancellation_form.html:151
+msgid "DomainAdd"
+msgstr "Hinzufügen"
+
+#: cancellation/templates/cancellation_form.html:152
+msgid "DomainDelete"
+msgstr "Löschen"
+
+#: cancellation/templates/common.html:4
+msgid "PersonalInformation"
+msgstr "Persönlichen Informationen"
+
+#: cancellation/templates/common.html:9 dashboard/templates/home_main.html:77
 msgid "Name"
 msgstr "Name"
 
-#: cancellation/templates/common.html:17 paymentoptions/forms.py:12
+#: cancellation/templates/common.html:18 paymentoptions/forms.py:12
 #: paymentoptions/templates/form.html:18
 msgid "CustomerNumber"
 msgstr "Kundennummer"
 
-#: cancellation/templates/common.html:26
+#: cancellation/templates/common.html:27
 msgid "PhoneNumber"
-msgstr "Telefonnumme"
+msgstr "Telefonnummer"
 
-#: cancellation/templates/common.html:35
-msgid "SubjectTermination"
-msgstr "Gegenstand der Kündigung"
-
-#: cancellation/templates/common.html:43
-msgid "DomainAction"
-msgstr "Domänenaktion"
-
-#: cancellation/templates/common.html:61 dashboard/forms.py:34
+#: cancellation/templates/common.html:36 dashboard/forms.py:34
 #: dashboard/templates/home_main.html:87
 msgid "Email"
 msgstr "E-Mail-Adresse"
+
+#: cancellation/templates/common.html:43
+msgid "RequestInformation"
+msgstr "Anfrage Informationen"
+
+#: cancellation/templates/common.html:48
+msgid "SubjectTermination"
+msgstr "Gegenstand der Kündigung"
+
+#: cancellation/templates/common.html:56
+msgid "DomainAction"
+msgstr "Domänenaktion"
+
+#: cancellation/templates/common.html:88
+msgid "CustomRequest"
+msgstr "Keine benutzerdefinierte Anfrage"
 
 #: cancellation/templates/mail_cancellation.html:7
 msgid "DearCustomer"
@@ -197,51 +241,59 @@ msgstr "Hallo"
 msgid "um %(value)s hat ein Kunde eine Kündigung ausgesprochen, die folgende Informationen enthält"
 msgstr ""
 
-#: cancellation/templates/mail_cancellation_support.html:17
+#: cancellation/templates/mail_cancellation_support.html:15
+msgid "TechnicalInformation"
+msgstr "Technische Informationen"
+
+#: cancellation/templates/mail_cancellation_support.html:20
 msgid "IP"
 msgstr "IP"
 
-#: cancellation/templates/mail_cancellation_support.html:26
+#: cancellation/templates/mail_cancellation_support.html:29
 msgid "Browser"
 msgstr "Browser und OS"
 
-#: cancellation/templates/mail_cancellation_support.html:33
+#: cancellation/templates/mail_cancellation_support.html:36
 msgid "supportVerify"
 msgstr ""
 "Bitte überprüfen Sie die Stornierung und führen Sie sie dann über CRM aus."
 
-#: cancellation/views.py:43
+#: cancellation/views.py:57
 msgid "SpamMessage"
 msgstr ""
 "Ihre Antwort wurde als Spam gekennzeichnet. Bitte versuchen Sie es erneut "
 "oder wenden Sie sich an den Support."
 
-#: cancellation/views.py:44 cancellation/views.py:45
+#: cancellation/views.py:58 cancellation/views.py:59
 msgid "Spam"
 msgstr "Spam erkannt"
 
-#: cancellation/views.py:48
+#: cancellation/views.py:62
 msgid "DomainDeletion"
 msgstr ""
 "Die Domain wird zum Ende der laufenden Laufzeit zur Löschung beauftragt."
 
-#: cancellation/views.py:50
+#: cancellation/views.py:64
 msgid "DomainTransfer"
 msgstr "Die Domain soll für den Providerwechsel freigegeben werden."
 
-#: cancellation/views.py:83
+#: cancellation/views.py:66
+msgid "CustomSelection"
+msgstr "Benutzerdefinierte Aktion für einzelne Domain"
+
+#: cancellation/views.py:101
 msgid "CancelSubject"
 msgstr "Stornierungsdetails"
 
-#: cancellation/views.py:87
+#: cancellation/views.py:105
 msgid "SupportSubject"
 msgstr "Kundenanfrage"
 
-#: cancellation/views.py:91
+#: cancellation/views.py:109
 msgid "CustomerFormSuccess"
 msgstr "Ihre Daten wurden erfolgreich übermittelt."
 
-#: cancellation/views.py:93
+#: cancellation/views.py:111
 #, fuzzy
 #| msgid "CustomerInformation"
 msgid "CustomerFormError"

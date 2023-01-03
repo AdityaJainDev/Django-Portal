@@ -8,8 +8,11 @@
         <br>
         <p style="font-family: sans-serif; font-size: 16px;  margin: 0; margin-bottom: 15px;">
             {% blocktranslate %}um {{value}} hat ein Kunde eine Kündigung ausgesprochen, die folgende Informationen enthält{% endblocktranslate %}:</p>
-        
+        <br>
         {% include "common.html" %}
+        <br>
+        <p style="font-family: sans-serif; font-size: 16px;  margin: 0; margin-bottom: 15px;">
+            {% trans 'TechnicalInformation' %}:</p>
         <ul>
             <li>
                 <p
@@ -28,7 +31,7 @@
                 </p>
             </li>
         </ul>
-
+        <br>
         <p style="font-family: sans-serif; font-size: 16px;  margin: 0; margin-bottom: 15px;">
             {% trans 'supportVerify' %}</p>
 {% endblock %}

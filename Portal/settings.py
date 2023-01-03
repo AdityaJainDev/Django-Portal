@@ -193,7 +193,6 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_PASSWORD")
 
-
 EMAIL_FROM = "status@aditsystems.de"
 
 EMAIL_SUPPORT = "support@aditsystems.de"

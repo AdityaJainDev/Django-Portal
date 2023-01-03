@@ -26,70 +26,77 @@
     {% csrf_token %}
     <div id="div_id_name" class="control-group"> <label for="id_name" class="control-label requiredField">
         {% trans 'CancelName' %}<span class="asteriskField">*</span> </label>
-      <div class="controls"> <input type="text" name="name" maxlength="100" class="textinput textInput" required=""
-          id="id_name"> </div>
+      <div class="controls"> {{form.name}} </div>
     </div>
 
     <div id="div_id_customer_number" class="control-group"> <label for="id_customer_number" class="control-label requiredField">
       {% trans 'CancelNumber' %}<span class="asteriskField">*</span> <span><div class="caption-title-paragraph__eyelet GilroyMedium" style="text-transform: none;">{% trans 'CustomerNoDetail' %}</div></span> </label>
-      <div class="controls"> <input type="text" name="customer_number" maxlength="100" class="textinput textInput" required=""
-          id="id_customer_number"> </div>
+      <div class="controls"> {{form.customer_number}} </div>
     </div>
 
     <div id="div_id_phone_number" class="control-group"> <label for="id_phone_number" class="control-label requiredField">
       {% trans 'CancelPhoneNumber' %}<span class="asteriskField">*</span></label>
-      <div class="controls"> <input type="text" name="phone_number" maxlength="100" class="textinput textInput" required=""
-          id="id_phone_number"> </div>
+      <div class="controls">{{form.phone_number}} </div>
     </div>
 
     <div id="div_id_contract_number" class="control-group"> <label for="id_contract_number"
         class="control-label requiredField">
         {% trans 'CancelContract' %}<span class="asteriskField">*</span> <span><div class="caption-title-paragraph__eyelet GilroyMedium" style="text-transform: none;">{% trans 'ContractDetails' %}</div></span> </label>
-      <div class="controls"> <input type="text" name="contract_number" maxlength="100" class="textinput textInput"
-          required="" id="id_contract_number"> </div>
+      <div class="controls">{{form.contract_number}} </div>
     </div>
 
     <div id="div_id_email" class="control-group"> <label for="id_email" class="control-label requiredField">
       {% trans 'CancelEmail' %}<span class="asteriskField">*</span> <span><div class="caption-title-paragraph__eyelet GilroyMedium" style="text-transform: none;">{% trans 'EmailCustomerData' %}</div></span> </label>
-      <div class="controls"> <input type="email" name="email" maxlength="100" class="emailinput" required=""
-          id="id_email"> </div>
+      <div class="controls">{{form.email}}</div>
     </div>
 
     <br>
     <div class="caption-title-paragraph__eyelet GilroyMedium">{% trans 'PleaseConfirm' %}..</div>
     <div id="div_id_confirm_tariff" class="control-group">
-      <div class="controls"> <a for="id_confirm_tariff" class="checkbox "> <input type="checkbox"
-            name="confirm_tariff" class="checkboxinput" id="id_confirm_tariff" required="">
+      <div class="controls"> <a for="id_confirm_tariff" class="checkbox ">{{form.confirm_tariff}}
             {% trans 'CancelTariff' %}
         </a> </div>
     </div>
-    <br><br>
+    <br>
     
     <div id="div_id_confirm_consumer" class="control-group">
-      <div class="controls"> <a for="id_confirm_consumer" class="checkbox "> <input type="checkbox"
-            name="confirm_consumer" class="checkboxinput" id="id_confirm_consumer" required="">
+      <div class="controls"> <a for="id_confirm_consumer" class="checkbox "> {{form.confirm_consumer}}
             {% trans 'CancelConsumer' %}
         </a> </div>
     </div>
     <br><br>
+
     <div id="div_id_domain_options" class="control-group"> <a for="id_domain_options"
         class="control-label requiredField">
-        {% trans 'CancelOptions' %}<span class="asteriskField">*</span><span><div class="caption-title-paragraph__eyelet GilroyMedium" style="text-transform: none;">{% trans 'DomainComment' %}</div></span> </a>
-      <div class="controls"> <select name="domain_options" class="select" id="id_domain_options">
-          <option value="0">{% trans 'EndOfTerm' %}</option>
-          <option value="1">{% trans 'ChangeProvider' %}</option>
+        {% trans 'CancelOptions' %}<span class="asteriskField">*</span><span><div class="caption-title-paragraph__eyelet GilroyMedium" style="text-transform: none;">{% trans 'DomainComment' %}</div></span> </a> 
+      <div class="controls"> 
+        {{form.domain_options}}
+      </div>
+    </div>
 
-        </select> </div>
+    {{ domain_formset.management_form }}
+    <div id="div_id_myTableData" data-aos="fade" class="aos-init aos-animate">
+        <table aria-describedby="Custom" class="link-formset" style="width: 50%;">
+            <tr>
+              <th scope="col">{% trans 'Domain' %}</th>
+              <th scope="col">{% trans 'Handling' %}</th>
+            </tr>
+            <tr>
+              {% for domain_form in domain_formset %}
+                    <td>{{ domain_form.domain_name }}</td>
+                    <td>{{ domain_form.domain_handling }}</td>
+            {% endfor %}
+          </tr>
+        </table><br>
     </div>
 
     <br>
     <div class="caption-title-paragraph__eyelet GilroyMedium">{% trans 'AdditionalNotice' %}</div>
-    <textarea name="additional_data" cols="40" rows="10" id="id_additional_data" spellcheck="false"></textarea>
+    {{form.additional_data}}
     
     <div class="caption-title-paragraph__eyelet GilroyMedium">{% trans 'PleaseConfirm' %}..</div>
     <div id="div_id_confirm_data" class="control-group">
-      <div class="controls"> <a for="id_confirm_data" class="checkbox "> <input type="checkbox" name="confirm_data"
-            class="checkboxinput" id="id_confirm_data" required="">
+      <div class="controls"> <a for="id_confirm_data" class="checkbox ">{{form.confirm_data}}
             {% trans 'CancelData' %}
         </a></div>
     </div>
@@ -97,13 +104,13 @@
     <br>
     
     <div id="div_id_confirm_data_deletion" class="control-group">
-      <div class="controls"> <a for="id_confirm_data_deletion" class="checkbox "> <input type="checkbox"
-            name="confirm_data_deletion" class="checkboxinput" id="id_confirm_data_deletion" required="">
+      <div class="controls"> <a for="id_confirm_data_deletion" class="checkbox ">{{form.confirm_data_deletion}}
             {% trans 'CancelDeletion' %}
       </a></div>
     </div>
 
     <input type="checkbox" name="field_garb" style="display:none !important;" tabindex="-1" autocomplete="off" id="id_field_garb" class="checkboxinput">
+
 
     <br>
     <br>
@@ -118,4 +125,31 @@
     </div>
   </form>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const table = document.getElementById('div_id_myTableData');
+      table.style.display = 'none';
+  });
+  document.addEventListener('DOMContentLoaded', function() {
+        const select = document.getElementById('id_domain_options');
+        const table = document.getElementById('div_id_myTableData');
+
+        select.addEventListener('change', function() {
+            if (this.value === '2') {
+                table.style.display = 'block';
+            } else {
+                table.style.display = 'none';
+            }
+        });
+    });
+</script>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/jquery.formset.js' %}"></script>
+<script>
+    $('.link-formset').formset({
+        addText: "{% trans 'DomainAdd' %}",
+        deleteText: "{% trans 'DomainDelete' %}",
+    });
+</script>
 {% endblock %}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-19 14:57+0100\n"
+"POT-Creation-Date: 2023-01-02 14:45+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,63 +18,75 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: cancellation/forms.py:6 cancellation/templates/cancellation_form.html:79
+#: cancellation/forms.py:7
 msgid "EndOfTerm"
-msgstr "be ordered to delete at the end of the current term."
+msgstr "Be ordered to delete at the end of the current term."
 
-#: cancellation/forms.py:7 cancellation/templates/cancellation_form.html:80
+#: cancellation/forms.py:8
 msgid "ChangeProvider"
-msgstr "for the change of provider (please send the AUTH code)."
+msgstr "For the change of provider (please send the AUTH code)."
 
-#: cancellation/forms.py:11 cancellation/templates/cancellation_form.html:28
+#: cancellation/forms.py:9
+msgid "Custom"
+msgstr "Custom (Choose which domain to delete and which to keep)."
+
+#: cancellation/forms.py:13 cancellation/views.py:51
+msgid "Delete"
+msgstr "Delete"
+
+#: cancellation/forms.py:14 cancellation/views.py:53
+msgid "SendAuth"
+msgstr "Send AUTH code"
+
+#: cancellation/forms.py:18 cancellation/templates/cancellation_form.html:28
 msgid "CancelName"
 msgstr "Your Name"
 
-#: cancellation/forms.py:12 cancellation/templates/cancellation_form.html:34
+#: cancellation/forms.py:19 cancellation/templates/cancellation_form.html:33
 msgid "CancelNumber"
 msgstr "Your Customer Number"
 
-#: cancellation/forms.py:13 cancellation/templates/cancellation_form.html:40
+#: cancellation/forms.py:20 cancellation/templates/cancellation_form.html:38
 msgid "CancelPhoneNumber"
 msgstr "Your Phone Number"
 
-#: cancellation/forms.py:14 cancellation/templates/cancellation_form.html:47
+#: cancellation/forms.py:21 cancellation/templates/cancellation_form.html:44
 msgid "CancelContract"
 msgstr "The contract/hosting you want to cancel"
 
-#: cancellation/forms.py:15 cancellation/templates/cancellation_form.html:53
+#: cancellation/forms.py:22 cancellation/templates/cancellation_form.html:49
 msgid "CancelEmail"
 msgstr "Your Email address"
 
-#: cancellation/forms.py:16 cancellation/templates/cancellation_form.html:63
+#: cancellation/forms.py:23 cancellation/templates/cancellation_form.html:57
 msgid "CancelTariff"
 msgstr ""
 "I hereby confirm that I am a contractual partner for the above tariff under "
 "the customer number stated. The hosting tariff is to be terminated as soon "
 "as possible."
 
-#: cancellation/forms.py:17 cancellation/templates/cancellation_form.html:71
+#: cancellation/forms.py:24 cancellation/templates/cancellation_form.html:64
 msgid "CancelConsumer"
 msgstr ""
 "I am a consumer within the meaning of § 13 BGB (private customer). The "
 "tariff was not concluded to exercise my commercial or self-employed "
 "professional activity (entrepreneur according to § 14 BGB)."
 
-#: cancellation/forms.py:18 cancellation/templates/cancellation_form.html:77
+#: cancellation/forms.py:25 cancellation/templates/cancellation_form.html:71
 msgid "CancelOptions"
 msgstr "Furthermore, the domain(s) included in the hosting tariff"
 
-#: cancellation/forms.py:19 cancellation/templates/common.html:52
+#: cancellation/forms.py:26 cancellation/templates/common.html:65
 msgid "AdditionalData"
 msgstr "Additional Information"
 
-#: cancellation/forms.py:20 cancellation/templates/cancellation_form.html:93
+#: cancellation/forms.py:27 cancellation/templates/cancellation_form.html:100
 msgid "CancelData"
 msgstr ""
 "I agree that my contact details and assignment will be stored permanently "
 "for any queries."
 
-#: cancellation/forms.py:21 cancellation/templates/cancellation_form.html:102
+#: cancellation/forms.py:28 cancellation/templates/cancellation_form.html:108
 msgid "CancelDeletion"
 msgstr ""
 "Due to the termination of the hosting tariff, it is no longer possible to "
@@ -97,66 +109,96 @@ msgstr ""
 "simply send us the following document. Of course, you can also generate a "
 "termination via our customer center"
 
-#: cancellation/templates/cancellation_form.html:34
+#: cancellation/templates/cancellation_form.html:33
 msgid "CustomerNoDetail"
 msgstr "You can find your customer number on all bills, you received from us."
 
-#: cancellation/templates/cancellation_form.html:47
+#: cancellation/templates/cancellation_form.html:44
 msgid "ContractDetails"
 msgstr ""
 "The more precisely you name the contract you want to cancel, the easier it "
 "is to assign or verify your termination. Ideally, enter your contract number "
 "and the hosting name (e.g. SSD1234)."
 
-#: cancellation/templates/cancellation_form.html:53
+#: cancellation/templates/cancellation_form.html:49
 msgid "EmailCustomerData"
 msgstr ""
 "If possible, please enter the email address that is also stored in your "
 "customer data."
 
-#: cancellation/templates/cancellation_form.html:59
-#: cancellation/templates/cancellation_form.html:89
+#: cancellation/templates/cancellation_form.html:54
+#: cancellation/templates/cancellation_form.html:97
 msgid "PleaseConfirm"
 msgstr "Please Confirm"
 
-#: cancellation/templates/cancellation_form.html:77
+#: cancellation/templates/cancellation_form.html:71
 msgid "DomainComment"
-msgstr "If you do not want to cancel all domains in the contract, reach out to us."
+msgstr ""
+"If you do not want to cancel all domains in the contract, select the custom "
+"option."
 
-#: cancellation/templates/cancellation_form.html:86
+#: cancellation/templates/cancellation_form.html:81
+msgid "Domain"
+msgstr "Domain"
+
+#: cancellation/templates/cancellation_form.html:82
+msgid "Handling"
+msgstr "Handling"
+
+#: cancellation/templates/cancellation_form.html:94
 msgid "AdditionalNotice"
 msgstr "Would you like to send us additional information?"
 
-#: cancellation/templates/cancellation_form.html:115
+#: cancellation/templates/cancellation_form.html:122
 #: dashboard/templates/edit_data.html:16 paymentoptions/templates/form.html:51
 msgid "SendData"
 msgstr "Submit Data"
 
-#: cancellation/templates/common.html:8 dashboard/templates/home_main.html:77
+#: cancellation/templates/cancellation_form.html:151
+msgid "DomainAdd"
+msgstr "Add"
+
+#: cancellation/templates/cancellation_form.html:152
+msgid "DomainDelete"
+msgstr "Delete"
+
+#: cancellation/templates/common.html:4
+msgid "PersonalInformation"
+msgstr "Personal Information"
+
+#: cancellation/templates/common.html:9 dashboard/templates/home_main.html:77
 msgid "Name"
 msgstr "Name"
 
-#: cancellation/templates/common.html:17 paymentoptions/forms.py:12
+#: cancellation/templates/common.html:18 paymentoptions/forms.py:12
 #: paymentoptions/templates/form.html:18
 msgid "CustomerNumber"
 msgstr "Customer Number"
 
-#: cancellation/templates/common.html:26
+#: cancellation/templates/common.html:27
 msgid "PhoneNumber"
 msgstr "Phone Number"
 
-#: cancellation/templates/common.html:35
-msgid "SubjectTermination"
-msgstr "Subject of the termination"
-
-#: cancellation/templates/common.html:43
-msgid "DomainAction"
-msgstr "Domain action"
-
-#: cancellation/templates/common.html:61 dashboard/forms.py:34
+#: cancellation/templates/common.html:36 dashboard/forms.py:34
 #: dashboard/templates/home_main.html:87
 msgid "Email"
 msgstr "Email"
+
+#: cancellation/templates/common.html:43
+msgid "RequestInformation"
+msgstr "Request Information"
+
+#: cancellation/templates/common.html:48
+msgid "SubjectTermination"
+msgstr "Subject of the termination"
+
+#: cancellation/templates/common.html:56
+msgid "DomainAction"
+msgstr "Domain action"
+
+#: cancellation/templates/common.html:88
+msgid "CustomRequest"
+msgstr "No Custom request"
 
 #: cancellation/templates/mail_cancellation.html:7
 msgid "DearCustomer"
@@ -198,49 +240,57 @@ msgstr ""
 "At %(value)s, a customer gave a notice of termination, which contains the "
 "following information"
 
-#: cancellation/templates/mail_cancellation_support.html:17
+#: cancellation/templates/mail_cancellation_support.html:15
+msgid "TechnicalInformation"
+msgstr "Technical Information"
+
+#: cancellation/templates/mail_cancellation_support.html:20
 msgid "IP"
 msgstr "IP"
 
-#: cancellation/templates/mail_cancellation_support.html:26
+#: cancellation/templates/mail_cancellation_support.html:29
 msgid "Browser"
 msgstr "Browser and OS"
 
-#: cancellation/templates/mail_cancellation_support.html:33
+#: cancellation/templates/mail_cancellation_support.html:36
 msgid "supportVerify"
 msgstr "Please verify the cancelation and then run it through CRM."
 
-#: cancellation/views.py:43
+#: cancellation/views.py:57
 msgid "SpamMessage"
 msgstr ""
 "Your response was flagged as Spam. Please try again or contact Support."
 
-#: cancellation/views.py:44 cancellation/views.py:45
+#: cancellation/views.py:58 cancellation/views.py:59
 msgid "Spam"
 msgstr "Spam Detected"
 
-#: cancellation/views.py:48
+#: cancellation/views.py:62
 msgid "DomainDeletion"
 msgstr ""
 "The domain is commissioned to be deleted at the end of the current term."
 
-#: cancellation/views.py:50
+#: cancellation/views.py:64
 msgid "DomainTransfer"
 msgstr "The domain is to be released for the change of provider."
 
-#: cancellation/views.py:83
+#: cancellation/views.py:66
+msgid "CustomSelection"
+msgstr "Custom action for individual domain."
+
+#: cancellation/views.py:101
 msgid "CancelSubject"
 msgstr "Cancellation Details"
 
-#: cancellation/views.py:87
+#: cancellation/views.py:105
 msgid "SupportSubject"
 msgstr "Customer Request"
 
-#: cancellation/views.py:91
+#: cancellation/views.py:109
 msgid "CustomerFormSuccess"
 msgstr "Your data was submitted successfully."
 
-#: cancellation/views.py:93
+#: cancellation/views.py:111
 msgid "CustomerFormError"
 msgstr "Something went wrong, please try again."
 

@@ -3,6 +3,7 @@ Hi,
 
 at {{value}}, a customer gave a notice of termination, which contains the following information:
 
+Personal Information:
 
 {{name}}
 
@@ -10,11 +11,17 @@ at {{value}}, a customer gave a notice of termination, which contains the follow
 
 {{phone_number}}
 
+{{email}}
+
+Request Information:
+
 {{contract_number}}
 
 {{ domain_options }}
 
-{{email}}
+{{ additional_information }}
+
+Technical Information:
 
 {{user_ip}}
 
