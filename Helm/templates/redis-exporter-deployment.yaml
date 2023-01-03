@@ -1,14 +1,13 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
     annotations:
         meta.helm.sh/release-name: prometheus-redis-exporter
-    generation: 1
     labels:
         app.kubernetes.io/instance: prometheus-redis-exporter
         app.kubernetes.io/name: prometheus-redis-exporter
     name: prometheus-redis-exporter
-    namespace: prometheus
 spec:
     replicas: 1
     selector:
@@ -35,7 +34,7 @@ spec:
                 - env:
                       - name: REDIS_ADDR
                         value: redis://redis:6379
-                  image: oliver006/redis_exporter:v1.44.0
+                  image: "{{ .Values.redis-exporter.image }}:{{ .Values.redis-exporter.version }}"
                   imagePullPolicy: IfNotPresent
                   name: prometheus-redis-exporter
                   ports:
