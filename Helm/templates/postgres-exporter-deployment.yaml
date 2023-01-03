@@ -38,9 +38,9 @@ spec:
                       - name: DATA_SOURCE_URI
                         value: "%!s(<nil>):5432/?sslmode=disable"
                       - name: DATA_SOURCE_USER
-                        value: { { .Values.db.user | b64enc | quote } }
+                        value: {{ .Values.db.user | b64enc | quote }}
                       - name: DATA_SOURCE_PASS
-                        value: { { .Values.db.pass | b64enc | quote } }
+                        value: {{ .Values.db.pass | b64enc | quote }}
                   image: quay.io/prometheuscommunity/postgres-exporter:v0.11.1
                   imagePullPolicy: IfNotPresent
                   livenessProbe:

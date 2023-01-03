@@ -34,7 +34,7 @@ spec:
                 - env:
                       - name: REDIS_ADDR
                         value: redis://redis:6379
-                  image: "{{ .Values.redis-exporter.image }}:{{ .Values.redis-exporter.version }}"
+                  image: {{ .Values.redis-exporter.image }}:{{ .Values.redis-exporter.version }}
                   imagePullPolicy: IfNotPresent
                   name: prometheus-redis-exporter
                   ports:
