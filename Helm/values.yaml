@@ -50,3 +50,7 @@ db:
 email:
     user: "Meine Güte"
     password: "xxxxxx"
+
+redis-exporter:
+    image: "oliver006/redis_exporter:v1.44.0"
+    version: "v1.44.0"

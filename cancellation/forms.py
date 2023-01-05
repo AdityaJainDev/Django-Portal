@@ -1,7 +1,9 @@
 from django import forms
 from django.forms import formset_factory
 from django.utils.translation import gettext_lazy as _
-from django.core.exceptions import ValidationError
+from phonenumber_field.formfields import PhoneNumberField
+from phonenumber_field.widgets import PhoneNumberPrefixWidget
+
 
 DOMAIN_DELETION = (
     ("0", _("EndOfTerm")),
@@ -17,7 +19,7 @@ DOMAIN_HANDLING = (
 class CancellationForm(forms.Form):
     name =  forms.CharField(label=_("CancelName"), max_length=100, required=True)
     customer_number = forms.CharField(label=_("CancelNumber"), max_length=100, required=True)
-    phone_number = forms.IntegerField(label=_("CancelPhoneNumber"), required=True)
+    phone_number = PhoneNumberField(widget=PhoneNumberPrefixWidget(attrs={'style': 'width:50%'}))
     contract_number = forms.CharField(label=_("CancelContract"), max_length=100, required=True)
     email = forms.EmailField(label=_("CancelEmail"), max_length=100, required=True)
     confirm_tariff = forms.BooleanField(label=_("CancelTariff"), required=False)

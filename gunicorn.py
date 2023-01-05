@@ -20,3 +20,5 @@ max_requests_jitter = 500
 loglevel = os.getenv("loglevel_gunicorn", "debug")
 
 wsgi_app = "Portal.wsgi:application"
+
+forwarded_allow_ips = "*"

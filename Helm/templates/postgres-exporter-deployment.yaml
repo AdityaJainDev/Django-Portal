@@ -30,14 +30,12 @@ spec:
                 prometheus.io/path: /metrics
                 prometheus.io/scrape: "true"
                 prometheus.io/port: "9187"
-                prometheus.io/exporter: "postgres-exporter"
+                prometheus.io/exporter: "true"
         spec:
             containers:
                 - args:
                       - --extend.query-path=/etc/config.yaml
                   env:
-                      - name: DATA_SOURCE_URI
-                        value: "%!s(<nil>):5432/?sslmode=disable"
                       - name: DATA_SOURCE_USER
                         value: {{ .Values.db.user | b64enc | quote }}
                       - name: DATA_SOURCE_PASS

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django_countries",
+    "phonenumber_field",
     "localflavor",
     "compressor",
     "crispy_forms",
@@ -161,6 +162,8 @@ LANGUAGE_CODE = "de"
 LOCALE_PATHS = (os.path.join(BASE_DIR, "locale"),)
 
 TIME_ZONE = "Europe/Berlin"
+
+PHONENUMBER_DEFAULT_REGION = "DE"
 
 USE_TZ = True
 USE_I18N = True

@@ -9,7 +9,6 @@ metadata:
     app.kubernetes.io/instance: prometheus-redis-exporter
     app.kubernetes.io/name: prometheus-redis-exporter
   name: prometheus-redis-exporter
-  namespace: prometheus
 spec:
   replicas: 1
   selector:
@@ -31,7 +30,7 @@ spec:
         prometheus.io/path: /metrics
         prometheus.io/scrape: "true"
         prometheus.io/port: "9121"
-        prometheus.io/exporter: "redis-exporter"
+        prometheus.io/exporter: "true"
     spec:
       containers:
         - env:
