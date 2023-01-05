@@ -44,6 +44,9 @@ db:
     host: "postgres"
     port: 5432
 
-redis-exporter:
     image: oliver006/redis_exporter
     version: v1.44.0
+
+email:
+    user: "Meine Güte"
+    password: "xxxxxx"

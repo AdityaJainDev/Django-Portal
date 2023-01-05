@@ -2,60 +2,63 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    annotations:
-        meta.helm.sh/release-name: prometheus-redis-exporter
-    labels:
+  annotations:
+    meta.helm.sh/release-name: prometheus-redis-exporter
+  generation: 1
+  labels:
+    app.kubernetes.io/instance: prometheus-redis-exporter
+    app.kubernetes.io/name: prometheus-redis-exporter
+  name: prometheus-redis-exporter
+  namespace: prometheus
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: prometheus-redis-exporter
+      app.kubernetes.io/name: prometheus-redis-exporter
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
         app.kubernetes.io/instance: prometheus-redis-exporter
         app.kubernetes.io/name: prometheus-redis-exporter
-    name: prometheus-redis-exporter
-spec:
-    replicas: 1
-    selector:
-        matchLabels:
-            app.kubernetes.io/instance: prometheus-redis-exporter
-            app.kubernetes.io/name: prometheus-redis-exporter
-    strategy:
-        rollingUpdate:
-            maxSurge: 25%
-            maxUnavailable: 25%
-        type: RollingUpdate
-    template:
-        metadata:
-            labels:
-                app.kubernetes.io/instance: prometheus-redis-exporter
-                app.kubernetes.io/name: prometheus-redis-exporter
-            annotations:
-                prometheus.io/scheme: "http"
-                prometheus.io/path: /metrics
-                prometheus.io/scrape: "true"
-                prometheus.io/port: "9121"
-        spec:
-            containers:
-                - env:
-                      - name: REDIS_ADDR
-                        value: redis://redis:6379
-                  image: oliver006/redis_exporter:v1.44.0
-                  imagePullPolicy: IfNotPresent
-                  name: prometheus-redis-exporter
-                  ports:
-                      - containerPort: 9121
-                        name: exporter-port
-                        protocol: TCP
-                  readinessProbe:
-                      failureThreshold: 3
-                      httpGet:
-                          path: /
-                          port: exporter-port
-                          scheme: HTTP
-                      periodSeconds: 10
-                      successThreshold: 1
-                      timeoutSeconds: 1
-                  resources:
-                      limits:
-                          cpu: 500m
-                          memory: 128Mi
-                      requests:
-                          cpu: 100m
-                          memory: 32Mi
-            dnsPolicy: ClusterFirst
-            restartPolicy: Always
+      annotations:
+        prometheus.io/scheme: "http"
+        prometheus.io/path: /metrics
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9121"
+        prometheus.io/exporter: "redis-exporter"
+    spec:
+      containers:
+        - env:
+            - name: REDIS_ADDR
+              value: redis://redis:6379
+          image: oliver006/redis_exporter:v1.44.0
+          imagePullPolicy: IfNotPresent
+          name: prometheus-redis-exporter
+          ports:
+            - containerPort: 9121
+              name: exporter-port
+              protocol: TCP
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /
+              port: exporter-port
+              scheme: HTTP
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources:
+            limits:
+              cpu: 500m
+              memory: 128Mi
+            requests:
+              cpu: 100m
+              memory: 32Mi
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
