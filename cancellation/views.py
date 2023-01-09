@@ -48,7 +48,7 @@ class cancellation(TemplateView):
             domain_options = form.cleaned_data["domain_options"]
             additional_data = form.cleaned_data["additional_data"]
             honeypot = form.cleaned_data["field_garb"]
-            user_ip = get_ip_address(request)
+            user_ip = request.META.get('REMOTE_ADDR')
             user_browser = request.META['HTTP_USER_AGENT']
 
             domain_dict = {}
