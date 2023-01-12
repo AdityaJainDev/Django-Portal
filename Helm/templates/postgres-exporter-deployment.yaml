@@ -26,10 +26,6 @@ spec:
                 app: prometheus-postgres-exporter
                 release: prometheus-postgres-exporter
             annotations:
-                prometheus.io/scheme: "http"
-                prometheus.io/path: /metrics
-                prometheus.io/scrape: "true"
-                prometheus.io/port: "9187"
                 prometheus.io/exporter: "true"
         spec:
             containers:
