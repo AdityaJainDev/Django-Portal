@@ -36,7 +36,7 @@ spec:
                         value: {{ .Values.db.user | b64enc | quote }}
                       - name: DATA_SOURCE_PASS
                         value: {{ .Values.db.pass | b64enc | quote }}
-                  image: quay.io/prometheuscommunity/postgres-exporter:v0.11.1
+                  image: "{{ .Values.postgres.image }}:{{ .Values.postgres.version }}"
                   imagePullPolicy: IfNotPresent
                   livenessProbe:
                       failureThreshold: 3

@@ -34,6 +34,12 @@ redis:
         requests:
             cpu: 100m
             memory: 32Mi
+    image: oliver006/redis_exporter #https://github.com/oliver006/redis_exporter/releases
+    version: v1.45.0
+
+postgres:
+    image: quay.io/prometheuscommunity/postgres-exporter #https://github.com/prometheus-community/postgres_exporter/releases
+    version: v0.11.1
 
 db:
     storage: 10Gi
@@ -43,9 +49,6 @@ db:
     pass: "postgres"
     host: "postgres"
     port: 5432
-
-    image: oliver006/redis_exporter
-    version: v1.44.0
 
 email:
     user: "Meine Güte"

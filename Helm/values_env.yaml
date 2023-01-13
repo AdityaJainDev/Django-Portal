@@ -14,9 +14,15 @@ db:
     user: "${ENV_DB_USER}"
     pass: "${ENV_DB_PASS}"
     host: "${ENV_DB_HOST}"
-    image: "${Redis_Exporter_Image}"
-    version: "${Redis_Exporter_Version}"
 
 email:
     user: "${EMAIL_USER}"
     password: "${EMAIL_PASSWORD}"
+
+redis:
+    image: "${Redis_Exporter_Image}"
+    version: "${Redis_Exporter_Version}"
+
+postgres:
+    image: "${Postgres_Exporter_Image}"
+    version: "${Postgres_Exporter_Version}"
