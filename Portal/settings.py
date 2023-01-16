@@ -66,17 +66,17 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django_prometheus.middleware.PrometheusAfterMiddleware",
-]
-
-MIDDLEWARE_CLASSES = [
-
-   'xff.middleware.XForwardedForMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    "xff.middleware.XForwardedForMiddleware",
 ]
 
 XFF_TRUSTED_PROXY_DEPTH = 2
+
+class XForwardedForMiddleware():
+    def process_request(self, request):
+        if request.META.has_key("HTTP_X_FORWARDED_FOR"):
+            request.META["HTTP_X_PROXY_REMOTE_ADDR"] = request.META["REMOTE_ADDR"]
+            parts = request.META["HTTP_X_FORWARDED_FOR"].split(",", 1)
+            request.META["REMOTE_ADDR"] = parts[0]
 
 TITLE = "AD IT Systems Portal"
 
