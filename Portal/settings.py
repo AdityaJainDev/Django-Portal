@@ -68,6 +68,16 @@ MIDDLEWARE = [
     "django_prometheus.middleware.PrometheusAfterMiddleware",
 ]
 
+MIDDLEWARE_CLASSES = [
+
+   'xff.middleware.XForwardedForMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+]
+
+XFF_TRUSTED_PROXY_DEPTH = 2
+
 TITLE = "AD IT Systems Portal"
 
 ROOT_URLCONF = "Portal.urls"
@@ -148,6 +158,7 @@ LOGGING = {
         },
     },
 }
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
