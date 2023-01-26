@@ -69,7 +69,7 @@ MIDDLEWARE = [
     "xff.middleware.XForwardedForMiddleware",
 ]
 
-XFF_TRUSTED_PROXY_DEPTH = 2
+XFF_TRUSTED_PROXY_DEPTH = 1
 
 class XForwardedForMiddleware():
     def process_request(self, request):
