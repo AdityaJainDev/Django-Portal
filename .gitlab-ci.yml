@@ -2,6 +2,7 @@
 image: "$CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX/python:3.9-alpine"
 
 variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
   SONAR_URL: https://sonarqube.aditsystems.de
   SONAR_USER_HOME: "${CI_PROJECT_DIR}/${CACHE_DIR}/sonar"
   SONAR_IMAGE: "$CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX/sonarsource/sonar-scanner-cli:latest"
@@ -14,7 +15,7 @@ variables:
   K8S_VERSION: "alpine/k8s:1.23.7"
   IMAGE_SHA: "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
   IMAGE_BRANCH: "${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_NAME}"
-  KUBE_CONTEXT: "as-crm/portal:k8s-portal"
+  KUBE_CONTEXT: "products/portal/tooling/portal:k8s-portal"
 
 stages:
   - test
@@ -23,9 +24,16 @@ stages:
   - deploy
 cache:
   paths:
-    - "~/.cache/pip/"
+    - ".cache/pip"
+    - venv
 test:pylint:
   stage: test
+  before_script:
+    - apk add --no-cache --virtual .build-deps gcc build-base musl-dev
+      mariadb-connector-c-dev libffi-dev busybox-extras python3-dev gettext
+    - pip install virtualenv
+    - virtualenv venv
+    - source venv/bin/activate
   script:
     - ./bin/pylint.sh
   only:
@@ -42,7 +50,7 @@ test:pylint:
 test:django:
   stage: test
   services:
-    - name: postgres:11
+    - name: "$CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX/postgres:11"
       alias: db
   variables:
     POSTGRES_DB: nice_marmot
@@ -53,7 +61,11 @@ test:django:
     - merge_requests
     - main
   before_script:
-    - apk add --no-cache --virtual .build-deps gcc build-base musl-dev mariadb-connector-c-dev libffi-dev busybox-extras python3-dev gettext
+    - apk add --no-cache --virtual .build-deps gcc build-base musl-dev
+      mariadb-connector-c-dev libffi-dev busybox-extras python3-dev gettext
+    - pip install virtualenv
+    - virtualenv venv
+    - source venv/bin/activate
     - pip install -r requirements-frozen.txt
   script:
     - touch Portal/local_settings.py
@@ -104,7 +116,7 @@ dockerimage:build:
 .deploy: &deploy
   stage: deploy
   image:
-    name: $K8S_VERSION
+    name: "$CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX/$K8S_VERSION"
     entrypoint: ['']
   before_script:
     - kubectl config get-contexts
