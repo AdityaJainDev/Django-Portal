@@ -137,7 +137,8 @@ dockerimage:build:
       fi
     - envsubst < Helm/values_env.yaml | helm upgrade --install
       --namespace "$NAME_SPACE" --create-namespace --wait --reuse-values
-      --set image.tag=$CI_COMMIT_SHORT_SHA -f ./Helm/values.staging.yaml
+      --set image.tag=$CI_COMMIT_SHORT_SHA -f ./Helm/values.yaml
+      -f ./Helm/values.staging.yaml
       --values - portal ./Helm
     - kubectl logs --selector=app=portal -n "$NAME_SPACE"
 
@@ -168,13 +169,16 @@ kubectl:deploy_prod:
     - if [ -n "$TRACE" ]; then envsubst < Helm/values_env.yaml | helm upgrade
       --install --dry-run --debug
       --namespace "$NAME_SPACE" --create-namespace --wait --reuse-values
-      --set image.tag=$CI_COMMIT_SHORT_SHA -f ./Helm/values.production.yaml
-      --values - portal ./Helm;
+      --set image.tag=$CI_COMMIT_SHORT_SHA -f ./Helm/values.yaml
+      -f ./Helm/values.production.yaml
+      --values -
+      portal ./Helm;
       fi
     - envsubst < Helm/values_env.yaml | helm upgrade --install
       --namespace "$NAME_SPACE" --create-namespace --wait --reuse-values
-      --set image.tag=$CI_COMMIT_SHORT_SHA -f ./Helm/values.production.yaml
-      --values - portal ./Helm
+      --set image.tag=$CI_COMMIT_SHORT_SHA -f ./Helm/values.yaml
+      -f ./Helm/values.production.yaml --values -
+      portal ./Helm
     - kubectl logs --selector=app=portal -n "$NAME_SPACE"
   environment:
     name: production
