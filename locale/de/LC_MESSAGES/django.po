@@ -95,7 +95,7 @@ msgstr ""
 msgid "CancelDeletion"
 msgstr ""
 "Durch die Kündigung des Hosting-Tarifs ist es mit Vertragsende nicht mehr "
-"möglich, auf die bei ESTUGO gespeicherten Daten zuzugreifen. Befinden sich "
+"möglich, auf die bei AD IT SYSTEMS gespeicherten Daten zuzugreifen. Befinden sich "
 "nach Vertragsende noch Daten im Kundenkonto, werden diese unwiederbringlich "
 "gelöscht."
 

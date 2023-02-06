@@ -90,7 +90,7 @@ msgstr ""
 msgid "CancelDeletion"
 msgstr ""
 "Due to the termination of the hosting tariff, it is no longer possible to "
-"access the data stored at ESTUGO at the end of the contract. If there is "
+"access the data stored at AD IT SYSTEMS at the end of the contract. If there is "
 "still data in the customer account after the end of the contract, it will be "
 "irretrievably deleted."
 
