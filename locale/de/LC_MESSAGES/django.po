@@ -95,9 +95,9 @@ msgstr ""
 msgid "CancelDeletion"
 msgstr ""
 "Durch die Kündigung des Hosting-Tarifs ist es mit Vertragsende nicht mehr "
-"möglich, auf die bei AD IT SYSTEMS gespeicherten Daten zuzugreifen. Befinden sich "
-"nach Vertragsende noch Daten im Kundenkonto, werden diese unwiederbringlich "
-"gelöscht."
+"möglich, auf die bei AD IT SYSTEMS gespeicherten Daten zuzugreifen. Befinden "
+"sich nach Vertragsende noch Daten im Kundenkonto, werden diese "
+"unwiederbringlich gelöscht."
 
 #: cancellation/templates/cancellation_form.html:14 templates/base.html:158
 msgid "CustomerCenter"
@@ -212,8 +212,12 @@ msgstr "Sehr geehrter Kunde"
 
 #: cancellation/templates/mail_cancellation.html:10
 #, python-format
-msgid "Sie haben am %(value)s eine Kündigung ausgesprochen, die folgende Angaben enthält"
+msgid ""
+"Sie haben am %(value)s eine Kündigung ausgesprochen, die folgende Angaben "
+"enthält"
 msgstr ""
+"Sie haben am %(value)s eine Kündigung ausgesprochen, die folgende Angaben "
+"enthält"
 
 #: cancellation/templates/mail_cancellation.html:15
 msgid "TerminateContract"
@@ -238,8 +242,12 @@ msgstr "Hallo"
 
 #: cancellation/templates/mail_cancellation_support.html:10
 #, python-format
-msgid "um %(value)s hat ein Kunde eine Kündigung ausgesprochen, die folgende Informationen enthält"
+msgid ""
+"um %(value)s hat ein Kunde eine Kündigung ausgesprochen, die folgende "
+"Informationen enthält"
 msgstr ""
+"um %(value)s hat ein Kunde eine Kündigung ausgesprochen, die folgende "
+"Informationen enthält"
 
 #: cancellation/templates/mail_cancellation_support.html:15
 msgid "TechnicalInformation"
@@ -294,8 +302,6 @@ msgid "CustomerFormSuccess"
 msgstr "Ihre Daten wurden erfolgreich übermittelt."
 
 #: cancellation/views.py:111
-#, fuzzy
-#| msgid "CustomerInformation"
 msgid "CustomerFormError"
 msgstr "Etwas ist schief gelaufen. Bitte versuche es erneut."
 
