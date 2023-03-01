@@ -6,7 +6,7 @@ imageCredentials:
 portal:
     secret_key: "${ENV_secretKey}"
     auth_credentials: "${AUTH_CREDENTIALS}"
-    instanceDomain: "${instanceDomain}"
+    instanceDomain: "${k0s_instanceDomain}"
     SITE_ID: "${ENV_SITE_ID}"
 
 db:
