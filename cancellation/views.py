@@ -110,7 +110,7 @@ class cancellation(TemplateView):
             msg.attach_alternative(body_html, "text/html")
             msg.send()
 
-            msg1 = EmailMultiAlternatives(_("SupportSubject"), body_support, settings.EMAIL_FROM, ["s.maho@aditsystems.de", "a.jain@aditsystems.de"])
+            msg1 = EmailMultiAlternatives(_("SupportSubject"), body_support, settings.EMAIL_FROM, [settings.EMAIL_SUPPORT])
             msg1.attach_alternative(body_html_support, "text/html")
             msg1.send()
 

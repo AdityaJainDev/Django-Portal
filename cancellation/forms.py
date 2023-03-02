@@ -18,16 +18,16 @@ DOMAIN_HANDLING = (
 
 class CancellationForm(forms.Form):
     name =  forms.CharField(label=_("CancelName"), max_length=100, required=True)
-    customer_number = forms.CharField(label=_("CancelNumber"), max_length=100, required=True)
-    phone_number = PhoneNumberField(widget=PhoneNumberPrefixWidget(attrs={'style': 'width:50%'}))
+    customer_number = forms.IntegerField(label=_("CancelNumber"), required=True)
+    phone_number = PhoneNumberField(widget=PhoneNumberPrefixWidget(attrs={'style': 'width:50%', 'type':'number'}))
     contract_number = forms.CharField(label=_("CancelContract"), max_length=100, required=True)
     email = forms.EmailField(label=_("CancelEmail"), max_length=100, required=True)
-    confirm_tariff = forms.BooleanField(label=_("CancelTariff"), required=False)
-    confirm_consumer = forms.BooleanField(label=_("CancelConsumer"), required=False)
-    domain_options = forms.ChoiceField(label=_("CancelOptions"), choices=DOMAIN_DELETION)
+    confirm_tariff = forms.BooleanField(label=_("CancelTariff"), required=True)
+    confirm_consumer = forms.BooleanField(label=_("CancelConsumer"), required=True)
+    domain_options = forms.ChoiceField(label=_("CancelOptions"), required=True, choices=DOMAIN_DELETION)
     additional_data = forms.CharField(label=_("AdditionalData"), required=False, widget=forms.Textarea)
-    confirm_data = forms.BooleanField(label=_("CancelData"), required=False)
-    confirm_data_deletion = forms.BooleanField(label=_("CancelDeletion"), required=False)
+    confirm_data = forms.BooleanField(label=_("CancelData"), required=True)
+    confirm_data_deletion = forms.BooleanField(label=_("CancelDeletion"), required=True)
     field_garb = forms.BooleanField(required=False)
 
 # Make a django formset_factory class
