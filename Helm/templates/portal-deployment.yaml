@@ -17,6 +17,7 @@ spec:
       labels:
         app: "{{ template "appname" . }}"
         date: "{{ now | unixEpoch }}"
+        prometheus.io/scrape: 'true'
       annotations:
         prometheus.io/scheme : 'http'
         prometheus.io/path: /metrics
