@@ -207,9 +207,9 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_PASSWORD")
 
-EMAIL_FROM = "status@aditsystems.de"
+EMAIL_FROM = os.getenv("EMAIL_FROM", "AD IT Systems <support@aditsystems.de>")
 
-EMAIL_SUPPORT = "support@aditsystems.de"
+EMAIL_SUPPORT = os.getenv("EMAIL_SUPPORT", "support@aditsystems.de")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 

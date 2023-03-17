@@ -18,6 +18,8 @@ db:
 email:
     user: "${EMAIL_USER}"
     password: "${EMAIL_PASSWORD}"
+    email_support: "${EMAIL_SUPPORT}"
+    email_from: "${EMAIL_FROM}"
 
 redis:
     image: "${Redis_Exporter_Image}"

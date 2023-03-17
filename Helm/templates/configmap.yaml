@@ -20,3 +20,5 @@ data:
   EMAIL_HOST: {{ .Values.email.user | quote }}
   EMAIL_PASSWORD: {{ .Values.email.password | quote }}
   SITE_ID: {{ .Values.portal.SITE_ID | quote }}
+  EMAIL_SUPPORT: {{ .Values.email.email_support | quote }}
+  EMAIL_FROM: {{ .Values.email.email_from | quote }}
