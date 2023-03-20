@@ -15,7 +15,7 @@ variables:
   K8S_VERSION: "alpine/k8s:1.23.7"
   IMAGE_SHA: "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
   IMAGE_BRANCH: "${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_NAME}"
-  KUBE_CONTEXT: "products/portal/tooling/portal:k0s-prod"
+  KUBE_CONTEXT: "products/portal/tooling/portal:k0s-production"
 
 stages:
   - test
