@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-02 14:45+0100\n"
-"PO-Revision-Date: 2023-02-13 17:10+0000\n"
+"PO-Revision-Date: 2023-03-21 21:15+0000\n"
 "Last-Translator: Anton Dollmaier <a.dollmaier@aditsystems.de>\n"
 "Language-Team: German <https://translate.aditsystems.dev/projects/crm-portal/"
 "portal/de/>\n"
@@ -32,7 +32,7 @@ msgstr ""
 #: cancellation/forms.py:9
 msgid "Custom"
 msgstr ""
-"Benutzerdefinierte (Wählen Sie aus, welche Domain Sie löschen und welche Sie "
+"Benutzerdefiniert (Wählen Sie aus, welche Domain Sie löschen und welche Sie "
 "behalten möchten)."
 
 #: cancellation/forms.py:13 cancellation/views.py:51
@@ -112,7 +112,7 @@ msgid "ConsumerDocumentHeading"
 msgstr ""
 "Wenn Sie als Verbraucher Ihren Hosting-Tarif oder Server kündigen möchten, "
 "übermitteln Sie uns einfach das folgende Dokument. Selbstverständlich können "
-"Sie sich auch über unser Kundencenter eine Kündigung generieren. "
+"Sie sich auch über unser Kundencenter eine Kündigung generieren."
 
 #: cancellation/templates/cancellation_form.html:33
 msgid "CustomerNoDetail"
