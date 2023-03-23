@@ -30,9 +30,6 @@ spec:
         - name: "{{ template "appname" . }}-app"
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: "{{ .Values.image.pullPolicy }}"
-          securityContext:
-            runAsUser: 0
-            runAsGroup: 0
           env:
             - name: POD_IP
               valueFrom:
