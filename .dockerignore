@@ -1,6 +1,14 @@
 # exclude Helm
 Helm
-.git
+.git*
+.editorconfig
+.pylintrc
+Dockerfile
+*.md
+docker-compose.yml
+requirements.txt
+sonar-project.properties
+statuspage.code-workspace
 __pycache__
 *.pyc
 *.pyo

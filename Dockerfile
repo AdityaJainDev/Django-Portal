@@ -11,14 +11,13 @@ ENV VIRTUAL_ENV=/env PATH=/env/bin:$PATH
 
 EXPOSE 8000
 
-
 #install headless chrome
 RUN set -ex \
     && apk add --no-cache --virtual .build-deps gcc build-base musl-dev mariadb-connector-c-dev libffi-dev busybox-extras python3-dev gettext \
-    && apk add --no-cache --virtual tzdata gettext-dev musl-locales musl-locales-lang curl git \
-    && python -m venv /env \
-    && /env/bin/pip install --upgrade pip wheel \
-    && chown -R portal:portal /app
+    && apk add --no-cache --virtual tzdata gettext-dev musl-locales musl-locales-lang curl git
+
+RUN python -m venv /env \
+    && /env/bin/pip install --upgrade pip wheel
 
 COPY requirements-frozen.txt /app
 
@@ -33,6 +32,8 @@ RUN  /env/bin/pip install --no-cache-dir -r /app/requirements-frozen.txt \
 
 # Copy project to App
 COPY . /app
+
+RUN chown -R portal:portal /app
 
 USER portal
 
