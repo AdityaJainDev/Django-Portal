@@ -1,0 +1,72 @@
+
+.cta {
+  color: white;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  z-index: 1;
+  @include tabletLandscape {
+    justify-content: left;
+  }
+
+  a {
+    text-decoration: none !important;
+  }
+}
+
+p.cta-blue, p.cta-white {
+  text-align: center;
+  margin: 7.5vw 10vw;
+  @include tabletPortrait {
+    margin: 4.5vw 2.5vw;
+  }
+  @include tabletLandscape {
+    margin: 3vw 1.5vw;
+  }
+}
+
+p.cta-blue a , p.cta-white a {
+  text-decoration: none !important;
+  &:hover, &.hover {
+    text-decoration: none !important;
+  }
+}
+
+.cta-btn, p.cta-blue a , p.cta-white a {
+  text-transform: none;
+  letter-spacing: 0;
+  padding: 2.5vw 10vw;
+  color: white;
+  background-color: $blueAdit;
+  border-radius: 6px;
+  transition: all 200ms ease-in;
+  text-align: center;
+  @include tabletPortrait {
+    padding: 1.5vw 2.5vw;
+    font-size: 2vw;
+  }
+  @include tabletLandscape {
+    padding: 1vw 1.5vw;
+    font-size: 1.3vw;
+  }
+  @media only screen and (max-width: 480px) { 
+    padding: 1.5vw 3vw;
+    margin-bottom: 5vw;
+    font-size: 3vw;
+  }
+
+  &:hover, &.hover {
+    background-color: white;
+    color: $blueAdit;
+  }
+}
+
+p.cta-white a {
+  color: $blueAdit;
+  background-color: white;
+  border: 1px solid $blueAdit;
+  &:hover, &.hover {
+    color: white;
+    background-color: $blueAdit;
+  }
+}

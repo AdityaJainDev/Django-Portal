@@ -1,0 +1,113 @@
+.article {
+  width: 80%;
+  padding: 0 10%;
+  @include font-size(40px, 40px);
+  @include tabletLandscape {
+    width: 50%;
+    padding: 0 25%;
+  }
+
+  &__title {
+    margin: 5vw 0 6vw;
+    text-align: center;
+    width: 100%;
+    @include tabletPortrait {
+      margin: 3vw 0 0;
+    }
+    @include tabletLandscape {
+    }
+
+    h1 {
+      font-size: 6.3vw;
+      @include tabletPortrait {
+        font-size: 4vw;
+      }
+      @include tabletLandscape {
+        font-size: 2.5vw;
+      }
+      @include fullHD {
+        font-size: 2.5vw;
+      }
+    }
+  }
+
+  &__sub {
+    margin: 2vw 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    @include tabletPortrait {
+      align-items: center;
+    }
+
+  }
+
+  &__data {
+    display: flex;
+    justify-content: space-between;
+    line-height: 1.2;
+    flex-direction: column;
+    @include tabletPortrait {
+      flex-direction: row;
+    }
+
+    span {
+      display: block;
+      font-weight: 500;
+    }
+
+    > div {
+      margin-right: 20px;
+      margin-bottom: 2vw;
+      @include tabletPortrait {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__share {
+    width: 28%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    @include tabletLandscape {
+    }
+
+    a {
+      display: inline-block;
+      width: 6vw;
+      height: 6vw;
+      cursor: pointer;
+      margin-left: 2vw;
+      @include tabletPortrait {
+        margin-left: 1vw;
+        width: 3vw;
+        height: 3vw;
+      }
+      @include tabletLandscape {
+      }
+      img {
+        width: 100%;
+      }
+    }
+
+  }
+
+  &__text {
+    text-align: center;
+    width: 100%;
+
+  }
+
+  &__image {
+    width: 100%;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__description {
+    line-height: 2;
+  }
+}

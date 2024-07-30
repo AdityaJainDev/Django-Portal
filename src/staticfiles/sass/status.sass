@@ -1,0 +1,336 @@
+$page-width: 75rem
+
+$color-background: #f3f6fa
+$color-green: #00aa8f
+$color-grey: #aab7c4
+$color-red: #e25950
+$color-blue: #4f89c5 //#3297ff
+$color-text: #4f4e5f
+$color-white: #ffffff
+$color-yellow: #ff9a32
+
+$color-red: #dc334c
+//$color-green: #99bb11
+$color-yellow: #00bbee
+
+@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700")
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700")
+
+*
+    box-sizing: border-box
+
+body
+    background: $color-background
+    font-family: sans-serif
+    font-family: "Roboto", sans-serif
+
+.icon
+    -moz-osx-font-smoothing: grayscale
+    -webkit-font-smoothing: antialiased
+    direction: ltr
+    display: inline-block
+    font-family: "Material Icons"
+    font-feature-settings: "liga"
+    font-size: 24px
+    font-style: normal
+    font-weight: normal
+    letter-spacing: normal
+    line-height: 1
+    text-rendering: optimizeLegibility
+    text-transform: none
+    white-space: nowrap
+    word-wrap: normal
+
+header
+    color: $color-text
+    font-family: "Roboto Condensed", sans-serif
+    height: 3rem
+    margin: 3rem auto
+    overflow: visible
+    position: relative
+    text-transform: uppercase
+    width: $page-width
+
+    .logo
+        float: left
+        font-size: 1.5rem
+        line-height: 3rem
+
+        a
+            color: $color-text
+            text-decoration: none
+
+        span
+            color: $color-grey
+
+    .feed
+        cursor: pointer
+        float: right
+        margin: 0 0 0 2rem
+        position: relative
+
+    .account
+        cursor: pointer
+        float: right
+        position: relative
+
+    .icon
+        &.active
+            color: darken($color-grey, 5%)
+
+    .overlay
+        background: $color-white
+        box-shadow: 0 50px 100px rgba(50,50,93,.1),0 15px 35px rgba(50,50,93,.15),0 5px 15px rgba(0,0,0,.1)
+        display: none
+        padding: 1rem
+        position: absolute
+        right: 0
+        top: 2.75rem
+        width: 15rem
+
+        p
+            text-transform: none
+
+        &.visible
+            display: block
+
+        input
+            background: lighten($color-grey, 20%)
+            border-radius: 2px
+            border: none
+            padding: 0.5rem
+            text-align: left
+            width: 100%
+
+        button
+            background: darken($color-grey, 5%)
+            border-radius: 2px
+            border: none
+            color: $color-white
+            cursor: pointer
+            font-family: "Roboto Condensed", sans-serif
+            font-size: 0.9rem
+            margin: 0.5rem auto 0 auto
+            padding: 0.5rem 1rem
+            text-transform: uppercase
+            width: 100%
+
+            &:hover
+                background: darken($color-grey, 15%)
+
+        .result
+            line-height: 1.3rem
+            padding: 1rem 0 0 0
+            text-transform: none
+
+            .success,
+            .error
+                display: none
+
+            &:empty
+                padding: 0
+
+    .feed
+        label
+            color: $color-grey
+            display: inline-block
+            font-size: 0.9rem
+            margin: 0 0 0.5rem 0
+            width: 45%
+
+        span
+            width: 50%
+            display: inline-block
+            text-align: right
+            margin: 0 0 0.5rem 0
+            font-size: 0.9rem
+
+        a
+            color: $color-text
+            text-decoration: none
+            margin: 0 0.25rem
+
+            &:hover
+                color: darken($color-text, 50%)
+
+
+.globalstatus
+    margin: 3rem auto
+    width: $page-width
+    color: $color-white
+    background: $color-grey
+    padding: 1.5rem
+    font-size: 1rem
+    line-height: 1.5rem
+
+    &.status-green
+        background: $color-green
+        color: $color-white
+
+    &.status-yellow
+        background: $color-yellow
+        color: $color-white
+
+    &.status-red
+        background: $color-red
+        color: $color-white
+
+    & + .globalstatus
+        margin-top: -1.5rem
+
+.status
+    -khtml-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    -webkit-touch-callout: none
+    -webkit-user-select: none
+    user-select: none
+
+    margin: 3rem auto
+    width: $page-width
+
+    .group,
+    .subgroup
+        background: $color-white
+        color: $color-text
+        font-weight: 600
+
+    .group
+        margin: 0 0 2rem 0
+        cursor: pointer
+
+        .collapsed
+            display: inline-block
+        .expanded
+            display: none
+
+        &.active
+            .collapsed
+                display: none
+            .expanded
+                display: inline-block
+
+            .components
+                display: block
+
+    .components
+        display: none
+
+        .component
+            .name
+                padding: 1rem 1rem 1rem 3rem
+                min-height: 64px
+
+    .groupheader
+        color: $color-grey
+        font-size: 0.7rem
+        overflow: auto
+
+        .day
+            line-height: 1.25rem
+            border: none
+
+    .component
+        overflow: auto
+        border-bottom: 1px solid lighten($color-grey, 25%)
+
+        .name
+            padding: 1rem
+            font-weight: 400
+
+    .name
+        float: left
+        padding: 1rem
+        width: 25%
+        overflow: auto
+
+        &.status-normal
+            border-left: 0.5rem solid $color-green
+
+        &.status-maintenance
+            border-left: 0.5rem solid $color-yellow
+
+        &.status-incident
+            border-left: 0.5rem solid $color-red
+
+        span
+            float: left
+            line-height: 2rem
+
+    .forecast
+        float: left
+        width: 70%
+        overflow: auto
+
+    .unfinished
+        border-left: 2px solid lighten($color-grey, 25%)
+        color: $color-grey
+        float: left
+        line-height: 2rem
+        min-height: 64px
+        padding: 0.75rem 0
+        text-align: center
+        width: 5%
+
+        .entry
+            color: $color-red
+            &:hover
+                .tooltip
+                    display: block
+
+        .icon
+            line-height: 2rem
+
+        .tooltip
+            background: $color-white
+            color: $color-grey
+            box-shadow: 0 50px 100px rgba(50,50,93,.1),0 15px 35px rgba(50,50,93,.15),0 5px 15px rgba(0,0,0,.1)
+            display: none
+            padding: 0.25rem 0.5rem
+            position: absolute
+
+            .icon
+                float: right
+                margin: 0 0 0 1rem
+
+    .day
+        border-left: 2px solid lighten($color-grey, 25%)
+        float: left
+        line-height: 2rem
+        padding: 0.75rem 0
+        text-align: center
+        width: percentage(1/7)
+        min-height: 64px
+
+        &.maintenance-below
+            color: $color-yellow
+            padding: 0
+
+            span
+                line-height: 64px
+
+        &.incident-below
+            color: $color-red
+            padding: 0
+
+            span
+                line-height: 64px
+
+        &.maintenance
+            background: $color-yellow
+            color: $color-white
+            cursor: help
+            font-size: 0.8rem
+            line-height: 1rem
+            font-weight: 400
+
+        &.incident
+            background: $color-red
+            color: $color-white
+            cursor: help
+            font-size: 0.8rem
+            line-height: 1rem
+            font-weight: 400
+
+@import "events"
+@import "subscription"

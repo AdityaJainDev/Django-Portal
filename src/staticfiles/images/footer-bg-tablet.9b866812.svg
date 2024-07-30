@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="834px" height="437px" viewBox="0 0 834 437" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Rectangle</title>
+    <defs>
+        <linearGradient x1="100%" y1="62.7012437%" x2="26.889704%" y2="39.5663204%" id="linearGradient-1">
+            <stop stop-color="#2040A6" offset="0%"></stop>
+            <stop stop-color="#1F227D" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Homepage---11″-iPad-Pro" transform="translate(0.000000, -2412.000000)" fill="url(#linearGradient-1)">
+            <rect id="Rectangle" x="0" y="2412" width="834" height="437"></rect>
+        </g>
+    </g>
+</svg>

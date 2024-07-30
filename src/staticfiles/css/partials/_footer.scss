@@ -1,0 +1,286 @@
+.footer {
+  font-weight: 500;
+  position: relative;
+  background-image: url("data:image/svg+xml,%3Csvg width='390px' height='830px' viewBox='0 0 390 830' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Ctitle%3ERectangle Copy 2@2x%3C/title%3E%3Cdefs%3E%3ClinearGradient x1='61.0393381%25' y1='96.2610491%25' x2='44.8975526%25' y2='11.9979765%25' id='linearGradient-1'%3E%3Cstop stop-color='%232040A6' offset='0%25'%3E%3C/stop%3E%3Cstop stop-color='%231F227D' offset='100%25'%3E%3C/stop%3E%3C/linearGradient%3E%3C/defs%3E%3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='Homepage----iPhone-12-Pro' transform='translate(0.000000, -4126.000000)' fill='url(%23linearGradient-1)'%3E%3Crect id='Rectangle-Copy-2' x='0' y='4126' width='390' height='830'%3E%3C/rect%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: cover;
+  @include tabletPortrait {
+    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='834px' height='437px' viewBox='0 0 834 437' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Ctitle%3ERectangle%3C/title%3E%3Cdefs%3E%3ClinearGradient x1='100%25' y1='62.7012437%25' x2='26.889704%25' y2='39.5663204%25' id='linearGradient-1'%3E%3Cstop stop-color='%232040A6' offset='0%25'%3E%3C/stop%3E%3Cstop stop-color='%231F227D' offset='100%25'%3E%3C/stop%3E%3C/linearGradient%3E%3C/defs%3E%3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='Homepage---11″-iPad-Pro' transform='translate(0.000000, -2412.000000)' fill='url(%23linearGradient-1)'%3E%3Crect id='Rectangle' x='0' y='2412' width='834' height='437'%3E%3C/rect%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+
+  }
+  @include tabletLandscape {
+    padding: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='1280px' height='437px' viewBox='0 0 1280 437' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Ctitle%3ERectangle%3C/title%3E%3Cdefs%3E%3ClinearGradient x1='100%25' y1='55.3921059%25' x2='26.889704%25' y2='45.5705515%25' id='linearGradient-1'%3E%3Cstop stop-color='%232040A6' offset='0%25'%3E%3C/stop%3E%3Cstop stop-color='%231F227D' offset='100%25'%3E%3C/stop%3E%3C/linearGradient%3E%3C/defs%3E%3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='Homepage' transform='translate(0.000000, -3203.000000)' fill='url(%23linearGradient-1)'%3E%3Crect id='Rectangle' x='0' y='3203' width='1280' height='437'%3E%3C/rect%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+
+  &__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 15vw 6vw;
+    @include tabletPortrait {
+      padding: 7vw 5% 14vw;
+      flex-direction: row;
+    }
+    @include tabletLandscape {
+      flex-direction: row;
+      padding: 4vw 10% 14vw;
+    }
+    @include fullHD {
+      padding: 4vw 10% 16.5vw;
+    }
+  }
+
+
+  li {
+    list-style-type: none;
+  }
+
+  a {
+    text-decoration: none;
+    color: $greyFooter;
+  }
+
+
+  &__contacts {
+
+    &__logo {
+      padding-bottom: 3vw;
+      width: 70%;
+      @include tabletPortrait {
+        padding-bottom: 2vw;
+        width: 80%;
+      }
+      @include tabletLandscape {
+        padding-bottom: 1.3vw;
+        width: 80%;
+      }
+      @include fullHD {
+        width: 80%;
+      }
+      img {
+        width: 100%;
+      }
+    }
+
+    &__spec {
+      div {
+        margin: 3vw 0;
+        @include tabletPortrait {
+          margin: .3vw 0;
+        }
+        @include tabletLandscape {
+          margin: .6vw 0;
+        }
+      }
+
+
+      ul {
+        margin-top: 6vw;
+        padding: 0;
+        @include tabletPortrait {
+          margin-top: 1vw;
+        }
+        @include tabletLandscape {
+          margin-top: 1vw;
+          margin-bottom: 0;
+        }
+      }
+
+      li {
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        padding-left: 0;
+        margin-top: 4vw;
+        color: white;
+        @include footerText();
+        @include tabletPortrait {
+          margin-top: 2vw;
+        }
+        @include tabletLandscape {
+          margin-top: 0vw;
+          padding-bottom: 0.5vw;
+        }
+
+        &:last-of-type {
+          &::before {
+            background-image: url("data:image/svg+xml,%3Csvg width='22px' height='22px' viewBox='0 0 22 22' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Ctitle%3EGroup 15%3C/title%3E%3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='Homepage---11″-iPad-Pro' transform='translate(-59.000000, -2608.000000)'%3E%3Cg id='Group-35' transform='translate(59.000000, 2472.000000)'%3E%3Cg id='Group-30' transform='translate(0.000000, 14.000000)'%3E%3Cg id='Group-29' transform='translate(0.000000, 82.000000)'%3E%3Cg id='Group-16-Copy' transform='translate(0.000000, 37.000000)'%3E%3Cg id='emails-letter-mail.1' transform='translate(0.000000, 3.000000)'%3E%3Cg id='Group' stroke-linecap='round' stroke-linejoin='round' transform='translate(2.736000, 4.560000)' stroke='%23FFFFFF' stroke-width='1.152'%3E%3Cpath d='M14.592,12.750672 L1.824,12.750672 C0.81624,12.750672 0,11.934432 0,10.926672 L0,1.841328 C0,0.833568 0.81624,0.017328 1.824,0.017328 L14.592,0.017328 C15.59976,0.017328 16.416,0.833568 16.416,1.841328 L16.416,10.927584 C16.416,11.934432 15.59976,12.750672 14.592,12.750672 L14.592,12.750672 Z' id='Path'%3E%3C/path%3E%3Cpolyline id='Path' points='12.768 3.648 8.208 6.384 3.648 3.648'%3E%3C/polyline%3E%3C/g%3E%3Cpolygon id='Path' points='0 0 21.888 0 21.888 21.888 0 21.888'%3E%3C/polygon%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+          }
+        }
+
+        a {
+          color: white;
+
+          &:visited, &:active {
+            color: white;
+          }
+        }
+      }
+
+      li::before {
+        content: ' ';
+        background-image: url("data:image/svg+xml,%3Csvg width='22px' height='22px' viewBox='0 0 22 22' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Ctitle%3EGroup 15%3C/title%3E%3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='Homepage---11″-iPad-Pro' transform='translate(-59.000000, -2571.000000)'%3E%3Cg id='Group-35' transform='translate(59.000000, 2472.000000)'%3E%3Cg id='Group-30' transform='translate(0.000000, 14.000000)'%3E%3Cg id='Group-29' transform='translate(0.000000, 82.000000)'%3E%3Cg id='phones-04' transform='translate(0.000000, 3.000000)'%3E%3Cg id='Group' stroke-linecap='round' stroke-linejoin='round' transform='translate(2.304000, 2.304000)' stroke='%23FFFFFF' stroke-width='1.152'%3E%3Cpath d='M6.859776,10.344528 C5.792736,9.277488 4.988352,8.082768 4.45392,6.87072 C4.340832,6.614448 4.407408,6.3144 4.605312,6.116496 L5.35224,5.369568 C5.964192,4.757616 5.964192,3.892128 5.42976,3.357696 L4.359072,2.28792 C3.6468,1.575648 2.492208,1.575648 1.779936,2.28792 L1.185312,2.881632 C0.50952,3.557424 0.227712,4.532352 0.410112,5.499072 C0.86064,7.882128 2.245056,10.49136 4.478544,12.724848 C6.712032,14.958336 9.321264,16.342752 11.70432,16.79328 C12.67104,16.97568 13.645968,16.693872 14.32176,16.01808 L14.915472,15.424368 C15.627744,14.712096 15.627744,13.557504 14.915472,12.845232 L13.845696,11.775456 C13.311264,11.241024 12.444864,11.241024 11.911344,11.775456 L11.087808,12.599904 C10.889904,12.797808 10.589856,12.864384 10.333584,12.751296 C9.121536,12.215952 7.926816,11.410656 6.859776,10.344528 Z' id='Path'%3E%3C/path%3E%3Cline x1='9.47904' y1='2.41104' x2='9.47904' y2='0.27696' id='Path'%3E%3C/line%3E%3Cline x1='13.28208' y1='3.91584' x2='14.78688' y2='2.42016' id='Path'%3E%3C/line%3E%3Cline x1='14.796' y1='7.728' x2='16.92096' y2='7.728' id='Path'%3E%3C/line%3E%3C/g%3E%3Cpolygon id='Path' points='0 0 21.888 0 21.888 21.888 0 21.888'%3E%3C/polygon%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-size: 25px 25px;
+        background-position: center;
+        height: 25px;
+        width: 25px;
+        margin-right: 2vw;
+        @include tabletPortrait {
+          margin-right: 1vw;
+          background-size: 25px 25px;
+          height: 25px;
+          width: 25px;
+
+        }
+        @include tabletLandscape {
+          background-position: center;
+        }
+      }
+
+      &--title {
+        color: $white;
+        @include footerText();
+      }
+
+      &--socials {
+        display: flex;
+        padding-top: 1.5vw;
+        @include tabletPortrait {
+          padding-top: 0vw;
+        }
+      }
+
+      &--social {
+        padding-right: 6vw;
+        width: 6.2%;
+        @include tabletPortrait {
+          width: 7.5%;
+          padding-right: 3.2vw;
+        }
+        @include tabletLandscape {
+          padding-right: 2vw;
+          width: 8%;
+        }
+
+        img {
+          width: 100%;
+        }
+      }
+
+      &--telephone {
+        display: flex;
+        color: $white;
+      }
+
+      &--phone, &--mail {
+        padding-left: 2vw;
+        @include tabletLandscape {
+          padding-left: 1vw;
+        }
+      }
+
+      &--mail {
+      }
+    }
+  }
+  &__list {
+    color: $white;
+    font-weight: 500;
+    @include footerText();
+  }
+
+  &__item {
+    li {
+      @include footerText();
+    }
+  }
+
+  &__contacts {
+    @include tabletPortrait {
+      width: 40%;
+    }
+    @include tabletLandscape {
+      width: 30%;
+    }
+  }
+  &__specifications {
+    margin: 3.5vw 0;
+    @include tabletPortrait {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0;
+    }
+    @include tabletLandscape {
+      display: unset;
+      flex-wrap: unset;
+    }
+
+    > div {
+      margin: 6vw 0 3vw;
+      @include tabletPortrait {
+        width: 50%;
+        margin: 0;
+      }
+      @include tabletLandscape {
+        margin: 0 4vw 1vw 0;
+        width: unset;
+      }
+    }
+    @include tabletPortrait {
+      width: 50%;
+      padding-left: 10%;
+    }
+    @include tabletLandscape {
+      width: 70%;
+      display: flex;
+      justify-content: flex-start;
+      padding-left: 0;
+
+    }
+  }
+  &__items {
+    margin: 4vw 0 2vw;
+    ul {
+      padding: 0;
+      margin: 1vw 0;
+      @include tabletPortrait {
+        margin: .5vw 0;
+      }
+    }
+    li {
+      padding: 1.2vw 0;
+      color: white;
+      @include tabletPortrait {
+        padding: 0.5vw 0;
+      }
+      @include tabletLandscape {
+        padding: 0.4vw 0;
+      }
+    }
+  }
+  &__last-section {
+    width: 100%;
+    height: 10vw;
+    @include font-size(35px, 28px);
+    color: $greyFooter;
+    background-color: $blueFooterLast;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include tabletPortrait {
+      height: 4vw;
+      font-size: 1.1vw;
+    }
+    @include tabletLandscape {
+      @include font-size(35px, 28px);
+      height: 4.5vw;
+    }
+  }
+
+
+}

@@ -1,0 +1,79 @@
+/* Dropdown CSS */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+@media only screen and (max-width: 600px) {
+    table{
+        font-size: 3.1vw;
+    }
+  }
+
+.caption-container {
+max-width: 900px; 
+margin: 0 auto;
+overflow-x: auto;
+}
+
+.caption-title-paragraph__eyelet pre {
+max-width: 100%;
+overflow-wrap: break-word;
+}
+
+/* The alert message box */
+.alert1 {
+    padding: 10px;
+    background-color: #FFF3CD; /* Red */
+    color: black;
+    margin-bottom: 15px;
+    font-size: medium;
+    outline: 2px solid #ecd032;
+}
+
+.alert1 li {
+    font-size: medium;
+}
+
+/* The close button */
+.closebtn {
+    margin-left: 15px;
+    color: black;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+    color: black;
+}

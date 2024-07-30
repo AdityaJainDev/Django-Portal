@@ -1,0 +1,139 @@
+
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+/**
+usage:
+  mobile
+  @include vw-value('font-size', 36px, 375px);
+  desktop
+  @include vw-value('font-size', 36px, 1440px);
+  $property: CSS property to set
+  $size: original size in px
+  $width: original width of viewport / Sketch / PSD in px
+ */
+@mixin vw-value ($property, $size, $vwidth) {
+  $unitlessSize: strip-unit($size);
+  $unitlessWidth: strip-unit($vwidth);
+  #{$property}: #{$unitlessSize * 100 / $unitlessWidth}vw;
+}
+
+@mixin font-size ($mobileSize, $desktopSize) {
+  @include vw-value('font-size', $mobileSize, 1125px);
+  @include tabletPortrait {
+    @include vw-value('font-size', $desktopSize, 2880px);
+  }
+}
+
+@mixin line-height ($mobileSizeL, $desktopSizeL) {
+  @include vw-value('line-height', $mobileSizeL, 1125px);
+  @include tabletLandscape {
+    @include vw-value('line-height', $desktopSizeL, 2880px);
+  }
+}
+
+// for centered text with letter spacing, to avoid emptyright margin
+@mixin compensatedLetterSpacing ($letterSpacing) {
+  letter-spacing: $letterSpacing;
+  transform: translateX($letterSpacing/2);
+}
+
+@mixin standardPaddings {
+  padding-left: 5.6vw;
+  padding-right: 5.6vw;
+}
+@mixin closeButton {
+  width: 50px;
+  height: 50px;
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
+@mixin closeWhite {
+  @include closeButton;
+  background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='50px' height='50px' viewBox='0 0 50 50' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg id='Symbols' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='components/hp/modules/content-card-reveal-and-slide-2/desktop' transform='translate(-1327.000000, -104.000000)' stroke='%23FFFFFF'%3E%3Cg id='close' transform='translate(1328.000000, 105.000000)'%3E%3Cg id='atoms/icons/close/medium/white' transform='translate(15.000000, 15.000000)' stroke-linecap='round'%3E%3Cpath d='M1.81102854,1.75239536 L17.1203345,17.0617013' id='Path-7'%3E%3C/path%3E%3Cpath d='M1.81102854,1.75239536 L17.1203345,17.0617013' id='Path-7' transform='translate(9.465682, 9.407048) scale(-1, 1) translate(-9.465682, -9.407048) '%3E%3C/path%3E%3C/g%3E%3Ccircle id='Oval' cx='24' cy='24' r='24'%3E%3C/circle%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+
+}
+@mixin closeGold {
+  @include closeButton;
+  background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='50px' height='50px' viewBox='0 0 50 50' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg id='Symbols' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='components/hp/modules/content-card-reveal-and-slide-2/desktop' transform='translate(-1327.000000, -104.000000)' stroke='%23F1C761'%3E%3Cg id='close' transform='translate(1328.000000, 105.000000)'%3E%3Cg id='atoms/icons/close/medium/white' transform='translate(15.000000, 15.000000)' stroke-linecap='round'%3E%3Cpath d='M1.81102854,1.75239536 L17.1203345,17.0617013' id='Path-7'%3E%3C/path%3E%3Cpath d='M1.81102854,1.75239536 L17.1203345,17.0617013' id='Path-7' transform='translate(9.465682, 9.407048) scale(-1, 1) translate(-9.465682, -9.407048) '%3E%3C/path%3E%3C/g%3E%3Ccircle id='Oval' cx='24' cy='24' r='24'%3E%3C/circle%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+@mixin standardComponentMargin {
+  margin-top: 6.22222vw;
+  margin-bottom: 6.22222vw;
+  @include tabletLandscape {
+    margin-top: 2.43056vw;
+    margin-bottom: 2.43056vw;
+  }
+}
+@mixin standardComponentMargin-fw {
+  margin-top: 6.22222vw;
+  margin-bottom: 6.22222vw;
+  @include tabletLandscape {
+    margin-top: 2.43056vw;
+    margin-bottom: 2.43056vw;
+  }
+}
+@mixin standardComponentMarginOnlyTopDesktop {
+  margin-top: 6.22222vw;
+  margin-bottom: 6.22222vw;
+  @include tabletLandscape {
+    margin-top: 2.43056vw;
+    margin-bottom: 0;
+  }
+}
+@mixin leftMarginEarthDayDesktop {
+  @include tabletLandscape {
+    margin: 0 3vw 0 14vw;
+  }
+}
+@mixin standardComponentMarginOnlyDesktop {
+  margin-top: 0;
+  margin-bottom: 0;
+  @include tabletLandscape {
+    margin-top: 2.43056vw;
+    margin-bottom: 2.43056vw;
+  }
+}
+@mixin standardComponentMarginOnlyDesktopTop {
+  margin-top: 0;
+  margin-bottom: 0;
+  @include tabletLandscape {
+    margin-top: 2.43056vw;
+    margin-bottom: 0;
+  }
+}
+@mixin standardComponentMarginOnlyDesktopBottom {
+  margin-top: 0;
+  margin-bottom: 0;
+  @include tabletLandscape {
+    margin-top: 0;
+    margin-bottom: 2.43056vw;
+  }
+}
+@mixin standardComponentMarginOnlyBottom {
+  margin-top: 0;
+  margin-bottom: 6.22222vw;
+  @include tabletLandscape {
+    margin-top: 0;
+    margin-bottom: 2.43056vw;
+  }
+}
+@mixin standardComponentMarginOnlyTop {
+  margin-top: 6.22222vw;
+  margin-bottom: 0;
+  @include tabletLandscape {
+    margin-top: 2.43056vw;
+    margin-bottom: 0;
+  }
+}
+@mixin standardComponentMarginNoDesktop {
+  margin-top: 6.22222vw;
+  margin-bottom: 6.22222vw;
+  @include tabletLandscape {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}

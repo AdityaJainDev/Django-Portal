@@ -1,0 +1,141 @@
+.hero {
+  background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='390px' height='674px' viewBox='0 0 390 674' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Ctitle%3ERectangle%3C/title%3E%3Cdefs%3E%3ClinearGradient x1='66.1133464%25' y1='96.2610491%25' x2='42.5523159%25' y2='11.9979765%25' id='linearGradient-1'%3E%3Cstop stop-color='%232040A6' offset='0%25'%3E%3C/stop%3E%3Cstop stop-color='%231F227D' offset='100%25'%3E%3C/stop%3E%3C/linearGradient%3E%3C/defs%3E%3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='Homepage----iPhone-12-Pro' fill='url(%23linearGradient-1)'%3E%3Cpath d='M0,0 L390,0 L390,606.312344 L292.684391,660.854607 C263.537832,677.190314 228.158327,677.889976 198.388702,662.719389 L0,561.620596 L0,561.620596 L0,0 Z' id='Rectangle'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  margin-top: -$headerHeightMobile;
+  @include tabletPortrait {
+    margin-top: -$headerHeightPortrait;
+    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='834px' height='670px' viewBox='0 0 834 670' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Ctitle%3ERectangle%3C/title%3E%3Cdefs%3E%3ClinearGradient x1='100%25' y1='80.7539711%25' x2='26.889704%25' y2='24.7365623%25' id='linearGradient-1'%3E%3Cstop stop-color='%232040A6' offset='0%25'%3E%3C/stop%3E%3Cstop stop-color='%231F227D' offset='100%25'%3E%3C/stop%3E%3C/linearGradient%3E%3C/defs%3E%3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='Homepage---11″-iPad-Pro' fill='url(%23linearGradient-1)'%3E%3Cpath d='M0,0 L834,0 L834,528.312344 L568.542902,659.106003 C541.69648,672.333533 510.336835,672.841467 483.076114,660.490316 L0,441.620596 L0,441.620596 L0,0 Z' id='Rectangle'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+  @include tabletLandscape {
+    margin-top: -$headerHeightDesktop;
+    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='1280px' height='846px' viewBox='0 0 1280 846' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Ctitle%3ERectangle%3C/title%3E%3Cdefs%3E%3ClinearGradient x1='100%25' y1='70.68917%25' x2='26.889704%25' y2='33.0044857%25' id='linearGradient-1'%3E%3Cstop stop-color='%232040A6' offset='0%25'%3E%3C/stop%3E%3Cstop stop-color='%231F227D' offset='100%25'%3E%3C/stop%3E%3C/linearGradient%3E%3C/defs%3E%3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='Homepage' fill='url(%23linearGradient-1)'%3E%3Cpath d='M-1.13686838e-13,0 L1280,0 L1280,628.202397 L849.167944,835.911412 C822.734841,848.65511 792.038353,849.14542 765.211733,837.25243 L-1.13686838e-13,498.012684 L-1.13686838e-13,498.012684 L-1.13686838e-13,0 Z' id='Rectangle'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  &__container {
+    position: relative;
+  }
+
+  &__text-container {
+    font-weight: 500;
+    @include tabletPortrait {
+      position: absolute;
+      padding-left: 4%;
+      top: 19vw;
+      width: 34%;
+    }
+    @include tabletLandscape {
+      position: absolute;
+      padding-left: 10%;
+      top: 16.5vw;
+      width: 30%;
+    }
+  }
+
+  &__title, &__subtitle {
+    width: 80%;
+    text-align: center;
+    padding: 0 10%;
+    @include tabletPortrait {
+      text-align: left;
+      padding: 0;
+      width: 100%;
+    }
+    @include tabletLandscape {
+      text-align: left;
+      padding: 0;
+      width: 100%;
+    }
+  }
+  &__title {
+    color: white;
+    @include font-size(150px, 130px);
+    font-weight: 800;
+    line-height: 1;
+    padding-top: 21vw;
+    @include tabletPortrait {
+      padding-top: 0;
+      font-size: 5.2vw;
+    }
+    @include tabletLandscape {
+      @include font-size(150px, 130px);
+      padding-top: 0;
+    }
+  }
+  &__subtitle {
+    color: white;
+    @include font-size(50px, 40px);
+    font-weight: normal;
+    line-height: 1.2;
+    padding-top: 5vw;
+    @include tabletPortrait {
+      padding-top: 2vw;
+      line-height: 1.3;
+      font-size: 2.2vw;
+    }
+    @include tabletLandscape {
+      @include font-size(50px, 40px);
+      padding-top: 2vw;
+      line-height: 1.4;
+    }
+
+
+  }
+  &__ctas {
+    display: flex;
+    justify-content: center;
+    padding-top: 6vw;
+    @include tabletPortrait {
+      padding-top: 3vw;
+      justify-content: left;
+    }
+    @include tabletLandscape {
+      padding-top: 3vw;
+      justify-content: left;
+    }
+    .cta {
+      @include tabletPortrait {
+        justify-content: left;
+      }
+    }
+  }
+
+  &__image {
+    position: static;
+    text-align: center;
+    margin-top: -7vw;
+    padding-bottom: 7vw;
+    img {
+      width: 95%;
+      @include tabletPortrait {
+        width: 100%;
+      }
+      @include tabletLandscape {
+        width: 100%;
+      }
+    }
+    @include tabletPortrait{
+      padding-top: 9vw;
+      padding-left: 32vw;
+      padding-bottom: 0;
+      width: 60%;
+    }
+    @include tabletLandscape {
+      padding-top: 10vw;
+      padding-left: 36vw;
+      padding-bottom: 5vw;
+      width: 54%
+    }
+  }
+
+  .cta-btn {
+    color: white;
+    background-color: $blueAdit;
+    border: 1px solid $blueAdit;
+  }
+  .cta-btn:hover {
+    background-color: white;
+    color: $blueAdit;
+  }
+}

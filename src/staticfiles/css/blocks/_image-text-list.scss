@@ -1,0 +1,147 @@
+.image-text-list {
+  font-weight: 500;
+  margin-bottom: 4vw;
+  @include tabletPortrait {
+    margin-bottom: 2vw;
+    padding: 0 5%;
+    width: 90%;
+  }
+  @include tabletLandscape {
+    padding: 0 10%;
+    width: 80%;
+
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    @include tabletPortrait {
+      flex-direction: row;
+    }
+  }
+  &__image {
+    padding: 0 9%;
+
+    @include tabletPortrait {
+      width: 74%;
+      padding: 0;
+    }
+    img {
+      width: 100%;
+    }
+  }
+
+  &__text {
+    font-weight: 700;
+    text-align: center;
+    margin-top: 6vw;
+    line-height: 1.3;
+    @include font-size(50px, 60px);
+    width: 70%;
+    padding: 0 15%;
+    @include tabletPortrait {
+      text-align: left;
+      margin-top: 4vw;
+      padding: 0;
+      width: 100%;
+    }
+    @include tabletLandscape {
+      margin-top: 4vw;
+    }
+  }
+  &__contacts {
+    position: relative;
+    @include tabletPortrait {
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: left;
+      padding-left: 5vw;
+    }
+  }
+  ul {
+    margin-top: 6vw;
+    @include tabletPortrait {
+      margin-top: 3vw;
+      padding: 0;
+    }
+    @include tabletLandscape {
+      margin-top: 2vw;
+      padding: 0;
+    }
+  }
+
+  li {
+      display: flex;
+      align-items: center;
+      justify-content: left;
+      padding-left: 12vw;
+      margin-top: 4vw;
+      @include font-size(45px, 35px);
+      @include tabletPortrait {
+        font-size: 1.7vw;
+        padding-left: 0;
+        margin-top: 0vw;
+        padding-bottom: 2.5vw;
+      }
+      @include tabletLandscape {
+        padding-left: 0;
+        margin-top: 0vw;
+        padding-bottom: 1vw;
+        @include font-size(40px, 35px);
+      }
+      }
+
+  li::before {
+      content: '•';
+      margin-right: 1vw;
+      @include tabletPortrait {
+        margin-right: 1.2vw;
+      }
+    }
+}
+
+.image-text-list {
+  &.image-text-list__text-right {
+    .image-text-list__container {
+      @include tabletPortrait {
+        flex-direction: row-reverse;
+      }
+    }
+    .image-text-list__contacts {
+      @include tabletPortrait {
+        padding-left: 0;
+      }
+    }
+  }
+}
+
+
+//rendering image size
+.image-text-list {
+  &.image-text-list__text-equal {
+    margin-bottom: 4vw;
+    padding-top: 17vw;
+    @include tabletPortrait {
+      margin-bottom: 2vw;
+      padding: 1% 5% 0;
+      width: 90%;
+    }
+    @include tabletLandscape {
+      padding: 2% 10% 0;
+      width: 80%;
+    }
+
+    .image-text-list__image {
+      @include tabletPortrait {
+        width: 50%;
+      }
+    }
+    .image-text-list__contacts {
+      @include tabletPortrait {
+        width: 50%;
+      }
+    }
+  }
+}

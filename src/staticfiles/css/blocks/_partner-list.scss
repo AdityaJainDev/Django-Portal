@@ -1,0 +1,54 @@
+.partner-list {
+  font-weight: 500;
+  margin: 9vw 10%;
+  @include tabletPortrait {
+    margin: 4vw 0;
+    width: 80%;
+    padding: 0 10%;
+  }
+
+
+  &__title {
+    text-align: center;
+    width: 100%;
+    color: black;
+    font-weight: 700;
+    @include font-size(70px, 60px);
+    margin-bottom: 3vw;
+    @include tabletPortrait {
+      margin-bottom: 0;
+      font-size: 2.55vw;
+    }
+    @include tabletLandscape {
+      @include font-size(70px, 60px);
+    }
+  }
+  &__images {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  &__image {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2vw 0;
+    @include tabletPortrait {
+      width: 25%;
+    }
+    a {
+      @include tabletPortrait {
+        width: 100%;
+      }
+    }
+    img {
+      width: 100%;
+      @include tabletPortrait {
+        width: 76%;
+      }
+    }
+  }
+}
